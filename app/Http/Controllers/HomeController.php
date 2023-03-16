@@ -8,20 +8,19 @@ class HomeController extends Controller
 {
     public function utama()
     {
-        return view('welcome');
+        return view ('welcome');
     }
 
-    public function bio()
+    public function table()
     {
-        return view('halaman.biodata');
+        return view('halaman.table');
     }
 
-    public function kirim(Request $request)
-    {
-        $nama = $request['name'];
-        $alamat = $request['alamat'];
-        $jeniskelamin = $request['jk'];
+    // public function welcome(Request $request)
+    // {
+    //     $firstname = $request['fname'];
+    //     $lastname = $request['lname'];
 
-        return view('halaman.home',['nama'=>$nama, 'alamat'=>$alamat, 'jeniskelamin'=>$jeniskelamin]);
-    }
+    //     return view('halaman.home',['firstname'=>$firstname, 'lastname'=>$lastname ]);
+    // }
 }
