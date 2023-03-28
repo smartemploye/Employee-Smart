@@ -1,12 +1,20 @@
 <?php
 
-use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashController;
+// use App\Http\Controllers\CastController;
+// use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\CastController;
-use App\Http\Controllers\PostController;
-
-
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\LogbookController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PerizinanController;
+use App\Http\Controllers\Auth\BayarController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,32 +27,34 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/',[HomeController::class, 'utama']);
-Route::get('/table',[AuthController::class, 'table']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/',[DashController::class, 'utama']);
+// Route::get('/table',[AuthController::class, 'table']);
 // Route::post('/welcome', [AuthController::class, 'welcome']);
 Route::get('/data-table', function(){
-    return view('halaman.datatable');
+    return view('halaman.datatable'); 
 });
 ;
 
-// Route::get('/cast', [CastController::class, 'index']);
+Route::get('/login',[LoginController::class, 'index'])->name('login');
 
-//CRUD Kategori
+Route::get('/register',[RegisterController::class, 'index'])->name('register');
+Route::post('/postregister',[RegisterController::class, 'store'])->name('register');
+Route::post('/postlogin',[LoginController::class, 'postlogin'])->name('postlogin');
 
-//Create
-//Form Tambah Kategori
-Route::get('/cast/create', [CastController::class, 'create']);
-//Untuk kirim data ke database
-Route::post('/cast',[CastController::class, 'store']);
-//Read
-Route::get('/cast', [CastController::class, 'index']);
-//Detail Cast
-Route::get('/cast/{cast_id}', [CastController::class, 'show']);
-//Update
-Route::get('/cast/{cast_id}/edit', [CastController::class, 'edit']);
-//Update data ke database
-Route::put('/cast/update/{cast_id}', [CastController::class, 'update']);
-//Delete
-Route::delete('/cast/{cast_id}', [CastController::class, 'destroy']);
-//CRUD Post
-Route::resource('post', PostController::class);
+//pembayaran
+Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar');
+
+//admin
+// Route::get('/admin/dashboard', function () {
+//     // Only users with the "admin" role can access this route
+// })->middleware('auth', 'role:admin');
+// Route::get('/register', [RegisterController::class, 'index']);
+// Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
+Route::get('/perizinan',[PerizinanController::class, 'index'])->name('perizinan');
+Route::get('/report',[ReportController::class, 'index'])->name('report');
+Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
+Route::get('/admin/profile',[ProfileController::class, 'index'])->name('profile');

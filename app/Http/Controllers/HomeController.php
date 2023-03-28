@@ -6,21 +6,24 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function utama()
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
     {
-        return view ('welcome');
+        $this->middleware('auth');
     }
 
-    public function table()
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function index()
     {
-        return view('halaman.table');
+        return view('home');
     }
 
-    // public function welcome(Request $request)
-    // {
-    //     $firstname = $request['fname'];
-    //     $lastname = $request['lname'];
-
-    //     return view('halaman.home',['firstname'=>$firstname, 'lastname'=>$lastname ]);
-    // }
 }
