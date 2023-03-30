@@ -3,7 +3,6 @@
 @section('content')
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="UTF-8">
@@ -21,7 +20,11 @@
     .form-container {
       background-color: black;
       color: #ffffff;
-      padding: 30px;
+      /* padding: 30px; */
+      margin-right: -200px;
+      margin-left: -200px;
+      padding-left: -60px;
+      padding-right: -50px;
       border-radius: 5px;
       margin-top: -70px;
     }
@@ -38,12 +41,16 @@
     button {
       background-color: darkgrey;
       color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
+      /* padding: 14px 20px; */
+      /* margin: 8px 0; */
+      align-items: center;
+      margin-bottom: 10px;
       border: none;
       border-radius: 4px;
       cursor: pointer;
-      width: 100%;
+      width: 350px;
+      height: 50px;
+      margin-left: 400px;
     }button:hover {
       background-color: #45a049;
     }
@@ -51,10 +58,11 @@
 </head>
 
 <body >
+    @include('sweetalert::alert')
   <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 650px">
   <div class="container">
     <div class="row justify-content-center" style="margin-top: 50px;">
-      <div class="col-md-6">
+      <div class="col-md-8">
         <div class="form-container">
           <!-- Add the image element here -->
 
@@ -62,106 +70,161 @@
           <h2 class="text-center" style="margin-top: 10px;">Register</h2>
           <form action="/postregister" method="post">
             @csrf
-            <div class="form-group" style="margin-top: 15px;">
-              <label for="inputName">Name</label>
-              <input type="text" name="name" class="form-control" id="inputName" placeholder="Enter your name">
-            </div>
-            <div class="form-group">
-              <label for="inputNisn">Nomor Induk Siswa Nasional (NISN)</label>
-              <input type="text" name="nisn" class="form-control" id="inputNisn" placeholder="Enter your NISN">
-            </div>
-            <div class="form-group">
-                <label for="inputNisn">Nomor WA</label>
-                <input type="text" name="no_wa" class="form-control" id="inputNisn" placeholder="Enter your number">
-              </div>
-            <div class="form-group">
-              <label for="inputSchool">Asal Sekolah</label>
-              <select class="form-control" name="asal_sekolah" id="sekolah">
-                <option value="" disabled selected>-- Select School --</option>
-                @foreach ($sekolah as $sklh  )
-                    <option value="{{ $sklh->id }}">{{ $sklh->nama_sekolah }}</option>
-                @endforeach
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inputJurusan">Jenis Jurusan</label>
-              <div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="jenis_jurusan" id="jurusanUmum" value="umum">
-                  <label class="form-check-label" for="jurusanUmum">Umum</label>
-                </div>
-                <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="jenis_jurusan" id="jurusanIT" value="it">
-                  <label class="form-check-label" for="jurusanIT">IT</label>
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputJurusanName">Nama Jurusan</label>
-              <input type="text" name="nama_jurusan" class="form-control" id="inputJurusanName" placeholder="Enter your Major">
-            </div>
+          <table>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: 15px;">
+                        <label for="inputName">Name</label>
+                        <input type="text" name="nama_siswa" class="form-control" id="inputName" placeholder="Enter your name" style="padding-left: 10px;padding-right: 350px">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group" style="margin-left: 10px;">
+                        <label for="inputSupervisor">Nama Pembimbing</label>
+                        <input type="text" name="nama_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor Name">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: -190px; padding-left: 200px;">
+                        <label for="inputNisn">Nomor Induk Siswa Nasional (NISN)</label>
+                        <input type="text" name="nisn" class="form-control" id="inputNisn" placeholder="Enter your NISN" style="padding-left: 10px;padding-right: 300px">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group" style="margin-left: 10px;">
+                        <label for="inputSupervisor">NIP Pembimbing</label>
+                        <input type="text" name="nip_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor NIP">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: 10px;">
+                        <label for="inputSchool">Asal Sekolah</label>
+                        <select class="form-control" name="sekolah_id" id="sekolah" >
+                          <option value="" disabled selected>-- Select School --</option>
+                          @foreach ($sekolah as $sklh  )
+                              <option value="{{ $sklh->id }}">{{ $sklh->nama_sekolah }}</option>
+                          @endforeach
+                        </select>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group" style="margin-left: 10px;" >
+                        <label for="inputSupervisor">Nomor WA Pembimbing</label>
+                        <input type="text" name="no_wa_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor number">
+                      </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: 15px;">
+                        <label for="inputJurusan">Jenis Jurusan</label>
+                        <div>
+                          <div class="form-check form-check-inline">
+                            @foreach ($bidang as $bd )
+                            <input class="form-check-input" type="radio" name="bidang_id" id="bidang_id" value="{{ $bd->id }}" style="margin-left: 10px">
+                            <label class="form-check-label" for="bidang_id" style="margin-left: 10px">{{ $bd->nama_bidang }}</label>
+                            @endforeach
+                          </div>
+                        </div>
+                      </div>
+                </td>
+                <td>
+                    <div class="form-group" style="margin-left: 10px;">
+                        <label for="inputShirtSize">Ukuran Baju</label>
+                        <select class="form-control" name="ukuran_baju" id="inputShirtSize">
+                          <option value="" selected disabled>-- Select Shirt Size --</option>
+                          <option value="s">S</option>
+                          <option value="m">M</option>
+                          <option value="l">L</option>
+                          <option value="xl">XL</option>
+                          <option value="xxl">XXL</option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: 10px;">
+                        <label for="inputJurusanName">Nama Jurusan</label>
+                        <input type="text" name="jurusan" class="form-control" id="inputJurusanName" placeholder="Enter your Major">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group" style="margin-left: 10px;">
+                        <label for="inputApplication">Upload Surat Pengajuan</label>
+                        <input type="file" name="surat_pengajuan" class="form-control-file" id="surat_pengajuan" accept="image/*">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: 15px;">
+                        <label for="inputNisn">Nomor WA</label>
+                        <input type="text" name="no_wa" class="form-control" id="inputNisn" placeholder="Enter your number">
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group" style="margin-left: 15px;">
+                        <label for="inputEmail">Alamat Email</label>
+                        <input type="email" name="username" class="form-control" id="inputEmail" placeholder="Enter your email address" style="padding-right: 300px">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: 15px;">
+                        <label for="inputPhoto">Upload Foto</label>
+                        <input type="file" name="foto_siswa" class="form-control-file" id="foto" accept="image/*" >
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group" style="margin-left: 10px;">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter your password">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: 15px;">
+                        <label for="inputBirthdate">Tanggal Lahir</label>
+                        <input type="date" name="tanggal_lahir" class="form-control" id="inputBirthdate" placeholder="Enter your birthdate">
+                      </div>
+                </td>
+                <td>
+                    <div class="form-group" style="margin-left: 15px;">
+                        <label for="inputConfirmPassword">Ulangi Password</label>
+                        <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Enter your password again">
+                    </div>
+                </td>
+            </tr>
+            </tr>
+            <tr>
+                <td>
+                    <div class="form-group" style="margin-left: 15px;">
+                        <label for="inputPaketMagang">Paket Magang</label>
+                        <div>
+                          <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="paket_magang" id="paketBasic" value="basic">
+                                <label class="form-check-label" for="paketBasic" style="margin-right: 10px">Basic</label>
+                                <input class="form-check-input" type="radio" name="paket_magang" id="paketBasic" value="exclusive">
+                                <label class="form-check-label" for="paketBasic" style="margin-right: 10px">Exclusive</label>
+                          </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
 
-            <div class="form-group">
-              <label for="inputBirthdate">Tanggal Lahir</label>
-              <input type="date" name="tanggal_lahir" class="form-control" id="inputBirthdate" placeholder="Enter your birthdate">
+                {{-- <a href="submit"><button type="button" >Register</button></a> --}}
+            </table>
+            <div class="button">
+                {{-- <a href="/register"><button type="button">Register</button></a> --}}
+                <input type="submit" name="submit" value="Register" style="margin-left: 400px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px"/>
             </div>
-            <div class="form-group">
-              <label for="inputSupervisor">NIP Pembimbing</label>
-              <input type="text" name="nip_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor NIP">
-            </div>
-            <div class="form-group">
-                <label for="inputSupervisor">Nama Pembimbing</label>
-                <input type="text" name="nama_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor Name">
-              </div>
-              <div class="form-group">
-                <label for="inputSupervisor">Nomor WA Pembimbing</label>
-                <input type="text" name="no_wa_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor number">
-              </div>
-            <div class="form-group">
-                <label for="inputPaketMagang">Paket Magang</label>
-                <div>
-                  <div class="form-check form-check-inline">
-                    @foreach ($paket_administrasi as $paket )
-                        <input class="form-check-input" type="radio" name="paket_magang" id="paketBasic" value="{{ $paket->id }}">
-                        <label class="form-check-label" for="paketBasic" style="margin-right: 10px">{{ $paket->nama_pket }}</label>
-                    @endforeach
-                  </div>
-                </div>
-              </div>
-            <div class="form-group">
-              <label for="inputShirtSize">Ukuran Baju</label>
-              <select class="form-control" name="ukuran_baju" id="inputShirtSize">
-                <option value="" selected disabled>-- Select Shirt Size --</option>
-                <option value="s">S</option>
-                <option value="m">M</option>
-                <option value="l">L</option>
-                <option value="xl">XL</option>
-                <option value="xxl">XXL</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="inputPhoto">Upload Foto</label>
-              <input type="file" name="foto" class="form-control-file" id="foto" accept="image/*" >
-            </div>
-            <div class="form-group">
-              <label for="inputApplication">Upload Surat Pengajuan</label>
-              <input type="file" name="surat_pengajuan" class="form-control-file" id="surat_pengajuan" accept="image/*">
-            </div>
-            <div class="form-group">
-              <label for="inputEmail">Alamat Email</label>
-              <input type="email" name="email" class="form-control" id="inputEmail" placeholder="Enter your email address">
-            </div>
-            <div class="form-group">
-              <label for="inputPassword">Password</label>
-              <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Enter your password">
-            </div>
-            <div class="form-group">
-              <label for="inputConfirmPassword">Ulangi Password</label>
-              <input type="password" class="form-control" id="inputConfirmPassword" placeholder="Enter your password again">
-            </div>
-            {{-- <input type="submit" name="submit" value="Register" style="margin-left: 10px; padding-left:200px;padding-right: 200px;padding-top: 10px;padding-bottom: 10px;"/> --}}
-            <a href="Login.html"><button type="button" >Register</button></a>
-            {{-- <a href="/login"><button type="button">Register</button></a> --}}
           </form>
         </div>
       </div>

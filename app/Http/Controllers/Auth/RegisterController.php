@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Models\DataMagang;
 use App\Models\Siswa;
+use App\Models\Akun;
 use App\Models\Pembimbing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RegisterController extends Controller
 {
@@ -22,10 +23,10 @@ class RegisterController extends Controller
         $sekolah = DB::table('sekolah')
         ->get(['id','nama_sekolah']);
 
-        $paket_administrasi = DB::table('paket_administrasi')
-        ->get(['id','nama_pket']);
+        $bidang = DB::table('data_bidang')
+        ->get(['id','nama_bidang']);
 
-        return view('register.index', compact('sekolah','paket_administrasi'));
+        return view('register.index', compact('sekolah','bidang'));
     }
 
     public function store(Request $request)
@@ -35,22 +36,6 @@ class RegisterController extends Controller
             'nip_pembimbing'=>$request->nip_pembimbing,
             'nama_pembimbing'=>$request->nama_pembimbing,
             'no_wa_pembimbing'=>$request->no_wa_pembimbing
-        ]);
-        DataMagang::create([
-            'bidang_id'=>$request->bidang_id,
-            'admin_pembayaran_id'=>$request->admin_pembayaran_id,
-            'nisn'=>$request->nisn,
-            'paket_id'=>$request->paket_id,
-            'surat_pengajuan'=>$request->surat_pengajuan,
-            'paket_magang'=>$request->paket_magang,
-            'tanggal_pembayaran'=>$request->tanggal_pembayaran,
-            'judul_project'=>$request->judul_project,
-            'no_sertifikat'=>$request->no_sertifikat,
-            'status_magang'=>$request->status_magang,
-            'status_seleksi'=>$request->status_seleksi,
-            'ukuran_baju'=>$request->ukuran_baju,
-            'nilai_akhir'=>$request->nilai_akhir,
-            'bukti_pembayaran'=>$request->bukti_prmbayaran
         ]);
 
         Siswa::create([
@@ -64,7 +49,21 @@ class RegisterController extends Controller
             'foto_siswa'=>$request->foto_siswa,
         ]);
 
-        return view('register.index');
+        DataMagang::create([
+            'bidang_id'=>$request->bidang_id,
+            'nisn'=>$request->nisn,
+            'paket_magang'=>$request->paket_magang,
+            'surat_pengajuan'=>$request->surat_pengajuan,
+            'ukuran_baju'=>$request->ukuran_baju,
+        ]);
+
+
+        Akun::create([
+            'username'=>$request->username,
+            'password'=>$request->password,
+        ]);
+        Alert::success('Berhasil','Success Message');
+        return redirect('dashboard');
         // $image_path = storage_path('app/'.config('path.identity.photo').'/'.$request->identity_photo);
 
         // if($request->hasFile('foto'))

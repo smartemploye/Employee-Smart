@@ -16,6 +16,8 @@ class AddTanggalLahirToSiswaTable extends Migration
         Schema::table('siswa', function (Blueprint $table) {
             $table->date('tanggal_lahir');
         });
+
+        
     }
 
     /**

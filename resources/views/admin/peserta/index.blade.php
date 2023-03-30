@@ -7,10 +7,13 @@
     <thead>
       <tr>
         <th scope="col">No</th>
-        <th scope="col">Dari</th>
-        <th scope="col">Sampai</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">Approve</th>
+        <th scope="col">Nama</th>
+        <th scope="col">Tanggal Mulai Magang</th>
+        <th scope="col">Tanggal Selesai Magang</th>
+        <th scope="col">Status</th>
+        <th scope="col">Asal Sekolah</th>
+        <th scope="col">Judul Project</th>
+        <th scope="col">Nama Pembimbing</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>

@@ -7,10 +7,9 @@
     <thead>
       <tr>
         <th scope="col">No</th>
-        <th scope="col">Dari</th>
-        <th scope="col">Sampai</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">Approve</th>
+        <th scope="col">NIS Sekolah</th>
+        <th scope="col">Nama Sekolah</th>
+        <th scope="col">Alamat Sekolah</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>

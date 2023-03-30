@@ -55,6 +55,86 @@
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Dashboard
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/peserta" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Peserta
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/setting_magang" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Setting Magang
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/pembimbing" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Pembimbing
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/data_sekolah" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Data Sekolah
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/data_bidang" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Data Bidang
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/report" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Report
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/komponen_penilaian" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Komponen Penilaian
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/penilaian" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Penilaian
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/absensi" class="nav-link" style="color: white">
+                    <p>
+                        <img src="{{asset ('/template/dist/img/Library.png') }}" alt="Logo"  >
+                        Absensi
+                    </p>
+                </a>
+            </li>
             {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

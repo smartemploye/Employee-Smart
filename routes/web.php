@@ -34,14 +34,14 @@ Route::get('/',[DashController::class, 'utama']);
 // Route::get('/table',[AuthController::class, 'table']);
 // Route::post('/welcome', [AuthController::class, 'welcome']);
 Route::get('/data-table', function(){
-    return view('halaman.datatable'); 
+    return view('halaman.datatable');
 });
 ;
 
 Route::get('/login',[LoginController::class, 'index'])->name('login');
 
 Route::get('/register',[RegisterController::class, 'index'])->name('register');
-Route::post('/postregister',[RegisterController::class, 'store'])->name('register');
+Route::post('/postregister',[RegisterController::class, 'store'])->name('postregister');
 Route::post('/postlogin',[LoginController::class, 'postlogin'])->name('postlogin');
 
 //pembayaran
@@ -58,3 +58,43 @@ Route::get('/perizinan',[PerizinanController::class, 'index'])->name('perizinan'
 Route::get('/report',[ReportController::class, 'index'])->name('report');
 Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
 Route::get('/admin/profile',[ProfileController::class, 'index'])->name('profile');
+Route::post('/postlogin',[LoginController::class, 'postlogin'])->name('postlogin');
+Route::get('/dashboard', function(){
+    return view('admin.dashboard');
+});
+
+Route::get('/peserta', function(){
+    return view('admin.peserta.index');
+});
+
+Route::get('/pembimbing', function(){
+    return view('admin.pembimbing');
+});
+
+Route::get('/data_sekolah', function(){
+    return view('admin.data_sekolah');
+});
+
+Route::get('/data_bidang', function(){
+    return view('admin.data_bidang');
+});
+
+Route::get('/komponen_penilaian', function(){
+    return view('admin.komponen_penilaian');
+});
+
+Route::get('/penilaian', function(){
+    return view('admin.penilaian');
+});
+
+Route::get('/absensi', function(){
+    return view('template.absensi');
+});
+
+Route::get('/setting_magang', function(){
+    return view('admin.setting_magang');
+});
+
+Route::get('/detail', function(){
+    return view('admin.peserta.detail');
+});

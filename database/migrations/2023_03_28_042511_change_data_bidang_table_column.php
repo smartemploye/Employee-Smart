@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaketAdministrasiTable extends Migration
+class ChangeDataBidangTableColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,8 @@ class CreatePaketAdministrasiTable extends Migration
      */
     public function up()
     {
-        Schema::create('paket_administrasi', function (Blueprint $table) {
-            $table->id();
-            $table->string('nama_pket');
-            $table->timestamps();
+        Schema::table('data_bidang', function (Blueprint $table) {
+            $table->dropColumn('paket_id');
         });
     }
 
@@ -27,6 +25,8 @@ class CreatePaketAdministrasiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paket_administrasi');
+        Schema::table('data_bidang', function (Blueprint $table) {
+            $table->dropColumn('paket_id');
+        });
     }
 }

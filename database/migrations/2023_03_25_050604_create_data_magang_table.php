@@ -21,7 +21,6 @@ class CreateDataMagangTable extends Migration
             $table->bigInteger('bidang_id');
             $table->bigInteger('admin_pembayaran_id');
             $table->bigInteger('nisn');
-            $table->bigInteger('paket_id');
             $table->string('surat_pengajuan');
             $table->enum('paket_magang', ['basic','exclusive']);
             $table->date('tanggal_pembayaran');

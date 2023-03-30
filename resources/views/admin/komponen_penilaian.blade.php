@@ -7,10 +7,7 @@
     <thead>
       <tr>
         <th scope="col">No</th>
-        <th scope="col">Dari</th>
-        <th scope="col">Sampai</th>
-        <th scope="col">Keterangan</th>
-        <th scope="col">Approve</th>
+        <th scope="col">Komponen Penilaian</th>
         <th scope="col">Aksi</th>
       </tr>
     </thead>
