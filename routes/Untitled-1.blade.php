@@ -1,16 +1,8 @@
 <div class="sidebar">
     <!-- Sidebar user (optional) -->
-    <div class="user-panel pb-5 d-flex">
-        <li class="nav-link">
-            <a href="../../index3.html" class="brand-link">
-                <img src="https://team.garudacyber.co.id/upload/icon/icon-HiWZJbTnmXQq.ico" alt="Logo" style="margin-left: -13px">
-                {{-- <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo"> --}}
-                <p style="font-size: 17px; color: white; margin-left: 35px;margin-top: -30px;">
-                    {{-- <img src="{{asset ('/template/dist/img/QR.png') }}" alt="Logo"  > --}}
-                        Garuda Cyber Indonesia
-                </p>
-            </a>
-        </li>
+    <div class="user-panel pb-5 d-flex" style="margin-top: 100px">
+
+
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <!-- SidebarSearch Form -->
@@ -30,11 +22,12 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+
             <li class="nav-item">
                 <a href="/" class="nav-link">
-                    <i class='bx bxs-dashboard text-white' style="vertical-align: -3px;font-size: 25px"></i>
                     <p style="font-size: 18px; color: white">
                         {{-- <img src="{{asset ('/template/dist/img/QR.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px"></i>
                         Dashboard
                     </p>
                 </a>
@@ -49,117 +42,117 @@
             </li> --}}
             <li class="nav-item">
                 <a href="/logbook" class="nav-link" style="color: white">
-                    <i class='bx bxs-book-content'style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/BUKU.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-book-content'style="vertical-align: -3px;font-size: 25px"></i>
                         Logbook
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/perizinan" class="nav-link" style="color: white">
-                    <i class='bx bxs-calendar'style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/perizinan.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-calendar'style="vertical-align: -3px;font-size: 25px"></i>
                         Perizinan
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/report" class="nav-link" style="color: white">
-                    <i class='bx bxs-report'style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/report.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-report'style="vertical-align: -3px;font-size: 25px"></i>
                         Report dan sertifikat
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/dashboard" class="nav-link" style="color: white">
-                    <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/dashboard.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px"></i>
                         Dashboard
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/peserta" class="nav-link" style="color: white">
-                    <i class='bx bx-child' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Peserta.png') }}" alt="Logo"  > --}}
+                        <i class='bx bx-child' style="vertical-align: -3px;font-size: 25px"></i>
                         Peserta
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/setting_magang" class="nav-link" style="color: white">
-                    <i class='bx bxs-cog' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Setting.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-cog' style="vertical-align: -3px;font-size: 25px"></i>
                         Setting Magang
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/pembimbing" class="nav-link" style="color: white">
-                    <i class='bx bx-male'style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Pembimbing.png') }}" alt="Logo"  > --}}
+                        <i class='bx bx-male'style="vertical-align: -3px;font-size: 25px"></i>
                         Pembimbing
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/data_sekolah" class="nav-link" style="color: white">
-                    <i class='bx bxs-school'style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Sekolah.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-school'style="vertical-align: -3px;font-size: 25px"></i>
                         Data Sekolah
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/data_bidang" class="nav-link" style="color: white">
-                    <i class='bx bxs-objects-horizontal-left' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Bidang.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-objects-horizontal-left' style="vertical-align: -3px;font-size: 25px"></i>
                         Data Bidang
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/report" class="nav-link" style="color: white">
-                    <i class='bx bxs-book-open'style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Grafik.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-book-open'style="vertical-align: -3px;font-size: 25px"></i>
                         Report
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/komponen_penilaian" class="nav-link" style="color: white">
-                    <i class='bx bx-book-alt' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Komponen.png') }}" alt="Logo"  > --}}
+                        <i class='bx bx-book-alt' style="vertical-align: -3px;font-size: 25px"></i>
                         Komponen Penilaian
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/penilaian" class="nav-link" style="color: white">
-                    <i class='bx bx-book-bookmark' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Nilai.png') }}" alt="Logo"  > --}}
+                        <i class='bx bx-book-bookmark' style="vertical-align: -3px;font-size: 25px"></i>
                         Penilaian
                     </p>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="/absensi" class="nav-link" style="color: white">
-                    <i class='bx bxs-time' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Absen.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-time' style="vertical-align: -3px;font-size: 25px"></i>
                         Absensi
                     </p>
                 </a>

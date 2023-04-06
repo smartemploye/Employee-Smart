@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTanggalLahirToSiswaTable extends Migration
+class AddEmailVerifiedAtToAkunsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class AddTanggalLahirToSiswaTable extends Migration
      */
     public function up()
     {
-        Schema::table('siswa', function (Blueprint $table) {
-            $table->date('tanggal_lahir');
+        Schema::table('akuns', function (Blueprint $table) {
+            $table->timestamp('email_verified_at');
         });
-
-        
     }
 
     /**
@@ -27,8 +25,8 @@ class AddTanggalLahirToSiswaTable extends Migration
      */
     public function down()
     {
-        Schema::table('siswa', function (Blueprint $table) {
-            $table->dropColumn('tanggal_lahir');
+        Schema::table('akuns', function (Blueprint $table) {
+            $table->dropColumn('email_verified_at');
         });
     }
 }

@@ -23,5 +23,6 @@
     <h3>Nomor WA</h3>
     <p style="margin-left: 500px;margin-top: -30px ">082388506312</p>
 </div>
+<input type="button" value="Logout">
 
 @endsection

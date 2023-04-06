@@ -51,9 +51,25 @@ class LoginController extends Controller
 
     public function postlogin(Request $request){
         // dd($request->all());
-        if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
-            return view('auth.bayar');
+        // if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
+        //     return redirect('/bayar');
+        // }
+
+        if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])){
+            return redirect('/bayar');
+        } else if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
+            return redirect('/bayar');
         }
+        return redirect ('/login');
+
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/login');
     }
 
 }

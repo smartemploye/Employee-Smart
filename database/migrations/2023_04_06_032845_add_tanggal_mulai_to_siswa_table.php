@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangeDataBidangTableColumn extends Migration
+class AddTanggalMulaiToSiswaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class ChangeDataBidangTableColumn extends Migration
      */
     public function up()
     {
-        Schema::table('data_bidang', function (Blueprint $table) {
-            $table->dropColumn('paket_id');
+        Schema::table('siswa', function (Blueprint $table) {
+            $table->date('tanggal_mulai')->nullable();
+            $table->date('tanggal_selesai')->nullable();
         });
     }
 
@@ -25,8 +26,8 @@ class ChangeDataBidangTableColumn extends Migration
      */
     public function down()
     {
-        Schema::table('data_bidang', function (Blueprint $table) {
-            $table->dropColumn('paket_id');
+        Schema::table('siswa', function (Blueprint $table) {
+            //
         });
     }
 }

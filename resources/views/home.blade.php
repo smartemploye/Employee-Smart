@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <a href="/logout">Logouts</a>
                 </div>
             </div>
         </div>

@@ -18,6 +18,8 @@ class Siswa extends Model
         'sekolah_id',
         'jurusan',
         'tanggal_lahir',
+        'tanggal_masuk',
+        'tanggal_selesai',
         'nip_pembimbing',
         'foto_siswa',
     ];

@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>AdminLTE 3 | Blank Page</title>
 
+    {{-- boxicon --}}
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -30,9 +32,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar elevation-4" style="background-color: #bb1d1d" >
             <!-- Brand Logo -->
-            <a href="../../index3.html" class="brand-link" style="width: 100px;height: 100px;">
-                <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo">
-            </a>
+           
 
             <!-- Sidebar -->
             @include('partial.sidebar')
@@ -60,14 +60,14 @@
                     <div class="card-header">
                         <h3 class="card-title">@yield('judul')</h3>
 
-                        <div class="card-tools">
+                        {{-- <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
                             <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
                                 <i class="fas fa-times"></i>
                             </button>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-body">
                         @yield('content')

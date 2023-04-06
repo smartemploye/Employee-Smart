@@ -60,10 +60,10 @@ class RegisterController extends Controller
 
         Akun::create([
             'username'=>$request->username,
-            'password'=>$request->password,
+            'password'=>bcrypt($request->password),
         ]);
         Alert::success('Berhasil','Success Message');
-        return redirect('dashboard');
+        return redirect('login');
         // $image_path = storage_path('app/'.config('path.identity.photo').'/'.$request->identity_photo);
 
         // if($request->hasFile('foto'))

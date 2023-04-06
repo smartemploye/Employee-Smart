@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Models\Absen;
 
-class PerizinanController extends Controller
+class PembimbingController extends Controller
 {
     public function index()
     {
-        $perizinan = DB::table('absen')
-        ->get(['id','izin_dari','izin_sampai', 'keterangan', 'approve']);
+        $pembimbing = DB::table('pembimbing')
+        ->get(['id','','izin_sampai', 'keterangan', 'approve']);
 
         return view('perizinan.index', compact('perizinan'));
     }
