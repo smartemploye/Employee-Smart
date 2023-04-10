@@ -15,21 +15,22 @@ class PesertaController extends Controller
     public function index()
     {
         $data = DB::table('siswa')
+        ->distinct()
         ->join('sekolah','sekolah.id','=','siswa.sekolah_id')
         ->join('data_magang','data_magang.nisn','=','siswa.nisn')
         ->join('pembimbing','pembimbing.nip_pembimbing','=','siswa.nip_pembimbing')
-        ->distinct()
         ->get([
             'siswa.id','nama_siswa','nama_sekolah','tanggal_mulai','tanggal_selesai',
             'judul_project','status_magang','nama_pembimbing'
         ]);
-
         return view('peserta.index', compact('data'));
     }
 
     public function create()
     {
-        return view('peserta.create');
+        $dtsklh = DB::table('sekolah')
+        ->get();
+        return view('peserta.create', compact('dtsklh'));
     }
 
     public function store(Request $request)
@@ -39,7 +40,7 @@ class PesertaController extends Controller
             'nama_siswa' => $request->nama_siswa,
             'tanggal_mulai' => $request->tanggal_mulai,
             'tanggal_selesai' => $request->tanggal_selesai,
-            'nama_sekolah' => $request->nama_sekolah,
+            'sekolah_id' => $request->sekolah_id,
             'nama_pembimbing' => $request->nama_pembimbing,
         ]);
 

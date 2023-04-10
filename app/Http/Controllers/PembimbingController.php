@@ -2,60 +2,64 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 
 class PembimbingController extends Controller
 {
     public function index()
     {
         $pembimbing = DB::table('pembimbing')
-        ->get(['id','','izin_sampai', 'keterangan', 'approve']);
+        ->join('sekolah','sekolah.id','=','pembimbing.sekolah_id')
+        ->get(['pembimbing.id','nip_pembimbing', 'nama_pembimbing', 'no_wa_pembimbing', 'nama_sekolah']);
 
-        return view('perizinan.index', compact('perizinan'));
+        return view('pembimbing.index', compact('pembimbing'));
     }
 
     public function create()
     {
-        return view('perizinan.create');
+        return view('pembimbing.create');
     }
 
     public function store(Request $request)
     {
         // dd($request->all());
-        $status = "proses";
         Absen::create([
-            'izin_dari' => $request->izin_dari,
-            'izin_sampai' => $request->izin_sampai,
-            'keterangan' => $request->keterangan,
-            'approve' => $status
+            'nip_pembimbing' => $request->nip_pembimbing,
+            'nama_pembimbing' => $request->nama_pembimbing,
+            'no_wa_pembimbing' => $request->no_wa_pembimbing,
+            'sekolah_id' => $request->sekolah_id,
         ]);
-        return redirect('/perizinan');
+        return redirect('/pembimbing');
     }
 
     public function edit($id)
     {
-        $databsen = DB::table('absen')
+        $pembimbing = DB::table('pembimbing')
         ->where('id','=',$id)
         ->get();
 
-        return view('perizinan.edit', compact('databsen'));
+        return view('pembimbing.edit', compact('pembimbing'));
     }
 
     public function update(Request $request, $id)
     {
-        $databsen = DB::table('absen')
+        $pembimbing = DB::table('pembimbing')
         ->where('id','=',$id)
         ->update([
-            'izin_dari' => $request['izin_dari'],
-            'izin_sampai' => $request['izin_sampai'],
-            'keterangan' => $request['keterangan'],
+            'nip_pembimbing' => $request['nip_pembimbing'],
+            'nama_pembimbing' => $request['nama_pembimbing'],
+            'no_wa_pembimbing' => $request['no_wa_pembimbing'],
+            'sekolah_id' => $request['sekolah_id'],
         ]);
-        return redirect('/perizinan');
+        return redirect('/pembimbing');
     }
 
     public function destroy($id)
     {
-        $databsen = DB::table('absen')
+        $pembimbing = DB::table('pembimbing')
         ->where('id','=',$id)
         ->delete();
 

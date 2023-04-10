@@ -35,7 +35,8 @@ class RegisterController extends Controller
         Pembimbing::create([
             'nip_pembimbing'=>$request->nip_pembimbing,
             'nama_pembimbing'=>$request->nama_pembimbing,
-            'no_wa_pembimbing'=>$request->no_wa_pembimbing
+            'no_wa_pembimbing'=>$request->no_wa_pembimbing,
+            'sekolah_id'=>$request->sekolah_id
         ]);
 
         Siswa::create([

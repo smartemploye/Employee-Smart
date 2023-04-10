@@ -40,8 +40,16 @@
                                 </tr>
                                 <tr>
                                     <th scope="col" style="width:30%">Asal Sekolah</th>
-                                    <th><input type="text"name="nama_sekolah"
-                                            placeholder="Masukkan Asal Sekolah" class="form-control"></th>
+                                    <th>
+                                        <select name="sekolah_id" id="">
+                                            <option value="" selected>-Pilih Sekolah-</option>
+                                            @foreach ($dtsklh as $sklh )
+                                            <option value="{{ $sklh->id }}">{{ $sklh->nama_sekolah }}</option>
+                                            @endforeach
+                                        </select>
+                                        {{-- <input type="text"name="nama_sekolah"
+                                            placeholder="Masukkan Asal Sekolah" class="form-control"> --}}
+                                    </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" style="width:30%">Judul Project</th>

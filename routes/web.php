@@ -13,9 +13,11 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\Auth\BayarController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\Auth\RegisterController;
 
 /*
@@ -69,13 +71,9 @@ Route::get('/dashboard', function(){
     return view('admin.dashboard');
 });
 
-Route::get('/pembimbing', function(){
-    return view('admin.pembimbing');
-});
-
-Route::get('/data_sekolah', function(){
-    return view('admin.data_sekolah');
-});
+// Route::get('/pembimbing', function(){
+//     return view('admin.pembimbing');
+// });
 
 Route::get('/data_bidang', function(){
     return view('admin.data_bidang');
@@ -98,7 +96,7 @@ Route::get('/setting_magang', function(){
 });
 
 Route::get('/detail', function(){
-    return view('admin.peserta.detail');
+    return view('peserta.detail');
 });
 
 Route::get('send',[MailController::class, 'index']);
@@ -117,3 +115,19 @@ Route::PUT('/peserta/store', [PesertaController::class, 'store'])->name('peserta
 Route::get('/peserta/edit/{id}', [PesertaController::class, 'edit'])->name('peserta.edit');
 Route::PUT('/peserta/update/{id}', [PesertaController::class, 'update'])->name('peserta.update');
 Route::get('/peserta/hapus/{id}', [PesertaController::class, 'destroy'])->name('peserta.hapus');
+
+//pembimbing
+Route::get('/pembimbing',[PembimbingController::class, 'index'])->name('pembimbing.index');
+Route::get('/pembimbing/create', [PembimbingController::class, 'create'])->name('pembimbing.create');
+Route::PUT('/pembimbing/store', [PembimbingController::class, 'store'])->name('pembimbing.store');
+Route::get('/pembimbing/edit/{id}', [PembimbingController::class, 'edit'])->name('pembimbing.edit');
+Route::PUT('/pembimbing/update/{id}', [PembimbingController::class, 'update'])->name('pembimbing.update');
+Route::get('/pembimbing/hapus/{id}', [PembimbingController::class, 'destroy'])->name('pembimbing.hapus');
+
+//sekolah
+Route::get('/sekolah',[SekolahController::class, 'index'])->name('sekolah.index');
+Route::get('/sekolah/create', [SekolahController::class, 'create'])->name('sekolah.create');
+Route::PUT('/sekolah/store', [SekolahController::class, 'store'])->name('sekolah.store');
+Route::get('/sekolah/edit/{id}', [SekolahController::class, 'edit'])->name('sekolah.edit');
+Route::PUT('/sekolah/update/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
+Route::get('/sekolah/hapus/{id}', [SekolahController::class, 'destroy'])->name('sekolah.hapus');

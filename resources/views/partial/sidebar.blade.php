@@ -111,7 +111,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/data_sekolah" class="nav-link" style="color: white">
+                <a href="/sekolah" class="nav-link" style="color: white">
                     <i class='bx bxs-school'style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Sekolah.png') }}" alt="Logo"  > --}}
