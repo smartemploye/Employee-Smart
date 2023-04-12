@@ -15,9 +15,11 @@ class CreatePenilaianTable extends Migration
     {
         Schema::create('penilaian', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('admin_id');
-            $table->bigInteger('nisn');
             $table->integer('nilai');
+            $table->unsignedBigInteger('admin_id');
+            $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('siswa_id');
+            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

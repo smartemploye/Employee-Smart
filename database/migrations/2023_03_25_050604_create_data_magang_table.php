@@ -16,11 +16,16 @@ class CreateDataMagangTable extends Migration
         Schema::create('data_magang', function (Blueprint $table) {
             $table->id();
             $table->integer('pendaftaran_id');
-            $table->bigInteger('admin_berkas_id');
-            $table->bigInteger('admin_wawancara_id');
-            $table->bigInteger('bidang_id');
-            $table->bigInteger('admin_pembayaran_id');
-            $table->bigInteger('nisn');
+            $table->unsignedBigInteger('admin_berkas_id');
+            $table->foreign('admin_berkas_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('admin_wawancara_id');
+            $table->foreign('admin_wawancara_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('data_bidang_id');
+            $table->foreign('data_bidang_id')->references('id')->on('data_bidang')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('admin_pembayaran_id');
+            $table->foreign('admin_pembayaran_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('siswa_id');
+            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->string('surat_pengajuan');
             $table->enum('paket_magang', ['basic','exclusive']);
             $table->date('tanggal_pembayaran');

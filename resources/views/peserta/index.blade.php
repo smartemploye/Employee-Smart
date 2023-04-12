@@ -45,9 +45,15 @@
             <td>{{$dt->nama_sekolah }}</td>
             <td>{{$dt->judul_project }}</td>
             <td>{{$dt->nama_pembimbing }}</td>
-            <td> <a href="{{ route('peserta.edit', $dt->id) }}" class="btn btn-success">
-                <i class='bx bxs-pencil' ></i> Edit</a>
-                <a href="{{ route('peserta.hapus', $dt->id) }}" class="btn btn-danger"><i class='bx bxs-trash' ></i> Hapus</a></td>
+            <td>
+               <form action="{{ route('peserta.edit', $dt->id) }}" method="POST">
+                <a href="{{ route('peserta.edit', $dt->id) }}" class="btn btn-success">
+                    <i class='bx bxs-pencil' ></i> Edit</a>
+                    <a href="{{ route('peserta.hapus', $dt->id) }}" class="btn btn-danger"><i class='bx bxs-trash' ></i> Hapus</a>
+                    <a href="{{ route('peserta.show', $dt->id) }}" class="btn btn-warning"><i class='bx bx-zoom-in'></i> Detail</a>
+
+               </form>
+            </td>
         </tr>
         @endforeach
     </tbody>

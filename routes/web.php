@@ -17,6 +17,7 @@ use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\PerizinanController;
 use App\Http\Controllers\Auth\BayarController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\DataBidangController;
 use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\Auth\RegisterController;
 
@@ -75,10 +76,6 @@ Route::get('/dashboard', function(){
 //     return view('admin.pembimbing');
 // });
 
-Route::get('/data_bidang', function(){
-    return view('admin.data_bidang');
-});
-
 Route::get('/komponen_penilaian', function(){
     return view('admin.komponen_penilaian');
 });
@@ -95,10 +92,6 @@ Route::get('/setting_magang', function(){
     return view('admin.setting_magang');
 });
 
-Route::get('/detail', function(){
-    return view('peserta.detail');
-});
-
 Route::get('send',[MailController::class, 'index']);
 //perizinan
 Route::get('/perizinan',[PerizinanController::class, 'index'])->name('perizinan.index');
@@ -109,12 +102,35 @@ Route::PUT('/perizinan/update/{id}', [PerizinanController::class, 'update'])->na
 Route::get('/perizinan/hapus/{id}', [PerizinanController::class, 'destroy'])->name('perizinan.hapus');
 
 //peserta
+//Create
+// //Form Tambah Kategori
+// Route::get('/peserta/create', [PesertaController::class, 'Create']);
+// //Untuk kirim data ke database atau tambah data ke database
+// Route::post('/peserta', [PesertaController::class, 'store']);
+
+// //Read
+// //Tampil Semua Data
+// Route::get('/peserta', [KategoriController::class, 'index']);
+// //Detail Kategori berdasarkan id
+// Route::get('/kategori/{kategori_id}', [KategoriController::class, 'show']);
+
+// //Update
+// //Form Update Kategori
+// Route::get('/kategori/{kategori_id}/edit',[KategoriController::class, 'edit']);
+// //Update data ke database berdasarkan id
+// Route::put('/kategori/{kategori_id}',[KategoriController::class, 'update']);
+
+// //Delete
+// //Delete berdasarkan id
+// Route::delete('/kategori/{kategori_id}', [KategoriController::class, 'destroy']);
+
 Route::get('/peserta',[PesertaController::class, 'index'])->name('peserta.index');
 Route::get('/peserta/create', [PesertaController::class, 'create'])->name('peserta.create');
 Route::PUT('/peserta/store', [PesertaController::class, 'store'])->name('peserta.store');
 Route::get('/peserta/edit/{id}', [PesertaController::class, 'edit'])->name('peserta.edit');
-Route::PUT('/peserta/update/{id}', [PesertaController::class, 'update'])->name('peserta.update');
+Route::put('/peserta/update/{id}', [PesertaController::class, 'update'])->name('peserta.update');
 Route::get('/peserta/hapus/{id}', [PesertaController::class, 'destroy'])->name('peserta.hapus');
+Route::get('/peserta/show/{id}', [PesertaController::class, 'show'])->name('peserta.show');
 
 //pembimbing
 Route::get('/pembimbing',[PembimbingController::class, 'index'])->name('pembimbing.index');
@@ -131,3 +147,11 @@ Route::PUT('/sekolah/store', [SekolahController::class, 'store'])->name('sekolah
 Route::get('/sekolah/edit/{id}', [SekolahController::class, 'edit'])->name('sekolah.edit');
 Route::PUT('/sekolah/update/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
 Route::get('/sekolah/hapus/{id}', [SekolahController::class, 'destroy'])->name('sekolah.hapus');
+
+//bidang
+Route::get('/bidang',[DataBidangController::class, 'index'])->name('bidang.index');
+Route::get('/bidang/create', [DataBidangController::class, 'create'])->name('bidang.create');
+Route::PUT('/bidang/store', [DataBidangController::class, 'store'])->name('bidang.store');
+Route::get('/bidang/edit/{id}', [DataBidangController::class, 'edit'])->name('bidang.edit');
+Route::PUT('/bidang/update/{id}', [DataBidangController::class, 'update'])->name('bidang.update');
+Route::get('/bidang/hapus/{id}', [DataBidangController::class, 'destroy'])->name('bidang.hapus');

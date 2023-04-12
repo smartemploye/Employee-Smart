@@ -13,7 +13,7 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="inputKeteranganIzin" style="">Nis</label>
-                        <input type="number" class="form-control" name="nis" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
+                        <input type="text" class="form-control" name="nis" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
                       </div>
                       <div class="form-group">
                           <label for="inputKeteranganIzin" style="">Nama Sekolah</label>

@@ -15,13 +15,19 @@ class PesertaController extends Controller
     public function index()
     {
         $data = DB::table('siswa')
-        ->distinct()
         ->join('sekolah','sekolah.id','=','siswa.sekolah_id')
         ->join('data_magang','data_magang.nisn','=','siswa.nisn')
         ->join('pembimbing','pembimbing.nip_pembimbing','=','siswa.nip_pembimbing')
+        ->distinct()
         ->get([
-            'siswa.id','nama_siswa','nama_sekolah','tanggal_mulai','tanggal_selesai',
-            'judul_project','status_magang','nama_pembimbing'
+            'siswa.id',
+            'nama_siswa',
+            'sekolah.nama_sekolah',
+            'tanggal_mulai',
+            'tanggal_selesai',
+            'judul_project',
+            'status_magang',
+            'nama_pembimbing'
         ]);
         return view('peserta.index', compact('data'));
     }
@@ -54,10 +60,38 @@ class PesertaController extends Controller
     public function edit($id)
     {
         $siswa = DB::table('siswa')
-        ->where('id','=',$id)
+        ->join('sekolah','sekolah.id','=','siswa.sekolah_id')
+        ->join('data_magang','data_magang.nisn','=','siswa.nisn')
+        ->join('pembimbing','pembimbing.nip_pembimbing','=','siswa.nip_pembimbing')
+        ->where('siswa.id','=',$id)
+        ->get([
+            'siswa.id',
+            'nama_sekolah',
+            'nama_siswa',
+            'tanggal_mulai',
+            'tanggal_selesai',
+            'nama_pembimbing',
+            'status_magang',
+            'judul_project',
+            'sekolah.id as id_sekolah',
+            'siswa.nip_pembimbing as nip'
+        ]);
+
+        $sekolah = DB::table('sekolah')
         ->get();
 
-        return view('peserta.edit', compact('siswa'));
+        $pembimbing = DB::table('pembimbing')
+        ->get();
+
+        return view('peserta.edit', compact('siswa','sekolah','pembimbing'));
+    }
+
+    public function show($id)
+    {
+        $siswa = Siswa::findOrFail($id);
+
+
+        return view('peserta.show', compact('siswa'));
     }
 
     public function update(Request $request, $id)
@@ -65,13 +99,13 @@ class PesertaController extends Controller
         $siswa = DB::table('siswa')
         ->where('id','=',$id)
         ->update([
-            'izin_dari' => $request['izin_dari'],
             'nama_siswa' => $request['nama_siswa'],
             'tanggal_mulai' => $request['tanggal_mulai'],
             'tanggal_selesai' => $request['tanggal_selesai'],
-            'nama_sekolah' => $request['nama_sekolah'],
-            'nama_pembimbing' => $request['nama_pembimbing'],
+            'sekolah_id' => $request['sekolah_id'],
+            'nip_pembimbing' => $request['nip_pembimbing'],
         ]);
+
         $datamagang = DB::table('data_magang')
         ->where('id','=',$id)
         ->update([

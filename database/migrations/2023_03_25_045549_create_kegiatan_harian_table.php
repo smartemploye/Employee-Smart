@@ -15,11 +15,13 @@ class CreateKegiatanHarianTable extends Migration
     {
         Schema::create('kegiatan_harian', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('admin_id');
-            $table->bigInteger('nisn');
             $table->text('logbook');
             $table->date('tanggal_logbook');
             $table->string('dokumentasi');
+            $table->unsignedBigInteger('admin_id');
+            $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('siswa_id');
+            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

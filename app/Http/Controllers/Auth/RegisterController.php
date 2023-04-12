@@ -24,7 +24,7 @@ class RegisterController extends Controller
         ->get(['id','nama_sekolah']);
 
         $bidang = DB::table('data_bidang')
-        ->get(['id','nama_bidang']);
+        ->get(['id','jenis_jurusan']);
 
         return view('register.index', compact('sekolah','bidang'));
     }

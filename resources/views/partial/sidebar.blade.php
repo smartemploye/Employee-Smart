@@ -2,7 +2,7 @@
     <!-- Sidebar user (optional) -->
     <div class="user-panel pb-5 d-flex">
         <li class="nav-link">
-            <a href="../../index3.html" class="brand-link">
+            <a class="brand-link">
                 <img src="https://team.garudacyber.co.id/upload/icon/icon-HiWZJbTnmXQq.ico" alt="Logo" style="margin-left: -13px">
                 {{-- <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo"> --}}
                 <p style="font-size: 17px; color: white; margin-left: 35px;margin-top: -30px;">
@@ -120,7 +120,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/data_bidang" class="nav-link" style="color: white">
+                <a href="/bidang" class="nav-link" style="color: white">
                     <i class='bx bxs-objects-horizontal-left' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Bidang.png') }}" alt="Logo"  > --}}

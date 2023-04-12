@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class DataBidang extends Model
 {
     use HasFactory;
+    protected $table = 'data_bidang';
+
+    protected $fillable = [
+    	'id',
+        'nama_bidang',
+        'jenis_jurusan',
+    ];
 }
