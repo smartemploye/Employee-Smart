@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -10,7 +12,7 @@ use App\Http\Controllers\DashController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\LogbookController;
+
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SekolahController;
@@ -21,6 +23,7 @@ use App\Http\Controllers\DataBidangController;
 use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\Auth\RegisterController;
 
+use App\Http\Controllers\LogbookController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -63,7 +66,7 @@ Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar');
 // })->middleware('auth', 'role:admin');
 // Route::get('/register', [RegisterController::class, 'index']);
 // Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
+//Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
 Route::get('/report',[ReportController::class, 'index'])->name('report');
 Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
 Route::get('/admin/profile',[ProfileController::class, 'index'])->name('profile');
@@ -155,3 +158,29 @@ Route::PUT('/bidang/store', [DataBidangController::class, 'store'])->name('bidan
 Route::get('/bidang/edit/{id}', [DataBidangController::class, 'edit'])->name('bidang.edit');
 Route::PUT('/bidang/update/{id}', [DataBidangController::class, 'update'])->name('bidang.update');
 Route::get('/bidang/hapus/{id}', [DataBidangController::class, 'destroy'])->name('bidang.hapus');
+
+
+//CRUD Logbook
+// Route::resource('logbook', LogbookController::class);
+//Create
+//Form Tambah Logbook
+Route::get('/logbook/create', [LogbookController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/logbook', [LogbookController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/logbook', [LogbookController::class, 'index']);
+//Detail Logbook berdasarkan id
+Route::get('/logbook/{logbook_id}', [LogbookController::class, 'show']);
+
+//Update
+//Form Update Logbook
+Route::get('/logbook/{logbook_id}/edit',[LogbookController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/logbook/{logbook_id}',[LogbookController::class, 'update']);
+
+//Delete
+//Delete berdasarkan id
+Route::delete('/logbook/{logbook_id}', [LogbookController::class, 'destroy']);
+

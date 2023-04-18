@@ -3,84 +3,103 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Models\Logbook;
+use File;
 
 class LogbookController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('auth.logbook');
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //Berhasil
     public function create()
     {
-        //
+        return view('logbook.tambah');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'logbook' => 'required',
+            'tanggal_logbook' => 'required',
+            'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
+        ]);
+
+        $fileName = time().'.'.$request->dokumentasi->extension();  
+        $request->dokumentasi->move(public_path('image'), $fileName);
+        $logbook = new Logbook;
+
+        DB::table('kegiatan_harian')->insert([
+            'logbook' => $request['logbook'],
+            'tanggal_logbook' => $request['tanggal_logbook'],
+            'dokumentasi' => $fileName,
+            'admin_id' => 1,
+            'siswa_id' => 1,
+        ]);
+
+        return redirect('/logbook');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function index()
+    {
+        $logbook = DB::table('kegiatan_harian')->get();
+        // dd($logbook);
+ 
+        return view('logbook.tampil', ['logbook' => $logbook]);
+    }
+
     public function show($id)
     {
-        //
+        $logbook = Logbook::find($id);
+        // dd($logbook);
+
+        return view('logbook.detail', ['logbook' => $logbook]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $logbook = DB::table('kegiatan_harian')->where('id', $id)->first();
+
+        return view('logbook.edit', ['logbook' => $logbook]); 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'logbook' => 'required',
+            'tanggal_logbook' => 'required',
+            'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
+            // 'dokumentasi' => "bla",
+            // 'admin_id' => 1,
+            // 'siswa_id' => 1,
+
+        ]);
+
+        $fileName = time().'.'.$request->dokumentasi->extension();  
+        $request->dokumentasi->move(public_path('image'), $fileName);
+        // $logbook = new Logbook;
+        // $logbook->dokumentasi = $fileName;
+        // $logbook->save();
+
+        DB::table('kegiatan_harian')
+              ->where('id', $id)
+              ->update(
+                [
+                    'logbook' => $request['logbook'],
+                    'tanggal_logbook' => $request['tanggal_logbook'],
+                    'dokumentasi' => $fileName,
+                    'admin_id' => 1,
+                    'siswa_id' => 1,
+                ],
+            );
+        return redirect('/logbook');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        DB::table('kegiatan_harian')->where('id', $id)->delete();
+
+        return redirect('/logbook');
     }
-
-
+    
 }
