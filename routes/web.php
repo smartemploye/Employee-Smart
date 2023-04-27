@@ -23,7 +23,9 @@ use App\Http\Controllers\DataBidangController;
 use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\Auth\RegisterController;
 
+//Abdul
 use App\Http\Controllers\LogbookController;
+use App\Http\Controllers\SettingmagangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -57,7 +59,9 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 // Route::group(['middleware'=>['auth:user,akun']], function(){
 
 // });
-Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar');
+
+//CRUD Halaman Bayar
+Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar'); 
 //pembayaran
 
 //admin
@@ -184,3 +188,27 @@ Route::put('/logbook/{logbook_id}',[LogbookController::class, 'update']);
 //Delete berdasarkan id
 Route::delete('/logbook/{logbook_id}', [LogbookController::class, 'destroy']);
 
+
+
+// //CRUD Halaman Setting Magang
+// //Create
+//Form Tambah Logbook;
+Route::get('/settingmagang/create', [SettingmagangController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/settingmagang', [SettingmagangController::class, 'store']);
+
+// // //Read
+// // //Tampil Semua Data
+Route::get('/settingmagang', [SettingmagangController::class, 'index']);
+// //Detail Logbook berdasarkan id
+Route::get('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'show']);
+
+// //Update
+// //Form Update Logbook
+Route::get('/settingmagang/{settingmagang_id}/edit',[SettingmagangController::class, 'edit']);
+// //Update data ke database berdasarkan id
+Route::put('/settingmagang/{settingmagang_id}',[SettingmagangController::class, 'update']);
+
+// //Delete
+// //Delete berdasarkan id
+Route::delete('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'destroy']);

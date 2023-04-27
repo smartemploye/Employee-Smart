@@ -93,7 +93,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/setting_magang" class="nav-link" style="color: white">
+                <a href="/settingmagang" class="nav-link" style="color: white">
                     <i class='bx bxs-cog' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Setting.png') }}" alt="Logo"  > --}}
