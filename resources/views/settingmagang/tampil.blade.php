@@ -6,13 +6,16 @@ Halaman Seting Magang
 
 @section('content')
 
-<a href="/settingmagang/create" class="btn btn-primary btn-sm mb-3">Setting Magang</a>
+<a href="/settingmagang/create" class="btn btn-primary btn-sm mb-3">Tambah Setting Magang</a>
 
 <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Jam Masuk</th>
+        <th scope="col">Jam Pulang</th>
+        <th scope="col">Nomor VA</th>
+        <th scope="col">Kuota Magang</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -21,6 +24,9 @@ Halaman Seting Magang
             <tr>
                 <td>{{$key + 1}}</td>
                 <td>{{$value->jam_Masuk_kerja}}</td>
+                <td>{{$value->jam_Pulang_kerja}}</td>
+                <td>{{$value->no_va}}</td>
+                <td>{{$value->Kuota_Magang}}</td>
                 <td>
                     
                     <form action="/settingmagang/{{$value->id}}" method="POST">
