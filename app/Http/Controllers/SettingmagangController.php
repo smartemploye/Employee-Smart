@@ -25,6 +25,7 @@ class SettingmagangController extends Controller
             'Kuota_Magang' => 'required',
             'Format_WA_Diterima' => 'required',
             'Format_WA_Ditolak' => 'required',
+            'Format_Email' => 'required',
             'WA_Kantor' => 'required',
             //'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
         ]);
@@ -40,6 +41,7 @@ class SettingmagangController extends Controller
             'Kuota_Magang' => $request['Kuota_Magang'],
             'Format_WA_Diterima' => $request['Format_WA_Diterima'],
             'Format_WA_Ditolak' => $request['Format_WA_Ditolak'],
+            'Format_Email' => $request['Format_Email'],
             'WA_Kantor' => $request['WA_Kantor'],
             //'dokumentasi' => $fileName,
             // 'admin_id' => 1,
@@ -82,6 +84,7 @@ class SettingmagangController extends Controller
             'Kuota_Magang' => 'required',
             'Format_WA_Diterima' => 'required',
             'Format_WA_Ditolak' => 'required',
+            'Format_Email' => 'required',
             'WA_Kantor' => 'required',
 
         ]);
@@ -96,6 +99,7 @@ class SettingmagangController extends Controller
                     'Kuota_Magang' => $request['Kuota_Magang'],
                     'Format_WA_Diterima' => $request['Format_WA_Diterima'],
                     'Format_WA_Ditolak' => $request['Format_WA_Ditolak'],
+                    'Format_Email' => $request['Format_Email'],
                     'WA_Kantor' => $request['WA_Kantor'],
                 ],
             );
