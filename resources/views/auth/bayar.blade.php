@@ -70,10 +70,10 @@
         <p style="color: #62f983; margin-left: 170px;font-size: 30px">Diterima</p>
         <h2 style="color: white; margin-left: 30px;">Selamat!!! Kamu Telah Diterima</h2>
 		<label for="virtual-akun" style="color: white;">Nomor Virtual Akun:</label>
-		<input type="text" id="virtual-akun" name="virtual-akun" style="color: #333" placeholder="Masukkan nomor virtual akun">
+		<input type="text" id="virtual-akun" name="virtual-akun" style="color: #f8f8f8" placeholder="{{ $data }}" value="{{ $data }}" disabled>
 
 		<label for="bukti-pembayaran" style="color: white;">Bukti Pembayaran:</label>
-		<input type="file" id="bukti-pembayaran" name="bukti-pembayaran">
+		<input type="file" id="bukti-pembayaran" name="bukti-pembayaran" >
 
 		<input type="submit" value="Submit">
 	</form>
