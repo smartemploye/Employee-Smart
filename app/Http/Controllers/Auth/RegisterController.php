@@ -15,6 +15,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
 
 class RegisterController extends Controller
 {
@@ -31,6 +33,14 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $data = [
+            'name' => 'Syahrizal As',
+            'body' => 'Testing Kirim Email di Santri Koding'
+        ];
+       
+        Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
+       
+        dd("Email Berhasil dikirim.");
         // dd($request->all());
         Pembimbing::create([
             'nip_pembimbing'=>$request->nip_pembimbing,
@@ -63,6 +73,16 @@ class RegisterController extends Controller
             'username'=>$request->username,
             'password'=>bcrypt($request->password),
         ]);
+
+        // $data = [
+        //     'name' => 'Syahrizal As',
+        //     'body' => 'Testing Kirim Email di Santri Koding'
+        // ];
+       
+        // Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
+       
+        // dd("Email Berhasil dikirim.");
+
         Alert::success('Berhasil','Success Message');
         return redirect('login');
         // $image_path = storage_path('app/'.config('path.identity.photo').'/'.$request->identity_photo);

@@ -9,8 +9,9 @@ Dashboard
     <h3>Peserta yang hadir</h3>
 </div>
 <div class="kotak1" style="padding-left: 10px;background-color: gray;color:white; solid;width: 300px;height: 150px; margin-left: 320px;margin-top: -150px">
-    <h1>37</h1>
-    <h3>Peserta yang hadir</h3>
+    <h1>50</h1>
+    <h3>Peserta Magang Bulan ini</h3>
+ 
 </div>
 
 

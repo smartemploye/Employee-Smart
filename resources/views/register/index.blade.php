@@ -125,8 +125,8 @@
                         <div>
                           <div class="form-check form-check-inline">
                             @foreach ($bidang as $bd )
-                            <input class="form-check-input" type="radio" name="bidang_id" id="bidang_id" value="{{ $bd->id }}" style="margin-left: 10px">
-                            <label class="form-check-label" for="bidang_id" style="margin-left: 10px">{{ $bd->jenis_jurusan }}</label>
+                            <input class="form-check-input" type="radio" name="bidang_id" id="bidang_id" value="{{ $bd->id }}">
+                            <label class="form-check-label" for="bidang_id" >{{ $bd->jenis_jurusan }}</label>
                             @endforeach
                           </div>
                         </div>

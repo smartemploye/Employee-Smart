@@ -138,7 +138,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/komponen_penilaian" class="nav-link" style="color: white">
+                <a href="/komponenpenilaian" class="nav-link" style="color: white">
                     <i class='bx bx-book-alt' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Komponen.png') }}" alt="Logo"  > --}}
