@@ -15,7 +15,7 @@ class CreateBayarTable extends Migration
     {
         Schema::create('bayar', function (Blueprint $table) {
             $table->id();
-            // $table->string('no_va');
+            // Berhasil
             $table->string('bukti')->nullable();
             $table->timestamps();
         });

@@ -17,6 +17,7 @@ class BayarController extends Controller
     //     return view('auth.bayar', ["data"=>$settingmagang->no_va]);  
     // }
 
+    //Berhasil
     public function create()
     {
         return view('auth.bayar');

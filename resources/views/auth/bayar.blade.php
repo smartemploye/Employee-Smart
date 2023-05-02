@@ -63,6 +63,7 @@
 		}
 	</style>
 </head>
+{{-- Berhasil --}}
 <body>
     <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 650px">
 	<form action="/bayar" method="POST" style="margin-top: 10px ;" enctype="multipart/form-data">

@@ -272,6 +272,7 @@ Route::delete('/penilaian/{penilaian_id}', [PenilaianController::class, 'destroy
 //Menampilkan no va dari untuk halaman bayar
 // Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar');
 
+//Berhasil
 //Create
 // //Form Bayar;
 Route::get('/bayar/create', [BayarController::class, 'create']);
