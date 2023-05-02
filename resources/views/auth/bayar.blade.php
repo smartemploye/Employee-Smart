@@ -65,17 +65,19 @@
 </head>
 <body>
     <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 650px">
-	<form style="margin-top: 10px ;">
+	<form action="/bayar" method="POST" style="margin-top: 10px ;" enctype="multipart/form-data">
+        @csrf
 		<h1 style="color: white;">Proses Pengajuan Magang</h1>
         <p style="color: #62f983; margin-left: 170px;font-size: 30px">Diterima</p>
         <h2 style="color: white; margin-left: 30px;">Selamat!!! Kamu Telah Diterima</h2>
 		<label for="virtual-akun" style="color: white;">Nomor Virtual Akun:</label>
-		<input type="text" id="virtual-akun" name="virtual-akun" style="color: #f8f8f8" placeholder="{{ $data }}" value="{{ $data }}" disabled>
+		<input type="text" id="virtual-akun" name="virtual_akun" style="color: #f8f8f8" placeholder="{{ $data }}" value="{{ $data }}" disabled>
 
 		<label for="bukti-pembayaran" style="color: white;">Bukti Pembayaran:</label>
-		<input type="file" id="bukti-pembayaran" name="bukti-pembayaran" >
+		<input type="file" id="bukti-pembayaran" name="bukti" >
 
-		<input type="submit" value="Submit">
+        <button type="submit" class="btn btn-primary">Submit</button>
+		{{-- <input type="submit" value="Submit"> --}}
 	</form>
 </body>
 </html>

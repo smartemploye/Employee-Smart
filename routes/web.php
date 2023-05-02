@@ -62,8 +62,7 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 // });
 
-//CRUD Halaman Bayar
-Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar'); 
+ 
 //pembayaran
 
 //admin
@@ -265,3 +264,20 @@ Route::put('/penilaian/{penilaian_id}',[PenilaianController::class, 'update']);
 //Delete
 //Delete berdasarkan id
 Route::delete('/penilaian/{penilaian_id}', [PenilaianController::class, 'destroy']);
+
+
+
+
+//CRUD Halaman Bayar
+//Menampilkan no va dari untuk halaman bayar
+// Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar');
+
+//Create
+// //Form Bayar;
+Route::get('/bayar/create', [BayarController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/bayar', [BayarController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/bayar', [BayarController::class, 'bayar']);

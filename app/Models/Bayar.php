@@ -9,7 +9,10 @@ class Bayar extends Model
 {
     use HasFactory;
 
-    protected $table = 'setting_magang';
+    protected $table = 'bayar';
+    protected $fillable = ['bukti'];
 
-    protected $fillable = ['jam_Masuk_kerja', 'jam_Pulang_kerja', 'no_va', 'Kuota_Magang', 'Format_WA_Diterima', 'Format_WA_Ditolak', 'Format_Email', 'WA_Kantor'];
+    // protected $table = 'setting_magang';
+
+    // protected $fillable = ['jam_Masuk_kerja', 'jam_Pulang_kerja', 'no_va', 'Kuota_Magang', 'Format_WA_Diterima', 'Format_WA_Ditolak', 'Format_Email', 'WA_Kantor'];
 }
