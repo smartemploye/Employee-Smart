@@ -15,11 +15,24 @@ class CreatePenilaianTable extends Migration
     {
         Schema::create('penilaian', function (Blueprint $table) {
             $table->id();
-            $table->integer('nilai');
-            $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('siswa_id');
-            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
+                        //Nilai Kepribadian
+                        $table->string('penilaian_kepribadian');
+                        $table->bigInteger('disiplin_waktu');
+                        $table->bigInteger('inisatif_dan_kreatifitas');
+                        $table->bigInteger('sikap_dan_disiplin');
+            
+                        //Penialaian Keahlian
+                        $table->string('penilaian_keahlian');
+                        $table->bigInteger('operating_system');
+                        $table->bigInteger('ms_office');
+                        $table->bigInteger('instalasi_sistem');
+
+
+        //     $table->integer('nilai');
+        //     $table->unsignedBigInteger('admin_id');
+        //   //  $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
+        //     $table->unsignedBigInteger('siswa_id');
+        //  //   $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

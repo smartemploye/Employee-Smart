@@ -26,6 +26,8 @@ use App\Http\Controllers\Auth\RegisterController;
 //Abdul
 use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\SettingmagangController;
+use App\Http\Controllers\komponenpenilaianController;
+use App\Http\Controllers\PenilaianController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -190,25 +192,76 @@ Route::delete('/logbook/{logbook_id}', [LogbookController::class, 'destroy']);
 
 
 
-// //CRUD Halaman Setting Magang
-// //Create
-//Form Tambah Logbook;
+//CRUD Halaman Setting Magang
+//Create
+//Form Tambah Setting Magang;
 Route::get('/settingmagang/create', [SettingmagangController::class, 'create']);
 //Untuk kirim data ke database atau tambah data ke database
 Route::post('/settingmagang', [SettingmagangController::class, 'store']);
 
-// // //Read
-// // //Tampil Semua Data
+//Read
+//Tampil Semua Data
 Route::get('/settingmagang', [SettingmagangController::class, 'index']);
-// //Detail Logbook berdasarkan id
+//Detail Setting Magang berdasarkan id
 Route::get('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'show']);
 
-// //Update
-// //Form Update Logbook
+//Update
+//Form Update Setting Magang
 Route::get('/settingmagang/{settingmagang_id}/edit',[SettingmagangController::class, 'edit']);
-// //Update data ke database berdasarkan id
+//Update data ke database berdasarkan id
 Route::put('/settingmagang/{settingmagang_id}',[SettingmagangController::class, 'update']);
 
-// //Delete
-// //Delete berdasarkan id
+//Delete
+//Delete berdasarkan id
 Route::delete('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'destroy']);
+
+
+
+//CRUD Halaman Komponen Penilaian
+//Create
+//Form Komponen Penilaian;
+Route::get('/komponenpenilaian/create', [komponenpenilaianController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/komponenpenilaian', [komponenpenilaianController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/komponenpenilaian', [komponenpenilaianController::class, 'index']);
+//Detail Komponen Penilaian berdasarkan id
+Route::get('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'show']);
+
+//Update
+//Form Update Komponen Penilaian
+Route::get('/komponenpenilaian/{komponenpenilaian_id}/edit',[komponenpenilaianController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/komponenpenilaian/{komponenpenilaian_id}',[komponenpenilaianController::class, 'update']);
+
+//Delete
+//Delete berdasarkan id
+Route::delete('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'destroy']);
+
+
+
+
+//CRUD Halaman Penilaian
+//Create
+//Form Penilaian;
+Route::get('/penilaian/create', [PenilaianController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/penilaian', [PenilaianController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/penilaian', [PenilaianController::class, 'index']);
+//Detail Penilaian berdasarkan id
+Route::get('/penilaian/{penilaian_id}', [PenilaianController::class, 'show']);
+
+//Update
+//Form Update Penilaian
+Route::get('/penilaian/{penilaian_id}/edit',[PenilaianController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/penilaian/{penilaian_id}',[PenilaianController::class, 'update']);
+
+//Delete
+//Delete berdasarkan id
+Route::delete('/penilaian/{penilaian_id}', [PenilaianController::class, 'destroy']);
