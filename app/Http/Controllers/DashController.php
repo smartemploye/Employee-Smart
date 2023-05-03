@@ -9,7 +9,7 @@ class DashController extends Controller
 {
     public function utama()
     {
-
+        // Berhasil
         return view ('welcome');
         
     }
