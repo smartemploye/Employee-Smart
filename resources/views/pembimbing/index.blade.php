@@ -7,14 +7,6 @@
         <div class="row">
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Pembimbing</h6>
-            </div>
-            <div class="col-9" >
-                <a class="btn btn-success fa-pull-right" href="{{ route('pembimbing.create') }}" >
-                    <i class='bx bx-plus text-white'></i>
-                    {{-- <i  class="text-white"><box-icon name='plus'></box-icon></i> --}}
-                    Tambah
-                </a>
-            </div>
         </div>
     </div>
     <div class="card-body">

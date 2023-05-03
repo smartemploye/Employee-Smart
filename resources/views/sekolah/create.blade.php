@@ -11,7 +11,7 @@
                         @csrf
                         @method('PUT')
                         <div class="form-group">
-                          <label for="inputnis" style="">NIS</label>
+                          <label for="inputnis" style="">NPSN</label>
                           <input type="text" class="form-control" name="nis" placeholder="Masukkan Nis" style="margin-left: 200px;margin-top: -35px;width: 900px">
                         </div>
                         <div class="form-group">

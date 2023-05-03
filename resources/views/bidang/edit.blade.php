@@ -13,12 +13,15 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="inputKeteranganIzin" style="">Nama Bidang</label>
-                        <input type="text" class="form-control" name="nama_bidang" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputKeteranganIzin" style="">Jenis Bidang</label>
-                        <input type="text" class="form-control" name="jenis_jurusan" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
+                        <input type="text" class="form-control" name="nama_bidang" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nama_bidang }}">
                     </div>
+                        <div class="form-group">
+                            <label for="inputKeteranganIzin" style="">Jenis Bidang</label>
+                            <select name="jenis_jurusan" id="">
+                                <option value="IT">IT</option>
+                                <option value="Umum">Umum</option>
+                            </select>
+                        </div>
                     <input type="text" hidden name="">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

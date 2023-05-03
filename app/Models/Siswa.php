@@ -22,5 +22,6 @@ class Siswa extends Model
         'tanggal_selesai',
         'nip_pembimbing',
         'foto_siswa',
+        'keterangan'
     ];
 }

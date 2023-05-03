@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Nis</th>
+                      <th scope="col">NPSN</th>
                       <th scope="col">Nama Sekolah</th>
                       <th scope="col">Alamat Sekolah</th>
                       <th scope="col">Aksi</th>

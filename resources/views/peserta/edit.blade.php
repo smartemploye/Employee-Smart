@@ -19,6 +19,7 @@
                                         value="{{ $data->nama_siswa }}">
                                 </div>
                             </div>
+                            <input type="text" value="{{ $data->nisn }}" hidden>
                             <div class="form-group row">
                                 <div class="col-3">
                                     <label class="form-label">Tanggal Mulai Magang</label>
@@ -29,7 +30,7 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <div class="col-3">1
+                                <div class="col-3">
                                     <label for="inputKeteranganIzin" style="">Tanggal Selesai Magang</label>
                                 </div>
                                 <div class="col-9">
@@ -43,16 +44,24 @@
                                 </div>
                                 <div class="col-9">
                                     <select name="status_magang" id="" class="form-control">
-                                        <option value="TIdak Aktif">Seleksi</option>
-                                        <option value="TIdak Aktif">Belum Bayar</option>
+                                        <option value="seleksi" selected>Seleksi</option>
+                                        <option value="Belum Bayar">Belum Bayar</option>
                                         <option value="Aktif">Aktif</option>
-                                        <option value="TIdak Aktif">Lulus</option>
-                                        <option value="TIdak Aktif">Drop Out</option>
+                                        <option value="Lulus">Lulus</option>
+                                        <option value="Drop Out">Drop Out</option>
                                     </select>
                                 </div>
-                                {{-- <input type="text" class="form-control" name="status_magang" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->status_magang }}"> --}}
+                                <div class="form-group row">
+                                    <div class="col-3">
+                                        <label for="inputKeteranganIzin" style="margin-left: 10px;margin-top: 20px">Keterangan</label>
+                                    </div>
+                                    <div class="col-9">
+                                        <input type="text" class="form-control" name="keterangan" style="margin-left: 180px;margin-top: 10px;width: 240%"
+                                            placeholder="Masukkan Keterangan" value="{{ $data->keterangan }}">
+                                    </div>
+                                </div>{{-- <input type="text" class="form-control" name="status_magang" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->status_magang }}"> --}}
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" style="margin-top: -20px">
                                 <div class="col-3">
                                     <label for="sekolah_id">Asal Sekolah</label>
                                 </div>
@@ -79,6 +88,7 @@
                                         placeholder="Masukkan Keterangan" value="{{ $data->judul_project }}">
                                 </div>
                             </div>
+                            <input type="hidden" value="{{ $data->nisn }}" name="nisn">
                             <div class="form-group row">
                                 <div class="col-3">
                                     <label for="inputNamaPembimbing" style="">Nama Pembimbing</label>
@@ -87,7 +97,7 @@
                                     <select name="nip_pembimbing" id="">
                                         <option value="" selected>-Pilih Pembimbing-</option>
                                         @foreach ($pembimbing as $pbb)
-                                            <option value="{{ $pbb->id }}"
+                                            <option value="{{ $pbb->nip_pembimbing }}"
                                                 {{ $pbb->nip_pembimbing == $data->nip ? 'selected' : '' }}>
                                                 {{ $pbb->nama_pembimbing }}</option>
                                         @endforeach
@@ -95,10 +105,11 @@
                                 </div>
                                 {{-- <input type="text" class="form-control" name="nama_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nama_pembimbing }}"> --}}
                             </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    @endforeach
                 </div>
-                <input type="text" hidden name="">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                @endforeach
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection

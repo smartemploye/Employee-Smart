@@ -41,7 +41,10 @@ class PembimbingController extends Controller
         ->where('id','=',$id)
         ->get();
 
-        return view('pembimbing.edit', compact('pembimbing'));
+        $sekolah = DB::table('sekolah')
+        ->get();
+
+        return view('pembimbing.edit', compact('pembimbing','sekolah'));
     }
 
     public function update(Request $request, $id)

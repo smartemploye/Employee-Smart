@@ -14,6 +14,6 @@ class Sekolah extends Model
     	'id',
         'nis',
         'nama_sekolah',
-        'alamat_Sekolah',
+        'alamat_sekolah',
     ];
 }

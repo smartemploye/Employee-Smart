@@ -19,6 +19,7 @@ class Akun extends Authenticatable implements MustVerifyEmail
         'username',
         'password',
         'status',
+        'nisn',
         'level',
     ];
 

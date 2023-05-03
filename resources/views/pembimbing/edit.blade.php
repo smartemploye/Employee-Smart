@@ -13,23 +13,35 @@
                     @method('PUT')
                     <div class="form-group">
                         <label for="inputKeteranganIzin" style="">Nip Pembimbing</label>
-                        <input type="number" class="form-control" name="nip_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
-                      </div>
-                      <div class="form-group">
+                        <input type="number" class="form-control" name="nip_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nip_pembimbing }}">
+                    </div>
+                    <div class="form-group">
                         <label for="inputKeteranganIzin" style="">Nama Pembimbing</label>
-                        <input type="text" class="form-control" name="nama_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
-                      </div>
-                      <div class="form-group">
+                        <input type="text" class="form-control" name="nama_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nama_pembimbing }}">
+                    </div>
+                    <div class="form-group">
                         <label for="inputKeteranganIzin" style="">No Wa Pembimbing</label>
-                        <input type="text" class="form-control" name="no_wa_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
-                      </div>
-                      <div class="form-group">
-                        <label for="inputKeteranganIzin" style="">Asal Sekolah</label>
-                        <input type="text" class="form-control" name="sekolah_id" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
-                      </div>
-                    <input type="text" hidden name="">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                        <input type="text" class="form-control" name="no_wa_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->no_wa_pembimbing }}">
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-3">
+                            <label for="sekolah_id" style="width: 200px">Asal Sekolah</label>
+                        </div>
+                        <div class="col-9">
+                            <select name="sekolah_id" id="" class="form-control" style="margin-left: 127px;width: 900px">
+                                <option value="" selected>-Pilih Sekolah-</option>
+                                @foreach ($sekolah as $sklh)
+                                    <option value="{{ $sklh->id }}"
+                                        {{ $sklh->id == $data->sekolah_id ? 'selected' : '' }}>
+                                        {{ $sklh->nama_sekolah }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
                 @endforeach
+
             </div>
 @endsection

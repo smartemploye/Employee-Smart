@@ -12,16 +12,16 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <label for="inputKeteranganIzin" style="">Nis</label>
-                        <input type="text" class="form-control" name="nis" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
+                        <label for="inputKeteranganIzin" style="">NPSN</label>
+                        <input type="text" class="form-control" name="nis" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nis }}">
                       </div>
                       <div class="form-group">
                           <label for="inputKeteranganIzin" style="">Nama Sekolah</label>
-                          <input type="text" class="form-control" name="nama_sekolah" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
+                          <input type="text" class="form-control" name="nama_sekolah" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nama_sekolah }}">
                         </div>
                         <div class="form-group">
                           <label for="inputKeteranganIzin" style="">Alamat Sekolah</label>
-                          <input type="text" class="form-control" name="alamat_sekolah" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px">
+                          <input type="text" class="form-control" name="alamat_sekolah" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->alamat_sekolah }}">
                         </div>
                     <input type="text" hidden name="">
                     <button type="submit" class="btn btn-primary">Submit</button>

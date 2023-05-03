@@ -89,13 +89,13 @@
                 <td>
                     <div class="form-group" style="margin-left: -190px; padding-left: 200px;">
                         <label for="inputNisn">Nomor Induk Siswa Nasional (NISN)</label>
-                        <input type="text" name="nisn" class="form-control" id="inputNisn" placeholder="Enter your NISN" style="padding-left: 10px;padding-right: 300px">
+                        <input type="text" maxlength="10" name="nisn" class="form-control" id="inputNisn" placeholder="Enter your NISN" style="padding-left: 10px;padding-right: 300px">
                     </div>
                 </td>
                 <td>
                     <div class="form-group" style="margin-left: 10px;">
                         <label for="inputSupervisor">NIP Pembimbing</label>
-                        <input type="text" name="nip_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor NIP">
+                        <input type="text" maxlength="18" name="nip_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor NIP">
                     </div>
                 </td>
             </tr>
@@ -114,23 +114,23 @@
                 <td>
                     <div class="form-group" style="margin-left: 10px;" >
                         <label for="inputSupervisor">Nomor WA Pembimbing</label>
-                        <input type="text" name="no_wa_pembimbing" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor number">
+                        <input type="text" name="no_wa_pembimbing" maxlength="13" class="form-control" id="inputSupervisor" placeholder="Enter your Mentor number">
                       </div>
                 </td>
             </tr>
             <tr>
                 <td>
                     <div class="form-group" style="margin-left: 15px;">
-                        <label for="inputJurusan">Jenis Jurusan</label>
+                        <label for="inputJenisJurusan">Jenis Jurusan</label>
                         <div>
                           <div class="form-check form-check-inline">
-                            @foreach ($bidang as $bd )
-                            <input class="form-check-input" type="radio" name="bidang_id" id="bidang_id" value="{{ $bd->id }}" style="margin-left: 10px">
-                            <label class="form-check-label" for="bidang_id" style="margin-left: 10px">{{ $bd->jenis_jurusan }}</label>
-                            @endforeach
+                                <input class="form-check-input" type="radio" name="jenis_jurusan" id="IT" value="IT">
+                                <label class="form-check-label" for="IT" style="margin-right: 10px">IT</label>
+                                <input class="form-check-input" type="radio" name="jenis_jurusan" id="Umum" value="Umum">
+                                <label class="form-check-label" for="Umum" style="margin-right: 10px">Umum</label>
                           </div>
                         </div>
-                      </div>
+                    </div>
                 </td>
                 <td>
                     <div class="form-group" style="margin-left: 10px;">
@@ -164,7 +164,7 @@
                 <td>
                     <div class="form-group" style="margin-left: 15px;">
                         <label for="inputNisn">Nomor WA</label>
-                        <input type="text" name="no_wa" class="form-control" id="inputNisn" placeholder="Enter your number">
+                        <input type="text" name="no_wa" maxlength="13" class="form-control" id="inputNisn" placeholder="Enter your number">
                     </div>
                 </td>
                 <td>
@@ -226,6 +226,7 @@
                 <input type="submit" name="submit" value="Register" style="margin-left: 400px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px"/>
             </div>
           </form>
+          <p style="margin-left: 500px;margin-top: 10px">Already have account? <a href="/login">Login</a></p>
         </div>
       </div>
     </div>

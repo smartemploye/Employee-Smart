@@ -27,7 +27,7 @@ class SekolahController extends Controller
         // dd($request->all());
         Sekolah::create([
             'nis' => $request->nis,
-            'nam_sekolah' => $request->nama_sekolah,
+            'nama_sekolah' => $request->nama_sekolah,
             'alamat_sekolah' => $request->alamat_sekolah,
         ]);
         return redirect('/sekolah');

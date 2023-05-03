@@ -20,7 +20,11 @@
                         <tbody>
                             <tr>
                                 <th scope="col" style="width:30%">Jenis Bidang</th>
-                                <th scope="col" style="width:30%;"><input type="text" name="jenis_jurusan" class="form-control" placeholder="Masukkan Jenis Bidang">
+                                <th scope="col" style="width:30%;">
+                                    <select name="jenis_jurusan" id="">
+                                    <option value="IT">IT</option>
+                                    <option value="Umum">Umum</option>
+                                </select>
                                 </th>
                             </tr>
                         </tbody>

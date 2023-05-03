@@ -7,12 +7,10 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class MailNotify extends Mailable
+class SendEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
-    private $data = [];
-
+    public $data;
     /**
      * Create a new message instance.
      *
@@ -30,7 +28,7 @@ class MailNotify extends Mailable
      */
     public function build()
     {
-        return $this->from('oriza.200170194@mhs.unimal.ac.id', 'Cambo Tutorial')
-        ->subject($this->data['subject'])->view('emails.index')->with('data',$this->data);
+        return $this->subject('Testing Kirim Email')
+        ->view('emails.sendemail');
     }
 }

@@ -1,7 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Support\Facades\Auth;
+//use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashController;
@@ -32,8 +36,27 @@ use App\Http\Controllers\Auth\RegisterController;
 |
 */
 
-Auth::routes(['verify' => true]);
-Auth::routes();
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/send-email',function(){
+    $data = [
+        'name' => 'Syahrizal As',
+        'body' => 'Testing Kirim Email di Santri Koding'
+    ];
+
+    Mail::to('oriza.200170194@mhs.unimal.ac.id')->send(new SendEmail($data));
+
+    dd("Email Berhasil dikirim.");
+});
+
+
+
+// Auth::routes([
+//     'verify' => true
+// ]);
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/',[DashController::class, 'utama']);
@@ -93,6 +116,7 @@ Route::get('/setting_magang', function(){
 });
 
 Route::get('send',[MailController::class, 'index']);
+
 //perizinan
 Route::get('/perizinan',[PerizinanController::class, 'index'])->name('perizinan.index');
 Route::get('/perizinan/create', [PerizinanController::class, 'create'])->name('perizinan.create');
@@ -102,28 +126,6 @@ Route::PUT('/perizinan/update/{id}', [PerizinanController::class, 'update'])->na
 Route::get('/perizinan/hapus/{id}', [PerizinanController::class, 'destroy'])->name('perizinan.hapus');
 
 //peserta
-//Create
-// //Form Tambah Kategori
-// Route::get('/peserta/create', [PesertaController::class, 'Create']);
-// //Untuk kirim data ke database atau tambah data ke database
-// Route::post('/peserta', [PesertaController::class, 'store']);
-
-// //Read
-// //Tampil Semua Data
-// Route::get('/peserta', [KategoriController::class, 'index']);
-// //Detail Kategori berdasarkan id
-// Route::get('/kategori/{kategori_id}', [KategoriController::class, 'show']);
-
-// //Update
-// //Form Update Kategori
-// Route::get('/kategori/{kategori_id}/edit',[KategoriController::class, 'edit']);
-// //Update data ke database berdasarkan id
-// Route::put('/kategori/{kategori_id}',[KategoriController::class, 'update']);
-
-// //Delete
-// //Delete berdasarkan id
-// Route::delete('/kategori/{kategori_id}', [KategoriController::class, 'destroy']);
-
 Route::get('/peserta',[PesertaController::class, 'index'])->name('peserta.index');
 Route::get('/peserta/create', [PesertaController::class, 'create'])->name('peserta.create');
 Route::PUT('/peserta/store', [PesertaController::class, 'store'])->name('peserta.store');
