@@ -64,8 +64,6 @@ Route::get('/send-email',function(){
 //Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-//Route untuk Scan QR Code
 Route::get('/',[DashController::class, 'utama']);
 // Route::get('/table',[AuthController::class, 'table']);
 // Route::post('/welcome', [AuthController::class, 'welcome']);
@@ -284,6 +282,8 @@ Route::post('/bayar', [BayarController::class, 'store']);
 //Read
 //Tampil Semua Data
 Route::get('/bayar', [BayarController::class, 'bayar']);
+<<<<<<< HEAD
+=======
 
 
 
@@ -293,3 +293,4 @@ Route::get('/bayar', [BayarController::class, 'bayar']);
 //             ->generate('www.google.com', public_path('images/qrcode.png'));
 // return view('welcome');
 // });
+>>>>>>> d6ade31 (Sacan QR Code)
