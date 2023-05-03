@@ -1,25 +1,18 @@
+
 @extends('layout.master')
 
 @section('judul')
-SanberBook
+SmartInternship
 @endsection
 
 @section('content')
 
+<div class="p-6">
+    <div class="visible-print text-center">
+        {!! QrCode::size(300)->generate("PT GARUDA CYBER INDOESIA"); !!}
+        <p>Scan me to return to the original page.</p>
+    </div>
+</div>
 
-    <h2>Social Media Developer Santai Berkualitas</h2>
-    <p>Belajar dan Berbagi agar hidup ini semakin santai berkualitas</p>
-    <h3>Benefit Join di SanberBook</h3>
-    <ul>
-        <li>Mendapatkan motivasi dari sesama developer</li>
-        <li>Sharing knowledge dari para mastah Sanber</li>
-        <li>Dibuat oleh calon web developer terbaik</li>
-    </ul>
-    <h3>Cara Bergabung ke SanberBook</h3>
-    <ol>
-        <li>Mengunjungi Website ini</li>
-        <li>Mendaftar di  <a href="login">Form Sign Up</a></li>
-        <li>Selesai</li>
-    </ol>
 
 @endsection
