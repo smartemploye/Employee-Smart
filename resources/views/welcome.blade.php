@@ -7,6 +7,7 @@ SmartInternship
 
 @section('content')
 
+{{-- Berhasil --}}
 <div class="p-6">
     <div class="visible-print text-center">
         {!! QrCode::size(300)->generate("PT GARUDA CYBER INDOESIA"); !!}
