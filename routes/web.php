@@ -14,7 +14,7 @@ use App\Http\Controllers\DashController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReportController;
-use App\Http\Controllers\LogbookController;
+
 use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SekolahController;
@@ -25,6 +25,11 @@ use App\Http\Controllers\DataBidangController;
 use App\Http\Controllers\PembimbingController;
 use App\Http\Controllers\Auth\RegisterController;
 
+//Abdul
+use App\Http\Controllers\LogbookController;
+use App\Http\Controllers\SettingmagangController;
+use App\Http\Controllers\komponenpenilaianController;
+use App\Http\Controllers\PenilaianController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,7 +82,8 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 // Route::group(['middleware'=>['auth:user,akun']], function(){
 
 // });
-Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar');
+
+
 //pembayaran
 
 //admin
@@ -86,7 +92,7 @@ Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar');
 // })->middleware('auth', 'role:admin');
 // Route::get('/register', [RegisterController::class, 'index']);
 // Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
+//Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
 Route::get('/report',[ReportController::class, 'index'])->name('report');
 Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
 Route::get('/admin/profile',[ProfileController::class, 'index'])->name('profile');
@@ -157,3 +163,122 @@ Route::PUT('/bidang/store', [DataBidangController::class, 'store'])->name('bidan
 Route::get('/bidang/edit/{id}', [DataBidangController::class, 'edit'])->name('bidang.edit');
 Route::PUT('/bidang/update/{id}', [DataBidangController::class, 'update'])->name('bidang.update');
 Route::get('/bidang/hapus/{id}', [DataBidangController::class, 'destroy'])->name('bidang.hapus');
+
+
+//CRUD Logbook
+// Route::resource('logbook', LogbookController::class);
+//Create
+//Form Tambah Logbook
+Route::get('/logbook/create', [LogbookController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/logbook', [LogbookController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/logbook', [LogbookController::class, 'index']);
+//Detail Logbook berdasarkan id
+Route::get('/logbook/{logbook_id}', [LogbookController::class, 'show']);
+
+//Update
+//Form Update Logbook
+Route::get('/logbook/{logbook_id}/edit',[LogbookController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/logbook/{logbook_id}',[LogbookController::class, 'update']);
+
+//Delete
+//Delete berdasarkan id
+Route::delete('/logbook/{logbook_id}', [LogbookController::class, 'destroy']);
+
+
+
+//CRUD Halaman Setting Magang
+//Create
+//Form Tambah Setting Magang;
+Route::get('/settingmagang/create', [SettingmagangController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/settingmagang', [SettingmagangController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/settingmagang', [SettingmagangController::class, 'index']);
+//Detail Setting Magang berdasarkan id
+Route::get('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'show']);
+
+//Update
+//Form Update Setting Magang
+Route::get('/settingmagang/{settingmagang_id}/edit',[SettingmagangController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/settingmagang/{settingmagang_id}',[SettingmagangController::class, 'update']);
+
+//Delete
+//Delete berdasarkan id
+Route::delete('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'destroy']);
+
+
+
+//CRUD Halaman Komponen Penilaian
+//Create
+//Form Komponen Penilaian;
+Route::get('/komponenpenilaian/create', [komponenpenilaianController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/komponenpenilaian', [komponenpenilaianController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/komponenpenilaian', [komponenpenilaianController::class, 'index']);
+//Detail Komponen Penilaian berdasarkan id
+Route::get('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'show']);
+
+//Update
+//Form Update Komponen Penilaian
+Route::get('/komponenpenilaian/{komponenpenilaian_id}/edit',[komponenpenilaianController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/komponenpenilaian/{komponenpenilaian_id}',[komponenpenilaianController::class, 'update']);
+
+//Delete
+//Delete berdasarkan id
+Route::delete('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'destroy']);
+
+
+
+
+//CRUD Halaman Penilaian
+//Create
+//Form Penilaian;
+Route::get('/penilaian/create', [PenilaianController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/penilaian', [PenilaianController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/penilaian', [PenilaianController::class, 'index']);
+//Detail Penilaian berdasarkan id
+Route::get('/penilaian/{penilaian_id}', [PenilaianController::class, 'show']);
+
+//Update
+//Form Update Penilaian
+Route::get('/penilaian/{penilaian_id}/edit',[PenilaianController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/penilaian/{penilaian_id}',[PenilaianController::class, 'update']);
+
+//Delete
+//Delete berdasarkan id
+Route::delete('/penilaian/{penilaian_id}', [PenilaianController::class, 'destroy']);
+
+
+
+
+//CRUD Halaman Bayar
+//Menampilkan no va dari untuk halaman bayar
+// Route::get('/bayar', [BayarController::class, 'bayar'])->name('bayar');
+
+//Berhasil
+//Create
+// //Form Bayar;
+Route::get('/bayar/create', [BayarController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/bayar', [BayarController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/bayar', [BayarController::class, 'bayar']);

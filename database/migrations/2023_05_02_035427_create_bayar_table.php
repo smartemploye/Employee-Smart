@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddEmailVerifiedAtToAkunsTable extends Migration
+class CreateBayarTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddEmailVerifiedAtToAkunsTable extends Migration
      */
     public function up()
     {
-        Schema::table('akuns', function (Blueprint $table) {
-            $table->timestamp('email_verified_at');
+        Schema::create('bayar', function (Blueprint $table) {
+            $table->id();
+            // Berhasil
+            $table->string('bukti')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddEmailVerifiedAtToAkunsTable extends Migration
      */
     public function down()
     {
-        Schema::table('akuns', function (Blueprint $table) {
-            $table->dropColumn('email_verified_at');
-        });
+        Schema::dropIfExists('bayar');
     }
 }

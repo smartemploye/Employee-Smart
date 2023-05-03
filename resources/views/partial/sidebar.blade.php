@@ -93,7 +93,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/setting_magang" class="nav-link" style="color: white">
+                <a href="/settingmagang" class="nav-link" style="color: white">
                     <i class='bx bxs-cog' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Setting.png') }}" alt="Logo"  > --}}
@@ -138,7 +138,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/komponen_penilaian" class="nav-link" style="color: white">
+                <a href="/komponenpenilaian" class="nav-link" style="color: white">
                     <i class='bx bx-book-alt' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Komponen.png') }}" alt="Logo"  > --}}
@@ -164,6 +164,19 @@
                     </p>
                 </a>
             </li>
+
+            <li class="nav-item bg-danger">
+                <a class="nav-link" href="{{ route('logout') }}"
+                   onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
+
             {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

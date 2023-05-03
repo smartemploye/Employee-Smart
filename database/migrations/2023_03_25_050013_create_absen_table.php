@@ -20,9 +20,9 @@ class CreateAbsenTable extends Migration
             $table->enum('status_absen', ['sakit','izin']);
             $table->text('keterangan');
             $table->unsignedBigInteger('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
+           // $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('siswa_id');
-            $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
+           // $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

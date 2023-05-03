@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('nisn')->unique();;
+            $table->string('nisn')->unique();
             $table->enum('asal_sekolah', ['SMA 1', 'SMA 2']);
             $table->string('jenis_jurusan');
             $table->string('nama_jurusan');
@@ -31,20 +31,17 @@ class CreateUsersTable extends Migration
             $table->string('surat_pengajuan')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('ulangi_password');
-            $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
-        User::create([
-            // 'name'=> 'admin',
-            // 'email'=> 'admin@gmail.com',
-            // 'email_verified_at'=> now(),
-            // 'password'=> Hash::make('12345678'),
-            // 'rememberToken' => Str::random(10)
-        ]);
+        // User::create([
+        //     // 'name'=> 'admin',
+        //     // 'email'=> 'admin@gmail.com',
+        //     // 'email_verified_at'=> now(),
+        //     // 'password'=> Hash::make('12345678'),
+        //     // 'rememberToken' => Str::random(10)
+        // ]);
     }
 
     /**

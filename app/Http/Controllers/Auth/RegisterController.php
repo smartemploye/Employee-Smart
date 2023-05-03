@@ -15,6 +15,8 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
 use Illuminate\Support\Facades\Crypt;
 
 class RegisterController extends Controller
@@ -32,6 +34,14 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $data = [
+            'name' => 'Syahrizal As',
+            'body' => 'Testing Kirim Email di Santri Koding'
+        ];
+
+        Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
+
+        dd("Email Berhasil dikirim.");
         // dd($request->all());
         $nip_pembimbing = $request->nip_pembimbing;
         $nip_pembimbing = DB::table('pembimbing')->where('nip_pembimbing','=',$nip_pembimbing)->get();

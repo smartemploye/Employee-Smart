@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class SettingMagang extends Model
+class logbook extends Model
 {
     use HasFactory;
 
-    protected $table = 'setting_magang';
+    protected $table = 'kegiatan_harian';
 
-    protected $fillable = ['jam_Masuk_kerja', 'jam_Pulang_kerja', 'no_va', 'Format_WA_Diterima', 'Format_WA_Ditolak', 'Format_Email', 'WA_Kantor'];
+    protected $fillable = ['logbook', 'tanggal_logbook', 'dokumentasi', 'admin_id', 'siswa_id'];
 
     public function Admin()
     {
@@ -19,10 +19,10 @@ class SettingMagang extends Model
         return $this->belongsTo(admin::class, 'admin_id');
     }
 
-    public function Bayar()
+    public function siswa()
     {
         
-        return $this->belongsTo(bayar::class, 'bayar_id');
+        return $this->belongsTo(siswa::class, 'siswa_id');
     }
 
     // public function Siswa()

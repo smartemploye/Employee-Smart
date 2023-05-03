@@ -11,6 +11,7 @@ class SendEmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $data;
+
     /**
      * Create a new message instance.
      *
@@ -29,6 +30,6 @@ class SendEmail extends Mailable
     public function build()
     {
         return $this->subject('Testing Kirim Email')
-        ->view('emails.sendemail');
+                    ->view('emails.sendemail');
     }
 }
