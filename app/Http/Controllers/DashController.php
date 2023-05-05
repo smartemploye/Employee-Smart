@@ -14,6 +14,12 @@ class DashController extends Controller
         
     }
 
+    public function scan()
+    {
+        // Berhasil-fix
+        return view ('apsen.scan');
+        
+    }
 }
 
     // public function welcome(Request $request)
