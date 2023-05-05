@@ -15,10 +15,11 @@
     <link rel="stylesheet" href="{{ asset('/template/plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('/template/dist/css/adminlte.min.css') }}">
-    <link rel="stylesheet" href="<link rel="stylesheet"
+    <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
     @stack('styles')
 </head>
 
@@ -99,14 +100,13 @@
         <!-- /.control-sidebar -->
     </div>
     <!-- ./wrapper -->
-
+    
     <!-- jQuery -->
     <script src="{{ asset('/template/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('/template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('/template/dist/js/adminlte.min.js') }}"></script>
-
     @stack('scripts')
 
 </body>

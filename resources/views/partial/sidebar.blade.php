@@ -156,7 +156,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/absensi" class="nav-link" style="color: white">
+                <a href="/scan" class="nav-link" style="color: white">
                     <i class='bx bxs-time' style="vertical-align: -3px;font-size: 25px"></i>
                     <p>
                         {{-- <img src="{{asset ('/template/dist/img/Absen.png') }}" alt="Logo"  > --}}
