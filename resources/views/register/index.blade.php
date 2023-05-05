@@ -89,7 +89,7 @@
                 <td>
                     <div class="form-group" style="margin-left: -190px; padding-left: 200px;">
                         <label for="inputNisn">Nomor Induk Siswa Nasional (NISN)</label>
-                        <input type="text" maxlength="10" name="nisn" class="form-control" id="inputNisn" placeholder="Enter your NISN" style="padding-left: 10px;padding-right: 300px">
+                        <input type="text" name="nisn" class="form-control" id="inputNisn" placeholder="Enter your NISN" style="padding-left: 10px;padding-right: 300px">
                     </div>
                 </td>
                 <td>

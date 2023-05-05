@@ -88,26 +88,27 @@
             </div>
         </div>
         <div class="form-group row">
-            <a href="{{ route('/logbook') }}" class="btn btn-warning" style="color: white;margin-left: 165px;margin-top: -65px;"><i class='bx bx-zoom-in'></i> Detail</a>
+            <label for="inputLogbook" class="col-sm-2 col-form-label">Logbook</label>
+            <div class="col-sm-10">
+                <a href="/logbook"><button>Lihat</button></a>
+            </div>
         </div>
         <div class="form-group row">
             <label for="inputPerizinan" class="col-sm-2 col-form-label">Perizinan</label>
             <div class="col-sm-10">
-                <form action="/perizinan">
-                <input type="button" value="Lihat">
-                </form>
+                <a href="/perizinan"><button>Lihat</button></a>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputAbsensi" class="col-sm-2 col-form-label">Absensi</label>
             <div class="col-sm-10">
-                <input type="button" value="Lihat">
+                <a href="/absensi"><button>Lihat</button></a>
             </div>
         </div>
         <div class="form-group row">
             <label for="inputReportSertifikat" class="col-sm-2 col-form-label">Report dan Sertifikat</label>
             <div class="col-sm-10">
-                <input type="button" value="Lihat">
+                <a href="/report"><button>Lihat</button></a>
             </div>
         </div>
     @endforeach

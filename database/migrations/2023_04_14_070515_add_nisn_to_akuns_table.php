@@ -14,7 +14,7 @@ class AddNisnToAkunsTable extends Migration
     public function up()
     {
         Schema::table('akuns', function (Blueprint $table) {
-            $table->string('nisn');
+            // $table->string('nisn');
         });
     }
 

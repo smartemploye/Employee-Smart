@@ -20,6 +20,8 @@ class SekolahController extends Controller
     public function create()
     {
         return view('sekolah.create');
+
+        return back()->with('success','Item created successfully!');
     }
 
     public function store(Request $request)

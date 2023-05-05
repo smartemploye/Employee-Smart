@@ -284,15 +284,4 @@ Route::post('/bayar', [BayarController::class, 'store']);
 //Read
 //Tampil Semua Data
 Route::get('/bayar', [BayarController::class, 'bayar']);
-<<<<<<< HEAD
-=======
 
-
-
-// Route::get('qr-code-g', function () {
-//     \QrCode::size(500)
-//             ->format('png')
-//             ->generate('www.google.com', public_path('images/qrcode.png'));
-// return view('welcome');
-// });
->>>>>>> d6ade31 (Sacan QR Code)

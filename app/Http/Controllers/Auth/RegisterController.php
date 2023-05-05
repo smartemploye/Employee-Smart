@@ -41,7 +41,7 @@ class RegisterController extends Controller
 
         Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
 
-        dd("Email Berhasil dikirim.");
+        // dd("Email Berhasil dikirim.");
         // dd($request->all());
         $nip_pembimbing = $request->nip_pembimbing;
         $nip_pembimbing = DB::table('pembimbing')->where('nip_pembimbing','=',$nip_pembimbing)->get();
@@ -168,8 +168,14 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'confirmed', 'unique:users' ],
+            'nisn' =>['required', 'string', 'min:10','max:10', 'unique:users'],
+            'nip_pembimbing' =>['required', 'string', 'min:8','max:8'],
+            'no_wa'=>['required', 'string', 'min:12', 'max:13', 'unique:users'],
+            'no_wa_pembimbing'=>['required', 'string', 'min:12', 'max:13', 'unique:users'],
         ]);
+
+
     }
 
     /**
@@ -184,6 +190,10 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'nisn' => $data['nisn'],
+            'nip_pembimbing' => $data['nip_pembimbing'],
+            'no_wa'=> $data['no_wa'],
+            'no_wa_pembimbing'=>$data['no_wa_pembimbing']
         ]);
     }
 }
