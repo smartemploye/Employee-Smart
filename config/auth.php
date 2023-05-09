@@ -84,12 +84,12 @@ return [
         'akuns' => [
             'driver' =>'eloquent',
             'model' => App\Models\Akun::class,
-        ]
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
-        // ],
+        // ]
     ],
 
     /*

@@ -22,7 +22,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-
+            <!-- Siswa -->
             <li class="nav-item">
                 <a href="/" class="nav-link">
                     <p style="font-size: 18px; color: white">
@@ -40,6 +40,7 @@
                     Logbook
                 </a>
             </li> --}}
+            <!-- Siswa -->
             <li class="nav-item">
                 <a href="/logbook" class="nav-link" style="color: white">
                     <p>
@@ -49,6 +50,7 @@
                     </p>
                 </a>
             </li>
+            <!-- siswa -->
             <li class="nav-item">
                 <a href="/perizinan" class="nav-link" style="color: white">
                     <p>
@@ -67,6 +69,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/dashboard" class="nav-link" style="color: white">
                     <p>
@@ -76,6 +79,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/peserta" class="nav-link" style="color: white">
                     <p>
@@ -85,6 +89,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/setting_magang" class="nav-link" style="color: white">
                     <p>
@@ -94,6 +99,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/pembimbing" class="nav-link" style="color: white">
                     <p>
@@ -103,6 +109,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/data_sekolah" class="nav-link" style="color: white">
                     <p>
@@ -112,6 +119,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/data_bidang" class="nav-link" style="color: white">
                     <p>
@@ -121,6 +129,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/report" class="nav-link" style="color: white">
                     <p>
@@ -130,6 +139,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/komponen_penilaian" class="nav-link" style="color: white">
                     <p>
@@ -139,6 +149,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/penilaian" class="nav-link" style="color: white">
                     <p>
@@ -148,6 +159,7 @@
                     </p>
                 </a>
             </li>
+            <!-- admin -->
             <li class="nav-item">
                 <a href="/absensi" class="nav-link" style="color: white">
                     <p>

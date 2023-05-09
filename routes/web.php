@@ -5,12 +5,12 @@ use App\Mail\SendEmail;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
-//use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashController;
 // use App\Http\Controllers\CastController;
-// use App\Http\Controllers\PostController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\ReportController;
@@ -111,21 +111,21 @@ Route::get('/dashboard', function(){
 //     return view('admin.pembimbing');
 // });
 
-Route::get('/komponen_penilaian', function(){
-    return view('admin.komponen_penilaian');
-});
+// Route::get('/komponen_penilaian', function(){
+//     return view('admin.komponen_penilaian');
+// });
 
-Route::get('/penilaian', function(){
-    return view('admin.penilaian');
-});
+// Route::get('/penilaian', function(){
+//     return view('admin.penilaian');
+// });
 
-Route::get('/absensi', function(){
-    return view('template.absensi');
-});
+// Route::get('/absensi', function(){
+//     return view('template.absensi');
+// });
 
-Route::get('/setting_magang', function(){
-    return view('admin.setting_magang');
-});
+// Route::get('/setting_magang', function(){
+//     return view('admin.setting_magang');
+// });
 
 Route::get('send',[MailController::class, 'index']);
 
@@ -289,4 +289,6 @@ Route::post('/bayar', [BayarController::class, 'store']);
 //Tampil Semua Data
 Route::get('/bayar', [BayarController::class, 'bayar']);
 
-
+Route::get('/changePassword','LoginController@showChangePasswordForm');
+// Route::post('/changepassword','LoginController@changePassword')->name('changePassword');
+Route::post('/changepassword', [LoginController::class, 'changePassword']);

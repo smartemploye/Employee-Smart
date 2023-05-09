@@ -25,8 +25,9 @@ class PesertaController extends Controller
         ->join('sekolah','sekolah.id','=','siswa.sekolah_id')
         ->join('data_magang','data_magang.nisn','=','siswa.nisn')
         ->join('pembimbing','pembimbing.nip_pembimbing','=','siswa.nip_pembimbing')
-        ->distinct()
-        ->get([
+        ->distinct();
+        //
+        $data= $data ->get([
             'siswa.id',
             'nama_siswa',
             'sekolah.nama_sekolah',

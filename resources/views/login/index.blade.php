@@ -54,11 +54,15 @@
             @csrf
           <h1 style="text-align: center; color: white;">Login</h1>
           <h2 style="color: white;">Garuda Cyber Indonesia</h2>
+
           <label for="email" style="color: white;" >Email</label>
           <input type="text" id="email" name="email" placeholder="Enter your Email" required>
+
           <label for="password" style="color: white;">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter your password" required>
-          <a href="{{ route('/bayar') }}"><button type="submit">Login</button></a>
+          
+          {{-- <input type="submit" name="submit" value="Login"> --}}
+          <button type="submit" name="submit">Login</button>
           <h4 style="color: white; text-align: center;">Don't have account?</h4>
           <a href="/register"><h2 style="color: #0fa2f4;">Register</h2></a>
         </form>
