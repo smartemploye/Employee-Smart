@@ -51,7 +51,7 @@ class LoginController extends Controller
             'title' => 'login',
             'active' => 'login'
         ]);
-        // return redirect('/bayar');
+        // return redirect('/login');
     }
 
     public function postlogin(Request $request)

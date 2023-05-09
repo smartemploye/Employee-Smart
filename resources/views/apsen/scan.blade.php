@@ -6,6 +6,9 @@
 
 @section('content')
     <div id="reader" width="600px"></div>
+    <div class="col-4">
+        <input type="text" id="result">
+    </div>
 @endsection
 
 
@@ -17,7 +20,8 @@
     $(function() {
         function onScanSuccess(decodedText, decodedResult) {
             // Handle on success condition with the decoded text or result.
-            console.log(`Scan result: ${decodedText}`, decodedResult);
+            // console.log(`Scan result: ${decodedText}`, decodedResult);
+            $("#result").val(decodedText)
         }
 
         var html5QrcodeScanner = new Html5QrcodeScanner(

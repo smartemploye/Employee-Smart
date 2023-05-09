@@ -60,7 +60,7 @@
 
           <label for="password" style="color: white;">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter your password" required>
-          
+
           {{-- <input type="submit" name="submit" value="Login"> --}}
           <button type="submit" name="submit">Login</button>
           <h4 style="color: white; text-align: center;">Don't have account?</h4>
