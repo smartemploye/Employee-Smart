@@ -3,11 +3,12 @@
     <div class="user-panel pb-5 d-flex">
         <li class="nav-link">
             <a class="brand-link">
-                <img src="https://team.garudacyber.co.id/upload/icon/icon-HiWZJbTnmXQq.ico" alt="Logo" style="margin-left: -13px">
+                <img src="https://team.garudacyber.co.id/upload/icon/icon-HiWZJbTnmXQq.ico" alt="Logo"
+                    style="margin-left: -13px">
                 {{-- <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo"> --}}
                 <p style="font-size: 17px; color: white; margin-left: 35px;margin-top: -30px;">
                     {{-- <img src="{{asset ('/template/dist/img/QR.png') }}" alt="Logo"  > --}}
-                        Garuda Cyber Indonesia
+                    Garuda Cyber Indonesia
                 </p>
             </a>
         </li>
@@ -166,15 +167,16 @@
             </li>
 
             <li class="nav-item bg-danger">
-                <a class="nav-link" href="{{ route('logout') }}"
+                <a class="nav-link" href="{{ route('logout') }}"> Logout </a>
+                    {{-- <a class="nav-link" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">
                     Logout
-                </a>
+                </a> --}}
 
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
-                </form>
+                </form> --}}
             </li>
 
             {{-- <li class="nav-item">

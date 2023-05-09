@@ -58,7 +58,12 @@
           <input type="text" id="email" name="email" placeholder="Enter your Email" required>
           <label for="password" style="color: white;">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter your password" required>
+<<<<<<< Updated upstream
           <a href="{{ route('/bayar') }}"><button type="submit">Login</button></a>
+=======
+          <button type="submit">Login</button>
+          {{-- <a href="{{ route('bayar') }}"><button type="submit">Login</button></a> --}}
+>>>>>>> Stashed changes
           <h4 style="color: white; text-align: center;">Don't have account?</h4>
           <a href="/register"><h2 style="color: #0fa2f4;">Register</h2></a>
         </form>
