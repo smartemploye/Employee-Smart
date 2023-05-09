@@ -18,7 +18,11 @@
 <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
 <script>
     $(function() {
+
+        
         function onScanSuccess(decodedText, decodedResult) {
+            // dibuat ajax untuk menyimpan atau mengirim data QR Code (buat controller baru untuk menyimpan datanya sekaligus databasenya)
+
             // Handle on success condition with the decoded text or result.
             // console.log(`Scan result: ${decodedText}`, decodedResult);
             $("#result").val(decodedText)
