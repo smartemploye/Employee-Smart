@@ -6,7 +6,7 @@ Halaman Seting Magang
 
 @section('content')
 
-<a href="/settingmagang/create" class="btn btn-primary btn-sm mb-3">Tambah Setting Magang</a>
+
 
 <table class="table">
     <thead>
@@ -34,7 +34,7 @@ Halaman Seting Magang
                         @method('DELETE')
                         <a href="/settingmagang/{{$value->id}}" class="btn btn-info btn-sm">Detail</a>
                         <a href="/settingmagang/{{$value->id}}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                        <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                       
                     </form>
                 </td>
             </tr>

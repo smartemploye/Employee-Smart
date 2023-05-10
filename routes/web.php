@@ -200,9 +200,6 @@ Route::delete('/logbook/{logbook_id}', [LogbookController::class, 'destroy']);
 //CRUD Halaman Setting Magang
 //Create
 //Form Tambah Setting Magang;
-Route::get('/settingmagang/create', [SettingmagangController::class, 'create']);
-//Untuk kirim data ke database atau tambah data ke database
-Route::post('/settingmagang', [SettingmagangController::class, 'store']);
 
 //Read
 //Tampil Semua Data
@@ -216,9 +213,6 @@ Route::get('/settingmagang/{settingmagang_id}/edit',[SettingmagangController::cl
 //Update data ke database berdasarkan id
 Route::put('/settingmagang/{settingmagang_id}',[SettingmagangController::class, 'update']);
 
-//Delete
-//Delete berdasarkan id
-Route::delete('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'destroy']);
 
 
 

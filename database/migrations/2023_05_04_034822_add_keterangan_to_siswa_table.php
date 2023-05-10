@@ -14,7 +14,7 @@ class AddKeteranganToSiswaTable extends Migration
     public function up()
     {
         Schema::table('siswa', function (Blueprint $table) {
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
         });
     }
 

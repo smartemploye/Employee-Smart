@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Artisan;
+
 
 class CreateSettingMagangTable extends Migration
 {
@@ -27,6 +29,7 @@ class CreateSettingMagangTable extends Migration
             // $table->integer('kuota_magang');
             $table->timestamps();
         });
+        Artisan::call('db:seed', ['--class' => 'DatabaseSeeder']);
     }
 
     /**

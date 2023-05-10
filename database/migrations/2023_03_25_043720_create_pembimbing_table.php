@@ -18,7 +18,7 @@ class CreatePembimbingTable extends Migration
             $table->bigInteger('nip_pembimbing');
             $table->string('nama_pembimbing');
             $table->string('no_wa_pembimbing');
-            $table->string('format_laporan_akhir');
+            $table->string('format_laporan_akhir')->nullable();
             $table->unsignedBigInteger('sekolah_id');
            // $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

@@ -39,7 +39,7 @@ class RegisterController extends Controller
         $nip_pembimbing = DB::table('pembimbing')->where('nip_pembimbing', '=', $nip_pembimbing)->get();
         $nip_pembimbing = count(collect($nip_pembimbing));
         $nama_bidang = $request->jurusan;
-
+        // dd($request);
             if ($nip_pembimbing <= 0) {
                 Pembimbing::create([
                     'nip_pembimbing' => $request->nip_pembimbing,

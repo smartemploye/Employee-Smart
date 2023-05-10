@@ -14,7 +14,7 @@ class AddNisnToDataBidangTable extends Migration
     public function up()
     {
         Schema::table('data_bidang', function (Blueprint $table) {
-            $table->string('nisn');
+            $table->string('nisn')->nullable();
         });
     }
 
