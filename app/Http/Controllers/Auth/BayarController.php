@@ -8,15 +8,6 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Bayar;
 class BayarController extends Controller
 {
-
-    
-    // public function bayar()
-    // {
-    //     $settingmagang = DB::table('setting_magang')->get()->first();
-    //     // echo $settingmagang->no_va;
-    //     return view('auth.bayar', ["data"=>$settingmagang->no_va]);  
-    // }
-
     //Berhasil
     public function create()
     {

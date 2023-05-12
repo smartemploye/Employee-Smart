@@ -15,17 +15,20 @@ class CreateKomponenPenilaianTable extends Migration
     {
         Schema::create('komponen_penilaian', function (Blueprint $table) {
             $table->id();
+            $table->string('nama_komponen');
+            $table->bigInteger('presentase');
+
             //Nilai Kepribadian
-            $table->string('penilaian_kepribadian');
-            $table->bigInteger('disiplin_waktu');
-            $table->bigInteger('inisatif_dan_kreatifitas');
-            $table->bigInteger('sikap_dan_disiplin');
+            // $table->string('penilaian_kepribadian');
+            // $table->bigInteger('disiplin_waktu');
+            // $table->bigInteger('inisatif_dan_kreatifitas');
+            // $table->bigInteger('sikap_dan_disiplin');
 
             //Penialaian Keahlian
-            $table->string('penilaian_keahlian');
-            $table->bigInteger('operating_system');
-            $table->bigInteger('ms_office');
-            $table->bigInteger('instalasi_sistem');
+            // $table->string('penilaian_keahlian');
+            // $table->bigInteger('operating_system');
+            // $table->bigInteger('ms_office');
+            // $table->bigInteger('instalasi_sistem');
 
             $table->timestamps();
         });

@@ -12,4 +12,10 @@ class Penilaian extends Model
     protected $table = 'penilaian';
 
     protected $fillable = ['disiplin_waktu', '	inisatif_dan_kreatifitas', 'sikap_dan_disiplin', 'operating_system', 'ms_office', 'instalasi_sistem'];
+
+    public function KomponenPenilaian()
+    {
+        return $this->belongsTo(KomponenPenilaian::class);
+    }
+
 }

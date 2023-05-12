@@ -14,7 +14,7 @@ class AddBidangIdToDataMagangTable extends Migration
     public function up()
     {
         Schema::table('data_magang', function (Blueprint $table) {
-            $table->string('bidang_id');
+            $table->string('bidang_id')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddBidangIdToDataMagangTable extends Migration
     public function down()
     {
         Schema::table('data_magang', function (Blueprint $table) {
-            $table->integer('bidang_id');
+            $table->dropColumn('bidang_id');
         });
     }
 }

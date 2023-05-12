@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-class AddNisnToDataBidangTable extends Migration
+use Illuminate\Support\Facades\Session;
+class DeleteColumnToPenilaian extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddNisnToDataBidangTable extends Migration
      */
     public function up()
     {
-        Schema::table('data_bidang', function (Blueprint $table) {
-            $table->string('nisn')->nullable();
-        });
+        // Schema::table('penilaian', function (Blueprint $table) {
+        //    $table->string('1');
+        // });
     }
 
     /**
@@ -25,8 +25,8 @@ class AddNisnToDataBidangTable extends Migration
      */
     public function down()
     {
-        Schema::table('data_bidang', function (Blueprint $table) {
-            //
+        Schema::table('penilaian', function (Blueprint $table) {
+           $table->dropColumn(Session::get('columnName'));
         });
     }
 }
