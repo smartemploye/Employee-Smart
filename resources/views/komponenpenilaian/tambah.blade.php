@@ -9,28 +9,28 @@ Halaman Komponen Penilaian
 <form action="/komponenpenilaian" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
-      <label>Penilaian Kepribadian</label>
-      <input type="text" name="penilaian_kepribadian" class="form-control">
+      <label>Nama Komponen</label>
+      <input type="text" name="nama_komponen" class="form-control">
     </div>
-    @error('penilaian_kepribadian')
+    @error('nama_komponen')
         <div class="alert alert-danger">{{ $message }}</div>
     @enderror
 
     <div class="form-group">
-        <label>penilaian_keahlian</label>
-        <input type="text" name="penilaian_keahlian" class="form-control">
+        <label>Presentase</label>
+        <input type="number" name="presentase" class="form-control">
       </div>
-      @error('penilaian_keahlian')
+      @error('presentase')
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
 
-      <div class="form-group">
+      {{-- <div class="form-group">
         <label>Operating System</label>
         <input type="text" name="operating_system" class="form-control">
       </div>
       @error('operating_system')
           <div class="alert alert-danger">{{ $message }}</div>
-      @enderror
+      @enderror --}}
 
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>

@@ -142,6 +142,14 @@ class RegisterController extends Controller
         Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
 
         //codingan wa yg dikirim bg syams masukkan disini
+        $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
+            'method'  => 'POST',
+            'header'  => 'Content-Type: application/x-www-form-urlencoded',
+            'content' => http_build_query([
+                'no_hp' => '085713482807', # no hp penerima
+                'message' => 'test kirim wa' # pesan
+            ])
+        ]]));
 
         // dd("Email Berhasil dikirim.");
         // dd($request->all());

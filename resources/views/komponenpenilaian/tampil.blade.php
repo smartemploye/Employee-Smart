@@ -12,8 +12,8 @@ Halaman Komponen Penilaian
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Penilaian Kepribadian</th>
-        <th scope="col">Penilaian Keahlian</th>
+        <th scope="col">Nama Komponen</th>
+        <th scope="col">Presentase</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -21,8 +21,8 @@ Halaman Komponen Penilaian
         @forelse ($komponenpenilaian as $key => $value)
             <tr>
                 <td>{{$key + 1}}</td>
-                <td>{{$value->penilaian_kepribadian}}</td>
-                <td>{{$value->penilaian_keahlian}}</td>
+                <td>{{$value->nama_komponen}}</td>
+                <td>{{$value->presentase}}</td>
                 <td>
                     
                     <form action="/komponenpenilaian/{{$value->id}}" method="POST">

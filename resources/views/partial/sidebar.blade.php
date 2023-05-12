@@ -132,11 +132,26 @@
             <li class="nav-item">
                 <a href="/report" class="nav-link" style="color: white">
                     <i class='bx bxs-book-open'style="vertical-align: -3px;font-size: 25px"></i>
+                        {{-- <i class="nav-icon fas fa-th"></i> --}}
                     <p>
-                        {{-- <img src="{{asset ('/template/dist/img/Grafik.png') }}" alt="Logo"  > --}}
                         Report
+                        <i class="right fas fa-angle-left"></i>
                     </p>
                 </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="/grafik" class="nav-link" style="color: white">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Grafik</p>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="/datatable" class="nav-link" style="color: white">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Data Table</p>
+                      </a>
+                    </li>
+                  </ul>
             </li>
             <li class="nav-item">
                 <a href="/komponenpenilaian" class="nav-link" style="color: white">

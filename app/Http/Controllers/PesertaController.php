@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataMagang;
 use App\Models\Sekolah;
 use App\Models\Siswa;
+
 use Illuminate\Support\Facades\Crypt;
 
 class PesertaController extends Controller
@@ -105,14 +106,15 @@ class PesertaController extends Controller
 
     public function show($id)
     {
-
+        $bayar = DB::table('bayar')->get();
         $siswa = DB::table('siswa')
-            ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
-            ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
-            ->leftJoin('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
-            ->leftJoin('data_bidang', 'data_bidang.id', '=', 'data_magang.bidang_id')
-            ->leftJoin('akuns', 'akuns.nisn', '=', 'siswa.nisn')
-            ->where('siswa.id', '=', $id)
+        ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
+        ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
+        ->leftJoin('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
+        ->leftJoin('data_bidang', 'data_bidang.id', '=', 'data_magang.bidang_id')
+        ->leftJoin('akuns', 'akuns.nisn', '=', 'siswa.nisn')
+        ->where('siswa.id', '=', $id)
+        // ->get();
             ->get([
                 'siswa.id',
                 'siswa.nisn',
@@ -128,15 +130,31 @@ class PesertaController extends Controller
                 'sekolah.id as id_sekolah',
                 'siswa.nip_pembimbing as nip',
                 'jurusan',
-                'tanggal_lahir', 'no_wa_pembimbing', 'username', 'password'
-            ]);
-
+                'tanggal_lahir',
+                 'no_wa_pembimbing',
+                  'username', 'password'
+            ])->take(1);
+            // dd($siswa);
 
 
         // dd($siswa->all());
 
-        return view('peserta.show', compact('siswa'));
+        return view('peserta.show', compact('siswa', 'bayar'));
     }
+
+    // public function getData() {
+
+    //     $fileName = time().'.'.$request->bukti->extension();  
+    //     $request->bukti->move(public_path('image'), $fileName);
+    //     $bayar = new Bayar;
+
+    //     DB::table('bayar')->insert([
+    //         'bukti' => $fileName,
+    //     ]);
+
+    //     // $fileName = ['bukti'];
+    //     return $fileName;
+    // }
 
     public function update(Request $request/*, $id*/)
     {

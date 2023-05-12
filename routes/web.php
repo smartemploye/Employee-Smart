@@ -243,27 +243,17 @@ Route::delete('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianCon
 
 
 //CRUD Halaman Penilaian
-//Create
-//Form Penilaian;
-Route::get('/penilaian/create', [PenilaianController::class, 'create']);
-//Untuk kirim data ke database atau tambah data ke database
-Route::post('/penilaian', [PenilaianController::class, 'store']);
 
 //Read
 //Tampil Semua Data
 Route::get('/penilaian', [PenilaianController::class, 'index']);
-//Detail Penilaian berdasarkan id
-Route::get('/penilaian/{penilaian_id}', [PenilaianController::class, 'show']);
 
 //Update
 //Form Update Penilaian
 Route::get('/penilaian/{penilaian_id}/edit',[PenilaianController::class, 'edit']);
 //Update data ke database berdasarkan id
-Route::put('/penilaian/{penilaian_id}',[PenilaianController::class, 'update']);
+Route::put('/penilaian/update/{penilaian_id}',[PenilaianController::class, 'update']);
 
-//Delete
-//Delete berdasarkan id
-Route::delete('/penilaian/{penilaian_id}', [PenilaianController::class, 'destroy']);
 
 
 
@@ -286,3 +276,10 @@ Route::get('/bayar', [BayarController::class, 'bayar']);
 Route::get('/changePassword','LoginController@showChangePasswordForm');
 // Route::post('/changepassword','LoginController@changePassword')->name('changePassword');
 Route::post('/changepassword', [LoginController::class, 'changePassword']);
+
+
+//CRUD Report-grafik-DataTable
+// DataTable
+Route::get('/datatable', [DataTableController::class, 'index']);
+
+
