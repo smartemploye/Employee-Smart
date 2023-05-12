@@ -25,7 +25,6 @@ class DataMagang extends Model
         'judul_project',
         'no_sertifikat',
         'status_magang',
-        'status_seleksi',
         'ukuran_baju',
         'nilai_akhir',
         'bukti_pembayaran'

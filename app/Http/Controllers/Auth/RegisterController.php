@@ -20,6 +20,7 @@ use App\Mail\SendEmail;
 use App\Models\DataBidang;
 use Illuminate\Support\Facades\Crypt;
 
+
 class RegisterController extends Controller
 {
     public function index()
@@ -35,104 +36,144 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+
+
+
+         $request->validate([
+                'nama_siswa' => 'required|min:9',
+                'nisn' => 'required|numeric|unique:users',
+                'password' => 'required',
+                'password_confirmation' => 'required|same:password',
+                'sekolah_id' => 'required',
+                'jenis_jurusan' => 'required',
+                'no_wa' => 'required|numeric|digits_between:12,13',
+                'foto_siswa' => 'required',
+                'tanggal_lahir' => 'required|before:today',
+                'jurusan' => 'required',
+                'paket_magang' => 'required',
+                'nama_pembimbing' => 'required',
+                'nip_pembimbing' => 'required|numeric|digits:18|unique:users',
+                'no_wa_pembimbing' => 'required|numeric|digits_between:12,14',
+                'ukuran_baju' => 'required',
+                'surat_pengajuan' => 'required',
+                'username' => 'required|email',
+                ], [
+            'nama_siswa.required' => 'Form harus diisi!',
+            'nama_siswa.min' => 'Nama tidak boleh kurang dari 9 karakter!',
+            'nisn.required' => 'Form harus diisi!',
+            'nisn.numeric' => 'NISN harus diinput dalam format angka!',
+            'nisn.unique' => 'NISN sudah terdaftar!',
+            'password.required' => 'Form harus diisi!',
+            'password_confirmation.required' => 'Konfirmasi password tidak cocok!',
+            'password_confirmation.same' => 'Konfirmasi password tidak cocok!',
+            'sekolah_id.required' => 'Form harus diisi!',
+            'jenis_jurusan.required' => 'Form harus diisi!',
+            'no_wa.required' => 'Form harus diisi!',
+            'no_wa.numeric' => 'Format harus dalam bentuk angka!',
+            'no_wa.digits_between' => 'Panjang nomor harus antara 12-13 karakter!',
+            'foto_siswa.required' => 'Form harus diisi!',
+            'foto_siswa.image' => 'Format harus dalam bentuk gambar!',
+            'tanggal_lahir.required' => 'Form harus diisi!',
+            'tanggal_lahir.date_format' => 'Format tanggal harus dalam bentuk d-m-Y!',
+            'tanggal_lahir.before' => 'Tanggal harus sebelum hari ini!',
+            'jurusan.required' => 'Form harus diisi!',
+            'paket_magang.required' => 'Form harus diisi!',
+            'nama_pembimbing.required' => 'Form harus diisi!',
+            'nip_pembimbing.required' => 'Form harus diisi!',
+            'nip_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
+            'nip_pembimbing.digits' => 'Panjang NIP harus 18 karakter!',
+            'nip_pembimbing.unique' => 'NIP sudah terdaftar!',
+            'no_wa_pembimbing.required' => 'Form harus diisi!',
+            'no_wa_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
+            'no_wa_pembimbing.digits_between' => 'Panjang nomor harus antara 12-14 karakter!',
+            'ukuran_baju.required' => 'Form harus diisi!',
+            'surat_pengajuan.required' => 'Form harus diisi!',
+            'username.required' => 'Form harus diisi!',
+            'username.email' => 'Format email salah!',
+            ]);
+
+        // $v = Validator::make($request->input(), [
+        //         'nama_siswa' => 'required|min:9',
+        //         'nisn' => 'required|numeric|unique:users',
+        //         'password' => 'required',
+        //         'password_confirmation' => 'required|same:password',
+        //         'sekolah_id' => 'required',
+        //         'jenis_jurusan' => 'required',
+        //         'no_wa' => 'required|numeric|digits_between:12,13',
+        //         'foto_siswa' => 'required',
+        //         'tanggal_lahir' => 'required|before:today',
+        //         'jurusan' => 'required',
+        //         'paket_magang' => 'required',
+        //         'nama_pembimbing' => 'required',
+        //         'nip_pembimbing' => 'required|numeric|digits:18|unique:users',
+        //         'no_wa_pembimbing' => 'required|numeric|digits_between:12,14',
+        //         'ukuran_baju' => 'required',
+        //         'surat_pengajuan' => 'required',
+        //         'username' => 'required|email',
+        //         ]);
+
+        //         var_dump($v->fails());
+        //         var_dump($v->errors());
+
+
+        //     var_dump($request->password);
+        // var_dump($request->password_confirmation);
+        // die();
+
+        if ($request->password != $request->password_confirmation) {
+            return redirect()->back()->with("error", "Password should be same as your confirmed password. Please retype new password");
+        }
         $nip_pembimbing = $request->nip_pembimbing;
         $nip_pembimbing = DB::table('pembimbing')->where('nip_pembimbing', '=', $nip_pembimbing)->get();
         $nip_pembimbing = count(collect($nip_pembimbing));
         $nama_bidang = $request->jurusan;
 
-            if ($nip_pembimbing <= 0) {
-                Pembimbing::create([
-                    'nip_pembimbing' => $request->nip_pembimbing,
-                    'nama_pembimbing' => $request->nama_pembimbing,
-                    'no_wa_pembimbing' => $request->no_wa_pembimbing,
-                    'sekolah_id' => $request->sekolah_id
-                ]);
-
-                Siswa::create([
-                    'nama_siswa' => $request->nama_siswa,
-                    'nisn' => $request->nisn,
-                    'no_wa' => $request->no_wa,
-                    'sekolah_id' => $request->sekolah_id,
-                    'jurusan' => $request->jurusan,
-                    'nip_pembimbing' => $request->nip_pembimbing,
-                    'tanggal_lahir' => $request->tanggal_lahir,
-                    'foto_siswa' => $request->foto_siswa,
-                ]);
-
-                DataMagang::create([
-                    'bidang_id' => $request->bidang_id,
-                    'nisn' => $request->nisn,
-                    'paket_magang' => $request->paket_magang,
-                    'surat_pengajuan' => $request->surat_pengajuan,
-                    'ukuran_baju' => $request->ukuran_baju,
-                ]);
 
 
-                Akun::create([
-                    'nisn' => $request->nisn,
-                    'username' => $request->username,
-                    'password' => Crypt::encrypt($request->password),
-                ]);
+        // $foto_siswa = $request->foto_siswa;
+        // $file_foto_siswa = $foto_siswa->getClientOriginalName();
 
-
-                DataBidang::create([
-                    'nama_bidang' => $nama_bidang,
-                    'jenis_jurusan' => $request->jenis_jurusan,
-                ]);
-
-            } else {
-                Siswa::create([
-                    'nama_siswa' => $request->nama_siswa,
-                    'nisn' => $request->nisn,
-                    'no_wa' => $request->no_wa,
-                    'sekolah_id' => $request->sekolah_id,
-                    'jurusan' => $request->jurusan,
-                    'nip_pembimbing' => $request->nip_pembimbing,
-                    'tanggal_lahir' => $request->tanggal_lahir,
-                    'foto_siswa' => $request->foto_siswa,
-                ]);
-
-                DataMagang::create([
-                    'bidang_id' => $request->bidang_id,
-                    'nisn' => $request->nisn,
-                    'paket_magang' => $request->paket_magang,
-                    'surat_pengajuan' => $request->surat_pengajuan,
-                    'ukuran_baju' => $request->ukuran_baju,
-                ]);
-
-
-                Akun::create([
-                    'nisn' => $request->nisn,
-                    'username' => $request->username,
-                    'password' => Crypt::encrypt($request->password),
-                ]);
-
-                DataBidang::create([
-                    'nama_bidang' => $nama_bidang,
-                    'jenis_jurusan' => $request->jenis_jurusan,
-                ]);
-            }
-        if ($request->password != $request->confpassword) {
-            // The passwords matches
-            return redirect()->back()->with("error", "Password should be same as your confirmed password. Please retype new password");
+        if ($nip_pembimbing <= 0) {
+            Pembimbing::create([
+                'nip_pembimbing' => $request->nip_pembimbing,
+                'nama_pembimbing' => $request->nama_pembimbing,
+                'no_wa_pembimbing' => $request->no_wa_pembimbing,
+                'sekolah_id' => $request->sekolah_id
+            ]);
         }
 
-        $validate = $request->validate(
-            [
-                'nama_siswa' => 'required|min:9',
-                'nisn' => 'required|min:10|max:10',
-                'password' => 'required',
-                'password_confirmation' => 'required'
-            ], [
-                'nama_siswa.required' => 'Form harus di isi',
-                'nama_siswa.min' => 'Nama tidak boleh kurang dari 9 karakter',]
+        Siswa::create([
+            'nama_siswa' => $request->nama_siswa,
+            'nisn' => $request->nisn,
+            'no_wa' => $request->no_wa,
+            'sekolah_id' => $request->sekolah_id,
+            'jurusan' => $request->jurusan,
+            'nip_pembimbing' => $request->nip_pembimbing,
+            'tanggal_lahir' => $request->tanggal_lahir,
+            'foto_siswa' => $request->foto_siswa,
+        ]);
 
-        );
-            // 'nisn.required' => 'Form harus di isi',
-            // 'nisn.min' => 'Nisn tidak boleh kurang dari 10 angka',
-            // 'nisn.max' => 'Nisn tidak boleh lebih dari 10 angka'
-            // 'password.required' => 'Password harus diisi',
-            // 'password.confirmed' => 'Password dan konfirmasi password harus sama',
+        DataMagang::create([
+            'bidang_id' => $request->bidang_id,
+            'nisn' => $request->nisn,
+            'paket_magang' => $request->paket_magang,
+            'surat_pengajuan' => $request->surat_pengajuan,
+            'ukuran_baju' => $request->ukuran_baju,
+        ]);
+
+
+        Akun::create([
+            'nisn' => $request->nisn,
+            'username' => $request->username,
+            'password' => Crypt::encrypt($request->password),
+        ]);
+
+        DataBidang::create([
+            'nama_bidang' => $nama_bidang,
+            'jenis_jurusan' => $request->jenis_jurusan,
+        ]);
+
+        // $foto_siswa->move(public_path().'/image/fotosiswa', $file_foto_siswa);
 
         $data = [
             'name' => 'Syahrizal As',
@@ -163,8 +204,8 @@ class RegisterController extends Controller
         // }
         // Register::create($validated_data);
 
-        //     return redirect()->route('register.index')
-        //                     ->with('success','Data created successfully.');
+            return redirect()->route('register.index')
+                            ->with('success','Data created successfully.');
     }
     /*
     |--------------------------------------------------------------------------

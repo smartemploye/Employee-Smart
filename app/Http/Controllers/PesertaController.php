@@ -42,6 +42,7 @@ class PesertaController extends Controller
         // echo $enkrip.'<br>';
         // echo Crypt::decrypt($enkrip);
         return view('peserta.index', compact('data'));
+        // dd($data);
     }
 
     public function create()
@@ -116,6 +117,7 @@ class PesertaController extends Controller
             'siswa.nisn',
             'nama_sekolah',
             'nama_siswa',
+            'foto_siswa',
             'no_wa',
             'nama_bidang',
             'tanggal_mulai',

@@ -31,8 +31,8 @@ class CreateDataMagangTable extends Migration
             $table->date('tanggal_pembayaran');
             $table->string('judul_project');
             $table->string('no_sertifikat');
-            $table->enum('status_magang', ['aktif','tidak aktif']);
-            $table->enum('status_seleksi', ['diproses','diterima','ditolak']);
+            // $table->enum('status_magang', ['aktif','tidak aktif']);
+            // $table->enum('status_seleksi', ['diproses','diterima','ditolak']);
             $table->enum('ukuran_baju', ['S','M','L','XL','XXL']);
             $table->integer('nilai_akhir');
             $table->string('bukti_pembayaran');

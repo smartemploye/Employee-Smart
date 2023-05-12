@@ -93,8 +93,13 @@
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputSupervisor">Nama Pembimbing</label>
-                                            <input type="text" name="nama_pembimbing" class="form-control"
-                                                id="inputSupervisor" placeholder="Enter your Mentor Name">
+                                            <input type="text" name="nama_pembimbing"
+                                                class="form-control @error('nama_pembimbing') is-invalid @enderror"
+                                                id="inputNamapembimbing" placeholder="Enter your Mentor Name"
+                                                value="{{ old('nama_pembimbing') }}">
+                                            @error('nama_pembimbing')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </td>
                                 </tr>
@@ -102,10 +107,9 @@
                                     <td>
                                         <div class="form-group" style="margin-left: -190px; padding-left: 200px;">
                                             <label for="inputNisn">Nomor Induk Siswa Nasional (NISN)</label>
-                                            <input type="text" name="nisn" class="form-control" id="inputNisn"
+                                            <input type="text" name="nisn" class="form-control @error('nisn') is-invalid @enderror" id="inputNisn"
                                                 placeholder="Enter your NISN"
-                                                style="padding-left: 10px;padding-right: 300px"
-                                                value="{{ old('nisn') }}">
+                                                style="padding-left: 10px;padding-right: 300px" value="{{ old('nisn') }}">
                                             @error('nisn')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
@@ -114,8 +118,13 @@
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputSupervisor">NIP Pembimbing</label>
-                                            <input type="text" maxlength="18" name="nip_pembimbing" class="form-control"
-                                                id="inputSupervisor" placeholder="Enter your Mentor NIP">
+                                            <input type="text" maxlength="18" name="nip_pembimbing"
+                                                class="form-control @error('nip_pembimbing') is-invalid @enderror"
+                                                id="inputNippembimbing" placeholder="Enter your Mentor NIP"
+                                                value="{{ old('nip_pembimbing') }}">
+                                            @error('nip_pembimbing')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </td>
                                 </tr>
@@ -123,20 +132,27 @@
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputSchool">Asal Sekolah</label>
-                                            <select class="form-control" name="sekolah_id" id="sekolah">
+                                            <select class="form-control @error('sekolah_id') is-invalid @enderror" name="sekolah_id" id="sekolah">
                                                 <option value="" disabled selected>-- Select School --</option>
                                                 @foreach ($sekolah as $sklh)
                                                     <option value="{{ $sklh->id }}">{{ $sklh->nama_sekolah }}</option>
                                                 @endforeach
                                             </select>
+                                            @error('sekolah_id')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputSupervisor">Nomor WA Pembimbing</label>
-                                            <input type="text" name="no_wa_pembimbing" maxlength="13"
-                                                class="form-control" id="inputSupervisor"
-                                                placeholder="Enter your Mentor number">
+                                            <input type="text" name="no_wa_pembimbing"
+                                                class="form-control @error('no_wa_pembimbing') is-invalid @enderror"
+                                                id="inputSupervisor" placeholder="Enter your Mentor number"
+                                                value="{{ old('no_wa_pembimbing') }}">
+                                            @error('no_wa_pembimbing')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </td>
                                 </tr>
@@ -146,22 +162,22 @@
                                             <label for="inputJenisJurusan">Jenis Jurusan</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="jenis_jurusan"
-                                                        id="IT" value="IT">
-                                                    <label class="form-check-label" for="IT"
-                                                        style="margin-right: 10px">IT</label>
-                                                    <input class="form-check-input" type="radio" name="jenis_jurusan"
-                                                        id="Umum" value="Umum">
-                                                    <label class="form-check-label" for="Umum"
-                                                        style="margin-right: 10px">Umum</label>
+                                                    <input class="form-check-input" type="radio" name="jenis_jurusan" id="IT" value="IT" {{ old('jenis_jurusan') == 'IT' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="IT" style="margin-right: 10px">IT</label>
+                                                    <input class="form-check-input" type="radio" name="jenis_jurusan" id="Umum" value="Umum" {{ old('jenis_jurusan') == 'Umum' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="Umum" style="margin-right: 10px">Umum</label>
                                                 </div>
+                                                @error('jenis_jurusan')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
+
                                     </td>
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputShirtSize">Ukuran Baju</label>
-                                            <select class="form-control" name="ukuran_baju" id="inputShirtSize">
+                                            <select class="form-control @error('ukuran_baju') is-invalid @enderror" name="ukuran_baju" id="inputShirtSize">
                                                 <option value="" selected disabled>-- Select Shirt Size --</option>
                                                 <option value="s">S</option>
                                                 <option value="m">M</option>
@@ -169,38 +185,61 @@
                                                 <option value="xl">XL</option>
                                                 <option value="xxl">XXL</option>
                                             </select>
+                                            @error('ukuran_baju')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputJurusanName">Nama Jurusan</label>
-                                            <input type="text" name="jurusan" class="form-control"
-                                                id="inputJurusanName" placeholder="Enter your Major">
+                                            <input type="text" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror"
+                                                class="form-control" id="inputJurusan" placeholder="Enter your Major"
+                                                value="{{ old('jurusan') }}">
+                                            @error('jurusan')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputApplication">Upload Surat Pengajuan</label>
-                                            <input type="file" name="surat_pengajuan" class="form-control-file"
-                                                id="surat_pengajuan" accept="image/*">
+                                            <input type="file"
+                                                name="surat_pengajuan" class="form-control-file @error('surat_pengajuan') is-invalid @enderror"
+                                                id="inputsurat_pengajuan" accept="image/*">
+                                            @error('surat_pengajuan')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
                                         <div class="form-group" style="margin-left: 15px;">
-                                            <label for="inputNisn">Nomor WA</label>
-                                            <input type="text" name="no_wa" maxlength="13" class="form-control"
-                                                id="inputNisn" placeholder="Enter your number">
+                                            <label for="inputNowa">Nomor WA</label>
+                                            {{-- <input type="text" name="no_wa" maxlength="13" class="form-control"
+                                                id="inputNisn" placeholder="Enter your number"> --}}
+                                            <input type="text" name="no_wa" class="form-control @error('no_wa') is-invalid @enderror" id="inputNowa"
+                                            placeholder="Enter your Number"
+                                                value="{{ old('no_wa') }}">
+                                            @error('no_wa')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group" style="margin-left: 15px;">
                                             <label for="inputEmail">Alamat Email</label>
-                                            <input type="email" name="username" class="form-control" id="inputEmail"
-                                                placeholder="Enter your email address" style="padding-right: 300px">
+                                            <input type="email" name="username" class="form-control @error('username') is-invalid @enderror" id="inputEmail"
+                                                placeholder="Enter your email address" style="padding-right: 300px"
+                                                value="{{ old('username') }}">
+                                                @error('username')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                         </div>
                                     </td>
                                 </tr>
@@ -208,9 +247,12 @@
                                     <td>
                                         <div class="form-group" style="margin-left: 15px;">
                                             <label for="inputPhoto">Upload Foto</label>
-                                            <input type="file" name="foto_siswa" class="form-control-file"
-                                                id="foto" accept="image/*">
+                                            <input type="file" name="foto_siswa" class="form-control-file @error('foto_siswa') is-invalid @enderror" id="foto" accept="image/*" value="{{ old('foto_siswa') }}">
+                                            @error('foto_siswa')
+                                                <div class="alert alert-danger mt-2">{{ $message }}</div>
+                                            @enderror
                                         </div>
+
                                     </td>
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
@@ -229,16 +271,19 @@
                                     <td>
                                         <div class="form-group" style="margin-left: 15px;">
                                             <label for="inputBirthdate">Tanggal Lahir</label>
-                                            <input type="date" name="tanggal_lahir" class="form-control"
-                                                id="inputBirthdate" placeholder="Enter your birthdate">
-
+                                            <input type="date" name="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror"
+                                                id="inputBirthdate" placeholder="Enter your birthdate"
+                                                value="{{ old('tanggal_lahir') }}">
+                                            @error('tanggal_lahir')
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </td>
                                     <td>
                                         <div class="form-group" style="margin-left: 15px;">
                                             <label for="inputConfirmPassword">Ulangi Password</label>
                                             <input type="password"
-                                                class="form-control @error('nama_siswa') is-invalid @enderror"
+                                                class="form-control @error('password_confirmation') is-invalid @enderror"
                                                 id="inputConfirmPassword" placeholder="Enter your password again"
                                                 name="password_confirmation" value="{{ old('password_confirmation') }}">
                                             @error('password_confirmation')
@@ -254,17 +299,17 @@
                                             <label for="inputPaketMagang">Paket Magang</label>
                                             <div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="paket_magang"
-                                                        id="paketBasic" value="basic">
-                                                    <label class="form-check-label" for="paketBasic"
-                                                        style="margin-right: 10px">Basic</label>
-                                                    <input class="form-check-input" type="radio" name="paket_magang"
-                                                        id="paketBasic" value="exclusive">
-                                                    <label class="form-check-label" for="paketBasic"
-                                                        style="margin-right: 10px">Exclusive</label>
+                                                    <input class="form-check-input" type="radio" name="paket_magang" id="Basic" value="Basic" {{ old('paket_magang') == 'Basic' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic</label>
+                                                    <input class="form-check-input" type="radio" name="paket_magang" id="Exclusive" value="Exclusive" {{ old('paket_magang') == 'Exclusive' ? 'checked' : '' }}>
+                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive</label>
                                                 </div>
+                                                @error('paket_magang')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
+
                                     </td>
                                 </tr>
 
@@ -359,7 +404,3 @@
     </div>
 </div> --}}
 @endsection
-
-<script>
-    $.ajax()
-</script>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNisnToDataBidangTable extends Migration
+class AddStatusMagangToDataMagangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddNisnToDataBidangTable extends Migration
      */
     public function up()
     {
-        Schema::table('data_bidang', function (Blueprint $table) {
-            // $table->string('nisn');
+        Schema::table('data_magang', function (Blueprint $table) {
+            $table->enum('status_magang', ['seleksi','Belum Bayar','Aktif','Lulus','Drop Out']);
         });
     }
 
@@ -25,7 +25,7 @@ class AddNisnToDataBidangTable extends Migration
      */
     public function down()
     {
-        Schema::table('data_bidang', function (Blueprint $table) {
+        Schema::table('data_magang', function (Blueprint $table) {
             //
         });
     }

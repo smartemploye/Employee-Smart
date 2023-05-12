@@ -13,6 +13,7 @@ use Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
+
 class LoginController extends Controller
 {
     /*
@@ -56,18 +57,32 @@ class LoginController extends Controller
 
     public function postlogin(Request $request)
     {
-        // dd($request->all());
+        var_dump($request->all());
 
         // if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
         //     return redirect('/bayar');
         // }
 
-        // if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])){
-        //     return redirect('/bayar');
-        // } else if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
+        var_dump(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password]));
+
+        // if(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])){
         //     return redirect('/bayar');
         // }
-        return redirect('/bayar');
+        die();
+
+        // var_dump(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password]));
+        // var_dump(Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password]));
+
+        // die();
+
+        // if (Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        //     return redirect()->route('bayar');
+        // } else if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
+        //     return redirect()->route('bayar');
+        // } else {
+            return redirect()->route('login')->with('error', 'Invalid email or password.');
+        // }
+
     }
 
     public function logout(Request $request)
