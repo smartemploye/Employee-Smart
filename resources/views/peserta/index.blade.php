@@ -18,9 +18,11 @@
         <div class="form-group mx-sm-3 mb-2">
             <label for="inputPassword2" class="sr-only">Search</label>
             <form action="/peserta" method="GET">
-            <input type="text" class="form-control" id="inputPassword2" placeholder="Search" name="search" style="width: 10%;margin-left: 110px">
-            <input type="text" class="form-control" id="inputPassword2" placeholder="Search" name="search" style="width: 10%;margin-left: 225px;margin-top: -38px">
-            <input type="text" class="form-control" id="inputPassword2" placeholder="Search" name="search" style="width: 7%;margin-left: 345px;margin-top: -38px">
+            <input type="date" class="form-control" value=""  placeholder="Search" name="tgl_mulai" style="width: 10%;">
+            <input type="date" class="form-control" value=""  placeholder="Search" name="tgl_selesai" style="width: 10%;">
+            <input type="text" class="form-control" value=""  placeholder="status" name="status" style="width: 7%;">
+            <input type="text" class="form-control" value=""  placeholder="nis/nama" name="siswa" style="width: 7%;">
+                <button>Tampilkan</button>
         </form>
         </div>
         <th scope="col">No</th>

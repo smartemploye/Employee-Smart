@@ -9,9 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
+
 
 
 class LoginController extends Controller
@@ -63,12 +64,12 @@ class LoginController extends Controller
         //     return redirect('/bayar');
         // }
 
-        var_dump(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password]));
+        // var_dump(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password]));
 
-        // if(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])){
-        //     return redirect('/bayar');
-        // }
-        die();
+        if(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])){
+            return redirect('/bayar');
+        }
+        // die();
 
         // var_dump(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password]));
         // var_dump(Auth::guard('user')->attempt(['email' => $request->email, 'password' => $request->password]));
@@ -112,7 +113,7 @@ class LoginController extends Controller
         // $user = Auth::user();
         // $user->password = encrypt($request->get('new-password'));
         // $user->save();
-        $result = DB::table('akuns')->where('username', $request->username)->update(['password' => Crypt::encrypt($request->password)]);
+        $result = DB::table('akuns')->where('username', $request->username)->update(['password' => Hash::make($request->password)]);
 
         return redirect()->back()->with("success", "Password changed successfully !");
     }

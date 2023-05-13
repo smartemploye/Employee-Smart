@@ -165,7 +165,8 @@ class RegisterController extends Controller
         Akun::create([
             'nisn' => $request->nisn,
             'username' => $request->username,
-            'password' => Crypt::encrypt($request->password),
+            // 'password' => Crypt::encrypt($request->password),
+            'password' => Hash::make($request->password),
         ]);
 
         DataBidang::create([
@@ -212,7 +213,7 @@ class RegisterController extends Controller
         // }
         // Register::create($validated_data);
 
-            return redirect()->route('register.index')
+            return redirect()->route('register')
                             ->with('success','Data created successfully.');
     }
     /*

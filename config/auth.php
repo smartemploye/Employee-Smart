@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'akun',
         'passwords' => 'users',
     ],
 
@@ -76,14 +76,24 @@ return [
     */
 
     'providers' => [
+        // 'users' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\User::class,
+        // ],
+
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Akun::class,
         ],
 
+        // 'akuns' => [
+        //     'driver' =>'eloquent',
+        //     'model' => App\Models\Akun::class,
+        // ],
+
         'akuns' => [
-            'driver' =>'eloquent',
-            'model' => App\Models\Akun::class,
+            'driver' =>'database',
+            'table' => 'akuns',
         ],
 
         // 'users' => [

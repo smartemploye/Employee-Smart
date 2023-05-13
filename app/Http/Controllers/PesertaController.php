@@ -16,18 +16,24 @@ class PesertaController extends Controller
 {
     public function index(Request $request)
     {
-        // dd($request);
-        if ($request->has('search')) {
-            $data = Siswa::where('tanggal_masuk', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else {
-            $data = Siswa::paginate(5);
-        }
+        // dd($request->input());
+        // if ($request->has('search')) {
+        //     $data = Siswa::where('tanggal_masuk', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        // } else {
+        //     $data = Siswa::paginate(5);
+        // }
 
         $data = DB::table('siswa')
             ->join('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
             ->join('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
             ->join('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
             ->distinct();
+
+        if($request->input('tgl_mulai')) {
+            $data->where('tgl_mulai', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else{
+        }
+
         //
         $data = $data->get([
             'siswa.id',

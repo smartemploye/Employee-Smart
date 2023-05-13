@@ -14,6 +14,8 @@ class Akun extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guard = 'akun';
+
     protected $table = "akuns";
     protected $fillable = [
         'username',

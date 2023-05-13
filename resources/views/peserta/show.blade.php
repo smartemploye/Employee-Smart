@@ -94,8 +94,8 @@
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="inputPassword" placeholder=""
-                        value="{{ Crypt::decrypt($data->password) }}">
+                    <input disabled type="text" class="form-control" id="inputPassword" placeholder=""
+                        value="{{ $data->password }}">
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                         Ganti Password
@@ -144,12 +144,12 @@
                 <div class="col-4">
                     <div class="card">
                         <img src="{{ asset('image/'. $item->bukti) }}" class="card-img-top" alt="Bukti VA">
-                    </div> 
+                    </div>
                 </div>
             @empty
                 <h2>Tidak Ada Postingan</h2>
             @endforelse
-                                
+
             </div>
             <div class="form-group row">
                 <label for="inputLogbook" class="col-sm-2 col-form-label">Logbook</label>
