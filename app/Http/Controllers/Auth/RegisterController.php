@@ -142,6 +142,7 @@ class RegisterController extends Controller
             ]);
         }
 
+        // if()
         Siswa::create([
             'nama_siswa' => $request->nama_siswa,
             'nisn' => $request->nisn,

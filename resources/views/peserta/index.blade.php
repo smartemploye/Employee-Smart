@@ -18,10 +18,10 @@
         <div class="form-group mx-sm-3 mb-2">
             <label for="inputPassword2" class="sr-only">Search</label>
             <form action="/peserta" method="GET">
-            <input type="date" class="form-control" value=""  placeholder="Search" name="tgl_mulai" style="width: 10%;">
-            <input type="date" class="form-control" value=""  placeholder="Search" name="tgl_selesai" style="width: 10%;">
-            <input type="text" class="form-control" value=""  placeholder="status" name="status" style="width: 7%;">
-            <input type="text" class="form-control" value=""  placeholder="nis/nama" name="siswa" style="width: 7%;">
+            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_mulai" style="width: 10%;">
+            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_selesai" style="width: 10%;">
+            <input type="text" class="form-control" value=""  placeholder="status" name="status_magang" style="width: 7%;">
+            <input type="text" class="form-control" value=""  placeholder="nis/nama" name="nama_siswa" style="width: 7%;">
                 <button>Tampilkan</button>
         </form>
         </div>

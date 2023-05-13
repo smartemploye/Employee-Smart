@@ -29,9 +29,21 @@ class PesertaController extends Controller
             ->join('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
             ->distinct();
 
-        if($request->input('tgl_mulai')) {
-            $data->where('tgl_mulai', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        } else{
+        if($request->input('tanggal_mulai')) {
+            $data->where('tanggal_mulai', $request->input('tanggal_mulai'));
+            // dd($request->input());
+        }
+
+        if($request->input('tanggal_selesai')) {
+            $data->where('tanggal_selesai', $request->input('tanggal_selesai'));
+        }
+
+        if($request->input('status_magang')) {
+            $data->where('status_magang', $request->input('status_magang'));
+        }
+
+        if($request->input('nama_siswa')) {
+            $data->where('nama_siswa', 'LIKE' ,'%' . $request->input('nama_siswa') .'%');
         }
 
         //
