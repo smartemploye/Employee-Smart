@@ -1,11 +1,11 @@
 @extends('layout.master')
 
 @section('judul')
-    Halaman Data Table
+Halaman Data Table
 @endsection
 
 @section('content')
 
-<h1>Kosong</h1>
+<h1>Belum ada</h1>
 
 @endsection
