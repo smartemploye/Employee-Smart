@@ -30,6 +30,7 @@ use App\Http\Controllers\LogbookController;
 use App\Http\Controllers\SettingmagangController;
 use App\Http\Controllers\komponenpenilaianController;
 use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\DataTableController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -280,6 +281,6 @@ Route::post('/changepassword', [LoginController::class, 'changePassword']);
 
 //CRUD Report-grafik-DataTable
 // DataTable
-Route::get('/datatable', [DataTableController::class, 'index']);
+Route::get('/datatable', [DataTableController::class, 'datatable']);
 
 

@@ -5,9 +5,23 @@
 @endsection
 
 @section('content')
-    <div id="reader" width="600px"></div>
-    <div class="col-4">
-        <input type="text" id="result">
+    <div class="row">
+        <div class="col-6">
+            <h3>Scan Masuk</h3>
+            <button id="startScan1" class="btn btn-primary">Scan Masuk</button>
+            <div id="reader1" width="300px"></div>
+            <div class="col-4">
+                <input type="text" id="result1">
+            </div>
+        </div>
+        <div class="col-6">
+            <h3>Scan Keluar</h3>
+            <button id="startScan2" class="btn btn-primary">Scan Keluar</button>
+            <div id="reader2" width="300px"></div>
+            <div class="col-4">
+                <input type="text" id="result2">
+            </div>
+        </div>
     </div>
 @endsection
 
@@ -19,22 +33,41 @@
 <script>
     $(function() {
 
-        
-        function onScanSuccess(decodedText, decodedResult) {
-            // dibuat ajax untuk menyimpan atau mengirim data QR Code (buat controller baru untuk menyimpan datanya sekaligus databasenya)
-
+        function onScanSuccess1(decodedText, decodedResult) {
             // Handle on success condition with the decoded text or result.
-            // console.log(`Scan result: ${decodedText}`, decodedResult);
-            $("#result").val(decodedText)
+            $("#result1").val(decodedText);
+            alert('Scan masuk berhasil!');
+
+            // Mematikan kamera setelah scan sukses
+            html5QrcodeScanner1.clear();
         }
 
-        var html5QrcodeScanner = new Html5QrcodeScanner(
-            "reader", {
+        function onScanSuccess2(decodedText, decodedResult) {
+            // Handle on success condition with the decoded text or result.
+            $("#result2").val(decodedText);
+            alert('Scan keluar berhasil!');
+
+            // Mematikan kamera setelah scan sukses
+            html5QrcodeScanner2.clear();
+        }
+
+        $("#startScan1").click(function() {
+            html5QrcodeScanner1.render(onScanSuccess1);
+        });
+
+        $("#startScan2").click(function() {
+            html5QrcodeScanner2.render(onScanSuccess2);
+        });
+
+        var html5QrcodeScanner1 = new Html5QrcodeScanner(
+            "reader1", {
                 fps: 10,
                 qrbox: 250
             });
-        html5QrcodeScanner.render(onScanSuccess);
-        // alert('Halo');
-        // console.log('Halo');
-    })
+        var html5QrcodeScanner2 = new Html5QrcodeScanner(
+            "reader2", {
+                fps: 10,
+                qrbox: 250
+            });
+    });
 </script>

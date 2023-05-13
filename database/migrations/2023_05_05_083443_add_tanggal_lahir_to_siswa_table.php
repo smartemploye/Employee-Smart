@@ -26,7 +26,7 @@ class AddTanggalLahirToSiswaTable extends Migration
     public function down()
     {
         Schema::table('siswa', function (Blueprint $table) {
-            //
+            // $table->date('tanggal_lahir')->nullable();
         });
     }
 }

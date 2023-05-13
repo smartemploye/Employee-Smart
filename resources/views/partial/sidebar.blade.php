@@ -130,7 +130,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/report" class="nav-link" style="color: white">
+                <a href="#" class="nav-link" style="color: white">
                     <i class='bx bxs-book-open'style="vertical-align: -3px;font-size: 25px"></i>
                         {{-- <i class="nav-icon fas fa-th"></i> --}}
                     <p>
