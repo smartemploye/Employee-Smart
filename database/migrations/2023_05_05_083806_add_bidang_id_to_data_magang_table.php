@@ -23,10 +23,10 @@ class AddBidangIdToDataMagangTable extends Migration
      *
      * @return void
      */
-    public function down()
-    {
-        Schema::table('data_magang', function (Blueprint $table) {
-            $table->dropColumn('bidang_id');
-        });
-    }
+    // public function down()
+    // {
+    //     Schema::table('data_magang', function (Blueprint $table) {
+    //         $table->dropColumn('bidang_id');
+    //     });
+    // }
 }
