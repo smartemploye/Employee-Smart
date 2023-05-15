@@ -18,11 +18,15 @@
         <div class="form-group mx-sm-3 mb-2">
             <label for="inputPassword2" class="sr-only">Search</label>
             <form action="/peserta" method="GET">
-            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_mulai" style="width: 10%;">
-            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_selesai" style="width: 10%;">
-            <input type="text" class="form-control" value=""  placeholder="status" name="status_magang" style="width: 7%;">
-            <input type="text" class="form-control" value=""  placeholder="nis/nama" name="nama_siswa" style="width: 7%;">
-                <button>Tampilkan</button>
+            <input type="text" class="form-control" value=""  placeholder="nis/nama" name="nama_siswa" style="width: 20%;margin-left: -15px">
+            <p style="margin-left: -15px">Nama</p>
+            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_mulai" style="width: 20%; margin-left: 270px; margin-top: -78px">
+            <p style="margin-left: 270px">Tanggal Mulai</p>
+            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_selesai" style="width: 20%;margin-left: 550px;margin-top: -78px">
+            <p style="margin-left: 550px">Tanggal Selesai</p>
+            <input type="text" class="form-control" value=""  placeholder="status" name="status_magang" style="width: 20%;margin-left: 820px;margin-top: -78px">
+            <p style="margin-left: 820px">Status</p>
+                <button style="margin-left: -15px">Tampilkan</button>
         </form>
         </div>
         <th scope="col">No</th>

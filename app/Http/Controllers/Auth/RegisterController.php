@@ -127,6 +127,9 @@ class RegisterController extends Controller
         $nip_pembimbing = DB::table('pembimbing')->where('nip_pembimbing', '=', $nip_pembimbing)->get();
         $nip_pembimbing = count(collect($nip_pembimbing));
         $nama_bidang = $request->jurusan;
+        $nama_bidang = DB::table('data_bidang')->where('nama_bidang', '=', $nama_bidang)->get();
+        $nama_bidang = count(collect($nama_bidang));
+
         // dd($request);
 
 
@@ -142,7 +145,13 @@ class RegisterController extends Controller
             ]);
         }
 
-        // if()
+        if($nama_bidang <= 0) {
+            DataBidang::create([
+                'nama_bidang' => $request->jurusan,
+                'jenis_jurusan' => $request->jenis_jurusan
+            ]);
+        }
+
         Siswa::create([
             'nama_siswa' => $request->nama_siswa,
             'nisn' => $request->nisn,
@@ -168,11 +177,6 @@ class RegisterController extends Controller
             'username' => $request->username,
             // 'password' => Crypt::encrypt($request->password),
             'password' => Hash::make($request->password),
-        ]);
-
-        DataBidang::create([
-            'nama_bidang' => $nama_bidang,
-            'jenis_jurusan' => $request->jenis_jurusan,
         ]);
 
         // $foto_siswa->move(public_path().'/image/fotosiswa', $file_foto_siswa);
