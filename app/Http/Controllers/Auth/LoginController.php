@@ -58,7 +58,7 @@ class LoginController extends Controller
 
     public function postlogin(Request $request)
     {
-        var_dump($request->all());
+        // var_dump($request->all());
 
         // if (Auth::attempt(['email'=>$request->email, 'password'=>$request->password])) {
         //     return redirect('/bayar');

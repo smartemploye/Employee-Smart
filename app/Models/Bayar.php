@@ -10,8 +10,8 @@ class Bayar extends Model
     use HasFactory;
 
     //Berhasil
-    protected $table = 'bayar';
-    protected $fillable = ['bukti'];
+    // protected $table = 'data_magang';
+    // protected $fillable = ['bukti_pembayaran'];
 
     // protected $table = 'setting_magang';
 

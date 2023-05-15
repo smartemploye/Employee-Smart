@@ -125,12 +125,13 @@ class PesertaController extends Controller
 
     public function show($id)
     {
-        $bayar = DB::table('bayar')->get();
+        //ambil gambar dari tabel data_magang kolom Bukti pembayaran
+    
         $siswa = DB::table('siswa')
         ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
         ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
         ->leftJoin('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
-        ->leftJoin('data_bidang_id', 'data_bidang_id.id', '=', 'data_magang.data_bidang_id')
+        ->leftJoin('data_bidang', 'data_bidang.id', '=', 'data_magang.bidang_id')
         ->leftJoin('akuns', 'akuns.nisn', '=', 'siswa.nisn')
         ->where('siswa.id','=',$id)
         ->get([
@@ -149,14 +150,16 @@ class PesertaController extends Controller
             'sekolah.id as id_sekolah',
             'siswa.nip_pembimbing as nip',
             'jurusan',
-            'tanggal_lahir', 'no_wa_pembimbing', 'username', 'password'
+            'tanggal_lahir', 'no_wa_pembimbing', 'username', 'password',
+            'data_magang.bukti_pembayaran'
         ]);
 
 
-
+        // ambil url gambar
+        $gambar = $siswa[0]->bukti_pembayaran;
         // dd($siswa->all());
 
-        return view('peserta.show', compact('siswa', 'bayar'));
+        return view('peserta.show', compact('siswa', 'gambar'));
     }
 
     // public function getData() {
@@ -210,7 +213,6 @@ class PesertaController extends Controller
         $data_magang_up->save();
         return redirect('/peserta');
     }
-    
 
     public function destroy($id)
     {
