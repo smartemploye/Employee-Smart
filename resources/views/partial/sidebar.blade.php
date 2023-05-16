@@ -140,7 +140,7 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                      <a href="/grafik" class="nav-link" style="color: white">
+                      <a href="/show-map" class="nav-link" style="color: white">
                         <i class="far fa-circle nav-icon"></i>
                         <p>Grafik</p>
                       </a>
