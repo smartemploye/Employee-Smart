@@ -282,11 +282,13 @@ Route::post('/changepassword', [LoginController::class, 'changePassword']);
 
 //CRUD Report-grafik-DataTable
 // DataTable
-Route::get('/datatable/(:any)', [DataTableController::class, 'datatable/$1']);
+Route::get('/datatable', [DataTableController::class, 'datatable']);
+
 
 
 //CRUD Report-grafik
 Route::get('/show-map', [GraphController::class, 'showMap']);
+Route::post('/show-chart', [GraphController::class, 'Chart']);
 
 
 
