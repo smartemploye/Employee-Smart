@@ -68,9 +68,7 @@ Route::get('/send-email', function () {
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-//Route untuk Scan QR Code
-Route::get('/', [DashController::class, 'utama']);
-Route::get('/scan', [DashController::class, 'scan']);
+
 
 
 
@@ -87,57 +85,11 @@ Route::post('/postregister', [RegisterController::class, 'store'])->name('postre
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::group(['middleware'=>['auth:user,akun']], function(){
-
-// });
-
-
-//pembayaran
-
 //admin
-// Route::get('/admin/dashboard', function () {
-//     // Only users with the "admin" role can access this route
-// })->middleware('auth', 'role:admin');
-// Route::get('/register', [RegisterController::class, 'index']);
-// Route::post('/register', [RegisterController::class, 'store']);
-//Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
-Route::get('/report', [ReportController::class, 'index'])->name('report');
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/admin/profile', [ProfileController::class, 'index'])->name('profile');
-Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
-
-// Route::get('/pembimbing', function(){
-//     return view('admin.pembimbing');
-// });
-
-// Route::get('/komponen_penilaian', function(){
-//     return view('admin.komponen_penilaian');
-// });
-
-// Route::get('/penilaian', function(){
-//     return view('admin.penilaian');
-// });
-
-// Route::get('/absensi', function(){
-//     return view('template.absensi');
-// });
-
-// Route::get('/setting_magang', function(){
-//     return view('admin.setting_magang');
-// });
-
-Route::get('send', [MailController::class, 'index']);
-
-//perizinan
-Route::get('/perizinan', [PerizinanController::class, 'index'])->name('perizinan.index');
-Route::get('/perizinan/create', [PerizinanController::class, 'create'])->name('perizinan.create');
-Route::PUT('/perizinan/store', [PerizinanController::class, 'store'])->name('perizinan.store');
-Route::get('/perizinan/edit/{id}', [PerizinanController::class, 'edit'])->name('perizinan.edit');
-Route::PUT('/perizinan/update/{id}', [PerizinanController::class, 'update'])->name('perizinan.update');
-Route::get('/perizinan/hapus/{id}', [PerizinanController::class, 'destroy'])->name('perizinan.hapus');
+Route::group(['middleware'=>['auth:admin,akun']], function(){
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
 
 //peserta
 Route::get('/peserta', [PesertaController::class, 'index'])->name('peserta.index');
@@ -173,6 +125,69 @@ Route::get('/bidang/edit/{id}', [DataBidangController::class, 'edit'])->name('bi
 Route::PUT('/bidang/update/{id}', [DataBidangController::class, 'update'])->name('bidang.update');
 Route::get('/bidang/hapus/{id}', [DataBidangController::class, 'destroy'])->name('bidang.hapus');
 
+//CRUD Halaman Setting Magang
+//Create
+//Form Tambah Setting Magang;
+
+//Read
+//Tampil Semua Data
+Route::get('/settingmagang', [SettingmagangController::class, 'index']);
+//Detail Setting Magang berdasarkan id
+Route::get('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'show']);
+
+//Update
+//Form Update Setting Magang
+Route::get('/settingmagang/{settingmagang_id}/edit', [SettingmagangController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'update']);
+
+//CRUD Halaman Komponen Penilaian
+//Create
+//Form Komponen Penilaian;
+Route::get('/komponenpenilaian/create', [komponenpenilaianController::class, 'create']);
+//Untuk kirim data ke database atau tambah data ke database
+Route::post('/komponenpenilaian', [komponenpenilaianController::class, 'store']);
+
+//Read
+//Tampil Semua Data
+Route::get('/komponenpenilaian', [komponenpenilaianController::class, 'index']);
+//Detail Komponen Penilaian berdasarkan id
+Route::get('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'show']);
+
+//Update
+//Form Update Komponen Penilaian
+Route::get('/komponenpenilaian/{komponenpenilaian_id}/edit', [komponenpenilaianController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'update']);
+
+//Delete
+//Delete berdasarkan id
+Route::delete('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'destroy']);
+
+//CRUD Halaman Penilaian
+
+//Read
+//Tampil Semua Data
+Route::get('/penilaian', [PenilaianController::class, 'index']);
+
+//Update
+//Form Update Penilaian
+Route::get('/penilaian/{penilaian_id}/edit', [PenilaianController::class, 'edit']);
+//Update data ke database berdasarkan id
+Route::put('/penilaian/update/{penilaian_id}', [PenilaianController::class, 'update']);
+
+});
+
+//siswa
+// Route::group(['middleware'=>['auth','CekLevel:akun']], function(){
+
+//perizinan
+Route::get('/perizinan', [PerizinanController::class, 'index'])->name('perizinan.index');
+Route::get('/perizinan/create', [PerizinanController::class, 'create'])->name('perizinan.create');
+Route::PUT('/perizinan/store', [PerizinanController::class, 'store'])->name('perizinan.store');
+Route::get('/perizinan/edit/{id}', [PerizinanController::class, 'edit'])->name('perizinan.edit');
+Route::PUT('/perizinan/update/{id}', [PerizinanController::class, 'update'])->name('perizinan.update');
+Route::get('/perizinan/hapus/{id}', [PerizinanController::class, 'destroy'])->name('perizinan.hapus');
 
 //CRUD Logbook
 // Route::resource('logbook', LogbookController::class);
@@ -198,68 +213,62 @@ Route::put('/logbook/{logbook_id}', [LogbookController::class, 'update']);
 //Delete berdasarkan id
 Route::delete('/logbook/{logbook_id}', [LogbookController::class, 'destroy']);
 
+// CRUD Absen
+Route::group(['prefix' => 'absen'], function () {
+    Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
+    Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
+});
+
+//CRUD Report-grafik-DataTable
+// DataTable
+Route::get('/datatable', [DataTableController::class, 'datatable']);
+
+//CRUD Report-grafik
+Route::get('/show-map', [GraphController::class, 'showMap']);
+Route::post('/show-chart', [GraphController::class, 'Chart']);
+
+//Route untuk Scan QR Code
+Route::get('/', [DashController::class, 'utama']);
+Route::get('/scan', [DashController::class, 'scan']);
+// });
 
 
-//CRUD Halaman Setting Magang
-//Create
-//Form Tambah Setting Magang;
+//pembayaran
 
-//Read
-//Tampil Semua Data
-Route::get('/settingmagang', [SettingmagangController::class, 'index']);
-//Detail Setting Magang berdasarkan id
-Route::get('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'show']);
-
-//Update
-//Form Update Setting Magang
-Route::get('/settingmagang/{settingmagang_id}/edit', [SettingmagangController::class, 'edit']);
-//Update data ke database berdasarkan id
-Route::put('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'update']);
+//admin
+// Route::get('/admin/dashboard', function () {
+//     // Only users with the "admin" role can access this route
+// })->middleware('auth', 'role:admin');
+// Route::get('/register', [RegisterController::class, 'index']);
+// Route::post('/register', [RegisterController::class, 'store']);
+//Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
+Route::get('/report', [ReportController::class, 'index'])->name('report');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/admin/profile', [ProfileController::class, 'index'])->name('profile');
+Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 
 
+// Route::get('/pembimbing', function(){
+//     return view('admin.pembimbing');
+// });
 
+// Route::get('/komponen_penilaian', function(){
+//     return view('admin.komponen_penilaian');
+// });
 
-//CRUD Halaman Komponen Penilaian
-//Create
-//Form Komponen Penilaian;
-Route::get('/komponenpenilaian/create', [komponenpenilaianController::class, 'create']);
-//Untuk kirim data ke database atau tambah data ke database
-Route::post('/komponenpenilaian', [komponenpenilaianController::class, 'store']);
+// Route::get('/penilaian', function(){
+//     return view('admin.penilaian');
+// });
 
-//Read
-//Tampil Semua Data
-Route::get('/komponenpenilaian', [komponenpenilaianController::class, 'index']);
-//Detail Komponen Penilaian berdasarkan id
-Route::get('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'show']);
+// Route::get('/absensi', function(){
+//     return view('template.absensi');
+// });
 
-//Update
-//Form Update Komponen Penilaian
-Route::get('/komponenpenilaian/{komponenpenilaian_id}/edit', [komponenpenilaianController::class, 'edit']);
-//Update data ke database berdasarkan id
-Route::put('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'update']);
+// Route::get('/setting_magang', function(){
+//     return view('admin.setting_magang');
+// });
 
-//Delete
-//Delete berdasarkan id
-Route::delete('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'destroy']);
-
-
-
-
-//CRUD Halaman Penilaian
-
-//Read
-//Tampil Semua Data
-Route::get('/penilaian', [PenilaianController::class, 'index']);
-
-//Update
-//Form Update Penilaian
-Route::get('/penilaian/{penilaian_id}/edit', [PenilaianController::class, 'edit']);
-//Update data ke database berdasarkan id
-Route::put('/penilaian/update/{penilaian_id}', [PenilaianController::class, 'update']);
-
-
-
-
+Route::get('send', [MailController::class, 'index']);
 
 //CRUD Halaman Bayar
 //Menampilkan no va dari untuk halaman bayar
@@ -281,20 +290,8 @@ Route::get('/changePassword', 'LoginController@showChangePasswordForm');
 Route::post('/changepassword', [LoginController::class, 'changePassword']);
 
 
-//CRUD Report-grafik-DataTable
-// DataTable
-Route::get('/datatable', [DataTableController::class, 'datatable']);
 
 
 
-//CRUD Report-grafik
-Route::get('/show-map', [GraphController::class, 'showMap']);
-Route::post('/show-chart', [GraphController::class, 'Chart']);
 
 
-
-// CRUD Absen
-Route::group(['prefix' => 'absen'], function () {
-    Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
-    Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
-});

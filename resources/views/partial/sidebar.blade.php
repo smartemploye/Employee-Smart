@@ -59,6 +59,7 @@
                 </a>
             </li>
             {{-- @elseif(Str::length(Auth::guard('akun')->user()) > 0) --}}
+        @if (auth()->admin()->level=="admin")
             <li class="nav-item">
                 <a href="/dashboard" class="nav-link" style="color: white">
                     <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px"></i>
@@ -113,6 +114,7 @@
                     </p>
                 </a>
             </li>
+        @endif
             <li class="nav-item">
                 <a href="#" class="nav-link" style="color: white">
                     <i class='bx bxs-book-open'style="vertical-align: -3px;font-size: 25px"></i>
@@ -165,7 +167,6 @@
                 </a>
             </li>
 
-            {{-- @endif --}}
             <li class="nav-item bg-danger">
                 <a class="nav-link" href="{{ route('logout') }}"> Logout </a>
                     {{-- <a class="nav-link" href="{{ route('logout') }}"
