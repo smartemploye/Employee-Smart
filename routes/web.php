@@ -31,6 +31,8 @@ use App\Http\Controllers\SettingmagangController;
 use App\Http\Controllers\komponenpenilaianController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\DataTableController;
+use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\GraphController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -46,7 +48,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/send-email',function(){
+Route::get('/send-email', function () {
     $data = [
         'name' => 'Syahrizal As',
         'body' => 'Testing Kirim Email di Santri Koding'
@@ -67,24 +69,23 @@ Route::get('/send-email',function(){
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Route untuk Scan QR Code
-Route::get('/',[DashController::class, 'utama']);
-Route::get('/scan',[DashController::class, 'scan']);
+Route::get('/', [DashController::class, 'utama']);
+Route::get('/scan', [DashController::class, 'scan']);
 
 
 
 // Route::get('/table',[AuthController::class, 'table']);
 // Route::post('/welcome', [AuthController::class, 'welcome']);
-Route::get('/data-table', function(){
+Route::get('/data-table', function () {
     return view('halaman.datatable');
-});
-;
+});;
 
-Route::get('/login',[LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
-Route::get('/register',[RegisterController::class, 'index'])->name('register');
-Route::post('/postregister',[RegisterController::class, 'store'])->name('postregister');
-Route::post('/postlogin',[LoginController::class, 'postlogin'])->name('postlogin');
-Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/postregister', [RegisterController::class, 'store'])->name('postregister');
+Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Route::group(['middleware'=>['auth:user,akun']], function(){
 
@@ -100,11 +101,11 @@ Route::get('/logout',[LoginController::class,'logout'])->name('logout');
 // Route::get('/register', [RegisterController::class, 'index']);
 // Route::post('/register', [RegisterController::class, 'store']);
 //Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
-Route::get('/report',[ReportController::class, 'index'])->name('report');
-Route::get('/profile',[ProfileController::class, 'index'])->name('profile');
-Route::get('/admin/profile',[ProfileController::class, 'index'])->name('profile');
-Route::post('/postlogin',[LoginController::class, 'postlogin'])->name('postlogin');
-Route::get('/dashboard', function(){
+Route::get('/report', [ReportController::class, 'index'])->name('report');
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/admin/profile', [ProfileController::class, 'index'])->name('profile');
+Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
+Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
@@ -128,10 +129,10 @@ Route::get('/dashboard', function(){
 //     return view('admin.setting_magang');
 // });
 
-Route::get('send',[MailController::class, 'index']);
+Route::get('send', [MailController::class, 'index']);
 
 //perizinan
-Route::get('/perizinan',[PerizinanController::class, 'index'])->name('perizinan.index');
+Route::get('/perizinan', [PerizinanController::class, 'index'])->name('perizinan.index');
 Route::get('/perizinan/create', [PerizinanController::class, 'create'])->name('perizinan.create');
 Route::PUT('/perizinan/store', [PerizinanController::class, 'store'])->name('perizinan.store');
 Route::get('/perizinan/edit/{id}', [PerizinanController::class, 'edit'])->name('perizinan.edit');
@@ -139,7 +140,7 @@ Route::PUT('/perizinan/update/{id}', [PerizinanController::class, 'update'])->na
 Route::get('/perizinan/hapus/{id}', [PerizinanController::class, 'destroy'])->name('perizinan.hapus');
 
 //peserta
-Route::get('/peserta',[PesertaController::class, 'index'])->name('peserta.index');
+Route::get('/peserta', [PesertaController::class, 'index'])->name('peserta.index');
 Route::get('/peserta/create', [PesertaController::class, 'create'])->name('peserta.create');
 Route::PUT('/peserta/store', [PesertaController::class, 'store'])->name('peserta.store');
 Route::get('/peserta/edit/{id}', [PesertaController::class, 'edit'])->name('peserta.edit');
@@ -149,7 +150,7 @@ Route::get('/peserta/show/{id}', [PesertaController::class, 'show'])->name('pese
 Route::get('/peserta/izin/{id}', [PesertaController::class, 'izin'])->name('peserta.izin');
 
 //pembimbing
-Route::get('/pembimbing',[PembimbingController::class, 'index'])->name('pembimbing.index');
+Route::get('/pembimbing', [PembimbingController::class, 'index'])->name('pembimbing.index');
 Route::get('/pembimbing/create', [PembimbingController::class, 'create'])->name('pembimbing.create');
 Route::PUT('/pembimbing/store', [PembimbingController::class, 'store'])->name('pembimbing.store');
 Route::get('/pembimbing/edit/{id}', [PembimbingController::class, 'edit'])->name('pembimbing.edit');
@@ -157,7 +158,7 @@ Route::PUT('/pembimbing/update/{id}', [PembimbingController::class, 'update'])->
 Route::get('/pembimbing/hapus/{id}', [PembimbingController::class, 'destroy'])->name('pembimbing.hapus');
 
 //sekolah
-Route::get('/sekolah',[SekolahController::class, 'index'])->name('sekolah.index');
+Route::get('/sekolah', [SekolahController::class, 'index'])->name('sekolah.index');
 Route::get('/sekolah/create', [SekolahController::class, 'create'])->name('sekolah.create');
 Route::PUT('/sekolah/store', [SekolahController::class, 'store'])->name('sekolah.store');
 Route::get('/sekolah/edit/{id}', [SekolahController::class, 'edit'])->name('sekolah.edit');
@@ -165,7 +166,7 @@ Route::PUT('/sekolah/update/{id}', [SekolahController::class, 'update'])->name('
 Route::get('/sekolah/hapus/{id}', [SekolahController::class, 'destroy'])->name('sekolah.hapus');
 
 //bidang
-Route::get('/bidang',[DataBidangController::class, 'index'])->name('bidang.index');
+Route::get('/bidang', [DataBidangController::class, 'index'])->name('bidang.index');
 Route::get('/bidang/create', [DataBidangController::class, 'create'])->name('bidang.create');
 Route::PUT('/bidang/store', [DataBidangController::class, 'store'])->name('bidang.store');
 Route::get('/bidang/edit/{id}', [DataBidangController::class, 'edit'])->name('bidang.edit');
@@ -189,9 +190,9 @@ Route::get('/logbook/{logbook_id}', [LogbookController::class, 'show']);
 
 //Update
 //Form Update Logbook
-Route::get('/logbook/{logbook_id}/edit',[LogbookController::class, 'edit']);
+Route::get('/logbook/{logbook_id}/edit', [LogbookController::class, 'edit']);
 //Update data ke database berdasarkan id
-Route::put('/logbook/{logbook_id}',[LogbookController::class, 'update']);
+Route::put('/logbook/{logbook_id}', [LogbookController::class, 'update']);
 
 //Delete
 //Delete berdasarkan id
@@ -211,9 +212,9 @@ Route::get('/settingmagang/{settingmagang_id}', [SettingmagangController::class,
 
 //Update
 //Form Update Setting Magang
-Route::get('/settingmagang/{settingmagang_id}/edit',[SettingmagangController::class, 'edit']);
+Route::get('/settingmagang/{settingmagang_id}/edit', [SettingmagangController::class, 'edit']);
 //Update data ke database berdasarkan id
-Route::put('/settingmagang/{settingmagang_id}',[SettingmagangController::class, 'update']);
+Route::put('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'update']);
 
 
 
@@ -233,9 +234,9 @@ Route::get('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianContro
 
 //Update
 //Form Update Komponen Penilaian
-Route::get('/komponenpenilaian/{komponenpenilaian_id}/edit',[komponenpenilaianController::class, 'edit']);
+Route::get('/komponenpenilaian/{komponenpenilaian_id}/edit', [komponenpenilaianController::class, 'edit']);
 //Update data ke database berdasarkan id
-Route::put('/komponenpenilaian/{komponenpenilaian_id}',[komponenpenilaianController::class, 'update']);
+Route::put('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'update']);
 
 //Delete
 //Delete berdasarkan id
@@ -252,9 +253,9 @@ Route::get('/penilaian', [PenilaianController::class, 'index']);
 
 //Update
 //Form Update Penilaian
-Route::get('/penilaian/{penilaian_id}/edit',[PenilaianController::class, 'edit']);
+Route::get('/penilaian/{penilaian_id}/edit', [PenilaianController::class, 'edit']);
 //Update data ke database berdasarkan id
-Route::put('/penilaian/update/{penilaian_id}',[PenilaianController::class, 'update']);
+Route::put('/penilaian/update/{penilaian_id}', [PenilaianController::class, 'update']);
 
 
 
@@ -275,7 +276,7 @@ Route::post('/bayar', [BayarController::class, 'store']);
 //Tampil Semua Data
 Route::get('/bayar', [BayarController::class, 'bayar']);
 
-Route::get('/changePassword','LoginController@showChangePasswordForm');
+Route::get('/changePassword', 'LoginController@showChangePasswordForm');
 // Route::post('/changepassword','LoginController@changePassword')->name('changePassword');
 Route::post('/changepassword', [LoginController::class, 'changePassword']);
 
@@ -285,3 +286,15 @@ Route::post('/changepassword', [LoginController::class, 'changePassword']);
 Route::get('/datatable', [DataTableController::class, 'datatable']);
 
 
+
+//CRUD Report-grafik
+Route::get('/show-map', [GraphController::class, 'showMap']);
+Route::post('/show-chart', [GraphController::class, 'Chart']);
+
+
+
+// CRUD Absen
+Route::group(['prefix' => 'absen'], function () {
+    Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
+    Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
+});
