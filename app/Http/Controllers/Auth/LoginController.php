@@ -66,11 +66,14 @@ class LoginController extends Controller
 
         // var_dump(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password]));
 
-        if(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])){
-            return redirect('/dashboard');
-        } else if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])){
-            return redirect('/dashboard');
-        } else if(Auth::guard('pembimbing')->attempt(['nip_pembimbing' => $request->email, 'password' => $request->password])){
+        // if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
+        //     return redirect('/dashboard');
+        // } else if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        //     return redirect('/dashboard');
+        // } else if (Auth::guard('pembimbing')->attempt(['nip_pembimbing' => $request->email, 'password' => $request->password])) {
+        //     return redirect('/dashboard');
+        // }
+        if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
             return redirect('/dashboard');
         }
         // die();
@@ -85,7 +88,7 @@ class LoginController extends Controller
         // } else if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
         //     return redirect()->route('bayar');
         // }
-            return redirect()->route('login')->with('error', 'Invalid email or password.');
+        return redirect()->route('login')->with('error', 'Invalid email or password.');
         // }
 
     }
