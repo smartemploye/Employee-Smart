@@ -67,7 +67,11 @@ class LoginController extends Controller
         // var_dump(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password]));
 
         if(Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])){
-            return redirect('/bayar');
+            return redirect('/dashboard');
+        } else if(Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password])){
+            return redirect('/dashboard');
+        } else if(Auth::guard('pembimbing')->attempt(['nip_pembimbing' => $request->email, 'password' => $request->password])){
+            return redirect('/dashboard');
         }
         // die();
 
@@ -80,7 +84,7 @@ class LoginController extends Controller
         //     return redirect()->route('bayar');
         // } else if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
         //     return redirect()->route('bayar');
-        // } else {
+        // }
             return redirect()->route('login')->with('error', 'Invalid email or password.');
         // }
 

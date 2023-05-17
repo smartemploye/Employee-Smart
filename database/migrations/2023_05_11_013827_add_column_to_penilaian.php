@@ -19,16 +19,16 @@ class AddColumnToPenilaian extends Migration
     }
     public function up()
     {
-        if ($this->data->count() > 0) {
-            Schema::table('penilaian', function (Blueprint $table) {
-                foreach ($this->data as $key) {
-                    if (!Schema::hasColumn('penilaian', $key->nama_komponen)) {
-                        $table->bigInteger($key->nama_komponen)->nullable();
-                    }
-                }
-                //
-            });
-        }
+        // if ($this->data->count() > 0) {
+        //     Schema::table('penilaian', function (Blueprint $table) {
+        //         foreach ($this->data as $key) {
+        //             if (!Schema::hasColumn('penilaian', $key->nama_komponen)) {
+        //                 $table->bigInteger($key->nama_komponen)->nullable();
+        //             }
+        //         }
+        //         //
+        //     });
+        // }
     }
 
 

@@ -19,17 +19,20 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
+            {{-- @foreach ($izin as $nama )
+            {{ $nama->nama_siswa }}
+            @endforeach --}}
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                      <th scope="col">No</th>
-                      <th scope="col">Dari</th>
-                      <th scope="col">Sampai</th>
-                      <th scope="col">Keterangan</th>
-                      <th scope="col">Approve</th>
-                      <th scope="col">Aksi</th>
+                        <th scope="col">No</th>
+                        <th scope="col">Dari</th>
+                        <th scope="col">Sampai</th>
+                        <th scope="col">Keterangan</th>
+                        <th scope="col">Approve</th>
+                        <th scope="col">Aksi</th>
                     </tr>
-                  </thead>
+                </thead>
                 <tbody>
                     <?php $no=1; ?>
                     @foreach ($perizinan as $item)

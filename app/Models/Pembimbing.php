@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Pembimbing extends Model
 {
     use HasFactory;
+    protected $guard = 'pembimbing';
     protected $table = 'pembimbing';
+
     protected $fillable = [
     	'id',
         'nip_pembimbing',
@@ -16,5 +18,15 @@ class Pembimbing extends Model
         'no_wa_pembimbing',
         'format_laporan_akhir',
         'sekolah_id',
+        'password'
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }

@@ -14,19 +14,27 @@
                     <div class="form-group row">
                       <label class="col-md-4 text-md-right" style="margin-top: 5px">Dari</label>
                       <div class="col-md-6">
-                        <input type="date" name="izin_dari" class="form-control" value="{{ $data->izin_dari }}">
+                        <input type="date" name="izin_dari" class="form-control" value="{{ $data->izin_dari }}" disabled>
                       </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-md-4 text-md-right" style="margin-left: 560px;margin-top: -50px">Sampai</label>
                         <div class="col-md-6">
-                          <input type="date" style="margin-left: 650px;margin-top: -55px" name="izin_sampai" class="form-control" value="{{ $data->izin_sampai }}" >
+                          <input type="date" style="margin-left: 650px;margin-top: -55px" name="izin_sampai" class="form-control" value="{{ $data->izin_sampai }}" disabled >
                         </div>
                       </div>
                     <div class="form-group">
                       <label for="inputKeteranganIzin" style="">Keterangan</label>
-                      <input type="text" class="form-control" name="keterangan" placeholder="Masukkan Keterangan" style="margin-left: 100px;margin-top: -35px;width: 900px" value="{{ $data->keterangan }}">
+                      <input type="text" class="form-control" name="keterangan" placeholder="Masukkan Keterangan" style="margin-left: 100px;margin-top: -35px;width: 900px" value="{{ $data->keterangan }}" disabled>
                     </div>
+                    <div class="form-group">
+                        <label for="inputKeteranganIzin" style="">Approve??</label>
+                        <select name="approve" id="">
+                            <option value="" selected selected>-Pilih-</option>
+                            <option value="diapprove">Diterima</option>
+                            <option value="tolak">Ditolak</option>
+                        </select>
+                      </div>
                     <input type="text" hidden name="">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

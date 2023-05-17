@@ -15,22 +15,13 @@
     </div>
     <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <!-- SidebarSearch Form -->
-    {{-- <div class="form-inline">
-      <div class="input-group" data-widget="sidebar-search">
-        <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search" style="">
-        <div class="input-group-append">
-          <button class="btn btn-sidebar">
-            <i class="fas fa-search fa-fw"></i>
-          </button>
-        </div>
-      </div>
-    </div> --}}
 
     <!-- Sidebar Menu -->
     <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
+            {{-- @if (Str::length(Auth::guard('admin')->user()) > 0) --}}
             <li class="nav-item">
                 <a href="/" class="nav-link">
                     <i class='bx bxs-dashboard text-white' style="vertical-align: -3px;font-size: 25px"></i>
@@ -40,14 +31,6 @@
                     </p>
                 </a>
             </li>
-            {{-- <li class="nav-item">
-                <a href="/logbook" class="nav-link" style="color: white"> --}}
-            {{-- <box-icon name='book-content' type='solid' ></box-icon> --}}
-            {{-- <i class="fa-solid fa-book"></i> --}}
-            {{-- <img src="{{asset ('/template/dist/img/BUKU.png') }}" alt="Logo"  >
-                    Logbook
-                </a>
-            </li> --}}
             <li class="nav-item">
                 <a href="/logbook" class="nav-link" style="color: white">
                     <i class='bx bxs-book-content'style="vertical-align: -3px;font-size: 25px"></i>
@@ -75,6 +58,7 @@
                     </p>
                 </a>
             </li>
+            {{-- @elseif(Str::length(Auth::guard('akun')->user()) > 0) --}}
             <li class="nav-item">
                 <a href="/dashboard" class="nav-link" style="color: white">
                     <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px"></i>
@@ -181,6 +165,7 @@
                 </a>
             </li>
 
+            {{-- @endif --}}
             <li class="nav-item bg-danger">
                 <a class="nav-link" href="{{ route('logout') }}"> Logout </a>
                     {{-- <a class="nav-link" href="{{ route('logout') }}"

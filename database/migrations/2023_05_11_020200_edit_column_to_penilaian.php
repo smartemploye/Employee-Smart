@@ -23,13 +23,13 @@ class EditColumnToPenilaian extends Migration
     }
     public function up()
     {
-        if ($this->oldColumn !== '') {
-            # code...
+        // if ($this->oldColumn !== '') {
+        //     # code...
 
-            Schema::table('penilaian', function (Blueprint $table) {
-                $table->bigInteger($this->newColumn);
-            });
-        }
+        //     Schema::table('penilaian', function (Blueprint $table) {
+        //         $table->bigInteger($this->newColumn);
+        //     });
+        // }
     }
 
     /**

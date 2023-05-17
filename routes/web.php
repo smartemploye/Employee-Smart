@@ -146,6 +146,7 @@ Route::get('/peserta/edit/{id}', [PesertaController::class, 'edit'])->name('pese
 Route::put('/peserta/update/{id}', [PesertaController::class, 'update'])->name('peserta.update');
 Route::get('/peserta/hapus/{id}', [PesertaController::class, 'destroy'])->name('peserta.hapus');
 Route::get('/peserta/show/{id}', [PesertaController::class, 'show'])->name('peserta.show');
+Route::get('/peserta/izin/{id}', [PesertaController::class, 'izin'])->name('peserta.izin');
 
 //pembimbing
 Route::get('/pembimbing',[PembimbingController::class, 'index'])->name('pembimbing.index');

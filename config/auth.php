@@ -52,9 +52,14 @@ return [
             'provider' => 'akuns',
         ],
 
-        'user' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
+        ],
+
+        'pembimbing' => [
+            'driver' => 'session',
+            'provider' => 'pembimbings',
         ]
     ],
 
@@ -81,10 +86,10 @@ return [
         //     'model' => App\Models\User::class,
         // ],
 
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Akun::class,
-        ],
+        // 'admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Admin::class,
+        // ],
 
         // 'akuns' => [
         //     'driver' =>'eloquent',
@@ -94,6 +99,16 @@ return [
         'akuns' => [
             'driver' =>'database',
             'table' => 'akuns',
+        ],
+
+        'admins' => [
+            'driver' =>'database',
+            'table' => 'admin',
+        ],
+
+        'pembimbings' => [
+            'driver' =>'database',
+            'table' => 'pembimbing',
         ],
 
         // 'users' => [

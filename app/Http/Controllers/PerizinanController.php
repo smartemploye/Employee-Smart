@@ -49,11 +49,9 @@ class PerizinanController extends Controller
         $databsen = DB::table('absen')
         ->where('id','=',$id)
         ->update([
-            'izin_dari' => $request['izin_dari'],
-            'izin_sampai' => $request['izin_sampai'],
-            'keterangan' => $request['keterangan'],
+            'approve' => $request['approve'],
         ]);
-        return redirect('/perizinan');
+        return back();
     }
 
     public function destroy($id)

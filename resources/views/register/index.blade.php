@@ -73,7 +73,7 @@
 
                         {{-- <h1 style="font-family: Plus Jakarta Sans; margin-top: -170px;" class="text-center">Garuda Cyber Indonesia</h1> --}}
                         <h2 class="text-center" style="margin-top: 10px;">Register</h2>
-                        <form action="/postregister" method="post">
+                        <form action="/postregister" method="post" enctype="multipart/form-data">
                             @csrf
                             <table>
                                 <tr>
@@ -403,4 +403,29 @@
         </div>
     </div>
 </div> --}}
+@endsection
+@section('script')
+<script>
+
+	$(document).ready(function() {
+		$('[name="jenis_jurusan"]').change(function() {
+			var v = $(this).val();
+			if(v.toLowerCase() == 'IT') {
+				$('#Basic').prop('checked', true);
+			} else {
+				$('#Exclusive').prop('checked', true);
+			}
+		});
+
+		$('[name="paket_magang"]').change(function() {
+			var v = $(this).val();
+			if(v.toLowerCase() == 'Basic') {
+				$('#IT').prop('checked', true);
+			} else {
+				$('#Umum').prop('checked', true);
+			}
+		});
+	});
+
+</script>
 @endsection

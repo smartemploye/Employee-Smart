@@ -55,8 +55,8 @@
           <h1 style="text-align: center; color: white;">Login</h1>
           <h2 style="color: white;">Garuda Cyber Indonesia</h2>
 
-          <label for="email" style="color: white;" >Email</label>
-          <input type="text" id="email" name="email" placeholder="Enter your Email" required>
+          <label for="email" style="color: white;" >Email/NIP</label>
+          <input type="text" id="email" name="email" placeholder="Enter your Username" required>
 
           <label for="password" style="color: white;">Password</label>
           <input type="password" id="password" name="password" placeholder="Enter your password" required>

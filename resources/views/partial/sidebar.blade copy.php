@@ -22,54 +22,7 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
-            <!-- Siswa -->
-            <li class="nav-item">
-                <a href="/" class="nav-link">
-                    <p style="font-size: 18px; color: white">
-                        {{-- <img src="{{asset ('/template/dist/img/QR.png') }}" alt="Logo"  > --}}
-                        <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px" ></i>
-                        Dashboard
-                    </p>
-                </a>
-            </li>
-            {{-- <li class="nav-item">
-                <a href="/logbook" class="nav-link" style="color: white"> --}}
-                    {{-- <box-icon name='book-content' type='solid' ></box-icon> --}}
-                    {{-- <i class="fa-solid fa-book"></i> --}}
-                    {{-- <img src="{{asset ('/template/dist/img/BUKU.png') }}" alt="Logo"  >
-                    Logbook
-                </a>
-            </li> --}}
-            <!-- Siswa -->
-            <li class="nav-item">
-                <a href="/logbook" class="nav-link" style="color: white">
-                    <p>
-                        {{-- <img src="{{asset ('/template/dist/img/BUKU.png') }}" alt="Logo"  > --}}
-                        <i class='bx bxs-book-content'style="vertical-align: -3px;font-size: 25px"  ></i>
-                        Logbook
-                    </p>
-                </a>
-            </li>
-            <!-- siswa -->
-            <li class="nav-item">
-                <a href="/perizinan" class="nav-link" style="color: white">
-                    <p>
-                        {{-- <img src="{{asset ('/template/dist/img/perizinan.png') }}" alt="Logo"  > --}}
-                        <i class='bx bxs-calendar'style="vertical-align: -3px;font-size: 25px"  ></i>
-                        Perizinan
-                    </p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="/report" class="nav-link" style="color: white">
-                    <p>
-                        {{-- <img src="{{asset ('/template/dist/img/report.png') }}" alt="Logo"  > --}}
-                        <i class='bx bxs-report'style="vertical-align: -3px;font-size: 25px"  ></i>
-                        Report dan sertifikat
-                    </p>
-                </a>
-            </li>
-            <!-- admin -->
+            @if (Str::length(Auth::guard('admin')->user()) > 0)
             <li class="nav-item">
                 <a href="/dashboard" class="nav-link" style="color: white">
                     <p>
@@ -169,6 +122,56 @@
                     </p>
                 </a>
             </li>
+            @elseif(Str::length(Auth::guard('akun')->user()) > 0)
+            <!-- Siswa -->
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <p style="font-size: 18px; color: white">
+                        {{-- <img src="{{asset ('/template/dist/img/QR.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px" ></i>
+                        Dashboard
+                    </p>
+                </a>
+            </li>
+            {{-- <li class="nav-item">
+                <a href="/logbook" class="nav-link" style="color: white"> --}}
+                    {{-- <box-icon name='book-content' type='solid' ></box-icon> --}}
+                    {{-- <i class="fa-solid fa-book"></i> --}}
+                    {{-- <img src="{{asset ('/template/dist/img/BUKU.png') }}" alt="Logo"  >
+                    Logbook
+                </a>
+            </li> --}}
+            <!-- Siswa -->
+            <li class="nav-item">
+                <a href="/logbook" class="nav-link" style="color: white">
+                    <p>
+                        {{-- <img src="{{asset ('/template/dist/img/BUKU.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-book-content'style="vertical-align: -3px;font-size: 25px"  ></i>
+                        Logbook
+                    </p>
+                </a>
+            </li>
+            <!-- siswa -->
+            <li class="nav-item">
+                <a href="/perizinan" class="nav-link" style="color: white">
+                    <p>
+                        {{-- <img src="{{asset ('/template/dist/img/perizinan.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-calendar'style="vertical-align: -3px;font-size: 25px"  ></i>
+                        Perizinan
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/report" class="nav-link" style="color: white">
+                    <p>
+                        {{-- <img src="{{asset ('/template/dist/img/report.png') }}" alt="Logo"  > --}}
+                        <i class='bx bxs-report'style="vertical-align: -3px;font-size: 25px"  ></i>
+                        Report dan sertifikat
+                    </p>
+                </a>
+            </li>
+            @endif
+
             {{-- <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

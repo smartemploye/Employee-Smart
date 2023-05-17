@@ -13,17 +13,17 @@ class CreateAkunsTable extends Migration
      */
     public function up()
     {
-        Schema::create('akuns', function (Blueprint $table) {
-            $table->id();
-            $table->string('username', 191);
-            $table->string('password', 256);
-            $table->enum('status', ['aktif', 'tidak aktif'])->nullable();
-            $table->enum('level', ['1', '2', '3'])->nullable();
-            $table->string('nisn', 10)->nullable();
-            $table->timestamp('email_verified_at')->nullable();
+        // Schema::create('akuns', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('username', 191);
+        //     $table->string('password', 256);
+        //     $table->enum('status', ['aktif', 'tidak aktif'])->nullable();
+        //     $table->enum('level', ['1', '2', '3'])->nullable();
+        //     $table->string('nisn', 10)->nullable();
+        //     $table->timestamp('email_verified_at')->nullable();
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
     }
 
     /**

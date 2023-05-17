@@ -36,9 +36,6 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
-
-
-
          $request->validate([
                 'nama_siswa' => 'required|min:9',
                 'nisn' => 'required|numeric|unique:users',
@@ -133,8 +130,8 @@ class RegisterController extends Controller
         // dd($request);
 
 
-        // $foto_siswa = $request->foto_siswa;
-        // $file_foto_siswa = $foto_siswa->getClientOriginalName();
+        $foto_siswa = $request->foto_siswa;
+        $file_foto_siswa = $foto_siswa->getClientOriginalName();
 
         if ($nip_pembimbing <= 0) {
             Pembimbing::create([
@@ -179,7 +176,7 @@ class RegisterController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // $foto_siswa->move(public_path().'/image/fotosiswa', $file_foto_siswa);
+        $foto_siswa->move(public_path().'/image/fotosiswa', $file_foto_siswa);
 
         $data = [
             'name' => 'Syahrizal As',

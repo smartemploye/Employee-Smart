@@ -18,6 +18,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- rizki -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
 <body>
     <div id="app">
@@ -80,4 +83,5 @@
         </main>
     </div>
 </body>
+@yield('script')
 </html>

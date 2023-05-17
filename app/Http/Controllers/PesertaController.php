@@ -150,7 +150,7 @@ class PesertaController extends Controller
             'sekolah.id as id_sekolah',
             'siswa.nip_pembimbing as nip',
             'jurusan',
-            'tanggal_lahir', 'no_wa_pembimbing', 'username', 'password',
+            'tanggal_lahir', 'no_wa_pembimbing', 'username', 'akuns.password AS password',
             'data_magang.bukti_pembayaran'
         ]);
 
@@ -160,6 +160,19 @@ class PesertaController extends Controller
         // dd($siswa->all());
 
         return view('peserta.show', compact('siswa', 'gambar'));
+    }
+
+    public function izin($id){
+        $izin = DB::table('siswa')
+        ->join('absen','absen.siswa_id','=','siswa.id')
+        ->where('absen.siswa_id','=',$id)
+        ->whereNotIn('absen.keterangan',[''])
+        ->get([
+            'izin_dari','izin_sampai','absen.keterangan AS keterangan','approve','absen.siswa_id AS id',
+            'siswa.nama_siswa','absen.id AS absen_id'
+        ]);
+
+        return view('perizinan.index', compact('izin'));
     }
 
     // public function getData() {

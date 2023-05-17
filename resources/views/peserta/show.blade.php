@@ -160,7 +160,7 @@
             <div class="form-group row">
                 <label for="inputPerizinan" class="col-sm-2 col-form-label">Perizinan</label>
                 <div class="col-sm-10">
-                    <a href="/perizinan"><button>Lihat</button></a>
+                    <a href="{{ route('peserta.izin', $data->id) }}"><button>Lihat</button></a>
                 </div>
             </div>
             <div class="form-group row">
