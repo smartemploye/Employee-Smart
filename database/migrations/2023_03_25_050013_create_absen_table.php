@@ -15,13 +15,13 @@ class CreateAbsenTable extends Migration
     {
         Schema::create('absen', function (Blueprint $table) {
             $table->id();
-            $table->string('absen_masuk');
-            $table->string('absen_pulang');
-            $table->enum('status_absen', ['sakit','izin']);
-            $table->text('keterangan');
-            $table->unsignedBigInteger('admin_id');
+            $table->string('absen_masuk')->nullable();
+            $table->string('absen_pulang')->nullable();
+            $table->enum('status_absen', ['hadir','alpa','sakit','izin'])->nullable();
+            $table->text('keterangan')->nullable();;
+            $table->unsignedBigInteger('admin_id')->nullable();
            // $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
-            $table->unsignedBigInteger('siswa_id');
+            $table->unsignedBigInteger('siswa_id')->nullable();
            // $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

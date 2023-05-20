@@ -47,6 +47,8 @@ use App\Http\Controllers\GraphController;
 Route::get('/', function () {
     return view('welcome');
 });
+//absen
+// Route::resource('/absen', [AbsenController::class, 'create']);
 
 Route::get('/send-email', function () {
     $data = [
@@ -295,3 +297,16 @@ Route::post('/changepassword', [LoginController::class, 'changePassword']);
 
 
 
+<<<<<<< Updated upstream
+=======
+
+// CRUD Absen
+// Route::group(['prefix' => 'absen'], function () {
+//     Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
+//     Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
+// });
+Route::resource('absen', AbsenController::class)->only(['create', 'store'])->names([
+    'create' => 'absen.create',
+    'store' => 'absen.store'
+]);
+>>>>>>> Stashed changes
