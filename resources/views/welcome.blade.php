@@ -1,8 +1,7 @@
-
 @extends('layout.master')
 
 @section('judul')
-SmartInternship
+Smart
 @endsection
 
 @section('content')
@@ -10,7 +9,7 @@ SmartInternship
 {{-- Berhasil --}}
 <div class="p-6">
     <div class="visible-print text-center">
-        {!! QrCode::size(300)->generate("PT GARUDA CYBER INDOESIA"); !!}
+        {!! QrCode::size(300)->generate("20101001"); !!}
         <p>Scan me to return to the original page.</p>
     </div>
 </div>
