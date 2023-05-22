@@ -33,4 +33,13 @@ class Akun extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function siswa()
+    {
+
+        return $this->hasOne(Siswa::class, 'nisn', 'nisn');
+    }
+
+
+
 }

@@ -89,26 +89,6 @@ class RegisterController extends Controller
             'username.email' => 'Format email salah!',
             ]);
 
-        // $v = Validator::make($request->input(), [
-        //         'nama_siswa' => 'required|min:9',
-        //         'nisn' => 'required|numeric|unique:users',
-        //         'password' => 'required',
-        //         'password_confirmation' => 'required|same:password',
-        //         'sekolah_id' => 'required',
-        //         'jenis_jurusan' => 'required',
-        //         'no_wa' => 'required|numeric|digits_between:12,13',
-        //         'foto_siswa' => 'required',
-        //         'tanggal_lahir' => 'required|before:today',
-        //         'jurusan' => 'required',
-        //         'paket_magang' => 'required',
-        //         'nama_pembimbing' => 'required',
-        //         'nip_pembimbing' => 'required|numeric|digits:18|unique:users',
-        //         'no_wa_pembimbing' => 'required|numeric|digits_between:12,14',
-        //         'ukuran_baju' => 'required',
-        //         'surat_pengajuan' => 'required',
-        //         'username' => 'required|email',
-        //         ]);
-
         //         var_dump($v->fails());
         //         var_dump($v->errors());
 
@@ -133,12 +113,15 @@ class RegisterController extends Controller
         $foto_siswa = $request->foto_siswa;
         $file_foto_siswa = $foto_siswa->getClientOriginalName();
 
+        // dd($file_foto_siswa);
+
         if ($nip_pembimbing <= 0) {
             Pembimbing::create([
                 'nip_pembimbing' => $request->nip_pembimbing,
                 'nama_pembimbing' => $request->nama_pembimbing,
                 'no_wa_pembimbing' => $request->no_wa_pembimbing,
-                'sekolah_id' => $request->sekolah_id
+                'sekolah_id' => $request->sekolah_id,
+                'password' => Hash::make('123'),
             ]);
         }
 
@@ -157,7 +140,7 @@ class RegisterController extends Controller
             'jurusan' => $request->jurusan,
             'nip_pembimbing' => $request->nip_pembimbing,
             'tanggal_lahir' => $request->tanggal_lahir,
-            'foto_siswa' => $request->foto_siswa,
+            'foto_siswa' =>  $file_foto_siswa,
         ]);
 
         DataMagang::create([

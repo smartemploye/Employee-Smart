@@ -17,12 +17,15 @@
         <img src="{{asset ('/template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" style="margin-top: 0px;width: 50px;height: 50px;margin-right: 10px">
       </div>
       <li>
-
-        <div class="info">
-            <a href="/profile" class="d-block" style="margin-top: 10px;margin-right: 10px">Alexander Pierce</a>
+        {{-- <div class="info">
+            <a href="/profile" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->siswa->nama_siswa }}</a>
           </div>
+        <div class="info">
+            <a href="/profile" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->admin->nama_admin }}</a>
+        </div> --}}
       </li>
     </ul>
 
     <!-- Right navbar links -->
   </nav>
+  {{-- {{ auth()->user()->siswa->nama_siswa }} --}}

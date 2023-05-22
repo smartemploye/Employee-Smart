@@ -9,7 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DataMagang;
 use App\Models\Sekolah;
 use App\Models\Siswa;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
 class PesertaController extends Controller

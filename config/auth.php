@@ -91,15 +91,15 @@ return [
         //     'model' => App\Models\Admin::class,
         // ],
 
-        // 'akuns' => [
-        //     'driver' =>'eloquent',
-        //     'model' => App\Models\Akun::class,
-        // ],
-
         'akuns' => [
-            'driver' =>'database',
-            'table' => 'akuns',
+            'driver' =>'eloquent',
+            'model' => App\Models\Akun::class,
         ],
+
+        // 'akuns' => [
+        //     'driver' =>'database',
+        //     'table' => 'akuns',
+        // ],
 
         'admins' => [
             'driver' =>'database',

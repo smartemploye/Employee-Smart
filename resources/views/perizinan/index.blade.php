@@ -1,5 +1,7 @@
 @extends('layout.master')
+@section('nama_profile')
 
+@endsection
 @section('content')
 
 <div class="card shadow mb-4">

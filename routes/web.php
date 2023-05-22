@@ -244,7 +244,7 @@ Route::get('/scan', [DashController::class, 'scan']);
 //Route::get('/logbook',[LogbookController::class, 'index'])->name('logbook');
 Route::get('/report', [ReportController::class, 'index'])->name('report');
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/admin/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 
 

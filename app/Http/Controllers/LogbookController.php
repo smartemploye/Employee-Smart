@@ -24,7 +24,7 @@ class LogbookController extends Controller
             'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
         ]);
 
-        $fileName = time().'.'.$request->dokumentasi->extension();  
+        $fileName = time().'.'.$request->dokumentasi->extension();
         $request->dokumentasi->move(public_path('image'), $fileName);
         $logbook = new Logbook;
 
@@ -44,7 +44,7 @@ class LogbookController extends Controller
     {
         $logbook = DB::table('kegiatan_harian')->get();
         // dd($logbook);
- 
+
         return view('logbook.tampil', ['logbook' => $logbook]);
     }
 
@@ -60,7 +60,7 @@ class LogbookController extends Controller
     {
         $logbook = DB::table('kegiatan_harian')->where('id', $id)->first();
 
-        return view('logbook.edit', ['logbook' => $logbook]); 
+        return view('logbook.edit', ['logbook' => $logbook]);
     }
 
     public function update(Request $request, $id)
@@ -75,7 +75,7 @@ class LogbookController extends Controller
 
         ]);
 
-        $fileName = time().'.'.$request->dokumentasi->extension();  
+        $fileName = time().'.'.$request->dokumentasi->extension();
         $request->dokumentasi->move(public_path('image'), $fileName);
         // $logbook = new Logbook;
         // $logbook->dokumentasi = $fileName;
@@ -101,5 +101,5 @@ class LogbookController extends Controller
 
         return redirect('/logbook');
     }
-    
+
 }
