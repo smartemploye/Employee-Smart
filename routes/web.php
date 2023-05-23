@@ -33,6 +33,9 @@ use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\DataTableController;
 use App\Http\Controllers\AbsenController;
 use App\Http\Controllers\GraphController;
+use App\Http\Controllers\QrController;
+use App\Http\Controllers\DataAbsensiController;
+use App\Http\Controllers\JumlahPesertaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -221,7 +224,7 @@ Route::group(['prefix' => 'absen'], function () {
     Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
 });
 
-//CRUD Report-grafik-DataTable
+//CRUD Report-DataTable
 // DataTable
 Route::get('/datatable', [DataTableController::class, 'datatable']);
 
@@ -293,20 +296,19 @@ Route::post('/changepassword', [LoginController::class, 'changePassword']);
 
 
 
-
-
-
-
-<<<<<<< Updated upstream
-=======
-
-// CRUD Absen
-// Route::group(['prefix' => 'absen'], function () {
-//     Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
-//     Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
-// });
 Route::resource('absen', AbsenController::class)->only(['create', 'store'])->names([
     'create' => 'absen.create',
     'store' => 'absen.store'
 ]);
->>>>>>> Stashed changes
+Route::post('/absen', [AbsenController::class, 'Absen']);
+
+
+//Halaman qr-code
+Route::get('/qr-code', [QrController::class, 'generateQrCode'])->name('qr-code');
+
+//Data Tabel Absensi
+Route::get('/absensi', [DataAbsensiController::class, 'absensi']);
+
+
+//Dashboard Menampilkan Jumlah peserta yang hadir hari ini dan bulan ini
+Route::get('/jumlah-peserta', [JumlahPesertaController::class, 'jumlahPeserta']);

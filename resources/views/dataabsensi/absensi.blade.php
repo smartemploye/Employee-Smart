@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('judul')
-Halaman Data Table
+Halaman Data Table Absensi
 @endsection
 
 @section('content')
@@ -26,10 +26,9 @@ Halaman Data Table
         <tr>
             <th>Nama Siswa</th>
             <th>NISN</th>
-            <th>Tanggal Mulai</th>
-            <th>Tanggal Selesai</th>
-            <th>Status Magang</th>
-            <th>Jumlah Hadir</th>
+            <th>Absen Masuk</th>
+            <th>Absen Pulang</th>
+            <th>Status Absen</th>
         </tr>
     </thead>
     <tbody>
@@ -37,16 +36,15 @@ Halaman Data Table
         <tr>
             <td>{{ $siswa->nama_siswa }}</td>
             <td>{{ $siswa->nisn }}</td>
-            <td>{{ $siswa->tanggal_mulai }}</td>
-            <td>{{ $siswa->tanggal_selesai }}</td>
-            <td>{{ $siswa->status_magang }}</td>
-            <td>{{ $siswa->jumlah_hadir }}</td>
+            <td>{{ $siswa->absen_masuk }}</td>
+            <td>{{ $siswa->absen_pulang }}</td>
+            <td>{{ $siswa->status_absen }}</td>
         </tr>
         @endforeach
     </tbody>
 </table>
 @else
-<h1>Belum ada data</h1>
+<h1>Belum ada data absensi</h1>
 @endif
 
 @endsection

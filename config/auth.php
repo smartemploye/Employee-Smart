@@ -111,10 +111,10 @@ return [
             'table' => 'pembimbing',
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ]
+        'users' => [
+            'driver' => 'database',
+            'model' => App\Models\Akuns::class,
+        ]
     ],
 
     /*
