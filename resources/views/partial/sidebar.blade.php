@@ -22,7 +22,7 @@
 
             @if (Auth::guard('akun')->user()->role == 'admin')
                 <li class="nav-item">
-                    <a href="/dashboard" class="nav-link" style="color: white">
+                    <a href="/jumlah-peserta" class="nav-link" style="color: white">
                         <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px"></i>
                         <p>
                             Dashboard
@@ -109,7 +109,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/scan" class="nav-link" style="color: white">
+                    <a href="/absensi" class="nav-link" style="color: white">
                         <i class='bx bxs-time' style="vertical-align: -3px;font-size: 25px"></i>
                         <p>
                             Absensi
@@ -118,7 +118,7 @@
                 </li>
             @elseif(Auth::guard('akun')->user())
                 <li class="nav-item">
-                    <a href="/" class="nav-link">
+                    <a href="/scan" class="nav-link">
                         <i class='bx bxs-dashboard text-white' style="vertical-align: -3px;font-size: 25px"></i>
                         <p style="font-size: 18px; color: white">
                             Dashboard

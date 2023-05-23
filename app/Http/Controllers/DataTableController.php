@@ -11,23 +11,14 @@ class DataTableController extends Controller
 {
         public function datatable()
         {
-
-                $siswaData = DB::table('siswa')
-                        ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
-                        ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
-                        ->get([
-
-                                'siswa.nisn',
-
-                                'nama_siswa',
-
-                                'tanggal_mulai',
-                                'tanggal_selesai',
-
-                                'data_magang.status_magang',
-
-                        ]);
-
-                return View::make('report.datatable', ['siswaData' => $siswaData]);
+            $siswaData = DB::table('siswa')
+                ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
+                ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
+                ->leftJoin('absen', 'absen.nisn', '=', 'siswa.nisn')
+                ->select('siswa.nisn', 'siswa.nama_siswa', 'siswa.tanggal_mulai', 'siswa.tanggal_selesai', 'data_magang.status_magang', DB::raw('COUNT(absen.status_absen) as jumlah_hadir'))
+                ->groupBy('siswa.nisn', 'siswa.nama_siswa', 'siswa.tanggal_mulai', 'siswa.tanggal_selesai', 'data_magang.status_magang')
+                ->get();
+    
+            return View::make('report.datatable', ['siswaData' => $siswaData]);
         }
 }

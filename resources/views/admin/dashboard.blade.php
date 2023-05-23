@@ -1,18 +1,15 @@
 @extends('layout.master')
 
-@section('content')
-    Dashboard
-
-
-    <div class="kotak1"
-        style="padding-left: 10px;background-color: #bb1d1d;border-style: solid;width: 300px;height: 150px;color: white">
-        <h1>37</h1>
-        <h3>Peserta yang hadir</h3>
-    </div>
-    <div class="kotak1"
-        style="padding-left: 10px;background-color: gray;color:white; solid;width: 300px;height: 150px; margin-left: 320px;margin-top: -150px">
-        <h1>50</h1>
-        <h3>Peserta Magang Bulan ini</h3>
-    </div>
-    {{-- <?php  var_dump(Auth::guard('akun')->user()) ?> --}}
+@section('judul')
+Selamat Datang
 @endsection
+
+@section('content')
+<div style="text-align: center;">
+    <h3 style="color: #000000;">Selamat Datang</h3>
+    <h5 style="color: #0000FF;">Di PT Garuda Cyber Indonesia</h5>
+    <img src="https://karirlab-prod-bucket.s3.ap-southeast-1.amazonaws.com/files/privates/hRR3VoAqhaZOhh4xukWm1113ZxqI6vaJnzs9I1xZ.png" alt="Logo" style="max-width: 400px; height: auto;">
+</div>
+{{-- <?php  var_dump(Auth::guard('akun')->user()) ?> --}}
+@endsection
+

@@ -34,6 +34,13 @@ use App\Http\Controllers\ProfileAdminController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\SettingmagangController;
 use App\Http\Controllers\komponenpenilaianController;
+use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\DataTableController;
+use App\Http\Controllers\AbsenController;
+use App\Http\Controllers\GraphController;
+use App\Http\Controllers\QrController;
+use App\Http\Controllers\DataAbsensiController;
+use App\Http\Controllers\JumlahPesertaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -227,7 +234,7 @@ Route::group(['prefix' => 'absen'], function () {
     Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
 });
 
-//CRUD Report-grafik-DataTable
+//CRUD Report-DataTable
 // DataTable
 Route::get('/datatable', [DataTableController::class, 'datatable']);
 
@@ -302,6 +309,9 @@ Route::get('/bayar', [BayarController::class, 'bayar']);
 
 
 
+<<<<<<< Updated upstream
+=======
+
 // CRUD Absen
 // Route::group(['prefix' => 'absen'], function () {
 //     Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
@@ -311,3 +321,7 @@ Route::resource('absen', AbsenController::class)->only(['create', 'store'])->nam
     'create' => 'absen.create',
     'store' => 'absen.store'
 ]);
+>>>>>>> Stashed changes
+
+//Dashboard Menampilkan Jumlah peserta yang hadir hari ini dan bulan ini
+Route::get('/jumlah-peserta', [JumlahPesertaController::class, 'jumlahPeserta']);
