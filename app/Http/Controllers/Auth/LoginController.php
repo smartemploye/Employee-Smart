@@ -44,7 +44,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except(['logout','changePassword']);
     }
 
     public function index()
@@ -73,7 +73,7 @@ class LoginController extends Controller
         // } else if (Auth::guard('pembimbing')->attempt(['nip_pembimbing' => $request->email, 'password' => $request->password])) {
         //     return redirect('/dashboard');
         // }
-        if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
+        if (Auth::guard('akun')->attempt([ 'username' => $request->email, 'password' => $request->password])) {
             return redirect('/dashboard');
         }
         // die();
@@ -88,6 +88,7 @@ class LoginController extends Controller
         // } else if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
         //     return redirect()->route('bayar');
         // }
+        //pengecekan
         return redirect()->route('login')->with('error', 'Invalid email or password.');
         // }
 
@@ -108,7 +109,6 @@ class LoginController extends Controller
 
     public function changePassword(Request $request)
     {
-
 
         if ($request->password != $request->confpassword) {
             // The passwords matches

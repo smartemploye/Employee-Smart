@@ -37,16 +37,17 @@
                 </thead>
                 <tbody>
                     <?php $no=1; ?>
-                    @foreach ($perizinan as $item)
+                    @foreach ($izin as $izin)
                     <tr>
                         <td>{{$no++ }}</td>
-                        <td>{{$item->izin_dari}}</td>
-                        <td>{{$item->izin_sampai }}</td>
-                        <td>{{$item->keterangan }}</td>
-                        <td>{{$item->approve }}</td>
-                        <td> <a href="{{ route('perizinan.edit', $item->id) }}" class="btn btn-success">
-                            <i class='bx bxs-pencil' ></i> Edit</a>
-                            <a href="{{ route('perizinan.hapus', $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash' ></i> Hapus</a></td>
+                        <td>{{$izin->izin_dari}}</td>
+                        <td>{{$izin->izin_sampai }}</td>
+                        <td>{{$izin->keterangan }}</td>
+                        <td>{{$izin->approve }}</td>
+                        <td>
+                            {{-- <a href="{{ route('perizinan.edit', $item->id) }}" class="btn btn-success"> --}}
+                            {{-- <i class='bx bxs-pencil' ></i> Edit</a> --}}
+                            <a href="{{ route('perizinan.hapus', $izin->id) }}" class="btn btn-danger"><i class='bx bxs-trash' ></i> Hapus</a></td>
                     </tr>
                     @endforeach
                 </tbody>

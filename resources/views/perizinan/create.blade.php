@@ -22,7 +22,7 @@
                           <input type="date" style="margin-left: 650px;margin-top: -55px" name="izin_sampai" class="form-control" >
                         </div>
                       </div>
-                    <div class="form-group">
+                    <div class="form-+group">
                       <label for="inputKeteranganIzin" style="">Keterangan</label>
                       <input type="text" class="form-control" name="keterangan" placeholder="Masukkan Keterangan" style="margin-left: 100px;margin-top: -35px;width: 900px">
                     </div>

@@ -56,7 +56,8 @@ class PesertaController extends Controller
             'judul_project',
             'status_magang',
             'nama_pembimbing',
-            'keterangan'
+            'keterangan',
+            'siswa.nisn AS nisn'
         ]);
         // $enkrip = Crypt::encrypt('8888');
         // echo $enkrip.'<br>';
@@ -232,8 +233,12 @@ class PesertaController extends Controller
     public function destroy($id)
     {
         $siswa = DB::table('siswa')
-            ->where('id', '=', $id)
+            ->where('nisn', '=', $id)
             ->delete();
+
+        $siswa = DB::table('akuns')
+        ->where('nisn', '=', $id)
+        ->delete();
 
         return back();
     }

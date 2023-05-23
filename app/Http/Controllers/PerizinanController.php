@@ -13,8 +13,9 @@ class PerizinanController extends Controller
     public function index()
     {
         $perizinan = DB::table('absen')
+        ->where('siswa_id','=',auth()->user()->siswa->id)
         ->get(['id','izin_dari','izin_sampai', 'keterangan', 'approve']);
-
+        // dd($perizinan);
         return view('perizinan.index', compact('perizinan'));
     }
 
@@ -27,12 +28,16 @@ class PerizinanController extends Controller
     {
         // dd($request->all());
         $status = "proses";
-        Absen::create([
+        $data = [
+            'siswa_id'=>Auth::user()->siswa->id,
             'izin_dari' => $request->izin_dari,
             'izin_sampai' => $request->izin_sampai,
             'keterangan' => $request->keterangan,
-            'approve' => $status
-        ]);
+            'approve' => $status,
+            // dd($request->all())
+        ];
+        // dd($data);
+        Absen::create($data);
         return redirect('/perizinan');
     }
 
@@ -42,7 +47,7 @@ class PerizinanController extends Controller
         ->where('id','=',$id)
         ->get();
 
-        return view('perizinan.edit', compact('databsen'));
+        return view('izin_admin.edit', compact('databsen'));
     }
 
     public function update(Request $request, $id)

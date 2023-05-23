@@ -17,10 +17,16 @@
         <img src="{{asset ('/template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" style="margin-top: 0px;width: 50px;height: 50px;margin-right: 10px">
       </div>
       <li>
-        {{-- <div class="info">
-            <a href="/profile" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->siswa->nama_siswa }}</a>
-          </div>
         <div class="info">
+            @if (Auth::guard('akun')->user()->role == 'siswa')
+            <a href="/profile" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->siswa->nama_siswa }}</a>
+            @elseif(Auth::guard('akun')->user()->role == 'pembimbing')
+            <a href="/profile_pembimbing" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->pembimbing->nama_pembimbing }}</a>
+            @else
+            <a href="/profile_admin" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->username }}</a>
+            @endif
+          </div>
+        {{-- <div class="info">
             <a href="/profile" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->admin->nama_admin }}</a>
         </div> --}}
       </li>

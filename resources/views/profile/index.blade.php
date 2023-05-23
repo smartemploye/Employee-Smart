@@ -174,4 +174,5 @@
                 <a href="/report"><button>Lihat</button></a>
             </div>
         </div>
+        
 @endsection

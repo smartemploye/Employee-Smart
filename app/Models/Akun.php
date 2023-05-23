@@ -22,7 +22,8 @@ class Akun extends Authenticatable implements MustVerifyEmail
         'password',
         'status',
         'nisn',
-        'level',
+        'role',
+        'nip_pembimbing'
     ];
 
     protected $hidden = [
@@ -40,6 +41,11 @@ class Akun extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Siswa::class, 'nisn', 'nisn');
     }
 
+    public function pembimbing()
+    {
+
+        return $this->hasOne(Pembimbing::class, 'nip_pembimbing', 'username');
+    }
 
 
 }

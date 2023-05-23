@@ -115,13 +115,21 @@ class RegisterController extends Controller
 
         // dd($file_foto_siswa);
 
+        $role = 'siswa';
         if ($nip_pembimbing <= 0) {
             Pembimbing::create([
                 'nip_pembimbing' => $request->nip_pembimbing,
                 'nama_pembimbing' => $request->nama_pembimbing,
                 'no_wa_pembimbing' => $request->no_wa_pembimbing,
                 'sekolah_id' => $request->sekolah_id,
+
+            ]);
+
+            Akun::create([
+                'username'=> $request->nip_pembimbing,
                 'password' => Hash::make('123'),
+                'role'=> 'pembimbing',
+                'nip_pembimbing'=>$request->nip_pembimbing,
             ]);
         }
 
@@ -155,8 +163,10 @@ class RegisterController extends Controller
         Akun::create([
             'nisn' => $request->nisn,
             'username' => $request->username,
+            'nip_pembimbing'=> $request->nip_pembimbing,
             // 'password' => Crypt::encrypt($request->password),
             'password' => Hash::make($request->password),
+            'role'=>$role,
         ]);
 
         $foto_siswa->move(public_path().'/image/fotosiswa', $file_foto_siswa);

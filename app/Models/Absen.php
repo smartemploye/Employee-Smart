@@ -11,5 +11,5 @@ class Absen extends Model
     use HasFactory;
 
     protected $table = 'absen';
-    protected $fillable = ['absen_masuk', 'absen_pulang', 'status_absen', 'nisn'];
+    protected $fillable = ['absen_masuk', 'absen_pulang', 'siswa_id','status_absen', 'nisn','izin_dari','izin_sampai','keterangan'];
 }

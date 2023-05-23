@@ -29,4 +29,10 @@ class Pembimbing extends Model
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function akun()
+    {
+
+        return $this->belongsTo(Akun::class, 'username', 'username');
+    }
 }
