@@ -109,11 +109,12 @@ class RegisterController extends Controller
 
         // dd($request);
 
-
         $foto_siswa = $request->foto_siswa;
         $file_foto_siswa = $foto_siswa->getClientOriginalName();
-
         // dd($file_foto_siswa);
+
+        $surat_pengajuan = $request->surat_pengajuan;
+        $file_surat_pengajuan = $surat_pengajuan->getClientOriginalName();
 
         $role = 'siswa';
         if ($nip_pembimbing <= 0) {
@@ -122,6 +123,7 @@ class RegisterController extends Controller
                 'nama_pembimbing' => $request->nama_pembimbing,
                 'no_wa_pembimbing' => $request->no_wa_pembimbing,
                 'sekolah_id' => $request->sekolah_id,
+                'password' => Hash::make('123'),
 
             ]);
 
@@ -155,7 +157,7 @@ class RegisterController extends Controller
             'bidang_id' => $request->bidang_id,
             'nisn' => $request->nisn,
             'paket_magang' => $request->paket_magang,
-            'surat_pengajuan' => $request->surat_pengajuan,
+            'surat_pengajuan' => $file_surat_pengajuan,
             'ukuran_baju' => $request->ukuran_baju,
         ]);
 
@@ -170,6 +172,8 @@ class RegisterController extends Controller
         ]);
 
         $foto_siswa->move(public_path().'/image/fotosiswa', $file_foto_siswa);
+
+        $surat_pengajuan->move(public_path().'/surat_pengajuan', $file_surat_pengajuan);
 
         $data = [
             'name' => 'Syahrizal As',

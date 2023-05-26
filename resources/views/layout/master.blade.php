@@ -19,6 +19,8 @@
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
     @stack('styles')
 </head>
 
@@ -28,17 +30,19 @@
         <!-- Navbar -->
         @include('partial.nav')
         <!-- /.navbar -->
-
+        @if(Auth::guard('akun')->user()->role != 'pembimbing')
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar elevation-4" style="background-color: #bb1d1d">
             <!-- Brand Logo -->
 
 
             <!-- Sidebar -->
+
             @include('partial.sidebar')
+
             <!-- /.sidebar -->
         </aside>
-
+        @endif
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -110,6 +114,8 @@
         crossorigin="anonymous"></script>
     @stack('scripts')
 
-</body>
 
+
+</body>
+@yield('script')
 </html>

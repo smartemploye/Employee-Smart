@@ -7,6 +7,20 @@
         <div class="row">
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Data Bidang</h6>
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#bidang-table').DataTable();
+        });
+
+        function confirmDelete(url) {
+            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                window.location.href = url;
+            }
+        }
+    </script>
             </div>
             <div class="col-9" >
                 <a class="btn btn-success fa-pull-right" href="{{ route('bidang.create') }}" >
@@ -37,7 +51,7 @@
                         <td>{{$item->jenis_jurusan}}</td>
                         <td> <a href="{{ route('bidang.edit', $item->id) }}" class="btn btn-success">
                             <i class='bx bxs-pencil' ></i> Edit</a>
-                            <a href="{{ route('bidang.hapus', $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash' ></i> Hapus</a></td>
+                            <a href="javascript:void(0);" onclick="confirmDelete('{{ route('bidang.hapus', $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash' ></i> Hapus</a></td>
                     </tr>
                     @endforeach
                 </tbody>

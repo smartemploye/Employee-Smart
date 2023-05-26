@@ -6,15 +6,17 @@ Halaman Logbook
 
 @section('content')
 
+@include('sweetalert::alert')
 <form action="/logbook" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
-      <label>Tanggal Logbook</label>
-      <input type="date" name="tanggal_logbook" class="form-control">
-    </div>
-    @error('tanggal_logbook')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+        <label for="inputBirthdate">Tanggal Logbook</label>
+        <input type="date" name="tanggal_logbook" class="form-control @error('tanggal_logbook') is-invalid @enderror" id="inputBirthdate" value="{{ old('tanggal_logbook') }}">
+        @error('tanggal_logbook')
+          <div class="invalid-feedback">{{ $message }}</div>
+        @enderror
+      </div>
+
     <div class="form-group">
       <label>Deskripsi Logbook</label>
       <textarea name="logbook" class="form-control" cols="30" rows="10"></textarea>
@@ -34,3 +36,4 @@ Halaman Logbook
   </form>
 
 @endsection
+

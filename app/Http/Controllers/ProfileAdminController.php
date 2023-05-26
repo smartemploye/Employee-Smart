@@ -10,8 +10,9 @@ class ProfileAdminController extends Controller
 {
     public function index(Request $id)
     {
-        
+
         return view('profile_admin.index');
     }
+
 
 }

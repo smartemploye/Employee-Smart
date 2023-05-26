@@ -7,6 +7,20 @@
         <div class="row">
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Peserta</h6>
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('#siswa-table').DataTable();
+                    });
+
+                    function confirmDelete(url) {
+                        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                            window.location.href = url;
+                        }
+                    }
+                </script>
             </div>
         </div>
     </div>
@@ -55,7 +69,7 @@
             <td>{{$dt->judul_project }}</td>
             <td>{{$dt->nama_pembimbing }}</td>
             <td><a href="{{ route('peserta.edit', $dt->id) }}" class="btn btn-success"><i class='bx bxs-pencil' style="width: 15px;height: 20px;"></i> Edit</a>
-                <a href="{{ route('peserta.hapus', $dt->nisn) }}" class="btn btn-danger"><i class='bx bxs-trash' style="width: 15px;height: 20px;" ></i> Hapus</a>
+                <a href="javascript:void(0);" onclick="confirmDelete('{{ route('peserta.hapus', $dt->nisn) }}')" class="btn btn-danger"><i class='bx bxs-trash' style="width: 15px;height: 20px;"></i> Hapus</a>
                 <a href="{{ route('peserta.show', $dt->id) }}" class="btn btn-warning" style="color: white;margin-left: 165px;margin-top: -65px;"><i class='bx bx-zoom-in'></i> Detail</a>
             </td>
         </tr>

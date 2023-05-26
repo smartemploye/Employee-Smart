@@ -36,7 +36,7 @@ class ProfileController extends Controller
             'siswa.nip_pembimbing as nip',
             'jurusan',
             'tanggal_lahir', 'no_wa_pembimbing', 'username', 'akuns.password AS password',
-            'data_magang.bukti_pembayaran'
+            'data_magang.bukti_pembayaran','surat_pengajuan'
         ])->first();
 
         $gambar = $siswa->bukti_pembayaran;

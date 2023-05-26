@@ -14,7 +14,9 @@
         <a href="#" class="nav-link">Contact</a>
       </li> --}}
       <div class="image">
-        <img src="{{asset ('/template/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image" style="margin-top: 0px;width: 50px;height: 50px;margin-right: 10px">
+        @if (Auth::guard('akun')->user()->role == 'siswa')
+        <img src="{{asset ('image/fotosiswa/'.auth()->user()->siswa->foto_siswa) }}" class="img-circle elevation-2" alt="0" style="margin-top: 0px; width: 50px;height: 50px;margin-right: 10px">
+        @endif
       </div>
       <li>
         <div class="info">
@@ -31,7 +33,13 @@
         </div> --}}
       </li>
     </ul>
-
+    <div class="btn-group">
+        <button type="button" class="dropdown-toggle dropdown-hover dropdown-icon" data-toggle="dropdown">
+        <span class="sr-only">Toggle Dropdown</span>
+        </button>
+        <div class="dropdown-menu" role="menu">
+        <a class="dropdown-item" href="{{ route('logout') }}">logout</a>
+        <div class="dropdown-divider"></div>
     <!-- Right navbar links -->
   </nav>
   {{-- {{ auth()->user()->siswa->nama_siswa }} --}}

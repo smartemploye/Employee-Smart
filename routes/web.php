@@ -1,46 +1,43 @@
 <?php
 
 use App\Mail\SendEmail;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Mail;
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
 // use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
+use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
-use App\Http\Controllers\DashController;
+use App\Http\Controllers\QrController;
 // use App\Http\Controllers\CastController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AbsenController;
-
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\GraphController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\LogbookController;
-use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileAdminController;
+use App\Http\Controllers\ProfilePembimbingController;
+use App\Http\Controllers\PesertaController;
 use App\Http\Controllers\SekolahController;
 use App\Http\Controllers\DataTableController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\PerizinanController;
-
-//Abdul
 use App\Http\Controllers\Auth\BayarController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DataBidangController;
 use App\Http\Controllers\PembimbingController;
-use App\Http\Controllers\ProfileAdminController;
+use App\Http\Controllers\DataAbsensiController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\JumlahPesertaController;
 use App\Http\Controllers\SettingmagangController;
 use App\Http\Controllers\komponenpenilaianController;
-use App\Http\Controllers\PenilaianController;
-use App\Http\Controllers\DataTableController;
-use App\Http\Controllers\AbsenController;
-use App\Http\Controllers\GraphController;
-use App\Http\Controllers\QrController;
-use App\Http\Controllers\DataAbsensiController;
-use App\Http\Controllers\JumlahPesertaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -193,6 +190,11 @@ Route::put('/penilaian/update/{penilaian_id}', [PenilaianController::class, 'upd
 //siswa
 // Route::group(['middleware'=>['auth','CekLevel:akun']], function(){
 
+Route::post('/upload', [UploadController::class, 'store'])->name('upload.file');
+
+
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
 Route::get('/changePassword', 'LoginController@showChangePasswordForm');
 // Route::post('/changepassword','LoginController@changePassword')->name('changePassword');
 Route::post('/changepassword', [LoginController::class, 'changePassword']);
@@ -200,8 +202,8 @@ Route::post('/changepassword', [LoginController::class, 'changePassword']);
 Route::get('/perizinan', [PerizinanController::class, 'index'])->name('perizinan.index');
 Route::get('/perizinan/create', [PerizinanController::class, 'create'])->name('perizinan.create');
 Route::PUT('/perizinan/store', [PerizinanController::class, 'store'])->name('perizinan.store');
-// Route::get('/perizinan/edit/{id}', [PerizinanController::class, 'edit'])->name('perizinan.edit');
-// Route::PUT('/perizinan/update/{id}', [PerizinanController::class, 'update'])->name('perizinan.update');
+Route::get('/perizinan/edit/{id}', [PerizinanController::class, 'edit'])->name('perizinan.edit');
+Route::PUT('/perizinan/update/{id}', [PerizinanController::class, 'update'])->name('perizinan.update');
 Route::get('/perizinan/hapus/{id}', [PerizinanController::class, 'destroy'])->name('perizinan.hapus');
 
 //CRUD Logbook
@@ -262,29 +264,6 @@ Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 
-
-// Route::get('/pembimbing', function(){
-//     return view('admin.pembimbing');
-// });
-Route::get('/profile_admin', [ProfileAdminController::class, 'index'])->name('profile_admin');
-Route::get('/profile_admin/edit', [ProfileAdminController::class, 'edit'])->name('profile_admin.edit');
-
-// Route::get('/komponen_penilaian', function(){
-//     return view('admin.komponen_penilaian');
-// });
-
-// Route::get('/penilaian', function(){
-//     return view('admin.penilaian');
-// });
-
-// Route::get('/absensi', function(){
-//     return view('template.absensi');
-// });
-
-// Route::get('/setting_magang', function(){
-//     return view('admin.setting_magang');
-// });
-
 Route::get('send', [MailController::class, 'index']);
 
 //CRUD Halaman Bayar
@@ -302,16 +281,6 @@ Route::post('/bayar', [BayarController::class, 'store']);
 //Tampil Semua Data
 Route::get('/bayar', [BayarController::class, 'bayar']);
 
-
-
-
-
-
-
-
-<<<<<<< Updated upstream
-=======
-
 // CRUD Absen
 // Route::group(['prefix' => 'absen'], function () {
 //     Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
@@ -321,7 +290,9 @@ Route::resource('absen', AbsenController::class)->only(['create', 'store'])->nam
     'create' => 'absen.create',
     'store' => 'absen.store'
 ]);
->>>>>>> Stashed changes
 
 //Dashboard Menampilkan Jumlah peserta yang hadir hari ini dan bulan ini
 Route::get('/jumlah-peserta', [JumlahPesertaController::class, 'jumlahPeserta']);
+
+//pembimbing
+Route::get('/profile_pembimbing', [ProfilePembimbingController::class, 'index'])->name('profile_pembimbing');

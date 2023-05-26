@@ -18,11 +18,17 @@ class LogbookController extends Controller
 
     public function store(Request $request)
     {
+        $message = [
+            'logbook.required' => 'Logbook harus diisi.',
+            'tanggal_logbook.before_or_equal' => 'Tanggal logbook tidak boleh diisi dengan tanggal besoknya.',
+            'dokumentasi.required' => 'Dokumentasi harus diisi.',
+        ];
+
         $request->validate([
             'logbook' => 'required',
-            'tanggal_logbook' => 'required',
+            'tanggal_logbook' => 'required|date|before_or_equal:today',
             'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
-        ]);
+        ], $message);
 
         $fileName = time().'.'.$request->dokumentasi->extension();
         $request->dokumentasi->move(public_path('image'), $fileName);

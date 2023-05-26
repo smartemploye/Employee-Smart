@@ -205,16 +205,13 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: 10px;">
-                                            <label for="inputApplication">Upload Surat Pengajuan</label>
-                                            <input type="file"
-                                                name="surat_pengajuan" class="form-control-file @error('surat_pengajuan') is-invalid @enderror"
-                                                id="inputsurat_pengajuan" accept="image/*">
+                                        <div class="form-group" style="margin-left: 15px;">
+                                            <label for="inputSuratPengajuan">Upload Surat Pengajuan</label>
+                                            <input type="file" name="surat_pengajuan" class="form-control-file @error('surat_pengajuan') is-invalid @enderror" id="surat_pengajuan" accept="pdf/*" value="{{ old('surat_pengajuan') }}">
                                             @error('surat_pengajuan')
-                                                <div class="invalid-feedback">{{ $message }}</div>
+                                                <div class="alert alert-danger mt-2">{{ $message }}</div>
                                             @enderror
                                         </div>
-
                                     </td>
                                 </tr>
                                 <tr>

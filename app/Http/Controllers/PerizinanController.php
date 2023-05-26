@@ -43,21 +43,37 @@ class PerizinanController extends Controller
 
     public function edit($id)
     {
-        $databsen = DB::table('absen')
-        ->where('id','=',$id)
-        ->get();
+        $perizinan = DB::table('siswa')
+        ->join('absen','absen.siswa_id','=','siswa.id')
+        ->where('absen.siswa_id','=',$id)
+        ->whereNotIn('absen.keterangan',[''])
+        ->get([
+            'izin_dari','izin_sampai','absen.keterangan AS keterangan','approve','absen.siswa_id AS id',
+            'siswa.nama_siswa','absen.id AS absen_id'
+        ]);
 
-        return view('izin_admin.edit', compact('databsen'));
+        return view('izin_admin.index', compact('perizinan'));
     }
 
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $databsen = DB::table('absen')
-        ->where('id','=',$id)
+        ->where('siswa_id','=',$id)
         ->update([
-            'approve' => $request['approve'],
+            'approve' => $request->approve,
         ]);
-        return back();
+
+        $perizinan = DB::table('siswa')
+        ->join('absen','absen.siswa_id','=','siswa.id')
+        ->where('absen.siswa_id','=',$id)
+        ->whereNotIn('absen.keterangan',[''])
+        ->get([
+            'izin_dari','izin_sampai','absen.keterangan AS keterangan','approve','absen.siswa_id AS id',
+            'siswa.nama_siswa','absen.id AS absen_id'
+        ]);
+
+         return view('perizinan.index', compact('perizinan'));
     }
 
     public function destroy($id)

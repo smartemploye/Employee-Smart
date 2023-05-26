@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Edit Perizinan</h6>
-                @foreach ($databsen as $data )
+                @foreach ($perizinan as $data )
                 <form method="POST" action="{{ route('perizinan.update', $data->id) }}">
                     @csrf
                     @method('PUT')
@@ -28,7 +28,7 @@
                       <input type="text" class="form-control" name="keterangan" placeholder="Masukkan Keterangan" style="margin-left: 100px;margin-top: -35px;width: 900px" value="{{ $data->keterangan }}" disabled>
                     </div>
                     <div class="form-group">
-                        <label for="inputKeteranganIzin" style="">Approve??</label>
+                        <label for="inputKeteranganIzin" style="">Approve</label>
                         <select name="approve" id="">
                             <option value="" selected selected>-Pilih-</option>
                             <option value="diapprove">Diterima</option>

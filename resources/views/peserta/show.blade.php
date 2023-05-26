@@ -80,8 +80,7 @@
             <div class="form-group row">
                 <label for="inputSuratPengajuan" class="col-sm-2 col-form-label">Surat Pengajuan</label>
                 <div class="col-sm-10">
-                    {{-- <input type="text" class="form-control" id="inputNamaPeserta" placeholder=""> --}}
-                    <input type="button" value="Download.pdf">
+                    <a href="{{ asset('surat_pengajuan/'.$data->surat_pengajuan) }}" class="btn btn-large pull-right"><i class="icon-download-alt"> </i> {{ $data->surat_pengajuan }}</a>
                 </div>
             </div>
             <div class="form-group row">
