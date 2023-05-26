@@ -18,7 +18,7 @@ class LogbookController extends Controller
     }
 
     public function store(Request $request)
-<<<<<<< Updated upstream
+
     {
         $message = [
             'logbook.required' => 'Logbook harus diisi.',
@@ -31,14 +31,10 @@ class LogbookController extends Controller
             'tanggal_logbook' => 'required|date|before_or_equal:today',
             'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
         ], $message);
-=======
-{
-    $request->validate([
-        'logbook' => 'required',
-        'tanggal_logbook' => 'required',
-        'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
-    ]);
->>>>>>> Stashed changes
+
+
+
+
 
     $fileName = time().'.'.$request->dokumentasi->extension();
     $request->dokumentasi->move(public_path('image'), $fileName);

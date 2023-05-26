@@ -195,18 +195,17 @@ class RegisterController extends Controller
 
         $foto_siswa->move(public_path().'/image/fotosiswa', $file_foto_siswa);
 
-<<<<<<< Updated upstream
         $surat_pengajuan->move(public_path().'/surat_pengajuan', $file_surat_pengajuan);
 
-=======
-        // Kamis 24 Mei 2023 pesan email ambil data dari settingmagang
->>>>>>> Stashed changes
-        $data = [
-            'name' => 'Syahrizal As',
-            'body' => 'Testing Kirim Email di Santri Koding'
-        ];
 
-        Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
+        // Kamis 24 Mei 2023 pesan email ambil data dari settingmagang
+
+        // $data = [
+        //     'name' => 'Syahrizal As',
+        //     'body' => 'Testing Kirim Email di Santri Koding'
+        // ];
+
+        // Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
 
         //codingan wa yg dikirim bg syams masukkan disini 
         // untuk siswa

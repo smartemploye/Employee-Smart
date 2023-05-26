@@ -75,9 +75,7 @@ class LoginController extends Controller
         // } else if (Auth::guard('pembimbing')->attempt(['nip_pembimbing' => $request->email, 'password' => $request->password])) {
         //     return redirect('/dashboard');
         // }
-<<<<<<< Updated upstream
-        if (Auth::guard('akun')->attempt([ 'username' => $request->email, 'password' => $request->password])) {
-=======
+
         if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
             // dd(Auth::user()->role);
             if (Auth::user()->role=='siswa'){
@@ -104,7 +102,7 @@ class LoginController extends Controller
 
             // } 
             //status drop out atau tidak aktif langsung redirect ke route('logout') tampilkan pesan (statusnya drop out atau tdk aktif)
->>>>>>> Stashed changes
+
             return redirect('/dashboard');
         }
         // die();
