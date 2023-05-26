@@ -6,6 +6,17 @@ Halaman Logbook
 
 @section('content')
 
+{{-- <style>
+    .card {
+        height: 100%;
+    }
+
+    .card-body {
+        height: 500px; /* Ganti dengan tinggi yang diinginkan */
+        overflow: hidden;
+    }
+</style> --}}
+
 <a href="/logbook/create" class="btn btn-primary btn-sm mb-3">Tambah Logbook</a>
 
 <div class="row">

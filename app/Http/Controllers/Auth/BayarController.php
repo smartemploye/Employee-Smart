@@ -43,6 +43,9 @@ class BayarController extends Controller
     public function bayar()
     {
         $settingmagang = DB::table('setting_magang')->get()->first();
+        // buat kaya dibawah ini buat ambil data berdasarkan nisn buat nampilkan status di tabel data_magang
+        // $settingmagang = DB::table('setting_magang')->get()->first();
+
         // echo $settingmagang->no_va;
         return view('auth.bayar', ["data"=>$settingmagang->no_va]);  
     }

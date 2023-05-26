@@ -23,6 +23,7 @@ class CreateSettingMagangTable extends Migration
             $table->bigInteger('Kuota_Magang');
             $table->text('Format_WA_Diterima')->nullable();
             $table->text('Format_WA_Ditolak')->nullable();
+            $table->text('Format_Pembimbing')->nullable();
             $table->text('Format_Email')->nullable();
             $table->bigInteger('WA_Kantor');
             // $table->string('periode_magang');

@@ -7,15 +7,20 @@
 @section('content')
     {{-- kamera scanner --}}
     <div class="row button">
+        {{-- //cek kondisi berdasarkan tanggal absen masuk --}}
         <div class="col-6">
             <h3>Absen Masuk</h3>
+            {{-- dirapikan tataletaknya --}}
+            {{$absen->absen_masuk}}
             <button class="btn btn-primary masuk" style="width:100px; height:100px" onclick="scan('masuk')"
                 {!! $masuk !!}><i class='bx bx-log-in' style="font-size: 50px;"></i></button>
         </div>
         <div class="col-6">
             <h3>Absen Pulang</h3>
+            {{-- dirapikan tataletaknya --}}
+            {{$absen->absen_pulang}}
             <button class="btn btn-primary keluar" style="width:100px; height:100px" onclick="scan('keluar')"
-                {!! $keluar !!}><i class='bx bx-log-out' style="font-size: 50px;"></i></button>
+                {!! $pulang !!}><i class='bx bx-log-out' style="font-size: 50px;"></i></button>
         </div>
     </div>
     <div class="row justify-content-center">
@@ -72,7 +77,8 @@
                                 showConfirmButton: false,
                                 timer: 1500
                             })
-                            $('.button').css('display', 'block');
+                            // $('.button').css('display', 'block');
+                            document.location.reload();
                         }
                     }
                 })

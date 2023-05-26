@@ -22,7 +22,7 @@ Halaman Jumlah Peserta
         <div class="small-box bg-success">
             <div class="inner">
                 <h3>{{ $jumlahSiswaMagangBulanIni }}</h3>
-                <p>Jumlah Siswa Magang Bulan Ini</p>
+                <p>Jumlah Siswa Magang Bulan Ini (Aktif dan Lulus)</p>
             </div>
             <div class="icon">
                 <i class="ion ion-person-stalker"></i>

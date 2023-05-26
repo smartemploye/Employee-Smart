@@ -18,6 +18,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\SendEmail;
 use App\Models\DataBidang;
+use App\Http\Controllers\SettingmagangController;
 use Illuminate\Support\Facades\Crypt;
 
 
@@ -25,13 +26,22 @@ class RegisterController extends Controller
 {
     public function index()
     {
+        $kuota_magang = (int)DB::table('setting_magang')->first()->Kuota_Magang;
+        $siswaaktif = (int)DB::table('data_magang')
+        ->whereIn('data_magang.status_magang', ['Aktif'])
+        ->count();
+        $kuota = $kuota_magang-$siswaaktif;
+        $kuota = $kuota >= 0 ? $kuota : 0;
+
+        // dd($kuota);
+
         $sekolah = DB::table('sekolah')
             ->get(['id', 'nama_sekolah']);
 
         $bidang = DB::table('data_bidang')
             ->get(['id', 'jenis_jurusan']);
 
-        return view('register.index', compact('sekolah', 'bidang'));
+        return view('register.index', compact('sekolah', 'bidang', 'kuota'));
     }
 
     public function store(Request $request)
@@ -96,6 +106,18 @@ class RegisterController extends Controller
         //     var_dump($request->password);
         // var_dump($request->password_confirmation);
         // die();
+        $kuota_magang = (int)DB::table('setting_magang')->first()->Kuota_Magang;
+        $siswaaktif = (int)DB::table('data_magang')
+        ->whereIn('data_magang.status_magang', ['Aktif'])
+        ->count();
+        $kuota = $kuota_magang-$siswaaktif;
+        $kuota = $kuota >= 0 ? $kuota : 0;
+            if ($kuota == 0) {
+            return redirect()->route('register');
+                
+                // return redirect()->back()->with("Kuota Penuh", "Maaf Kuota magang bulan ini sudah penuh");
+            }
+
 
         if ($request->password != $request->password_confirmation) {
             return redirect()->back()->with("error", "Password should be same as your confirmed password. Please retype new password");
@@ -173,8 +195,12 @@ class RegisterController extends Controller
 
         $foto_siswa->move(public_path().'/image/fotosiswa', $file_foto_siswa);
 
+<<<<<<< Updated upstream
         $surat_pengajuan->move(public_path().'/surat_pengajuan', $file_surat_pengajuan);
 
+=======
+        // Kamis 24 Mei 2023 pesan email ambil data dari settingmagang
+>>>>>>> Stashed changes
         $data = [
             'name' => 'Syahrizal As',
             'body' => 'Testing Kirim Email di Santri Koding'
@@ -182,16 +208,63 @@ class RegisterController extends Controller
 
         Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
 
-        //codingan wa yg dikirim bg syams masukkan disini
-        $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
-            'method'  => 'POST',
-            'header'  => 'Content-Type: application/x-www-form-urlencoded',
-            'content' => http_build_query([
-                'no_hp' => '085713482807', # no hp penerima
-                'message' => 'test kirim wa' # pesan
-            ])
-        ]]));
+        //codingan wa yg dikirim bg syams masukkan disini 
+        // untuk siswa
+        // $nisn = $request->nisn;
+        // $siswa = Siswa::where('nisn', $nisn)->first();
 
+        // if ($siswa) {
+        //     $no_wa = $siswa->no_wa;
+        // } else {
+        //     $no_wa = '085713482807'; // No HP default jika siswa tidak ditemukan
+        // }
+        //         // Ambil format WA dari SettingmagangController
+        //         $settingmagangController = new SettingmagangController();
+        //         $formatWA = $settingmagangController->getFormatWA();
+                
+        // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
+        //     'method'  => 'POST',
+        //     'header'  => 'Content-Type: application/x-www-form-urlencoded',
+        //     'content' => http_build_query([
+        //         'no_hp' => $no_wa, # no hp penerima
+        //         // 'message' => 'test kirim wa' # pesan
+        //         'message' => $formatWA // Menggunakan format WA dari SettingmagangController
+        //     ])
+        // ]]));
+
+        
+                // // buat untuk pmbimbing
+
+                // $nip_pembimbing = $request->nip_pembimbing;
+                // $pembimbing = pembimbing::where('nip_pembimbing', $nip_pembimbing)->first();
+        
+                // if ($pembimbing) {
+                //     $no_wa_pembimbing = $pembimbing->no_wa_pembimbing;
+                // } else {
+                //     $no_wa_pembimbing = '085713482807'; // No HP default jika siswa tidak ditemukan
+                // }
+                //         // Ambil format WA dari SettingmagangController
+                //         $settingmagangController = new SettingmagangController();
+                //         $formatWA = $settingmagangController->getFormatWA();
+                        
+                // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
+                //     'method'  => 'POST',
+                //     'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                //     'content' => http_build_query([
+                //         'no_hp' => $no_wa_pembimbing, # no hp penerima
+                //         // 'message' => 'test kirim wa' # pesan
+                //         'message' => $formatWA // Menggunakan format WA dari SettingmagangController
+                //     ])
+                // ]]));
+
+                // $kuota_magang = (int)DB::table('setting_magang')->first()->Kuota_Magang;
+                // $siswaaktif = (int)DB::table('data_magang')
+                // ->whereIn('data_magang.status_magang', ['Aktif'])
+                // ->count();
+                // $kuota = $kuota_magang-$siswaaktif;
+                // $kuota = $kuota >= 0 ? $kuota : 0;
+                //     if ($kuota == 0) {
+                //     return redirect()->route('register');
         // dd("Email Berhasil dikirim.");
         // dd($request->all());
 

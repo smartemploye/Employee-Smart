@@ -60,6 +60,22 @@
                 background-color: #45a049;
             }
         </style>
+        <script src="{{ asset('/js/sweetalert2.js') }}" type="text/javascript"></script>
+        @if ($kuota == 0)
+            <script>
+                 Swal.fire({
+                                icon: 'info',
+                                title: 'kuota penuh',
+                                text: 'Maaf kuota magang bulan ini penuh',
+                                allowOutsideClick: false,
+                                showCloseButton: false,
+                                showCancelButton: false, 
+                                showConfirmButton: false
+                            })
+            </script>
+        
+            
+        @endif
     </head>
 
     <body>

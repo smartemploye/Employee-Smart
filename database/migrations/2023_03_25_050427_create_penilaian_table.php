@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\KomponenPenilaian;
 
 class CreatePenilaianTable extends Migration
 {
@@ -11,13 +12,22 @@ class CreatePenilaianTable extends Migration
      *
      * @return void 
      */
+    protected $data;
+    public function __construct()
+    {
+        $this->data = KomponenPenilaian::all();
+    }
     public function up()
     {
         Schema::create('penilaian', function (Blueprint $table) {
             $table->id('id_penilaian');
             $table->bigInteger('id_siswa');
-
             $table->timestamps();
+            if ($this->data->count() > 0) {
+                foreach ($this->data as $komponen) {
+                    $table->bigInteger($komponen->nama_komponen);
+                }
+            }
         });
     }
 

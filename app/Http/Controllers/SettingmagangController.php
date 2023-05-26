@@ -43,6 +43,7 @@ class SettingmagangController extends Controller
             'Kuota_Magang' => 'required',
             'Format_WA_Diterima' => 'required',
             'Format_WA_Ditolak' => 'required',
+            'Format_Pembimbing' => 'required',
             'Format_Email' => 'required',
             'WA_Kantor' => 'required',
 
@@ -58,12 +59,28 @@ class SettingmagangController extends Controller
                     'Kuota_Magang' => $request['Kuota_Magang'],
                     'Format_WA_Diterima' => $request['Format_WA_Diterima'],
                     'Format_WA_Ditolak' => $request['Format_WA_Ditolak'],
+                    'Format_Pembimbing' => $request['Format_Pembimbing'],
                     'Format_Email' => $request['Format_Email'],
                     'WA_Kantor' => $request['WA_Kantor'],
                 ],
             );
         return redirect('/settingmagang');
     }
-    
+
+    // Kamis 25 Mei 2023
+    public function getFormatWA()
+    {
+        $settingmagang = SettingMagang::first();
+        return $settingmagang->Format_WA_Diterima;
+    }
+    // public function getFormatWA()
+    // {
+    // $settingmagang = SettingMagang::first();
+    // return [
+    //     'Format_WA_Diterima' => $settingmagang->Format_WA_Diterima,
+    //     'Format_Pembimbing' => $settingmagang->Format_Pembimbing
+    // ];
+    // }
+
 }
 

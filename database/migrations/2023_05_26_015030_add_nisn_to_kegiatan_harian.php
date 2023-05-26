@@ -3,8 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\Session;
-class DeleteColumnToPenilaian extends Migration
+
+class AddNisnToKegiatanHarian extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class DeleteColumnToPenilaian extends Migration
      */
     public function up()
     {
-        // Schema::table('penilaian', function (Blueprint $table) {
-        //    $table->string('1');
-        // });
+        Schema::table('kegiatan_harian', function (Blueprint $table) {
+            $table->string('nisn')->after('id');
+        });
+        
     }
 
     /**
@@ -25,8 +26,9 @@ class DeleteColumnToPenilaian extends Migration
      */
     public function down()
     {
-        Schema::table('penilaian', function (Blueprint $table) {
-           $table->dropColumn(Session::get('columnName'));
+        Schema::table('kegiatan_harian', function (Blueprint $table) {
+            $table->dropColumn('nisn');
         });
+        
     }
 }

@@ -28,7 +28,12 @@ class PenilaianController extends Controller
     public function edit($id)
     {
         $komponen = KomponenPenilaian::all();
-        $penilaian = DB::table('siswa')->select('siswa.id', 'siswa.nama_siswa', 'penilaian.*')->leftjoin('penilaian', 'penilaian.id_siswa', '=', 'siswa.id')->where('siswa.id', $id)->first();
+        $penilaian = DB::table('siswa')
+            ->select('siswa.id', 'siswa.nama_siswa', 'siswa.nisn', 'sekolah.nama_sekolah', 'data_magang.judul_project', 'penilaian.*')
+            ->leftjoin('penilaian', 'penilaian.id_siswa', '=', 'siswa.id')->where('siswa.id', $id)
+            ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
+            ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
+            ->first();
         // dd($penilaian);
         return view('penilaian.edit', ['penilaian' => $penilaian, 'komponen' => $komponen]);
     }
@@ -53,7 +58,7 @@ class PenilaianController extends Controller
     // }
 
     //openAI solusi
-        public function update(Request $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->except(['_token', '_method']);
         $check = DB::table('penilaian')->where('id_siswa', $id)->count();
