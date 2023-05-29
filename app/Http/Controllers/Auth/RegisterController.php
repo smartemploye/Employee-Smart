@@ -114,7 +114,7 @@ class RegisterController extends Controller
         $kuota = $kuota >= 0 ? $kuota : 0;
             if ($kuota == 0) {
             return redirect()->route('register');
-                
+
                 // return redirect()->back()->with("Kuota Penuh", "Maaf Kuota magang bulan ini sudah penuh");
             }
 
@@ -207,7 +207,7 @@ class RegisterController extends Controller
 
         // Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
 
-        //codingan wa yg dikirim bg syams masukkan disini 
+        //codingan wa yg dikirim bg syams masukkan disini
         // untuk siswa
         // $nisn = $request->nisn;
         // $siswa = Siswa::where('nisn', $nisn)->first();
@@ -220,7 +220,7 @@ class RegisterController extends Controller
         //         // Ambil format WA dari SettingmagangController
         //         $settingmagangController = new SettingmagangController();
         //         $formatWA = $settingmagangController->getFormatWA();
-                
+
         // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
         //     'method'  => 'POST',
         //     'header'  => 'Content-Type: application/x-www-form-urlencoded',
@@ -231,12 +231,12 @@ class RegisterController extends Controller
         //     ])
         // ]]));
 
-        
+
                 // // buat untuk pmbimbing
 
                 // $nip_pembimbing = $request->nip_pembimbing;
                 // $pembimbing = pembimbing::where('nip_pembimbing', $nip_pembimbing)->first();
-        
+
                 // if ($pembimbing) {
                 //     $no_wa_pembimbing = $pembimbing->no_wa_pembimbing;
                 // } else {
@@ -245,7 +245,7 @@ class RegisterController extends Controller
                 //         // Ambil format WA dari SettingmagangController
                 //         $settingmagangController = new SettingmagangController();
                 //         $formatWA = $settingmagangController->getFormatWA();
-                        
+
                 // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
                 //     'method'  => 'POST',
                 //     'header'  => 'Content-Type: application/x-www-form-urlencoded',

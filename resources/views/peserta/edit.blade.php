@@ -100,12 +100,12 @@
                                     <label>Nama Pembimbing</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="text" name="nama_pembimbing" class="form-control"
-                                        value="{{ $data->nama_pembimbing }}">
+                                    <input type="text" name="" class="form-control"
+                                        value="{{ $data->nama_pembimbing }}" disabled>
                                 </div>
                             </div>
                                 {{-- <input type="text" class="form-control" name="nama_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nama_pembimbing }}"> --}}
-                            </div>
+
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     @endforeach

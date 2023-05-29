@@ -49,8 +49,8 @@ class PesertaController extends Controller
         // $enkrip = Crypt::encrypt('8888');
         // echo $enkrip.'<br>';
         // echo Crypt::decrypt($enkrip);
-        return view('peserta.index', compact('data'));
         // dd($data);
+        return view('peserta.index', compact('data'));
         // dd($data);
     }
 
@@ -108,7 +108,7 @@ class PesertaController extends Controller
 
         $pembimbing = DB::table('pembimbing')
             ->get();
-
+            // dd($siswa);
         return view('peserta.edit', compact('siswa', 'sekolah', 'pembimbing'));
     }
 
@@ -197,11 +197,11 @@ class PesertaController extends Controller
         ], $message);
 
         $updated = Siswa::find($request->id);
+        // dd($request->nama_siswa);
         $updated->nama_siswa = $request->nama_siswa;
         $updated->tanggal_mulai = $request->tanggal_mulai;
         $updated->tanggal_selesai = $request->tanggal_selesai;
         $updated->sekolah_id = $request->sekolah_id;
-        $updated->nip_pembimbing = $request->nip_pembimbing;
         $updated->keterangan = $request->keterangan;
         $updated->save();
         $nisn_update = $request->nisn;
@@ -336,6 +336,7 @@ class PesertaController extends Controller
         $siswa = DB::table('akuns')
         ->where('nisn', '=', $id)
         ->delete();
+         DB::table('data_magang')->where('nisn', '=', $id)->delete();
 
         return back();
     }
