@@ -1,43 +1,66 @@
 @extends('layout.master')
+@section('nama_profile')
 
+@endsection
 @section('content')
 
 <div class="card shadow mb-4">
     <div class="card-header ">
         <div class="row">
             <div class="col-3">
-                <h6 class="m-0 font-weight-bold text-primary">Edit Perizinan</h6>
-                @foreach ($perizinan as $data )
-                <form method="POST" action="{{ route('perizinan.update', $data->id) }}">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-group row">
-                      <label class="col-md-4 text-md-right" style="margin-top: 5px">Dari</label>
-                      <div class="col-md-6">
-                        <input type="date" name="izin_dari" class="form-control" value="{{ $data->izin_dari }}" disabled>
-                      </div>
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-md-4 text-md-right" style="margin-left: 560px;margin-top: -50px">Sampai</label>
-                        <div class="col-md-6">
-                          <input type="date" style="margin-left: 650px;margin-top: -55px" name="izin_sampai" class="form-control" value="{{ $data->izin_sampai }}" disabled >
-                        </div>
-                      </div>
-                    <div class="form-group">
-                      <label for="inputKeteranganIzin" style="">Keterangan</label>
-                      <input type="text" class="form-control" name="keterangan" placeholder="Masukkan Keterangan" style="margin-left: 100px;margin-top: -35px;width: 900px" value="{{ $data->keterangan }}" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputKeteranganIzin" style="">Approve</label>
-                        <select name="approve" id="">
-                            <option value="" selected selected>-Pilih-</option>
-                            <option value="diapprove">Diterima</option>
-                            <option value="tolak">Ditolak</option>
-                        </select>
-                      </div>
-                    <input type="text" hidden name="">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
-                @endforeach
-            </div>
+                <h6 class="m-0 font-weight-bold text-primary">Perizinan</h6>
+                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#absen-table').DataTable();
+        });
+
+        function confirmDelete(url) {
+            if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                window.location.href = url;
+            }
+        }
+    </script>
+   <div class="col-9" >
+    </div>
+    </div>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            {{-- @foreach ($izin as $nama )
+            {{ $nama->nama_siswa }}
+            @endforeach --}}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Dari</th>
+                        <th scope="col">Sampai</th>
+                        <th scope="col">Keterangan</th>
+                        <th scope="col">Approve</th>
+                        <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php $no=1; ?>
+                    @foreach ($perizinan as $izin)
+                    <tr>
+                        <td>{{$no++ }}</td>
+                        <td>{{$izin->izin_dari}}</td>
+                        <td>{{$izin->izin_sampai }}</td>
+                        <td>{{$izin->keterangan }}</td>
+                        <td>{{$izin->approve }}</td>
+                        <td>
+                            <a href="{{ route('izin_admin.edit', $izin->id) }}" class="btn btn-success">
+                            <i class='bx bxs-pencil' ></i> Edit</a>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+  </table>
 @endsection

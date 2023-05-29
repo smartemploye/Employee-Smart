@@ -11,11 +11,18 @@
             {{ session('success') }}
         </div>
     @endif
+    <div class="form-group row">
+        <label for="inputNamaPeserta" class="col-sm-2 col-form-label">Username</label>
+        <div class="col-sm-10">
+            <input disabled type="text" class="form-control" id="inputNamaPeserta" name="username"
+                placeholder="" value="{{ auth()->user()->username }}">
+        </div>
+    </div>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">
                 <input disabled type="text" class="form-control" id="inputPassword" placeholder=""
-                    value="{{ auth()->user()->username }}">
+                    value="{{ auth()->user()->password }}">
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
                     Ganti Password

@@ -50,7 +50,7 @@ use App\Http\Controllers\komponenpenilaianController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login.index');
 });
 //absen
 // Route::resource('/absen', [AbsenController::class, 'create']);
@@ -76,7 +76,7 @@ Route::get('/send-email', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-
+Route::get('/izin_admin', [PerizinanController::class, 'index'])->name('izin_admin.edit');
 Route::get('/izin_admin/edit/{id}', [PerizinanController::class, 'edit'])->name('izin_admin.edit');
 Route::PUT('/izin_admin/update/{id}', [PerizinanController::class, 'update'])->name('izin_admin.update');
 

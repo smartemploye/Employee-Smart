@@ -152,9 +152,9 @@
             @elseif(Auth::guard('akun')->user()->role == 'pembimbing')
                 <p>jnj</p>
             @endif
-            <li class="nav-item bg-danger">
+            {{-- <li class="nav-item bg-danger">
                 <a class="nav-link" href="{{ route('logout') }}"> Logout </a>
-            </li>
+            </li> --}}
         </ul>
     </nav>
     <!-- /.sidebar-menu -->

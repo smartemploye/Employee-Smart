@@ -25,8 +25,10 @@
                                     <label class="form-label">Tanggal Mulai Magang</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="date" name="tanggal_mulai" class="form-control"
-                                        value="{{ $data->tanggal_mulai }}">
+                                    <input type="date" name="tanggal_mulai" class="form-control  @error('tanggal_mulai') is-invalid @enderror" id="inputBirthdate" value="{{ old('tanggal_mulai') }}">
+                                    @error('tanggal_mulai')
+                                      <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -34,8 +36,11 @@
                                     <label for="inputKeteranganIzin" style="">Tanggal Selesai Magang</label>
                                 </div>
                                 <div class="col-9">
-                                    <input type="date" class="form-control" name="tanggal_selesai"
-                                        placeholder="Masukkan Keterangan" value="{{ $data->tanggal_selesai }}">
+                                    <input type="date" name="tanggal_selesai"
+                                    placeholder="Masukkan Keterangan" class="form-control  @error('tanggal_selesai') is-invalid @enderror" id="inputBirthdate" value="{{ old('tanggal_selesai') }}">
+                                    @error('tanggal_selesai')
+                                      <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="form-group row">

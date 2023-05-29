@@ -31,7 +31,7 @@
                     Tambah
                 </a>
             </div>
-        </div>
+    </div>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -59,14 +59,13 @@
                         <td>{{$izin->keterangan }}</td>
                         <td>{{$izin->approve }}</td>
                         <td>
-                            <a href="{{ route('perizinan.edit', $izin->id) }}" class="btn btn-success">
-                            <i class='bx bxs-pencil' ></i> Edit</a>
-                            <a href="javascript:void(0);" onclick="confirmDelete('{{ route('perizinan.hapus', $izin->nisn) }}')" class="btn btn-danger"><i class='bx bxs-trash' style="width: 15px;height: 20px;"></i> Hapus</a>
+                            {{-- <a href="{{ route('perizinan.edit', $izin->id) }}" class="btn btn-success">
+                            <i class='bx bxs-pencil' ></i> Edit</a> --}}
+                            <a href="javascript:void(0);" onclick="confirmDelete('{{ route('perizinan.hapus', $izin->id) }}')" class="btn btn-danger"><i class='bx bxs-trash' style="width: 15px;height: 20px;"></i> Hapus</a>
                     </tr>
                     @endforeach
                 </tbody>
             </table>
-            {{-- {!! $perizinan->links() !!} --}}
         </div>
     </div>
 </div>

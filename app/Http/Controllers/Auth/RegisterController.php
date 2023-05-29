@@ -212,7 +212,7 @@ class RegisterController extends Controller
         // }
         // Register::create($validated_data);
 
-            return redirect()->route('register')
+            return redirect()->route('login')
                             ->with('success','Data created successfully.');
     }
     /*

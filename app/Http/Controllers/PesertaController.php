@@ -76,6 +76,7 @@ class PesertaController extends Controller
 
     public function store(Request $request)
     {
+
         // dd($request->all());
         Siswa::create([
             'nama_siswa' => $request->nama_siswa,
@@ -173,7 +174,7 @@ class PesertaController extends Controller
             'siswa.nama_siswa','absen.id AS absen_id'
         ]);
 
-        return view('perizinan.index', compact('perizinan'));
+        return view('izin_admin.index', compact('perizinan'));
 
         // $perizinan = DB::table('absen')
         // ->where('siswa_id','=',auth()->user()->siswa->id)
@@ -198,25 +199,16 @@ class PesertaController extends Controller
 
     public function update(Request $request/*, $id*/)
     {
-        // dd($request->all());
-        // $siswa = DB::table('siswa')
-        // ->where('id','=',$id)
-        // ->update([
-        //     'nama_siswa' => $request['nama_siswa'],
-        //     'tanggal_mulai' => $request['tanggal_mulai'],
-        //     'tanggal_selesai' => $request['tanggal_selesai'],
-        //     'sekolah_id' => $request['sekolah_id'],
-        //     'nip_pembimbing' => $request['nip_pembimbing'],
-        // ]);
+        $message = [
+            'tanggal_mulai.after_or_equal' => 'Tanggal tidak boleh diisi dengan tanggal sebelum hari ini.',
+            'tanggal_selesai.after_or_equal' => 'Tanggal tidak boleh diisi dengan tanggal sebelum hari ini.',
+        ];
 
-        // $nisn = $request['nisn'];
+        $request->validate([
+            'tanggal_mulai' => 'required|date|after_or_equal:today',
+            'tanggal_selesai' => 'required|date|after_or_equal:today',
+        ], $message);
 
-        // $datamagang = DB::table('data_magang')
-        // ->where('nisn','=',$nisn)
-        // ->update([
-        //     'status_magang' => $request['status_magang'],
-        //     'judul_project' => $request['judul_project'],
-        // ]);
         $updated = Siswa::find($request->id);
         $updated->nama_siswa = $request->nama_siswa;
         $updated->tanggal_mulai = $request->tanggal_mulai;

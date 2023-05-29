@@ -51,7 +51,7 @@
                         <td>{{$item->jenis_jurusan}}</td>
                         <td> <a href="{{ route('bidang.edit', $item->id) }}" class="btn btn-success">
                             <i class='bx bxs-pencil' ></i> Edit</a>
-                            <a href="javascript:void(0);" onclick="confirmDelete('{{ route('bidang.hapus', $item->id) }}" class="btn btn-danger"><i class='bx bxs-trash' ></i> Hapus</a></td>
+                            <a href="javascript:void(0);" onclick="confirmDelete('{{ route('bidang.hapus', $item->id) }}')" class="btn btn-danger"><i class='bx bxs-trash' style="width: 15px;height: 20px;"></i> Hapus</a>
                     </tr>
                     @endforeach
                 </tbody>

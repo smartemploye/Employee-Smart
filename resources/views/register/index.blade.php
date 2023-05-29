@@ -218,8 +218,6 @@
                                     <td>
                                         <div class="form-group" style="margin-left: 15px;">
                                             <label for="inputNowa">Nomor WA</label>
-                                            {{-- <input type="text" name="no_wa" maxlength="13" class="form-control"
-                                                id="inputNisn" placeholder="Enter your number"> --}}
                                             <input type="text" name="no_wa" class="form-control @error('no_wa') is-invalid @enderror" id="inputNowa"
                                             placeholder="Enter your Number"
                                                 value="{{ old('no_wa') }}">

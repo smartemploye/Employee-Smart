@@ -27,6 +27,18 @@ class PerizinanController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $message = [
+            'izin_dari.required' => 'Form harus diisi.',
+            'izin_sampai.after_or_equal' => 'Tanggal izin tidak boleh diisi dengan tanggal sebelum hari ini.',
+            'keterangan.required' => 'Keterangan harus diisi.',
+        ];
+
+        $request->validate([
+            'izin_dari' => 'required',
+            'izin_sampai' => 'required|date|after_or_equal:today',
+            'keterangan' => 'required',
+        ], $message);
+
         $status = "proses";
         $data = [
             'siswa_id'=>Auth::user()->siswa->id,
@@ -39,6 +51,7 @@ class PerizinanController extends Controller
         // dd($data);
         Absen::create($data);
         return redirect('/perizinan');
+        session()->flash('success', 'Data berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -52,7 +65,7 @@ class PerizinanController extends Controller
             'siswa.nama_siswa','absen.id AS absen_id'
         ]);
 
-        return view('izin_admin.index', compact('perizinan'));
+        return view('izin_admin.edit', compact('perizinan'));
     }
 
     public function update(Request $request, $id)
@@ -73,7 +86,7 @@ class PerizinanController extends Controller
             'siswa.nama_siswa','absen.id AS absen_id'
         ]);
 
-         return view('perizinan.index', compact('perizinan'));
+         return view('izin_admin.index', compact('perizinan'));
     }
 
     public function destroy($id)
