@@ -37,7 +37,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="inputLaporanAkhir">Upload Format Laporan Akhir</label>
-                    <input type="file" name="format_laporan_akhir" class="form-control-file @error('format_laporan_akhir') is-invalid @enderror" id="format_laporan_akhir" accept="pdf/*" value="{{ old('format_laporan_akhir') }}">
+                    <input type="file" name="format_laporan_akhir" class="form-control-file @error('format_laporan_akhir') is-invalid @enderror" id="format_laporan_akhir" accept="pdf/*" value="{{ old('format_laporan_akhir') }}" style="width: 250px">
                     {{-- <div class="input-group-append">
                     </div> --}}
                     <button type="submit" style="margin-left: 300px;margin-top: -30px;position: absolute;"> Upload</button>
