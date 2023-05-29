@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddNipPembimbingToAkunTable extends Migration
+class AddNipLaporanAkhirToDataMagangTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddNipPembimbingToAkunTable extends Migration
      */
     public function up()
     {
-        Schema::table('akuns', function (Blueprint $table) {
-            // $table->unsignedBigInteger('nip_pembimbing');
+        Schema::table('data_magang', function (Blueprint $table) {
+            $table->string('laporan_akhir')->nullable();
         });
     }
 
@@ -25,7 +25,7 @@ class AddNipPembimbingToAkunTable extends Migration
      */
     public function down()
     {
-        Schema::table('akuns', function (Blueprint $table) {
+        Schema::table('data_magang', function (Blueprint $table) {
             //
         });
     }

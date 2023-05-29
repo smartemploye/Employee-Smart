@@ -32,13 +32,21 @@
                     placeholder="" value="{{ auth()->user()->pembimbing->nip_pembimbing }}">
             </div>
         </div>
-        <form action="/upload" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <label for="file">Format Laporan Akhir</label>
-                <input type="file" class="form-control-file" id="file" name="file">
-            </div>
-        </form>
+        <td>
+            <form action="{{ route('postpembimbing', auth()->user()->pembimbing->id ) }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group">
+                    <label for="inputLaporanAkhir">Upload Format Laporan Akhir</label>
+                    <input type="file" name="format_laporan_akhir" class="form-control-file @error('format_laporan_akhir') is-invalid @enderror" id="format_laporan_akhir" accept="pdf/*" value="{{ old('format_laporan_akhir') }}">
+                    {{-- <div class="input-group-append">
+                    </div> --}}
+                    <button type="submit" style="margin-left: 300px;margin-top: -30px;position: absolute;"> Upload</button>
+                    @error('format_laporan_akhir')
+                        <div class="alert alert-danger mt-2">{{ $message }}</div>
+                    @enderror
+                </div>
+            </form>
+        </td>
         <div class="form-group row">
             <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
             <div class="col-sm-10">

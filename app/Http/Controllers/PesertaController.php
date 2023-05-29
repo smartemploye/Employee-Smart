@@ -33,24 +33,6 @@ class PesertaController extends Controller
             ->join('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
             ->join('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
             ->distinct();
-
-        if($request->input('tanggal_mulai')) {
-            $data->where('tanggal_mulai', $request->input('tanggal_mulai'));
-            // dd($request->input());
-        }
-
-        if($request->input('tanggal_selesai')) {
-            $data->where('tanggal_selesai', $request->input('tanggal_selesai'));
-        }
-
-        if($request->input('status_magang')) {
-            $data->where('status_magang', $request->input('status_magang'));
-        }
-
-        if($request->input('nama_siswa')) {
-            $data->where('nama_siswa', 'LIKE' ,'%' . $request->input('nama_siswa') .'%');
-        }
-
         //
         $data = $data->get([
             'siswa.id',
@@ -240,14 +222,14 @@ class PesertaController extends Controller
         $status_magang = $request->status_magang;
         // dd($status_magang);
         if ($status_magang == "Belum Bayar" || $status_magang == "Seleksi") {
-                   
-                   
-            
+
+
+
                     Mail::to($updated->akun->username)->send(new SendEmail([
                         'name' => 'PT Garuda Cyber Indonesia',
                         'body' => $settingmagang->Format_Email
                     ]));
-    
+
                     // Ambil format WA dari SettingmagangController
                     // dd($settingmagang->Format_WA_Diterima);
                     // dd($settingmagang->Format_WA_Ditolak);
@@ -285,7 +267,7 @@ class PesertaController extends Controller
                     'message' => $settingmagang->Format_Pembimbing, // Menggunakan format WA dari SettingmagangController
                 ])
             ]]));
-        } 
+        }
 
 
 
@@ -295,7 +277,7 @@ class PesertaController extends Controller
             // pastekan dibawah ini
             // $nisn = $request->nisn;
             // $siswa = Siswa::where('nisn', $nisn)->first();
-    
+
             // if ($siswa) {
             //     $no_wa = $siswa->no_wa;
             // } else {
@@ -304,7 +286,7 @@ class PesertaController extends Controller
             //         // Ambil format WA dari SettingmagangController
             //         $settingmagangController = new SettingmagangController();
             //         $formatWA = $settingmagangController->getFormatWA();
-                    
+
             // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
             //     'method'  => 'POST',
             //     'header'  => 'Content-Type: application/x-www-form-urlencoded',
@@ -320,7 +302,7 @@ class PesertaController extends Controller
 
                             // $nip_pembimbing = $request->nip_pembimbing;
                             // $pembimbing = pembimbing::where('nip_pembimbing', $nip_pembimbing)->first();
-                    
+
                             // if ($pembimbing) {
                             //     $no_wa_pembimbing = $pembimbing->no_wa_pembimbing;
                             // } else {
@@ -329,7 +311,7 @@ class PesertaController extends Controller
                             //         // Ambil format WA dari SettingmagangController
                             //         $settingmagangController = new SettingmagangController();
                             //         $formatWA = $settingmagangController->getFormatWA();
-                                    
+
                             // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
                             //     'method'  => 'POST',
                             //     'header'  => 'Content-Type: application/x-www-form-urlencoded',

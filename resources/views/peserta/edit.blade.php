@@ -95,20 +95,15 @@
                                 </div>
                             </div>
                             <input type="hidden" value="{{ $data->nisn }}" name="nisn">
-                            <div class="form-group row">
+                            <div class="form-group row ">
                                 <div class="col-3">
-                                    <label for="inputNamaPembimbing" style="">Nama Pembimbing</label>
+                                    <label>Nama Pembimbing</label>
                                 </div>
                                 <div class="col-9">
-                                    <select name="nip_pembimbing" id="">
-                                        <option value="" selected>-Pilih Pembimbing-</option>
-                                        @foreach ($pembimbing as $pbb)
-                                            <option value="{{ $pbb->nip_pembimbing }}"
-                                                {{ $pbb->nip_pembimbing == $data->nip ? 'selected' : '' }}>
-                                                {{ $pbb->nama_pembimbing }}</option>
-                                        @endforeach
-                                    </select>
+                                    <input type="text" name="nama_pembimbing" class="form-control"
+                                        value="{{ $data->nama_pembimbing }}">
                                 </div>
+                            </div>
                                 {{-- <input type="text" class="form-control" name="nama_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nama_pembimbing }}"> --}}
                             </div>
                             <button type="submit" class="btn btn-primary">Submit</button>

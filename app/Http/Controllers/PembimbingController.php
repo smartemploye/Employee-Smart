@@ -6,6 +6,7 @@ use App\Models\Absen;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Pembimbing;
 
 class PembimbingController extends Controller
 {
@@ -23,16 +24,28 @@ class PembimbingController extends Controller
         return view('pembimbing.create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         // dd($request->all());
-        Absen::create([
-            'nip_pembimbing' => $request->nip_pembimbing,
-            'nama_pembimbing' => $request->nama_pembimbing,
-            'no_wa_pembimbing' => $request->no_wa_pembimbing,
-            'sekolah_id' => $request->sekolah_id,
+        $format_laporan_akhir = $request->format_laporan_akhir;
+        $file_format_laporan_akhir = $format_laporan_akhir->getClientOriginalName();
+
+        // Absen::create([
+        //     'nip_pembimbing' => $request->nip_pembimbing,
+        //     'nama_pembimbing' => $request->nama_pembimbing,
+        //     'no_wa_pembimbing' => $request->no_wa_pembimbing,
+        //     'sekolah_id' => $request->sekolah_id,
+        // ]);
+
+        $pembimbing = DB::table('pembimbing')
+        ->where('id','=',$id)
+        ->update([
+            'format_laporan_akhir' => $file_format_laporan_akhir,
         ]);
-        return redirect('/pembimbing');
+
+        $format_laporan_akhir->move(public_path().'/format_laporan_akhir', $file_format_laporan_akhir);
+        return redirect('/profile_pembimbing');
+
     }
 
     public function edit($id)

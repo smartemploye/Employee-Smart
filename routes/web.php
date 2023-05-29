@@ -190,6 +190,8 @@ Route::put('/penilaian/update/{penilaian_id}', [PenilaianController::class, 'upd
 //siswa
 // Route::group(['middleware'=>['auth','CekLevel:akun']], function(){
 
+Route::get('/reportnsertifikat', [ReportController::class, 'index'])->name('reportnsertifikat');
+
 Route::post('/upload', [UploadController::class, 'store'])->name('upload.file');
 
 
@@ -296,3 +298,6 @@ Route::get('/jumlah-peserta', [JumlahPesertaController::class, 'jumlahPeserta'])
 
 //pembimbing
 Route::get('/profile_pembimbing', [ProfilePembimbingController::class, 'index'])->name('profile_pembimbing');
+Route::post('/postpembimbing/{id}', [PembimbingController::class, 'store'])->name('postpembimbing');
+Route::post('/postdatamagang/{id}', [DataMagangController::class, 'store'])->name('postdatamagang');
+

@@ -171,7 +171,7 @@
             <div class="form-group row">
                 <label for="inputReportSertifikat" class="col-sm-2 col-form-label">Report dan Sertifikat</label>
                 <div class="col-sm-10">
-                    <a href="/report"><button>Lihat</button></a>
+                    <a href="{{ route('reportnsertifikat', $data->id) }}"><button>Lihat</button></a>
                 </div>
             </div>
     @endforeach
