@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Logbook;
 use File;
 
@@ -17,6 +18,7 @@ class LogbookController extends Controller
     }
 
     public function store(Request $request)
+
     {
         $message = [
             'logbook.required' => 'Logbook harus diisi.',
@@ -30,29 +32,47 @@ class LogbookController extends Controller
             'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
         ], $message);
 
-        $fileName = time().'.'.$request->dokumentasi->extension();
-        $request->dokumentasi->move(public_path('image'), $fileName);
-        $logbook = new Logbook;
 
-        DB::table('kegiatan_harian')->insert([
-            'logbook' => $request['logbook'],
-            'tanggal_logbook' => $request['tanggal_logbook'],
-            'dokumentasi' => $fileName,
-            'admin_id' => 1,
-            'siswa_id' => 1,
-        ]);
 
-        return redirect('/logbook');
 
-    }
 
-    public function index()
-    {
-        $logbook = DB::table('kegiatan_harian')->get();
-        // dd($logbook);
+    $fileName = time().'.'.$request->dokumentasi->extension();
+    $request->dokumentasi->move(public_path('image'), $fileName);
 
-        return view('logbook.tampil', ['logbook' => $logbook]);
-    }
+    // Mengubah pengguna terautentikasi untuk mendapatkan nisn
+    $nisn = Auth::user()->siswa->nisn;
+
+    DB::table('kegiatan_harian')->insert([
+        'nisn' => $nisn,
+        'logbook' => $request['logbook'],
+        'tanggal_logbook' => $request['tanggal_logbook'],
+        'dokumentasi' => $fileName,
+        'admin_id' => 1,
+        'siswa_id' => 1,
+    ]);
+
+    return redirect('/logbook');
+}
+
+public function index()
+{
+    // Mendapatkan logbook berdasarkan nisn pengguna yang terautentikasi
+    $nisn = Auth::user()->siswa->nisn;
+    $logbook = DB::table('kegiatan_harian')->where('nisn', $nisn)->get();
+
+    return view('logbook.tampil', compact('logbook'));
+}
+    
+
+    // public function index()
+    // {
+    //     //berdasarkan nisn
+        
+    //     $logbook = DB::table('kegiatan_harian')->get();
+    //     // dd($logbook);
+
+    //     return view('logbook.tampil', ['logbook' => $logbook]);
+    // }
 
     public function show($id)
     {

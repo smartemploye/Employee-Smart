@@ -53,9 +53,9 @@ Edit Setting Magang
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
         
-    {{-- Format Konfirmasi WA --}}
+    {{-- Format Konfirmasi WA siswa--}}
         <div class="form-group row">
-          <label for="inputFormat Konfirmasi WA" class="col-sm-2 col-form-label">Format Konfirmasi WA</label>
+          <label for="inputFormat Konfirmasi WA" class="col-sm-2 col-form-label">Konfirmasi WA Siwa</label>
           <div>
               <p style="margin-left: -180px;margin-top: 35px">Format Diterima</p>
               <textarea name="Format_WA_Diterima" class="form-control" cols="30" rows="10" id="inputFormatDiterima" placeholder="Format Diterima" style="margin-left: -150px;margin-top: -10px;resize: none;width: 500px">{{$settingmagang->Format_WA_Diterima}}</textarea>
@@ -66,7 +66,18 @@ Edit Setting Magang
           </div>
         </div>
   
-  
+   {{-- Format Konfirmasi WA Pembimbing      --}}
+          <div class="form-group row">
+          <label for="inputFormat Konfirmasi WA" class="col-sm-2 col-form-label">WA Pembimbing</label>
+          <div>
+              <p style="margin-left: -180px;margin-top: 35px">Format Pembimbing</p>
+              <textarea name="Format_Pembimbing" class="form-control" cols="30" rows="10" id="inputFormatDiterima" placeholder="Format Diterima" style="margin-left: -150px;margin-top: -10px;resize: none;width: 500px">{{$settingmagang->Format_Pembimbing}}</textarea>
+              {{-- <input type="file" class="form-control" id="inputFormatDiterima " placeholder="Format Diterima" style="margin-left: 130px;margin-top: -50px"> --}}
+          
+          </div>
+        </div>
+
+
         {{-- Format Konfirmasi Email --}}
         <div class="form-group row"> 
           <label for="inputFormat Konfirmasi WA" class="col-sm-2 col-form-label">Format Konfirmasi Email</label>

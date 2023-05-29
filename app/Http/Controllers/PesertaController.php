@@ -9,6 +9,11 @@ use App\Http\Controllers\Controller;
 use App\Models\DataMagang;
 use App\Models\Sekolah;
 use App\Models\Siswa;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
+
+use App\Models\SettingMagang;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
 
@@ -223,6 +228,118 @@ class PesertaController extends Controller
         $data_magang_up->status_magang = $request->status_magang;
         $data_magang_up->judul_project = $request->judul_project;
         $data_magang_up->save();
+        //26 Mei 2023
+        // dd($updated->pembimbing->no_wa_pembimbing);
+        // dd($updated->no_wa);
+        // dd($updated->akun->username);
+        //     //cek request status magangnya apa
+        // $data_magang_up = DataMagang::where('nisn', $nisn_update)->firstOrFail();
+        // $data_magang_up->judul_project = $request->judul_project;
+        $settingmagang = SettingMagang::first();
+
+        $status_magang = $request->status_magang;
+        // dd($status_magang);
+        if ($status_magang == "Belum Bayar" || $status_magang == "Seleksi") {
+                   
+                   
+            
+                    Mail::to($updated->akun->username)->send(new SendEmail([
+                        'name' => 'PT Garuda Cyber Indonesia',
+                        'body' => $settingmagang->Format_Email
+                    ]));
+    
+                    // Ambil format WA dari SettingmagangController
+                    // dd($settingmagang->Format_WA_Diterima);
+                    // dd($settingmagang->Format_WA_Ditolak);
+                    // dd($settingmagang->Format_Pembimbing);
+                    // dd($settingmagang->Format_Email);
+            $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
+                'method'  => 'POST',
+                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => http_build_query([
+                    'no_hp' => $updated->no_wa, # no hp penerima
+                    // 'message' => 'test kirim wa' # pesan
+                    'message' => $settingmagang->Format_WA_Diterima, // Menggunakan format WA dari SettingmagangController
+                ])
+            ]]));
+        } elseif ($status_magang == 'tidak aktif'){
+            // var_dump($updated->no_wa);
+            // var_dump($settingmagang->Format_WA_Ditolak);
+            $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
+                'method'  => 'POST',
+                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => http_build_query([
+                    'no_hp' => $updated->no_wa, # no hp penerima
+                    // 'message' => 'test kirim wa' # pesan
+                    'message' => $settingmagang->Format_WA_Ditolak, // Menggunakan format WA dari SettingmagangController
+                ])
+            ]]));
+            // dd( $result);
+        } elseif ($status_magang == 'Aktif'){
+            $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
+                'method'  => 'POST',
+                'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                'content' => http_build_query([
+                    'no_hp' => $updated->pembimbing->no_wa_pembimbing, # no hp penerima
+                    // 'message' => 'test kirim wa' # pesan
+                    'message' => $settingmagang->Format_Pembimbing, // Menggunakan format WA dari SettingmagangController
+                ])
+            ]]));
+        } 
+
+
+
+
+            //bikin kondisi
+
+            // pastekan dibawah ini
+            // $nisn = $request->nisn;
+            // $siswa = Siswa::where('nisn', $nisn)->first();
+    
+            // if ($siswa) {
+            //     $no_wa = $siswa->no_wa;
+            // } else {
+            //     $no_wa = '085713482807'; // No HP default jika siswa tidak ditemukan
+            // }
+            //         // Ambil format WA dari SettingmagangController
+            //         $settingmagangController = new SettingmagangController();
+            //         $formatWA = $settingmagangController->getFormatWA();
+                    
+            // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
+            //     'method'  => 'POST',
+            //     'header'  => 'Content-Type: application/x-www-form-urlencoded',
+            //     'content' => http_build_query([
+            //         'no_hp' => $no_wa, # no hp penerima
+            //         // 'message' => 'test kirim wa' # pesan
+            //         'message' => $formatWA // Menggunakan format WA dari SettingmagangController
+            //     ])
+            // ]]));
+
+                        //bikin condisi statusnya aktif baru nanti pesan wanya terkirim
+                            // // buat untuk pmbimbing
+
+                            // $nip_pembimbing = $request->nip_pembimbing;
+                            // $pembimbing = pembimbing::where('nip_pembimbing', $nip_pembimbing)->first();
+                    
+                            // if ($pembimbing) {
+                            //     $no_wa_pembimbing = $pembimbing->no_wa_pembimbing;
+                            // } else {
+                            //     $no_wa_pembimbing = '085713482807'; // No HP default jika siswa tidak ditemukan
+                            // }
+                            //         // Ambil format WA dari SettingmagangController
+                            //         $settingmagangController = new SettingmagangController();
+                            //         $formatWA = $settingmagangController->getFormatWA();
+                                    
+                            // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
+                            //     'method'  => 'POST',
+                            //     'header'  => 'Content-Type: application/x-www-form-urlencoded',
+                            //     'content' => http_build_query([
+                            //         'no_hp' => $no_wa_pembimbing, # no hp penerima
+                            //         // 'message' => 'test kirim wa' # pesan
+                            //         'message' => $formatWA // Menggunakan format WA dari SettingmagangController
+                            //     ])
+                            // ]]));
+
         return redirect('/peserta');
     }
 

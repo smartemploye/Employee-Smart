@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             'Kuota_Magang' => '50',
             'Format_WA_Diterima' => 'Selamat anda diterima',
             'Format_WA_Ditolak' => 'Maaf anda belum beruntung',
+            'Format_Pembimbing' => 'Halo Pembimbing',
             'Format_Email' => 'Selamat Malam',
             'WA_Kantor' => '993474',
         ]);

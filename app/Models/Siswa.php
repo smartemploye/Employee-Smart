@@ -24,4 +24,21 @@ class Siswa extends Model
         'foto_siswa',
         'keterangan'
     ];
+
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class, 'nisn', 'nisn');
+    }
+    public function pembimbing()
+    {
+        return $this->hasOne(pembimbing::class, 'nip_pembimbing', 'nip_pembimbing');
+    }
+    public function akun()
+    {
+        return $this->hasOne(akun::class, 'nisn', 'nisn');
+    }
+    public function data_magang()
+    {
+        return $this->hasOne(DataMagang::class, 'nisn', 'nisn');
+    }
 }

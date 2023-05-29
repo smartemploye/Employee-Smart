@@ -5,7 +5,6 @@
 @endsection
 
 @section('content')
-
     @push('scripts')
         <script src="{{ asset('/template/plugins/datatables/jquery.dataTables.js') }}"></script>
         <script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>

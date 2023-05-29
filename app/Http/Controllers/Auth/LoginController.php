@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Crypt;
+use App\Models\SettingMagang;
+use App\Models\DataMagang;
 use Illuminate\Support\Facades\DB;
 
 
@@ -73,7 +75,34 @@ class LoginController extends Controller
         // } else if (Auth::guard('pembimbing')->attempt(['nip_pembimbing' => $request->email, 'password' => $request->password])) {
         //     return redirect('/dashboard');
         // }
-        if (Auth::guard('akun')->attempt([ 'username' => $request->email, 'password' => $request->password])) {
+
+        if (Auth::guard('akun')->attempt(['username' => $request->email, 'password' => $request->password])) {
+            // dd(Auth::user()->role);
+            if (Auth::user()->role=='siswa'){
+                // dd(Auth::user()->siswa->data_magang->status_magang);
+                $status_magang = Auth::user()->siswa->data_magang->status_magang;
+                if ($status_magang == "Belum Bayar" || $status_magang == "Seleksi" || $status_magang == NULL) {
+                    return redirect('/bayar');
+                } elseif ($status_magang == "tidak aktif" || $status_magang == "Drop Out"){
+                    return redirect('/logout');
+                }
+            }
+            //cek dulu yg login sebagai siswa atau bukan, kalo dia siswa cek dulu statusnya.
+         
+            //status seleksi, belu bayar, kosong hasib register/ null dia redirect ke halaman bayar
+            // $settingmagang = SettingMagang::first();
+
+            // $status_magang = $request->status_magang;
+            // // dd($status_magang);
+            // if ($status_magang == "Belum Bayar" || $status_magang == "Seleksi") {
+                       
+            // } elseif ($status_magang == "tidak aktif" || $status_magang == "Drop Out"){
+
+            // } elseif ($status_magang == 'Aktif'){
+
+            // } 
+            //status drop out atau tidak aktif langsung redirect ke route('logout') tampilkan pesan (statusnya drop out atau tdk aktif)
+
             return redirect('/dashboard');
         }
         // die();

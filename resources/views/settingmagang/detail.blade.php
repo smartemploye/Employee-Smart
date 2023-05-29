@@ -84,6 +84,17 @@ Detail Setting
 
       <tr>
         <td>7.</td>
+        <td>Format Pembimbing</td>
+        <td>
+          <div class="">
+            <div class="" style="width: 30%">{{$settingmagang->Format_Pembimbing}}</div>
+          </div>
+        </td>
+        {{-- <td><span class="badge bg-primary">30%</span></td> --}}
+      </tr>
+
+      <tr>
+        <td>8.</td>
         <td>Format WA Email</td>
         <td>
           <div class="">
@@ -94,7 +105,7 @@ Detail Setting
       </tr>
 
       <tr>
-        <td>8.</td>
+        <td>9.</td>
         <td>WA Kantor</td>
         <td>
           <div class="">

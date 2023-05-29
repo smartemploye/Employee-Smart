@@ -7,11 +7,17 @@ use Illuminate\Support\Facades\DB;
 use App\Models\KomponenPenilaian;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Schema;
 // use File;
 
 class komponenpenilaianController extends Controller
 {
 
+    protected $field;
+    protected $newColumn;
+    protected $oldColumn;
     //Berhasil
     public function create()
     {
@@ -32,27 +38,34 @@ class komponenpenilaianController extends Controller
         ]);
 
 
+        $this->field = $request['nama_komponen'];
+        if (Schema::hasColumn('penilaian', $this->field)) {
+            return Redirect::to("/komponenpenilaian")->withFail('Komponen sudah ada');
+        } else {
+            DB::table('komponen_penilaian')->insert([
+                // 'penilaian_kepribadian' => $request['penilaian_kepribadian'],
+                // 'disiplin_waktu' => 100,
+                // 'inisatif_dan_kreatifitas' => 100,
+                // 'sikap_dan_disiplin' => 100,
 
-        DB::table('komponen_penilaian')->insert([
-            // 'penilaian_kepribadian' => $request['penilaian_kepribadian'],
-            // 'disiplin_waktu' => 100,
-            // 'inisatif_dan_kreatifitas' => 100,
-            // 'sikap_dan_disiplin' => 100,
+                // 'penilaian_keahlian' => $request['penilaian_keahlian'],
+                // 'operating_system' => $request['operating_system'],
+                // 'ms_office' => 100,
+                // 'instalasi_sistem' => 100,
 
-            // 'penilaian_keahlian' => $request['penilaian_keahlian'],
-            // 'operating_system' => $request['operating_system'],
-            // 'ms_office' => 100,
-            // 'instalasi_sistem' => 100,
-
-            'nama_komponen' => $request['nama_komponen'],
-            'presentase' => $request['presentase'],
+                'nama_komponen' => $this->field,
+                'presentase' => $request['presentase'],
 
 
 
-        ]);
-        Artisan::call('migrate:refresh', array('--path' => '/database/migrations/2023_05_11_013827_add_column_to_penilaian.php', '--force' => true));
+            ]);
+            Schema::table('penilaian', function (Blueprint $table) {
+                $table->bigInteger($this->field);
+            });
+        }
+        // Artisan::call('migrate:refresh', array('--path' => '/database/migrations/2023_05_11_013827_add_column_to_penilaian.php', '--force' => true));
 
-        return redirect('/komponenpenilaian');
+        return Redirect::to("/komponenpenilaian")->withSuccess('Berhasil Menambahkan data');
     }
 
     public function index()
@@ -90,8 +103,18 @@ class komponenpenilaianController extends Controller
 
         ]);
         $data = KomponenPenilaian::where('id', $id)->first();
-        Session::put(['oldColumn' => $data->nama_komponen, 'newColumn' => $request['nama_komponen']]);
-        Artisan::call('migrate:refresh', array('--path' => '/database/migrations/2023_05_11_020200_edit_column_to_penilaian.php', '--force' => true));
+        $this->newColumn = $request['nama_komponen'];
+        $this->oldColumn = $data->nama_komponen;
+        // Session::put(['oldColumn' => $data->nama_komponen, 'newColumn' => $request['nama_komponen']]);
+        // Artisan::call('migrate:refresh', array('--path' => '/database/migrations/2023_05_11_020200_edit_column_to_penilaian.php', '--force' => true));
+        if ($this->oldColumn != $this->newColumn) {
+            Schema::table('penilaian', function (Blueprint $table) {
+                $table->bigInteger($this->newColumn);
+                if (Schema::hasColumn('penilaian', $this->oldColumn)) {
+                    $table->dropColumn($this->oldColumn);
+                }
+            });
+        }
         DB::table('komponen_penilaian')
             ->where('id', $id)
             ->update(
@@ -117,15 +140,15 @@ class komponenpenilaianController extends Controller
     public function destroy($id)
     {
         $db = DB::table('komponen_penilaian')->where('id', $id);
+        $this->field = $db->first()->nama_komponen;
 
-        $komponen = $db->first()->nama_komponen;
-        Session::put('columnName', $komponen);
-
-       
-        Artisan::call('migrate:refresh', array('--path' => '/database/migrations/2023_05_11_024319_delete_column_to_penilaian.php', '--force' => true));
-
+        Schema::table('penilaian', function (Blueprint $table) {
+            if (Schema::hasColumn('penilaian', $this->field)) {
+                $table->dropColumn($this->field);
+            }
+        });
+        // Artisan::call('migrate:refresh', array('--path' => '/database/migrations/2023_05_11_024319_delete_column_to_penilaian.php', '--force' => true));
         $db->delete();
-
         return redirect('/komponenpenilaian');
     }
 }
