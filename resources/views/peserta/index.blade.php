@@ -70,7 +70,7 @@
             <td>{{$dt->nama_pembimbing }}</td>
             <td><a href="{{ route('peserta.edit', $dt->id) }}" class="btn btn-success"><i class='bx bxs-pencil' style="width: 15px;height: 20px;"></i> Edit</a>
                 <a href="javascript:void(0);" onclick="confirmDelete('{{ route('peserta.hapus', $dt->nisn) }}')" class="btn btn-danger"><i class='bx bxs-trash' style="width: 15px;height: 20px;"></i> Hapus</a>
-                <a href="{{ route('peserta.show', $dt->id) }}" class="btn btn-warning" style="color: white;margin-left: 165px;margin-top: -65px;"><i class='bx bx-zoom-in'></i> Detail</a>
+                <a href="{{ route('peserta.show', $dt->id) }}" class="btn btn-warning" style="color: white;margin-left: 165px;margin-top: -65px;width: 80px;height: 35px;"></i> Detail</a>
             </td>
         </tr>
         @endforeach

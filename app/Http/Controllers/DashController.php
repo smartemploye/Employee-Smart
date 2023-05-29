@@ -30,6 +30,7 @@ class DashController extends Controller
         if(!empty ($absen->absen_masuk)) {
             $data [ 'masuk'] = 'disabled';
         } 
+
         if (!empty ($absen->absen_pulang)) {
             $data [ 'pulang'] = 'disabled';
         }

@@ -145,7 +145,7 @@ class RegisterController extends Controller
                 'nama_pembimbing' => $request->nama_pembimbing,
                 'no_wa_pembimbing' => $request->no_wa_pembimbing,
                 'sekolah_id' => $request->sekolah_id,
-                'password' => Hash::make('123'),
+                // 'password' => Hash::make('123'),
 
             ]);
 

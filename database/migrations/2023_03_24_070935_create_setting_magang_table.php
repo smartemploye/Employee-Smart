@@ -26,6 +26,7 @@ class CreateSettingMagangTable extends Migration
             $table->text('Format_Pembimbing')->nullable();
             $table->text('Format_Email')->nullable();
             $table->bigInteger('WA_Kantor');
+            $table->string('Sertifikat')->nullable();
             // $table->string('periode_magang');
             // $table->integer('kuota_magang');
             $table->timestamps();
