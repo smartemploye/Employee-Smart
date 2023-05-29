@@ -102,6 +102,17 @@ Edit Setting Magang
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
+        {{-- Sertifikat --}}
+        <div class="form-group row">
+          <label for="Sertifikat" class="col-sm-2 col-form-label">Upload Sertifikat</label>
+          <div class="col-sm-10">
+            <input type="file" id="Sertifikat" name="Sertifikat" >
+          </div>
+        </div>
+        @error('Sertifikat')
+        <div class="alert alert-danger">{{ $message }}</div>
+        @enderror
+
         <button type="submit" class="btn btn-primary">Submit</button>
         {{-- <input type="button" value="Simpan Perubahan" style="margin-left: 205px;background-color: rgb(74, 166, 74);color: white;border-radius: 10px;border-color: rgb(74, 166, 74)"> --}}
 

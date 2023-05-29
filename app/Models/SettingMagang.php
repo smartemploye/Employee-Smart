@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+
 class SettingMagang extends Model
 {
     use HasFactory;
 
     protected $table = 'setting_magang';
 
-    protected $fillable = ['jam_Masuk_kerja', 'jam_Pulang_kerja', 'no_va', 'Format_WA_Diterima', 'Format_WA_Ditolak', 'Format_Email', 'WA_Kantor'];
+    protected $fillable = ['jam_Masuk_kerja', 'jam_Pulang_kerja', 'no_va', 'Format_WA_Diterima', 'Format_WA_Ditolak', 'Format_Email', 'WA_Kantor', 'Sertifikat'];
 
     public function Admin()
     {

@@ -147,7 +147,7 @@
                 </div>
             </div>
             @else
-            <h2>Tidak Ada Postingan</h2>
+            <h4>Tidak Ada Postingan</h4>
             @endif
 
             <div class="form-group row">

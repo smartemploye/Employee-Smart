@@ -71,7 +71,7 @@
 		<h1 style="color: white;">Proses Pengajuan Magang</h1>
         <p style="color: #62f983; margin-left: 170px;font-size: 30px">Diterima</p>
         <h2 style="color: white; margin-left: 30px;">Selamat!!! Kamu Telah Diterima</h2>
-		<label for="virtual-akun" style="color: white;">Nomor Virtual Akun:</label>
+		<label for="virtual-akun" style="color: white;">Nomor Rekening:</label>
 		<input type="text" id="virtual-akun" name="virtual_akun" style="color: #f8f8f8" placeholder="{{ $data }}" value="{{ $data }}" disabled>
 
 		<label for="bukti-pembayaran" style="color: white;">Bukti Pembayaran:</label>

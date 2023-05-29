@@ -37,6 +37,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\JumlahPesertaController;
 use App\Http\Controllers\SettingmagangController;
 use App\Http\Controllers\komponenpenilaianController;
+use App\Http\Controllers\ReportdanSertifikatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -293,6 +294,9 @@ Route::resource('absen', AbsenController::class)->only(['create', 'store'])->nam
     'store' => 'absen.store'
 ]);
 
+// Data Tabel Absensi
+Route::get('/absensi', [DataAbsensiController::class, 'absensi']);
+
 //Dashboard Menampilkan Jumlah peserta yang hadir hari ini dan bulan ini
 Route::get('/jumlah-peserta', [JumlahPesertaController::class, 'jumlahPeserta']);
 
@@ -300,4 +304,9 @@ Route::get('/jumlah-peserta', [JumlahPesertaController::class, 'jumlahPeserta'])
 Route::get('/profile_pembimbing', [ProfilePembimbingController::class, 'index'])->name('profile_pembimbing');
 Route::post('/postpembimbing/{id}', [PembimbingController::class, 'store'])->name('postpembimbing');
 Route::post('/postdatamagang/{id}', [DataMagangController::class, 'store'])->name('postdatamagang');
+
+
+
+// Report dan Sertifikat
+Route::get('/ReportdanSertifikat', [ReportdanSertifikatController::class, 'showImage']);
 

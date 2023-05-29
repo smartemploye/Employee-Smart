@@ -49,6 +49,9 @@ class SettingmagangController extends Controller
 
         ]);
 
+        $fileName = time().'.'.$request->Sertifikat->extension();  
+        $request->Sertifikat->move(public_path('image'), $fileName);
+        $SettingMagang = new SettingMagang;
         DB::table('setting_magang')
               ->where('id', $id)
               ->update(
@@ -62,6 +65,7 @@ class SettingmagangController extends Controller
                     'Format_Pembimbing' => $request['Format_Pembimbing'],
                     'Format_Email' => $request['Format_Email'],
                     'WA_Kantor' => $request['WA_Kantor'],
+                    'Sertifikat' => $fileName,
                 ],
             );
         return redirect('/settingmagang');
