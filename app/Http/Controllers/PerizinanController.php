@@ -31,13 +31,19 @@ class PerizinanController extends Controller
             'izin_dari.required' => 'Form harus diisi.',
             'izin_sampai.after_or_equal' => 'Tanggal izin tidak boleh diisi dengan tanggal sebelum hari ini.',
             'keterangan.required' => 'Keterangan harus diisi.',
+            'dokumentasi.required' => 'Form harus diisi!',
+            'dokumentasi.image' => 'Format harus dalam bentuk gambar!',
         ];
 
         $request->validate([
             'izin_dari' => 'required',
             'izin_sampai' => 'required|date|after_or_equal:today',
             'keterangan' => 'required',
+            'dokumentasi' => 'required|image',
         ], $message);
+
+        $dokumentasi = $request->dokumentasi;
+        $file_dokumentasi = $dokumentasi->getClientOriginalName();
 
         $status = "proses";
         $data = [
@@ -48,9 +54,12 @@ class PerizinanController extends Controller
             'izin_dari' => $request->izin_dari,
             'izin_sampai' => $request->izin_sampai,
             'keterangan' => $request->keterangan,
+            'dokumentasi' =>  $file_dokumentasi,
             'approve' => $status,
             // dd($request->all())
         ];
+
+        $dokumentasi->move(public_path().'/image/dokumentasi', $file_dokumentasi);
         // dd($data);
         Absen::create($data);
         return redirect('/perizinan');
@@ -65,7 +74,7 @@ class PerizinanController extends Controller
         ->whereNotIn('absen.keterangan',[''])
         ->get([
             'izin_dari','izin_sampai','absen.keterangan AS keterangan','approve','absen.siswa_id AS id',
-            'siswa.nama_siswa','absen.id AS absen_id'
+            'siswa.nama_siswa','absen.id AS absen_id','dokumentasi'
         ]);
 
         return view('izin_admin.edit', compact('perizinan'));

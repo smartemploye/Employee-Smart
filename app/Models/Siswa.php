@@ -41,5 +41,5 @@ class Siswa extends Model
     {
         return $this->hasOne(DataMagang::class, 'nisn', 'nisn');
     }
-    
+
 }

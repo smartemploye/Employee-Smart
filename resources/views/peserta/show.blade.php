@@ -11,17 +11,9 @@
             {{ session('success') }}
         </div>
     @endif
-<<<<<<< Updated upstream
     @foreach ($siswa as $data)
-    <div class="foto" style="width: 200px; height: 250px; margin-left: 500px; margin-bottom: 50px;">
-        <img src="{{ asset('image/fotosiswa/' . $data->foto_siswa) }}" style="width: 100%; height: 100%;" />
-    </div>
-
-=======
-    
-        <div class="foto">
-            <img style="width: 200px;height: 250px;margin-left: 500px;margin-bottom: 50px" src="{{ asset('image/fotosiswa/'.$data->foto_siswa) }}">
->>>>>>> Stashed changes
+    <div class="foto">
+        <img style="width: 200px;height: 250px;margin-left: 500px;margin-bottom: 50px" src="{{ asset('image/fotosiswa/'.$data->foto_siswa) }}">
             <div class="form-group row">
                 <label for="inputNamaPeserta" class="col-sm-2 col-form-label">Nama Peserta</label>
                 <div class="col-sm-10">
@@ -183,5 +175,5 @@
                     <a href=""><button>Lihat</button></a>
                 </div>
             </div>
-    
+    @endforeach
 @endsection

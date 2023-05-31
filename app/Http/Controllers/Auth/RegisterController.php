@@ -54,7 +54,7 @@ class RegisterController extends Controller
                 'sekolah_id' => 'required',
                 'jenis_jurusan' => 'required',
                 'no_wa' => 'required|numeric|digits_between:10,13',
-                'foto_siswa' => 'required',
+                'foto_siswa' => 'required|image',
                 'tanggal_lahir' => 'required|before:today',
                 'jurusan' => 'required',
                 'paket_magang' => 'required',

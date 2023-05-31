@@ -69,12 +69,12 @@
                                 text: 'Maaf kuota magang bulan ini penuh',
                                 allowOutsideClick: false,
                                 showCloseButton: false,
-                                showCancelButton: false, 
+                                showCancelButton: false,
                                 showConfirmButton: false
                             })
             </script>
-        
-            
+
+
         @endif
     </head>
 
@@ -134,7 +134,7 @@
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputSupervisor">NIP Pembimbing</label>
-                                            <input type="text" maxlength="18" name="nip_pembimbing"
+                                            <input type="text" name="nip_pembimbing"
                                                 class="form-control @error('nip_pembimbing') is-invalid @enderror"
                                                 id="inputNippembimbing" placeholder="Enter your Mentor NIP"
                                                 value="{{ old('nip_pembimbing') }}">
