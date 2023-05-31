@@ -19,7 +19,7 @@
             }
 
             .form-container {
-                background-color: black;
+                background-color: #4952d1;
                 color: #ffffff;
                 /* padding: 30px; */
                 margin-right: -200px;
@@ -80,7 +80,7 @@
 
     <body>
         @include('sweetalert::alert')
-        <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 650px">
+        <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 43%">
         <div class="container">
             <div class="row justify-content-center" style="margin-top: 50px;">
                 <div class="col-md-8">
@@ -311,9 +311,9 @@
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="paket_magang" id="Basic" value="Basic" {{ old('paket_magang') == 'Basic' ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic</label>
+                                                    <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic (Seragam+Nametag)</label>
                                                     <input class="form-check-input" type="radio" name="paket_magang" id="Exclusive" value="Exclusive" {{ old('paket_magang') == 'Exclusive' ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive</label>
+                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive (Seragam+Nametag+GCIInstitue)</label>
                                                 </div>
                                                 @error('paket_magang')
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -332,7 +332,7 @@
                                     style="margin-left: 400px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px" />
                             </div>
                         </form>
-                        <p style="margin-left: 500px;margin-top: 10px">Already have account? <a href="/login">Login</a>
+                        <p style="margin-left: 500px;margin-top: 10px">Already have account? <a href="/login" style="color: bisque">Login</a>
                         </p>
                     </div>
                 </div>

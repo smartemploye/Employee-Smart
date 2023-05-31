@@ -14,7 +14,7 @@
           form {
             margin: 100px auto;
             width: 300px;
-            background-color: black;
+            background-color: #4952d1;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -49,22 +49,24 @@
         </style>
       </head>
       <body>
-        <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 650px">
+        <div class="d-flex justify-content-center">
+            <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="">
+        </div>
         <form action="/postlogin" style="margin-top: -20px;" method="POST">
             @csrf
           <h1 style="text-align: center; color: white;">Login</h1>
           <h2 style="color: white;">Garuda Cyber Indonesia</h2>
 
           <label for="email" style="color: white;" >Email/NIP</label>
-          <input type="text" id="email" name="email" placeholder="Enter your Username" required>
+          <input type="text" id="email" name="email" placeholder="Masukkan Username" required>
 
           <label for="password" style="color: white;">Password</label>
-          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+          <input type="password" id="password" name="password" placeholder="Masukkan password" required>
 
           {{-- <input type="submit" name="submit" value="Login"> --}}
           <button type="submit" name="submit">Login</button>
           <h4 style="color: white; text-align: center;">Don't have account?</h4>
-          <a href="/register"><h2 style="color: #0fa2f4;">Register</h2></a>
+          <a href="/register"><h2 style="color: whitesmoke;background-color: #45a049; border-radius: 20px;padding-top: 5px; padding-bottom: 5px; font-size: 20px">Register</h2></a>
         </form>
       </body>
 </html>

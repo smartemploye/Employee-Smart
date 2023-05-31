@@ -40,7 +40,7 @@ Detail Setting
 
       <tr>
         <td>3.</td>
-        <td>Nomor VA</td>
+        <td>Nomor Rekening</td>
         <td>
           <div class="">
             <div class="" style="width: 30%">{{$settingmagang->no_va}}</div>

@@ -6,10 +6,7 @@ Halaman Report dan Sertifikat
 
 @section('content')
 
-  <div class="form-group">
-    <label>Download Srtifikat</label>
-    <a href="/ReportdanSertifikat/{{$siswa->nisn}}"  lass="btn btn-primary btn-sm mb-3">Download</a>
-  </div>
+  
   <div class="form-group">
     <label>Download Format Laporan Akhir</label>
     <a href="{{url('format_laporan_akhir/'.$pembimbing->format_laporan_akhir)}}"  lass="btn btn-primary btn-sm mb-3">Download</a>
@@ -28,7 +25,7 @@ Halaman Report dan Sertifikat
     @error('laporan_akhir')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" style="margin-left: 40%;margin-top:-10%">Submit</button>
   </form>
 
   @if($siswa->data_magang && $siswa->data_magang->laporan_akhir)
@@ -38,6 +35,10 @@ Halaman Report dan Sertifikat
       {{-- <a href="{{ asset('laporan_akhir/'.$siswa->data_magang->laporan_akhir) }}" >Download</a> --}}
     </div>
   @endif
+  <div class="form-group">
+    <label>Download Sertifikat</label>
+    <a href="/ReportdanSertifikat/{{$siswa->nisn}}"  lass="btn btn-primary btn-sm mb-3">Download</a>
+  </div>
 
 @endsection
 

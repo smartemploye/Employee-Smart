@@ -65,7 +65,7 @@
                     <a href="/bidang" class="nav-link" style="color: white">
                         <i class='bx bxs-objects-horizontal-left' style="vertical-align: -3px;font-size: 25px"></i>
                         <p>
-                            Data Bidang
+                            Data Jurusan
                         </p>
                     </a>
                 </li>
