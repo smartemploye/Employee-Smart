@@ -187,7 +187,7 @@ class RegisterController extends Controller
         Akun::create([
             'nisn' => $request->nisn,
             'username' => $request->username,
-            'nip_pembimbing'=> $request->nip_pembimbing,
+            // 'nip_pembimbing'=> $request->nip_pembimbing,
             // 'password' => Crypt::encrypt($request->password),
             'password' => Hash::make($request->password),
             'role'=>$role,

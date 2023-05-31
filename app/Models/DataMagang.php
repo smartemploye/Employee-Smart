@@ -27,6 +27,7 @@ class DataMagang extends Model
         'status_magang',
         'ukuran_baju',
         'nilai_akhir',
-        'bukti_pembayaran'
+        'bukti_pembayaran',
+        'laporan_akhir',
     ];
 }

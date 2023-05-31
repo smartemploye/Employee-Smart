@@ -13,38 +13,54 @@ class AbsenController extends Controller
 {
     public function create()
     {
-        return view('scan');
+        return view('apsen.scan');
     }
     
     public function store(Request $request)
     {
-        $nisn = $request->input('nisn');
-    
+        // dd('simpan');
+        // $nisn = $request->input('nisn');
+    $nisn = Auth::user()->nisn;
         // Query untuk mendapatkan data siswa berdasarkan NISN
         $siswa = Siswa::where('nisn', $nisn)->first();
-    
+     
         if ($siswa) {
             $existingAbsenMasuk = Absen::where('nisn', $nisn)
                 ->whereDate('absen_masuk', Carbon::today()->setTimezone('Asia/Jakarta'))
                 ->whereNull('absen_pulang')
                 ->first();
-    
-            if (!$existingAbsenMasuk) {
+ 
+            if (empty($existingAbsenMasuk)) {
                 $absen = new Absen();
                 $absen->nisn = $nisn;
+                $absen->siswa_id = $siswa->siswa_id;
                 $absen->absen_masuk = Carbon::now('Asia/Jakarta'); // Waktu absen masuk dengan zona waktu WIB
                 $absen->status_absen = 'hadir'; // Status absen hadir
                 $absen->save();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Absen masuk berhasil disimpan'
+                ]);
     
-                return redirect()->route('absen.create')->with('success', 'Absen masuk berhasil disimpan.');
+                // return redirect()->route('absen.create')->with('success', 'Absen masuk berhasil disimpan.');
             } else {
                 $existingAbsenMasuk->absen_pulang = Carbon::now('Asia/Jakarta');
                 $existingAbsenMasuk->save();
+
+                return response()->json([
+                    'success' => true,
+                    'message' => 'Absen pulang berhasil disimpan'
+                ]);
     
-                return redirect()->back()->with('success', 'Absen pulang berhasil disimpan.');
+                // return redirect()->back()->with('success', 'Absen pulang berhasil disimpan.');
             }
         } else {
-            return redirect()->back()->with('error', 'NISN tidak valid.');
+            return response()->json([
+                'success' => false,
+                'message' => 'NISN tidak valid'
+            ]);
+            // return redirect()->back()->with('error', 'NISN tidak valid.');
         }
     }
     

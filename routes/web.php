@@ -223,6 +223,9 @@ Route::get('/logbook', [LogbookController::class, 'index']);
 //Detail Logbook berdasarkan id
 Route::get('/logbook/{logbook_id}', [LogbookController::class, 'show']);
 
+Route::get('/logbook/detail/{nisn}', [LogbookController::class, 'detail']);
+
+
 //Update
 //Form Update Logbook
 Route::get('/logbook/{logbook_id}/edit', [LogbookController::class, 'edit']);
@@ -233,11 +236,11 @@ Route::put('/logbook/{logbook_id}', [LogbookController::class, 'update']);
 //Delete berdasarkan id
 Route::delete('/logbook/{logbook_id}', [LogbookController::class, 'destroy']);
 
-// CRUD Absen
-Route::group(['prefix' => 'absen'], function () {
-    Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
-    Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
-});
+// // CRUD Absen
+// Route::group(['prefix' => 'absen'], function () {
+//     Route::post('/masuk', [AbsenController::class, 'scanMasuk'])->name('absen.masuk');
+//     Route::post('/keluar', [AbsenController::class, 'scanKeluar'])->name('absen.keluar');
+// });
 
 //CRUD Report-DataTable
 // DataTable
@@ -251,6 +254,9 @@ Route::post('/show-chart', [GraphController::class, 'Chart']);
 Route::get('/', [DashController::class, 'utama']);
 Route::get('/scan', [DashController::class, 'scan']);
 // });
+
+// qr-code
+Route::get('/qr-code', [QrController::class, 'generateQrCode']);
 
 
 //pembayaran
@@ -308,5 +314,10 @@ Route::post('/postdatamagang/{id}', [DataMagangController::class, 'store'])->nam
 
 
 // Report dan Sertifikat
-Route::get('/ReportdanSertifikat', [ReportdanSertifikatController::class, 'showImage']);
+Route::get('/ReportdanSertifikat/{nisn}', [ReportdanSertifikatController::class, 'showImage']);
+Route::get('/tampilan', [ReportdanSertifikatController::class, 'tampilan'])->name('tampilan');
+// Route::get('/tampilan', [ReportdanSertifikatController::class, 'tampilan']);
+Route::post('/store/{nisn}', [ReportdanSertifikatController::class, 'store']);
+
+Route::get('/tampilan/lihat/{nisn}', [ReportdanSertifikatController::class, 'lihat']);
 

@@ -57,13 +57,30 @@ class LogbookController extends Controller
 public function index()
 {
     // Mendapatkan logbook berdasarkan nisn pengguna yang terautentikasi
-    $nisn = Auth::user()->siswa->nisn;
+    if (Auth::user()->role == 'siswa') {
+        $nisn = Auth::user()->siswa->nisn;
+    } else {
+        // dd($nisn);
+    }
+    
+    // Auth::user()->role = 'siswa';
+    // $nisn = Auth::user()->siswa->nisn;
     $logbook = DB::table('kegiatan_harian')->where('nisn', $nisn)->get();
 
     return view('logbook.tampil', compact('logbook'));
 }
     
+public function detail($nisn)
+{
+    // Mendapatkan logbook berdasarkan nisn pengguna yang terautentikasi
 
+    
+    // Auth::user()->role = 'siswa';
+    // $nisn = Auth::user()->siswa->nisn;
+    $logbook = DB::table('kegiatan_harian')->where('nisn', $nisn)->get();
+
+    return view('logbook.tampil', compact('logbook'));
+}
     // public function index()
     // {
     //     //berdasarkan nisn

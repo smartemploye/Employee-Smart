@@ -41,7 +41,10 @@ class PerizinanController extends Controller
 
         $status = "proses";
         $data = [
+            //ica membuat padasaat izin bedasarkan siswa_id. seharusnya menggunakan nisn
             'siswa_id'=>Auth::user()->siswa->id,
+            //Abdul membuat Pada saat absen scan menggunakan nisn berdasarkan erd
+            'nisn' => Auth::user()->siswa->nisn,
             'izin_dari' => $request->izin_dari,
             'izin_sampai' => $request->izin_sampai,
             'keterangan' => $request->keterangan,

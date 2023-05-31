@@ -13,6 +13,12 @@ Detail Logbook
 <hr>
 <p class="card-text">{{$logbook->logbook}}</p>
 <hr>
+@if (Auth::user()->role == 'siswa')
 <a href="/logbook" class="btn btn-secondary btn-block btn-sm">Back</a>
+    
+@else
+<a href="/logbook/detail/{{$logbook->nisn}}" class="btn btn-secondary btn-block btn-sm">Back</a>
+    
+@endif
 
 @endsection

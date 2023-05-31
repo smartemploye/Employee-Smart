@@ -45,6 +45,10 @@ class ReportController extends Controller
         $laporan_akhir = $request->laporan_akhir;
         $file_laporan_akhir = $laporan_akhir->getClientOriginalName();
 
+        
+        $request->format_laporan_akhir->move(public_path('image'), $file_laporan_akhir);
+        
+
         // dd($request->all());
         Pembimbing::create([
             'format_laporan_akhir' => $file_format_laporan_akhir,
