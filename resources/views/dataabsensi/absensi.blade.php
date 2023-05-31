@@ -29,6 +29,7 @@ Halaman Data Table Absensi
             <th>Absen Masuk</th>
             <th>Absen Pulang</th>
             <th>Status Absen</th>
+            <th>Keterangan</th>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +40,7 @@ Halaman Data Table Absensi
             <td>{{ $siswa->absen_masuk }}</td>
             <td>{{ $siswa->absen_pulang }}</td>
             <td>{{ $siswa->status_absen }}</td>
+            <td>{{ $siswa->keterangan }}</td>
         </tr>
         @endforeach
     </tbody>

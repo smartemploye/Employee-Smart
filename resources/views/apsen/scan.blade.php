@@ -11,14 +11,14 @@
         <div class="col-6">
             <h3>Absen Masuk</h3>
             {{-- dirapikan tataletaknya --}}
-            {{$absen->absen_masuk}}
+            {{$absen->absen_masuk ?? ''}}
             <button class="btn btn-primary masuk" style="width:100px; height:100px" onclick="scan('masuk')"
                 {!! $masuk !!}><i class='bx bx-log-in' style="font-size: 50px;"></i></button>
         </div>
         <div class="col-6">
             <h3>Absen Pulang</h3>
             {{-- dirapikan tataletaknya --}}
-            {{$absen->absen_pulang}}
+            {{$absen->absen_pulang ?? ''}}
             <button class="btn btn-primary keluar" style="width:100px; height:100px" onclick="scan('keluar')"
                 {!! $pulang !!}><i class='bx bx-log-out' style="font-size: 50px;"></i></button>
         </div>
@@ -57,18 +57,18 @@
                 $.ajax({
                     url: '/absen',
                     type: "POST",
+                    dataType: "json",
                     data: {
                         _token: csrf,
                         jenis: params,
                     },
-                    success: function(response) {
-                        console.log(response);
-                        if (response.status != 200) {
+                    success: function(response) {  
+                        if (response.success != true) {
                             Swal.fire({
                                 icon: 'error',
                                 title: 'Oops...',
                                 text: response.message,
-                            })
+                            });
                         } else {
                             Swal.fire({
                                 position: 'centered',
@@ -78,8 +78,12 @@
                                 timer: 1500
                             })
                             // $('.button').css('display', 'block');
-                            document.location.reload();
+                            
                         }
+
+                        setTimeout(() => {
+                            document.location.reload();
+                        }, 800);
                     }
                 })
 

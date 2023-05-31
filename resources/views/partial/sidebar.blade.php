@@ -142,7 +142,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/ReportdanSertifikat" class="nav-link" style="color: white">
+                    <a href="/tampilan" class="nav-link" style="color: white">
                         <i class='bx bxs-report'style="vertical-align: -3px;font-size: 25px"></i>
                         <p>
                             Report dan sertifikat
