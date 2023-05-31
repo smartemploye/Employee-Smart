@@ -23,7 +23,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
 </head>
 <body>
-    <div id="app">2
+    <div id="app">
 
         <main class="py-4">
             @yield('content')

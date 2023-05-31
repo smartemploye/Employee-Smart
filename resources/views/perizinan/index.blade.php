@@ -44,6 +44,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Dari</th>
                         <th scope="col">Sampai</th>
+                        <th scope="col">Dokumentasi</th>
                         <th scope="col">Keterangan</th>
                         <th scope="col">Approve</th>
                         <th scope="col">Aksi</th>
@@ -56,6 +57,7 @@
                         <td>{{$no++ }}</td>
                         <td>{{$izin->izin_dari}}</td>
                         <td>{{$izin->izin_sampai }}</td>
+                        <td>{{$izin->dokumentasi }}</td>
                         <td>{{$izin->keterangan }}</td>
                         <td>{{$izin->approve }}</td>
                         <td>
