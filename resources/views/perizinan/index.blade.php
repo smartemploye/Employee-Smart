@@ -57,7 +57,10 @@
                         <td>{{$no++ }}</td>
                         <td>{{$izin->izin_dari}}</td>
                         <td>{{$izin->izin_sampai }}</td>
-                        <td>{{$izin->dokumentasi }}</td>
+                        <td>
+                            <img src="{{ asset('image/dokumentasi/'.$izin->dokumentasi) }}">
+                        </td>
+
                         <td>{{$izin->keterangan }}</td>
                         <td>{{$izin->approve }}</td>
                         <td>

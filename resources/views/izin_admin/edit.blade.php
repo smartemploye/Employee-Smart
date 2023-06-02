@@ -8,7 +8,7 @@
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Edit Perizinan</h6>
                 @foreach ($perizinan as $data )
-                <form method="POST" action="{{ route('perizinan.update', $data->id) }}">
+                <form method="POST" action="{{ route('izin_admin.update', $data->absen_id) }}">
                     @csrf
                     @method('PUT')
                     <div class="form-group row">

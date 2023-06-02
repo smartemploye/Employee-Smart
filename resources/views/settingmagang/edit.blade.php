@@ -33,7 +33,7 @@ Edit Setting Magang
 
     {{-- Nomor VA --}}  
       <div class="form-group row">
-        <label for="inputNomorVA" class="col-sm-2 col-form-label">Nomor VA</label>
+        <label for="inputNomorVA" class="col-sm-2 col-form-label">Nomor Rekening</label>
         <div class="col-sm-10">
           <input type="text" name="no_va" value="{{$settingmagang->no_va}}" class="form-control" id="inputNomorVA" placeholder="Nomor VA">
         </div>

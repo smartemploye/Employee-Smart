@@ -6,7 +6,7 @@
     <div class="card-header ">
         <div class="row">
             <div class="col-3">
-                <h6 class="m-0 font-weight-bold text-primary">Data Bidang</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Data Jurusan</h6>
                 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
@@ -37,8 +37,8 @@
                 <thead>
                     <tr>
                       <th scope="col">No</th>
-                      <th scope="col">Nama Bidang</th>
-                      <th scope="col">Jenis Bidang</th>
+                      <th scope="col">Nama Jurusan</th>
+                      <th scope="col">Jenis Jurusan</th>
                       <th scope="col">Aksi</th>
                     </tr>
                   </thead>

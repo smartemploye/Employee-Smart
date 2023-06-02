@@ -62,7 +62,7 @@
                                         <label for="inputKeteranganIzin" style="margin-left: 10px;margin-top: 20px">Keterangan</label>
                                     </div>
                                     <div class="col-9">
-                                        <input type="text" class="form-control" name="keterangan" style="margin-left: 170px;margin-top: 10px;width: 235%"
+                                        <input type="text" class="form-control" name="keterangan" style="margin-left: 180px;margin-top: 10px;width: 240%"
                                             placeholder="Masukkan Keterangan" value="{{ $data->keterangan }}">
                                     </div>
                                 </div>{{-- <input type="text" class="form-control" name="status_magang" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->status_magang }}"> --}}

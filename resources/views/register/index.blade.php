@@ -19,7 +19,7 @@
             }
 
             .form-container {
-                background-color: black;
+                background-color: #4952d1;
                 color: #ffffff;
                 /* padding: 30px; */
                 margin-right: -200px;
@@ -80,7 +80,7 @@
 
     <body>
         @include('sweetalert::alert')
-        <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 650px">
+        <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 43%">
         <div class="container">
             <div class="row justify-content-center" style="margin-top: 50px;">
                 <div class="col-md-8">
@@ -94,12 +94,12 @@
                             <table>
                                 <tr>
                                     <td>
-                                        <div class="form-group" style="margin-left: 15px;">
+                                        <div class="form-group" style="margin-left: 10px;">
                                             <label for="inputName">Name</label>
                                             <input type="text" name="nama_siswa"
                                                 class="form-control @error('nama_siswa') is-invalid @enderror"
-                                                id="inputName" placeholder="Enter your name"
-                                                style="padding-left: 10px;padding-right: 350px"
+                                                id="inputName" placeholder="Masukkan Nama"
+                                                style="padding-left: 10px;padding-right: 10px; width: 530px"
                                                 value="{{ old('nama_siswa') }}">
                                             @error('nama_siswa')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -107,11 +107,11 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: 10px;">
+                                        <div class="form-group" style="margin-left: -80px; padding-right: 10px">
                                             <label for="inputSupervisor">Nama Pembimbing</label>
                                             <input type="text" name="nama_pembimbing"
                                                 class="form-control @error('nama_pembimbing') is-invalid @enderror"
-                                                id="inputNamapembimbing" placeholder="Enter your Mentor Name"
+                                                id="inputNamapembimbing" placeholder="Masukkan Nama Pembimbing"
                                                 value="{{ old('nama_pembimbing') }}">
                                             @error('nama_pembimbing')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -124,19 +124,19 @@
                                         <div class="form-group" style="margin-left: -190px; padding-left: 200px;">
                                             <label for="inputNisn">Nomor Induk Siswa Nasional (NISN)</label>
                                             <input type="text" name="nisn" class="form-control @error('nisn') is-invalid @enderror" id="inputNisn"
-                                                placeholder="Enter your NISN"
-                                                style="padding-left: 10px;padding-right: 300px" value="{{ old('nisn') }}">
+                                                placeholder="Masukkan NISN"
+                                                style="padding-left: 10px;padding-right: 30px; width: 530px" value="{{ old('nisn') }}">
                                             @error('nisn')
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: 10px;">
+                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
                                             <label for="inputSupervisor">NIP Pembimbing</label>
                                             <input type="text" name="nip_pembimbing"
                                                 class="form-control @error('nip_pembimbing') is-invalid @enderror"
-                                                id="inputNippembimbing" placeholder="Enter your Mentor NIP"
+                                                id="inputNippembimbing" placeholder="Masukkan NIP Pembimbing"
                                                 value="{{ old('nip_pembimbing') }}">
                                             @error('nip_pembimbing')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -146,25 +146,27 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="form-group" style="margin-left: 10px;">
-                                            <label for="inputSchool">Asal Sekolah</label>
-                                            <select class="form-control @error('sekolah_id') is-invalid @enderror" name="sekolah_id" id="sekolah">
-                                                <option value="" disabled selected>-- Select School --</option>
+                                        <div class="col-3">
+                                        <div class="form-group">
+                                            <label>Asal Sekolah</label>
+                                            <select class="select2" class="form-control @error('sekolah_id') is-invalid @enderror" name="sekolah_id" id="sekolah"
+                                            data-placeholder="Nama Sekolah" style="width: 530px;margin-left: 20px;color: black">
+                                                <option style="color: black"  value="" disabled selected >-- Select School --</option>
                                                 @foreach ($sekolah as $sklh)
-                                                    <option value="{{ $sklh->id }}">{{ $sklh->nama_sekolah }}</option>
+                                                    <option style="background-color: black" value="{{ $sklh->id }}">{{ $sklh->nama_sekolah }}</option>
                                                 @endforeach
                                             </select>
                                             @error('sekolah_id')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                    </td>
-                                    <td>
-                                        <div class="form-group" style="margin-left: 10px;">
+                                        </div >
+                                        <td>
+                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
                                             <label for="inputSupervisor">Nomor WA Pembimbing</label>
                                             <input type="text" name="no_wa_pembimbing"
                                                 class="form-control @error('no_wa_pembimbing') is-invalid @enderror"
-                                                id="inputSupervisor" placeholder="Enter your Mentor number"
+                                                id="inputSupervisor" placeholder="Masukkan Nomor Pembimbing"
                                                 value="{{ old('no_wa_pembimbing') }}">
                                             @error('no_wa_pembimbing')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -191,10 +193,10 @@
 
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: 10px;">
+                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
                                             <label for="inputShirtSize">Ukuran Baju</label>
                                             <select class="form-control @error('ukuran_baju') is-invalid @enderror" name="ukuran_baju" id="inputShirtSize">
-                                                <option value="" selected disabled>-- Select Shirt Size --</option>
+                                                <option value="" selected disabled>-- Pilih Ukuran Baju --</option>
                                                 <option value="s">S</option>
                                                 <option value="m">M</option>
                                                 <option value="l">L</option>
@@ -210,19 +212,25 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="form-group" style="margin-left: 10px;">
-                                            <label for="inputJurusanName">Nama Jurusan</label>
-                                            <input type="text" name="jurusan" class="form-control @error('jurusan') is-invalid @enderror"
-                                                class="form-control" id="inputJurusan" placeholder="Enter your Major"
-                                                value="{{ old('jurusan') }}">
-                                            @error('jurusan')
-                                                <div class="alert alert-danger">{{ $message }}</div>
-                                            @enderror
-                                        </div>
+                                        <div class="col-3">
+                                            <div class="form-group">
+                                                <label>Nama Jurusan</label>
+                                                <select class="select2" class="form-control @error('jurusan') is-invalid @enderror" name="jurusan" id="InputJurusan"
+                                                data-placeholder="Nama Jurusan" style="width: 530px;margin-left: 20px;color: black">
+                                                    <option style="color: black"  value="" disabled selected >-- Pilih Jurusan --</option>
+                                                    @foreach ($bidang as $jurusan)
+                                                        <option style="background-color: black" value="{{ $jurusan->id }}">{{ $jurusan->nama_bidang }}</option>
+                                                    @endforeach
+                                                </select>
+                                                @error('jurusan')
+                                                    <div class="invalid-feedback">{{ $message }}</div>
+                                                @enderror
+                                            </div>
+                                            </div >
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: 15px;">
-                                            <label for="inputSuratPengajuan">Upload Surat Pengajuan</label>
+                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
+                                            <label for="inputSuratPengajuan">Upload Surat Pengajuan (Dalam bentuk file pdf)</label>
                                             <input type="file" name="surat_pengajuan" class="form-control-file @error('surat_pengajuan') is-invalid @enderror" id="surat_pengajuan" accept="pdf/*" value="{{ old('surat_pengajuan') }}">
                                             @error('surat_pengajuan')
                                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
@@ -235,7 +243,8 @@
                                         <div class="form-group" style="margin-left: 15px;">
                                             <label for="inputNowa">Nomor WA</label>
                                             <input type="text" name="no_wa" class="form-control @error('no_wa') is-invalid @enderror" id="inputNowa"
-                                            placeholder="Enter your Number"
+                                            placeholder="Masukkan Nomor WA"
+                                            style="width: 530px"
                                                 value="{{ old('no_wa') }}">
                                             @error('no_wa')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -243,10 +252,10 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: 15px;">
+                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
                                             <label for="inputEmail">Alamat Email</label>
                                             <input type="email" name="username" class="form-control @error('username') is-invalid @enderror" id="inputEmail"
-                                                placeholder="Enter your email address" style="padding-right: 300px"
+                                                placeholder="Masukkan Alamat Email" style="padding-right: 300px"
                                                 value="{{ old('username') }}">
                                                 @error('username')
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -266,11 +275,11 @@
 
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: 10px;">
+                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
                                             <label for="inputPassword">Password</label>
                                             <input type="password" name="password"
                                                 class="form-control @error('password') is-invalid @enderror"
-                                                id="inputPassword" placeholder="Enter your password"
+                                                id="inputPassword" placeholder="Masukkan Password"
                                                 value="{{ old('password') }}">
                                             @error('password')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -280,10 +289,10 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <div class="form-group" style="margin-left: 15px;">
+                                        <div class="form-group" style="margin-left: 15px; width: 530px">
                                             <label for="inputBirthdate">Tanggal Lahir</label>
                                             <input type="date" name="tanggal_lahir" class="form-control @error('tanggal_lahir') is-invalid @enderror"
-                                                id="inputBirthdate" placeholder="Enter your birthdate"
+                                                id="inputBirthdate" placeholder="Masukkan Tanggal Lahir"
                                                 value="{{ old('tanggal_lahir') }}">
                                             @error('tanggal_lahir')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -291,11 +300,11 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: 15px;">
+                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
                                             <label for="inputConfirmPassword">Ulangi Password</label>
                                             <input type="password"
                                                 class="form-control @error('password_confirmation') is-invalid @enderror"
-                                                id="inputConfirmPassword" placeholder="Enter your password again"
+                                                id="inputConfirmPassword" placeholder="Ulangi Password"
                                                 name="password_confirmation" value="{{ old('password_confirmation') }}">
                                             @error('password_confirmation')
                                                 <div class="alert alert-danger">{{ $message }}</div>
@@ -311,9 +320,9 @@
                                             <div>
                                                 <div class="form-check form-check-inline">
                                                     <input class="form-check-input" type="radio" name="paket_magang" id="Basic" value="Basic" {{ old('paket_magang') == 'Basic' ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic</label>
+                                                    <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic (Seragam+Nametag)</label>
                                                     <input class="form-check-input" type="radio" name="paket_magang" id="Exclusive" value="Exclusive" {{ old('paket_magang') == 'Exclusive' ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive</label>
+                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive (Seragam+Nametag+GCIInstituet)</label>
                                                 </div>
                                                 @error('paket_magang')
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -332,12 +341,26 @@
                                     style="margin-left: 400px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px" />
                             </div>
                         </form>
-                        <p style="margin-left: 500px;margin-top: 10px">Already have account? <a href="/login">Login</a>
+                        <p style="margin-left: 500px;margin-top: 10px">Already have account? <a href="/login" style="color: bisque">Login</a>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+<script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script>
+
+<script src="{{ ('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+<script src="{{ ('template/plugins/select2/js/select2.full.min.js') }}"></script>
+
+<script src="{{ ('template/dist/js/adminlte.min.js?v=3.2.0') }}"></script>
+
+<script src="{{ ('template/dist/js/demo.js') }}"></script>
+<script>
+    $(function () {
+      $('.select2').select2()
+    });
+</script>
     </body>
 
     </html>

@@ -11,7 +11,10 @@
             {{ session('success') }}
         </div>
     @endif
-    @foreach ($siswa as $data)
+    {{-- @foreach ($data as $siswa) --}}
+    {{-- // dd($siswa->all()); --}}
+
+    {{-- return view('peserta.show', compact('siswa', 'gambar'));) --}}
     <div class="foto">
         <img style="width: 200px;height: 250px;margin-left: 500px;margin-bottom: 50px" src="{{ asset('image/fotosiswa/'.$data->foto_siswa) }}">
             <div class="form-group row">
@@ -175,5 +178,5 @@
                     <a href=""><button>Lihat</button></a>
                 </div>
             </div>
-    @endforeach
+    {{-- @endforeach --}}
 @endsection

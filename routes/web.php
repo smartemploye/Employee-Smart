@@ -77,7 +77,7 @@ Route::get('/send-email', function () {
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
-Route::get('/izin_admin', [PerizinanController::class, 'index'])->name('izin_admin.edit');
+Route::get('/izin_admin', [PerizinanController::class, 'index_admin'])->name('izin_admin.index');
 Route::get('/izin_admin/edit/{id}', [PerizinanController::class, 'edit'])->name('izin_admin.edit');
 Route::PUT('/izin_admin/update/{id}', [PerizinanController::class, 'update'])->name('izin_admin.update');
 
@@ -207,6 +207,7 @@ Route::get('/perizinan/create', [PerizinanController::class, 'create'])->name('p
 Route::PUT('/perizinan/store', [PerizinanController::class, 'store'])->name('perizinan.store');
 Route::get('/perizinan/edit/{id}', [PerizinanController::class, 'edit'])->name('perizinan.edit');
 Route::PUT('/perizinan/update/{id}', [PerizinanController::class, 'update'])->name('perizinan.update');
+Route::post('/postperizinan', [PerizinanController::class, 'postperizinan'])->name('postperizinan');
 Route::get('/perizinan/hapus/{id}', [PerizinanController::class, 'destroy'])->name('perizinan.hapus');
 
 //CRUD Logbook

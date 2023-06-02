@@ -52,7 +52,9 @@
                         <td>{{$izin->izin_dari}}</td>
                         <td>{{$izin->izin_sampai }}</td>
                         <td>{{$izin->keterangan }}</td>
-                        <td>{{$izin->dokumentasi }}</td>
+                        <td>
+                            <img src="{{ asset('image/dokumentasi/'.$izin->dokumentasi) }}">
+                        </td>
                         <td>{{$izin->approve }}</td>
                         <td>
                             <a href="{{ route('izin_admin.edit', $izin->id) }}" class="btn btn-success">

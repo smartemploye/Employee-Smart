@@ -21,6 +21,15 @@
 
     <!-- rizki -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <!-- dropdown -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+    <link rel="stylesheet" href="{{ asset('template/plugins/fontawesome-free/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('template/plugins/select2/css/select2.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('template/dist/css/adminlte.min.css?v=3.2.0') }}">
+
 </head>
 <body>
     <div id="app">

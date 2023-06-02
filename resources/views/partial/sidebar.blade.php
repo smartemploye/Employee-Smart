@@ -38,6 +38,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="/izin_admin" class="nav-link" style="color: white">
+                        <i class='bx bxs-calendar'style="vertical-align: -3px;font-size: 25px"></i>
+                        <p>
+                            Perizinan
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="/settingmagang" class="nav-link" style="color: white">
                         <i class='bx bxs-cog' style="vertical-align: -3px;font-size: 25px"></i>
                         <p>
@@ -65,7 +73,7 @@
                     <a href="/bidang" class="nav-link" style="color: white">
                         <i class='bx bxs-objects-horizontal-left' style="vertical-align: -3px;font-size: 25px"></i>
                         <p>
-                            Data Bidang
+                            Data Jurusan
                         </p>
                     </a>
                 </li>

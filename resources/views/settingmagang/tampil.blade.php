@@ -63,7 +63,7 @@ Halaman Seting Magang
             <th scope="col">#</th>
             <th scope="col">Jam Masuk</th>
             <th scope="col">Jam Pulang</th>
-            <th scope="col">Nomor VA</th>
+            <th scope="col">Nomor Rekening</th>
             <th scope="col">Kuota Magang</th>
             <th scope="col">Action</th>
         </tr>

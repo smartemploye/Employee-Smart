@@ -8,9 +8,10 @@
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Tambah Perizinan</h6>
                 <div class="card-body">
-                <form method="POST" action="{{ route('perizinan.store') }}">
+                <form method="POST" action="{{ route('perizinan.store') }}" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
+                    <td>
                     <div class="form-group row">
                       <label class="col-md-4 text-md-right" style="margin-top: 5px">Dari</label>
                       <div class="col-md-8">
@@ -20,6 +21,8 @@
                         @enderror
                       </div>
                     </div>
+                    </td>
+                    <td>
                     <div class="form-group row">
                         <label class="col-md-4 text-md-right" style="margin-left: 560px;margin-top: -50px">Sampai</label>
                         <div class="col-md-8">
@@ -29,6 +32,17 @@
                           @enderror
                         </div>
                       </div>
+                    </td>
+                    <td>
+                        <div class="form-group" style="margin-left: 15px;">
+                            <label for="inputPhoto">Upload Dokumentasi</label>
+                            <input type="file" name="dokumentasi" class="form-control-file @error('dokumentasi') is-invalid @enderror" id="InputDokumentasi" accept="image/*" value="{{ old('dokumentasi') }}">
+                            @error('dokumentasi')
+                                <div class="alert alert-danger mt-2">{{ $message }}</div>
+                            @enderror
+                        </div>
+                    </td>
+                    <td>
                     <div class="form-+group">
                       <label for="inputKeteranganIzin" style="">Keterangan</label>
                       <input type="text" name="keterangan" placeholder="Masukkan Keterangan" style="margin-left: 100px;margin-top: -35px;width: 900px" class="form-control  @error('keterangan') is-invalid @enderror" id="inputKeterangan" value="{{ old('keterangan') }}">
@@ -36,6 +50,7 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                       @enderror
                     </div>
+                    </td>
                     <input type="text" hidden name="">
                     <button type="submit" class="btn btn-primary">Submit</button>
                   </form>

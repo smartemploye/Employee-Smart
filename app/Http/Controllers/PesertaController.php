@@ -116,19 +116,19 @@ class PesertaController extends Controller
     {
         //ambil gambar dari tabel data_magang kolom Bukti pembayaran
 
-        $siswa = DB::table('siswa')
+        $data = DB::table('siswa')
         ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
         ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
         ->leftJoin('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
         ->leftJoin('data_bidang', 'data_bidang.id', '=', 'data_magang.bidang_id')
         ->leftJoin('akuns', 'akuns.nisn', '=', 'siswa.nisn')
         ->where('siswa.id','=',$id)
-        ->get([
+        ->first([
             'siswa.id',
             'siswa.nisn',
             'nama_sekolah',
             'nama_siswa',
-            'siswa.foto_siswa',
+            'siswa.foto_siswa AS foto_siswa',
             'no_wa',
             'nama_bidang',
             'tanggal_mulai',
@@ -145,12 +145,12 @@ class PesertaController extends Controller
 
         // dd($data);
         // ambil url gambar
-        $gambar = $siswa[0]->bukti_pembayaran;
+        $gambar = $data->bukti_pembayaran;
         // dd($siswa->all());
 
-        return view('peserta.show', compact('siswa', 'gambar'));
+        // return view('peserta.show', compact('siswa', 'gambar'));
 
-
+        // dd($data);
         return view('peserta.show', compact('data', 'gambar'));
     }
 
