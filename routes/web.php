@@ -320,5 +320,6 @@ Route::get('/tampilan', [ReportdanSertifikatController::class, 'tampilan'])->nam
 // Route::get('/tampilan', [ReportdanSertifikatController::class, 'tampilan']);
 Route::post('/store/{nisn}', [ReportdanSertifikatController::class, 'store']);
 
-Route::get('/tampilan/lihat/{nisn}', [ReportdanSertifikatController::class, 'lihat']);
+// Route::get('/tampilan/lihat/{nisn}', [ReportdanSertifikatController::class, 'lihat']);
+Route::get('/tampilan/lihat/{nisn}', [ReportdanSertifikatController::class, 'lihat'])->name('reports');
 

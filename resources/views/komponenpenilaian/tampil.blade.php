@@ -33,12 +33,16 @@
                     <td>{{ $value->presentase }}</td>
                     <td>
 
-                        <form action="/komponenpenilaian/{{ $value->id }}" method="POST">
+                        {{-- <form action="/komponenpenilaian/{{ $value->id }}" method="POST"> --}}
+                        <form id="deleteForm{{ $value->id }}" action="/komponenpenilaian/{{ $value->id }}" method="POST">    
                             @csrf
                             @method('DELETE')
                             <a href="/komponenpenilaian/{{ $value->id }}" class="btn btn-info btn-sm">Detail</a>
-                            <a href="/komponenpenilaian/{{ $value->id }}}/edit" class="btn btn-warning btn-sm">Edit</a>
-                            <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                            {{-- <a href="/komponenpenilaian/{{ $value->id }}}/edit" class="btn btn-warning btn-sm">Edit</a> --}}
+                            {{-- <button type="button" class="btn btn-warning btn-sm" onclick="showEditConfirmation()">Edit</button>  --}}
+                            <button type="button" class="btn btn-warning btn-sm" onclick="showEditConfirmation('{{ $value->id }}')">Edit</button>                          
+                            {{-- <input type="submit" value="Delete" class="btn btn-danger btn-sm"> --}}
+                            <button type="button" class="btn btn-danger btn-sm" onclick="showDeleteConfirmation('{{ $value->id }}')">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -49,4 +53,42 @@
             @endforelse
         </tbody>
     </table>
+
+    <script src="{{ asset('js/sweetalert2.js') }}" type="text/javascript"></script>
+
+    <script>
+        function showEditConfirmation(id) {
+            Swal.fire({
+                icon: 'info',
+                title: 'Edit Confirmation',
+                text: 'Apakah Anda yakin ingin mengedit data ini?',
+                showCancelButton: true,
+                confirmButtonText: 'Edit',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect ke halaman edit dengan mengganti id
+                    window.location.href = "/komponenpenilaian/" + id + "/edit";
+                }
+            });
+        }
+
+        function showDeleteConfirmation(id) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Delete Confirmation',
+                text: 'Apakah Anda yakin ingin menghapus data ini?',
+                showCancelButton: true,
+                confirmButtonText: 'Delete',
+                cancelButtonText: 'Batal',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Submit form untuk menghapus data
+                    document.getElementById('deleteForm' + id).submit();
+                }
+            });
+        }
+
+    </script>
+
 @endsection
