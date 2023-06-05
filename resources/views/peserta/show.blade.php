@@ -175,7 +175,7 @@
                 <label for="inputReportSertifikat" class="col-sm-2 col-form-label">Report dan Sertifikat</label>
                 <div class="col-sm-10">
                     {{-- /tampilan/lihat/{{$data->nisn}} --}}
-                    <a href=""><button>Lihat</button></a>
+                    <a href="{{ route('reports', $data->nisn) }}"><button>Lihat</button></a>
                 </div>
             </div>
     {{-- @endforeach --}}

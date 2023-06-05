@@ -25,7 +25,29 @@ Halaman Edit Penilaian
           <div class="alert alert-danger">{{ $message }}</div>
       @enderror
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-primary" onclick="showEditConfirmation()">Submit</button>
+
   </form>
+
+  <script src="{{ asset('js/sweetalert2.js') }}" type="text/javascript"></script>
+
+<script>
+    function showEditConfirmation() {
+        Swal.fire({
+            icon: 'info',
+            title: 'Edit Confirmation',
+            text: 'Apakah Anda yakin ingin menyimpan perubahan ini?',
+            showCancelButton: true,
+            confirmButtonText: 'Simpan',
+            cancelButtonText: 'Batal',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Tambahkan logika atau tindakan yang ingin Anda lakukan setelah tombol Edit ditekan
+                // Contoh: redirect ke halaman edit atau jalankan fungsi lainnya
+                document.querySelector('form').submit();
+            }
+        });
+    }
+</script>
 
 @endsection

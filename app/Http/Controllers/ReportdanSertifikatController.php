@@ -8,6 +8,7 @@ use App\Models\DataMagang;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Models\Siswa;
 
 
 
@@ -22,11 +23,14 @@ class ReportdanSertifikatController extends Controller
     }
 
     public function lihat($nisn)
-    {
-        $data = DB::table('siswa')->where('nisn', $nisn)->get();
+{
+    $siswa = Siswa::with('pembimbing')->where('nisn', $nisn)->first();
+    $pembimbing = $siswa->pembimbing;
 
-        return view('ReportdanSertifikat.reports', compact('data'));
-    }
+    return view('ReportdanSertifikat.reports', compact('siswa', 'pembimbing'));
+}
+
+    
 
     public function showImage($nisn)
     {
