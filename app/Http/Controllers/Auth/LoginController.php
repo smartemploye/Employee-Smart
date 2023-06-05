@@ -88,22 +88,22 @@ class LoginController extends Controller
                 }
             }
             //cek dulu yg login sebagai siswa atau bukan, kalo dia siswa cek dulu statusnya.
-         
+
             //status seleksi, belu bayar, kosong hasib register/ null dia redirect ke halaman bayar
             // $settingmagang = SettingMagang::first();
 
             // $status_magang = $request->status_magang;
             // // dd($status_magang);
             // if ($status_magang == "Belum Bayar" || $status_magang == "Seleksi") {
-                       
+
             // } elseif ($status_magang == "tidak aktif" || $status_magang == "Drop Out"){
 
             // } elseif ($status_magang == 'Aktif'){
 
-            // } 
+            // }
             //status drop out atau tidak aktif langsung redirect ke route('logout') tampilkan pesan (statusnya drop out atau tdk aktif)
 
-            return redirect('/dashboard');
+            return redirect('/jumlah-peserta');
         }
         // die();
 
