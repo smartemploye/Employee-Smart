@@ -59,12 +59,14 @@
     <script>
         function showEditConfirmation(id) {
             Swal.fire({
-                icon: 'info',
-                title: 'Edit Confirmation',
-                text: 'Apakah Anda yakin ingin mengedit data ini?',
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan mengedit data ini!",
+                icon: 'question',
                 showCancelButton: true,
-                confirmButtonText: 'Edit',
-                cancelButtonText: 'Batal',
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Redirect ke halaman edit dengan mengganti id
@@ -75,12 +77,14 @@
 
         function showDeleteConfirmation(id) {
             Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Data ini akan dihapus secara permanen!",
                 icon: 'warning',
-                title: 'Delete Confirmation',
-                text: 'Apakah Anda yakin ingin menghapus data ini?',
                 showCancelButton: true,
-                confirmButtonText: 'Delete',
-                cancelButtonText: 'Batal',
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Hapus',
+                cancelButtonText: 'Batal'
             }).then((result) => {
                 if (result.isConfirmed) {
                     // Submit form untuk menghapus data

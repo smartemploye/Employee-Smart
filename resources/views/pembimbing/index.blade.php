@@ -10,15 +10,44 @@
                 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
                 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
                     $(document).ready(function () {
                         $('#pembimbing-table').DataTable();
                     });
 
                     function confirmDelete(url) {
-                        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-                            window.location.href = url;
-                        }
+                        Swal.fire({
+                            title: 'Apakah Anda yakin?',
+                            text: "Data ini akan dihapus secara permanen!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#d33',
+                            cancelButtonColor: '#3085d6',
+                            confirmButtonText: 'Hapus',
+                            cancelButtonText: 'Batal'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = url;
+                            }
+                        });
+                    }
+
+                    function confirmEdit(url) {
+                        Swal.fire({
+                            title: 'Apakah Anda yakin?',
+                            text: "Anda akan mengedit data ini!",
+                            icon: 'question',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya',
+                            cancelButtonText: 'Batal'
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = url;
+                            }
+                        });
                     }
                 </script>
         </div>
@@ -45,9 +74,14 @@
                         <td>{{$item->nama_pembimbing}}</td>
                         <td>{{$item->no_wa_pembimbing}}</td>
                         <td>{{$item->nama_sekolah}}</td>
-                        <td> <a href="{{ route('pembimbing.edit', $item->id) }}" class="btn btn-success">
-                            <i class='bx bxs-pencil' ></i> Edit</a>
-                            <a href="javascript:void(0);" onclick="confirmDelete('{{ route('pembimbing.hapus', $item->id) }}')" class="btn btn-danger"><i class='bx bxs-trash' style="width: 15px;height: 20px;"></i> Hapus</a>
+                        <td> 
+                            <a href="javascript:void(0);" onclick="confirmEdit('{{ route('pembimbing.edit', $item->id) }}')" class="btn btn-success">
+                                <i class='bx bxs-pencil' ></i> Edit
+                            </a>
+                            <a href="javascript:void(0);" onclick="confirmDelete('{{ route('pembimbing.hapus', $item->id) }}')" class="btn btn-danger">
+                                <i class='bx bxs-trash' style="width: 15px;height: 20px;"></i> Hapus
+                            </a>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -56,5 +90,4 @@
         </div>
     </div>
 </div>
-  </table>
 @endsection

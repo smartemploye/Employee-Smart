@@ -124,12 +124,14 @@ Edit Setting Magang
 <script>
     function showEditConfirmation() {
         Swal.fire({
-            icon: 'info',
-            title: 'Edit Confirmation',
-            text: 'Apakah Anda yakin ingin menyimpan perubahan ini?',
-            showCancelButton: true,
-            confirmButtonText: 'Simpan',
-            cancelButtonText: 'Batal',
+                title: 'Apakah Anda yakin ingin menyimpan perubahan?',
+                text: "Anda tidak akan dapat mengembalikan perubahan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, simpan perubahan!',
+                cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
                 // Tambahkan logika atau tindakan yang ingin Anda lakukan setelah tombol Edit ditekan

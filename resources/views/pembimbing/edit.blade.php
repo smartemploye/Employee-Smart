@@ -39,9 +39,34 @@
                             </select>
                         </div>
                     </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary" onclick="event.preventDefault(); confirmSubmit()">
+                        Submit
+                    </button>
                 </form>
                 @endforeach
-
             </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function confirmSubmit() {
+        Swal.fire({
+            title: 'Apakah Anda yakin?',
+            text: "Anda akan menyimpan perubahan ini!",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.querySelector('form').submit();
+            }
+        });
+    }
+</script>
+
 @endsection
