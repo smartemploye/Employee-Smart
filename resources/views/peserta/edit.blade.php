@@ -65,7 +65,7 @@
                                         <input type="text" class="form-control" name="keterangan" style="margin-left: 180px;margin-top: 10px;width: 240%"
                                             placeholder="Masukkan Keterangan" value="{{ $data->keterangan }}">
                                     </div>
-                                </div>{{-- <input type="text" class="form-control" name="status_magang" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->status_magang }}"> --}}
+                                </div>
                             </div>
                             <div class="form-group row" style="margin-top: -20px">
                                 <div class="col-3">
@@ -82,8 +82,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-
-                                {{-- <input type="text" class="form-control" name="nama_sekolah" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px"value="{{ $data->nama_sekolah }}"> --}}
                             </div>
                             <div class="form-group row">
                                 <div class="col-3">
@@ -104,13 +102,33 @@
                                         value="{{ $data->nama_pembimbing }}" disabled>
                                 </div>
                             </div>
-                                {{-- <input type="text" class="form-control" name="nama_pembimbing" placeholder="Masukkan Keterangan" style="margin-left: 200px;margin-top: -35px;width: 900px" value="{{ $data->nama_pembimbing }}"> --}}
-
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" onclick="event.preventDefault(); confirmSubmit()">
+                                Submit
+                            </button>
                         </form>
                     @endforeach
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function confirmSubmit() {
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menyimpan perubahan?',
+                text: "Anda tidak akan dapat mengembalikan perubahan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, simpan perubahan!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.querySelector('form').submit();
+                }
+            })
+        }
+    </script>
 @endsection

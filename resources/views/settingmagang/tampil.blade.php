@@ -49,12 +49,14 @@ Halaman Seting Magang
 <script>
     function showEditConfirmation() {
         Swal.fire({
-            icon: 'info',
-            title: 'Edit Confirmation',
-            text: 'Apakah Anda yakin ingin mengedit data ini?',
-            showCancelButton: true,
-            confirmButtonText: 'Edit',
-            cancelButtonText: 'Batal',
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan mengedit data ini!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
         }).then((result) => {
             if (result.isConfirmed) {
                 // Tambahkan logika atau tindakan yang ingin Anda lakukan setelah tombol Edit ditekan

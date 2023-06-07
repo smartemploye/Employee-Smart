@@ -66,6 +66,32 @@
             }
         } ?>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
+        <button type="button" class="btn btn-primary" onclick="showEditConfirmation()">Submit</button>
+
     </form>
+
+    <script src="{{ asset('js/sweetalert2.js') }}" type="text/javascript"></script>
+
+    <script>
+        function showEditConfirmation() {
+            Swal.fire({
+                title: 'Apakah Anda yakin ingin menyimpan perubahan?',
+                text: "Anda tidak akan dapat mengembalikan perubahan ini!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, simpan perubahan!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Tambahkan logika atau tindakan yang ingin Anda lakukan setelah tombol Edit ditekan
+                    // Contoh: redirect ke halaman edit atau jalankan fungsi lainnya
+                    document.querySelector('form').submit();
+                }
+            });
+        }
+    </script>
+
 @endsection

@@ -50,7 +50,8 @@
                             @csrf
                             @method('DELETE')
 
-                            <a href="/penilaian/{{ $value->id }}}/edit" class="btn btn-warning btn-sm">Edit</a>
+                            {{-- <a href="/penilaian/{{ $value->id }}}/edit" class="btn btn-warning btn-sm">Edit</a> --}}
+                            <a href="#" onclick="showEditConfirmation({{ $value->id }})" class="btn btn-warning btn-sm">Edit</a>
 
                         </form>
                     </td>
@@ -62,5 +63,26 @@
             @endforelse
         </tbody>
     </table>
+    <script src="{{ asset('js/sweetalert2.js') }}" type="text/javascript"></script>
+
+    <script>
+        function showEditConfirmation(id) {
+            Swal.fire({
+                title: 'Apakah Anda yakin?',
+                text: "Anda akan mengedit data ini!",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Redirect ke halaman edit dengan mengganti id
+                    window.location.href = "/penilaian/" + id + "/edit";
+                }
+            });
+        }
+    </script>    
     
 @endsection
