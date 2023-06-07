@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Logbook;
 use File;
@@ -107,36 +108,31 @@ public function detail($nisn)
     }
 
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'logbook' => 'required',
-            'tanggal_logbook' => 'required',
-            'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
-            // 'dokumentasi' => "bla",
-            // 'admin_id' => 1,
-            // 'siswa_id' => 1,
+{
+    $request->validate([
+        'logbook' => 'required',
+        'tanggal_logbook' => 'required',
+        'dokumentasi' => 'nullable|image|mimes:jpg,png,jpeg',
+    ]);
 
+    $logbook = Logbook::findOrFail($id);
+    $logbook->logbook = $request->logbook;
+    $logbook->tanggal_logbook = $request->tanggal_logbook;
+
+    if ($request->hasFile('dokumentasi')) {
+        $request->validate([
+            'dokumentasi' => 'image|mimes:jpg,png,jpeg',
         ]);
 
         $fileName = time().'.'.$request->dokumentasi->extension();
         $request->dokumentasi->move(public_path('image'), $fileName);
-        // $logbook = new Logbook;
-        // $logbook->dokumentasi = $fileName;
-        // $logbook->save();
-
-        DB::table('kegiatan_harian')
-              ->where('id', $id)
-              ->update(
-                [
-                    'logbook' => $request['logbook'],
-                    'tanggal_logbook' => $request['tanggal_logbook'],
-                    'dokumentasi' => $fileName,
-                    'admin_id' => 1,
-                    'siswa_id' => 1,
-                ],
-            );
-        return redirect('/logbook');
+        $logbook->dokumentasi = $fileName;
     }
+
+    $logbook->save();
+
+    return redirect('/logbook');
+}
 
     public function destroy($id)
     {
