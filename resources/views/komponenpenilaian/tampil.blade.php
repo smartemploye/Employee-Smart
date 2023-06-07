@@ -34,13 +34,13 @@
                     <td>
 
                         {{-- <form action="/komponenpenilaian/{{ $value->id }}" method="POST"> --}}
-                        <form id="deleteForm{{ $value->id }}" action="/komponenpenilaian/{{ $value->id }}" method="POST">    
+                        <form id="deleteForm{{ $value->id }}" action="/komponenpenilaian/{{ $value->id }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <a href="/komponenpenilaian/{{ $value->id }}" class="btn btn-info btn-sm">Detail</a>
                             {{-- <a href="/komponenpenilaian/{{ $value->id }}}/edit" class="btn btn-warning btn-sm">Edit</a> --}}
                             {{-- <button type="button" class="btn btn-warning btn-sm" onclick="showEditConfirmation()">Edit</button>  --}}
-                            <button type="button" class="btn btn-warning btn-sm" onclick="showEditConfirmation('{{ $value->id }}')">Edit</button>                          
+                            <button type="button" class="btn btn-warning btn-sm" onclick="showEditConfirmation('{{ $value->id }}')">Edit</button>
                             {{-- <input type="submit" value="Delete" class="btn btn-danger btn-sm"> --}}
                             <button type="button" class="btn btn-danger btn-sm" onclick="showDeleteConfirmation('{{ $value->id }}')">Delete</button>
                         </form>

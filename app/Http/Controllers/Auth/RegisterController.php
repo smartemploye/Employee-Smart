@@ -46,6 +46,38 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        $message = [ 'nama_siswa.required' => 'Form harus diisi!',
+        'nisn.required' => 'Form harus diisi!',
+        'nisn.numeric' => 'NISN harus diinput dalam format angka!',
+        'nisn.unique' => 'NISN sudah terdaftar!',
+        'nisn.unique' => 'NISN harus 10 karakter!',
+        'password.required' => 'Form harus diisi!',
+        'password_confirmation.required' => 'Konfirmasi password tidak cocok!',
+        'password_confirmation.same' => 'Konfirmasi password tidak cocok!',
+        'sekolah_id.required' => 'Form harus diisi!',
+        'jenis_jurusan.required' => 'Form harus diisi!',
+        'no_wa.required' => 'Form harus diisi!',
+        'no_wa.numeric' => 'Format harus dalam bentuk angka!',
+        'no_wa.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
+        'foto_siswa.required' => 'Form harus diisi!',
+        'foto_siswa.image' => 'Format harus dalam bentuk gambar!',
+        'tanggal_lahir.required' => 'Form harus diisi!',
+        'tanggal_lahir.date_format' => 'Format tanggal harus dalam bentuk d-m-Y!',
+        'tanggal_lahir.before' => 'Tanggal harus sebelum hari ini!',
+        'jurusan.required' => 'Form harus diisi!',
+        'paket_magang.required' => 'Form harus diisi!',
+        'nama_pembimbing.required' => 'Form harus diisi!',
+        'nip_pembimbing.required' => 'Form harus diisi!',
+        'nip_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
+        'nip_pembimbing.unique' => 'NIP sudah terdaftar!',
+        'no_wa_pembimbing.required' => 'Form harus diisi!',
+        'no_wa_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
+        'no_wa_pembimbing.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
+        'ukuran_baju.required' => 'Form harus diisi!',
+        'surat_pengajuan.required' => 'Form harus diisi!',
+        'username.required' => 'Form harus diisi!',
+        'username.email' => 'Format email salah!',
+    ];
          $request->validate([
                 'nama_siswa' => 'required',
                 'nisn' => 'required|numeric|digits:10|unique:users',
@@ -64,39 +96,7 @@ class RegisterController extends Controller
                 'ukuran_baju' => 'required',
                 'surat_pengajuan' => 'required',
                 'username' => 'required|email',
-                ], [
-            'nama_siswa.required' => 'Form harus diisi!',
-            'nisn.required' => 'Form harus diisi!',
-            'nisn.numeric' => 'NISN harus diinput dalam format angka!',
-            'nisn.unique' => 'NISN sudah terdaftar!',
-            'nisn.unique' => 'NISN harus 10 karakter!',
-            'password.required' => 'Form harus diisi!',
-            'password_confirmation.required' => 'Konfirmasi password tidak cocok!',
-            'password_confirmation.same' => 'Konfirmasi password tidak cocok!',
-            'sekolah_id.required' => 'Form harus diisi!',
-            'jenis_jurusan.required' => 'Form harus diisi!',
-            'no_wa.required' => 'Form harus diisi!',
-            'no_wa.numeric' => 'Format harus dalam bentuk angka!',
-            'no_wa.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
-            'foto_siswa.required' => 'Form harus diisi!',
-            'foto_siswa.image' => 'Format harus dalam bentuk gambar!',
-            'tanggal_lahir.required' => 'Form harus diisi!',
-            'tanggal_lahir.date_format' => 'Format tanggal harus dalam bentuk d-m-Y!',
-            'tanggal_lahir.before' => 'Tanggal harus sebelum hari ini!',
-            'jurusan.required' => 'Form harus diisi!',
-            'paket_magang.required' => 'Form harus diisi!',
-            'nama_pembimbing.required' => 'Form harus diisi!',
-            'nip_pembimbing.required' => 'Form harus diisi!',
-            'nip_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
-            'nip_pembimbing.unique' => 'NIP sudah terdaftar!',
-            'no_wa_pembimbing.required' => 'Form harus diisi!',
-            'no_wa_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
-            'no_wa_pembimbing.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
-            'ukuran_baju.required' => 'Form harus diisi!',
-            'surat_pengajuan.required' => 'Form harus diisi!',
-            'username.required' => 'Form harus diisi!',
-            'username.email' => 'Format email salah!',
-            ]);
+                ], $message);
 
         //         var_dump($v->fails());
         //         var_dump($v->errors());
@@ -181,7 +181,6 @@ class RegisterController extends Controller
             'surat_pengajuan' => $file_surat_pengajuan,
             'ukuran_baju' => $request->ukuran_baju,
         ]);
-
 
         Akun::create([
             'nisn' => $request->nisn,
@@ -285,6 +284,15 @@ class RegisterController extends Controller
 
             return redirect()->route('login')
                             ->with('success','Data created successfully.');
+    }
+
+    public function jurusan(Request $request)
+    {
+        // dd($request->all());
+        DataBidang::create([
+            'nama_bidang' => $request->jurusan,
+            'jenis_jurusan' => $request->jenis_jurusan
+        ]);
     }
     /*
     |--------------------------------------------------------------------------

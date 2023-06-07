@@ -14,7 +14,7 @@
           form {
             margin: 100px auto;
             width: 300px;
-            background-color: #4952d1;
+            background-color: #F1F6F9;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
@@ -30,7 +30,7 @@
           }
           button {
             background-color: darkgrey;
-            color: white;
+            color: rgb(2, 2, 2);
             padding: 14px 20px;
             margin: 8px 0;
             border: none;
@@ -54,18 +54,18 @@
         </div>
         <form action="/postlogin" style="margin-top: -20px;" method="POST">
             @csrf
-          <h1 style="text-align: center; color: white;">Login</h1>
-          <h2 style="color: white;">Garuda Cyber Indonesia</h2>
+          <h1 style="text-align: center; color: #0c0d0d;">Login</h1>
+          <h2 style="color: #161819;">Garuda Cyber Indonesia</h2>
 
-          <label for="email" style="color: white;" >Email/NIP</label>
+          <label for="email" style="color: rgb(15, 13, 13);" >Email/NIP</label>
           <input type="text" id="email" name="email" placeholder="Masukkan Username" required>
 
-          <label for="password" style="color: white;">Password</label>
+          <label for="password" style="color: rgb(14, 11, 11);">Password</label>
           <input type="password" id="password" name="password" placeholder="Masukkan password" required>
 
           {{-- <input type="submit" name="submit" value="Login"> --}}
           <button type="submit" name="submit">Login</button>
-          <h4 style="color: white; text-align: center;">Don't have account?</h4>
+          <h4 style="color: rgb(0, 0, 0); text-align: center;">Don't have account?</h4>
           <a href="/register"><h2 style="color: whitesmoke;background-color: #45a049; border-radius: 20px;padding-top: 5px; padding-bottom: 5px; font-size: 20px">Register</h2></a>
         </form>
       </body>

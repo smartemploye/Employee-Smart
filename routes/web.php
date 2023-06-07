@@ -91,6 +91,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/postregister', [RegisterController::class, 'store'])->name('postregister');
+Route::post('/postjurusan', [RegisterController::class, 'jurusan'])->name('postjurusan');
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 

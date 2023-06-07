@@ -13,14 +13,14 @@
         <!-- Custom CSS -->
         <style>
             body {
-                background-color: #BB1D1D;
-                color: #fff;
+                background-color: #B70404;
+                color: black;
                 font-family: Arial, sans-serif;
             }
 
             .form-container {
-                background-color: #4952d1;
-                color: #ffffff;
+                background-color: #F1F6F9;
+                color: #010101;
                 /* padding: 30px; */
                 margin-right: -200px;
                 margin-left: -200px;
@@ -41,11 +41,11 @@
                 border-radius: 50%;
             }
 
-            button {
+            /* button {
                 background-color: darkgrey;
                 color: white;
-                /* padding: 14px 20px; */
-                /* margin: 8px 0; */
+                padding: 14px 20px;
+                margin: 8px 0;
                 align-items: center;
                 margin-bottom: 10px;
                 border: none;
@@ -58,7 +58,7 @@
 
             button:hover {
                 background-color: #45a049;
-            }
+            } */
         </style>
         <script src="{{ asset('/js/sweetalert2.js') }}" type="text/javascript"></script>
         @if ($kuota == 0)
@@ -107,7 +107,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: -80px; padding-right: 10px">
+                                        <div class="form-group" style="margin-left: -180px; padding-right: 10px">
                                             <label for="inputSupervisor">Nama Pembimbing</label>
                                             <input type="text" name="nama_pembimbing"
                                                 class="form-control @error('nama_pembimbing') is-invalid @enderror"
@@ -132,7 +132,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
+                                        <div class="form-group" style="margin-left: -180px;padding-right: 10px">
                                             <label for="inputSupervisor">NIP Pembimbing</label>
                                             <input type="text" name="nip_pembimbing"
                                                 class="form-control @error('nip_pembimbing') is-invalid @enderror"
@@ -162,7 +162,7 @@
                                         </div>
                                         </div >
                                         <td>
-                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
+                                        <div class="form-group" style="margin-left: -180px;padding-right: 10px">
                                             <label for="inputSupervisor">Nomor WA Pembimbing</label>
                                             <input type="text" name="no_wa_pembimbing"
                                                 class="form-control @error('no_wa_pembimbing') is-invalid @enderror"
@@ -193,7 +193,7 @@
 
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
+                                        <div class="form-group" style="margin-left: -180px;padding-right: 10px">
                                             <label for="inputShirtSize">Ukuran Baju</label>
                                             <select class="form-control @error('ukuran_baju') is-invalid @enderror" name="ukuran_baju" id="inputShirtSize">
                                                 <option value="" selected disabled>-- Pilih Ukuran Baju --</option>
@@ -215,13 +215,19 @@
                                         <div class="col-3">
                                             <div class="form-group">
                                                 <label>Nama Jurusan</label>
-                                                <select class="select2" class="form-control @error('jurusan') is-invalid @enderror" name="jurusan" id="InputJurusan"
-                                                data-placeholder="Nama Jurusan" style="width: 530px;margin-left: 20px;color: black">
+                                                <select class="select2" id="tambah" class="form-control @error('jurusan') is-invalid @enderror "name="jurusan" id="InputJurusan"
+                                                data-placeholder="Nama Jurusan" style="width: 520px;margin-left: 20px;color: black">
                                                     <option style="color: black"  value="" disabled selected >-- Pilih Jurusan --</option>
                                                     @foreach ($bidang as $jurusan)
                                                         <option style="background-color: black" value="{{ $jurusan->id }}">{{ $jurusan->nama_bidang }}</option>
                                                     @endforeach
                                                 </select>
+                                                {{-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="width: 140px;margin-left: 5px">
+                                                    Lainnya
+                                                </button> --}}
+                                                <button disabled class="addMore">Tambah</button>
+                                                {{-- <input type="text" id="tambah1" class="form-control-file"> --}}
+                                                <div id="tambah1"></div>
                                                 @error('jurusan')
                                                     <div class="invalid-feedback">{{ $message }}</div>
                                                 @enderror
@@ -229,7 +235,7 @@
                                             </div >
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
+                                        <div class="form-group" style="margin-left: -175px;padding-right: 10px;margin-top: -50px">
                                             <label for="inputSuratPengajuan">Upload Surat Pengajuan (Dalam bentuk file pdf)</label>
                                             <input type="file" name="surat_pengajuan" class="form-control-file @error('surat_pengajuan') is-invalid @enderror" id="surat_pengajuan" accept="pdf/*" value="{{ old('surat_pengajuan') }}">
                                             @error('surat_pengajuan')
@@ -252,7 +258,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
+                                        <div class="form-group" style="margin-left: -180px;padding-right: 10px">
                                             <label for="inputEmail">Alamat Email</label>
                                             <input type="email" name="username" class="form-control @error('username') is-invalid @enderror" id="inputEmail"
                                                 placeholder="Masukkan Alamat Email" style="padding-right: 300px"
@@ -275,7 +281,7 @@
 
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
+                                        <div class="form-group" style="margin-left: -180px;padding-right: 10px">
                                             <label for="inputPassword">Password</label>
                                             <input type="password" name="password"
                                                 class="form-control @error('password') is-invalid @enderror"
@@ -300,7 +306,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <div class="form-group" style="margin-left: -80px;padding-right: 10px">
+                                        <div class="form-group" style="margin-left: -180px;padding-right: 10px">
                                             <label for="inputConfirmPassword">Ulangi Password</label>
                                             <input type="password"
                                                 class="form-control @error('password_confirmation') is-invalid @enderror"
@@ -322,7 +328,7 @@
                                                     <input class="form-check-input" type="radio" name="paket_magang" id="Basic" value="Basic" {{ old('paket_magang') == 'Basic' ? 'checked' : '' }}>
                                                     <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic (Seragam+Nametag)</label>
                                                     <input class="form-check-input" type="radio" name="paket_magang" id="Exclusive" value="Exclusive" {{ old('paket_magang') == 'Exclusive' ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive (Seragam+Nametag+GCIInstituet)</label>
+                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive (Seragam+Nametag+GCIInstitute)</label>
                                                 </div>
                                                 @error('paket_magang')
                                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -341,12 +347,40 @@
                                     style="margin-left: 400px;padding-left: 150px;padding-right: 150px;padding-top: 10px;padding-bottom: 10px" />
                             </div>
                         </form>
-                        <p style="margin-left: 500px;margin-top: 10px">Already have account? <a href="/login" style="color: bisque">Login</a>
+                        <p style="margin-left: 500px;margin-top: 10px">Already have account? <a href="/login" style="color: rgb(191, 11, 8)">Login</a>
                         </p>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+        {{-- <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                        <form action="/postjurusan" method="POST">
+                        @csrf
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Tambah Jurusan</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group row">
+                                <label for="jurusan" class="form-label">Nama Jurusan</label>
+                                <input type="text" name="jurusan" class="form-control">
+                                <label for="jurusan" class="form-label">Jenis Jurusan</label>
+                                <input type="text" name="jurusan" class="form-control">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Simpan</button>
+                        </form>
+                        </div>
+                    </div>
+                    </div>
+                </div> --}}
 <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script>
 
 <script src="{{ ('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -355,7 +389,6 @@
 
 <script src="{{ ('template/dist/js/adminlte.min.js?v=3.2.0') }}"></script>
 
-<script src="{{ ('template/dist/js/demo.js') }}"></script>
 <script>
     $(function () {
       $('.select2').select2()
@@ -459,7 +492,13 @@
 				$('#Umum').prop('checked', true);
 			}
 		});
-	});
+
+        // $('.addMore').click(function(){
+        //     var input = document.getElementById('tambah');
+        //     input.setAttribute('disabled', true);
+        //     document.getElementById('tambah1').style.display = 'block';
+        // });
+    });
 
 </script>
 @endsection

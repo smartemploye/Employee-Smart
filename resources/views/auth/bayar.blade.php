@@ -13,7 +13,7 @@
 		}
 
 		form {
-			background-color: #4952d1;
+			background-color: #F1F6F9;
 			padding: 20px;
 			margin: 50px auto;
 			max-width: 500px;
@@ -36,7 +36,7 @@
 			border-radius: 5px;
 			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 			font-size: 16px;
-			color: white;
+			color: rgb(8, 7, 7);
 			transition: box-shadow 0.2s ease-in-out;
 		}
 
@@ -47,7 +47,7 @@
 
 		input[type="submit"] {
 			background-color: #4CAF50;
-			color: #fff;
+			color: #070606;
 			cursor: pointer;
 			transition: background-color 0.2s ease-in-out;
 		}
@@ -68,13 +68,13 @@
     <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 650px">
 	<form action="/bayar" method="POST" style="margin-top: 10px ;" enctype="multipart/form-data">
         @csrf
-		<h1 style="color: white;">Proses Pengajuan Magang</h1>
+		<h1 style="color: rgb(6, 5, 5);">Proses Pengajuan Magang</h1>
         <p style="color: #62f983; margin-left: 170px;font-size: 30px">Diterima</p>
-        <h2 style="color: white; margin-left: 30px;">Selamat!!! Kamu Telah Diterima</h2>
-		<label for="virtual-akun" style="color: white;">Nomor Rekening: Bank BNI Atas Nama "Garuda Cyber Indonesia" </label>
-		<input type="text" id="virtual-akun" name="virtual_akun" style="color: #f8f8f8" placeholder="{{ $data }}" value="{{ $data }}" disabled>
+        <h2 style="color: rgb(8, 7, 7); margin-left: 30px;">Selamat!!! Kamu Telah Diterima</h2>
+		<label for="virtual-akun" style="color: rgb(20, 18, 18);">Nomor Rekening: Bank BNI Atas Nama "Garuda Cyber Indonesia" </label>
+		<input type="text" id="virtual-akun" name="virtual_akun" style="color: #0d0b0b" placeholder="{{ $data }}" value="{{ $data }}" disabled>
 
-		<label for="bukti-pembayaran" style="color: white;">Bukti Pembayaran:</label>
+		<label for="bukti-pembayaran" style="color: rgb(11, 9, 9);">Bukti Pembayaran:</label>
 		<input type="file" id="bukti-pembayaran" name="bukti" >
 
         <button type="submit" class="btn btn-primary">Submit</button>

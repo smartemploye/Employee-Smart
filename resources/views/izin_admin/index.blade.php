@@ -58,7 +58,7 @@
                         <td>{{$izin->approve }}</td>
                         <td>
                             <a href="{{ route('izin_admin.edit', $izin->id) }}" class="btn btn-success">
-                            <i class='bx bxs-pencil' ></i> Edit</a>
+                            <i class='bx bxs-pencil' ></i>Edit</a>
                     </tr>
                     @endforeach
                 </tbody>
