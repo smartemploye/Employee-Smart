@@ -49,6 +49,7 @@ class RegisterController extends Controller
 
     public function store(Request $request)
     {
+        // dd($request->all());
         $message = [ 'nama_siswa.required' => 'Form harus diisi!',
         'nisn.required' => 'Form harus diisi!',
         'nisn.numeric' => 'NISN harus diinput dalam format angka!',
@@ -80,10 +81,10 @@ class RegisterController extends Controller
         'surat_pengajuan.required' => 'Form harus diisi!',
         'username.required' => 'Form harus diisi!',
         'username.email' => 'Format email salah!',
-        'nama_sekolah.required' => 'Form harus diisi!',
-        'nama_bidang.required' => 'Form harus diisi!',
-    ];
-         $request->validate([
+        'jurusan.required' => 'Form harus diisi!',
+        ];
+
+        $request->validate([
                 'nama_siswa' => 'required',
                 'nisn' => 'required|numeric|digits:10|unique:users',
                 'password' => 'required',
@@ -101,8 +102,7 @@ class RegisterController extends Controller
                 'ukuran_baju' => 'required',
                 'surat_pengajuan' => 'required',
                 'username' => 'required|email',
-                'nama_sekolah' => 'required',
-                'nama_bidang' => 'required',
+                'jurusan' => 'required',
                 ], $message);
 
         //         var_dump($v->fails());
@@ -116,11 +116,12 @@ class RegisterController extends Controller
         $siswaaktif = (int)DB::table('data_magang')
         ->whereIn('data_magang.status_magang', ['Aktif'])
         ->count();
+
         $kuota = $kuota_magang-$siswaaktif;
+        // return $kuota;
         $kuota = $kuota >= 0 ? $kuota : 0;
             if ($kuota == 0) {
-            return redirect()->route('register');
-
+            return redirect()->route('login');
                 // return redirect()->back()->with("Kuota Penuh", "Maaf Kuota magang bulan ini sudah penuh");
             }
 
@@ -128,6 +129,7 @@ class RegisterController extends Controller
         if ($request->password != $request->password_confirmation) {
             return redirect()->back()->with("error", "Password should be same as your confirmed password. Please retype new password");
         }
+
         $nip_pembimbing = $request->nip_pembimbing;
         $nip_pembimbing = DB::table('pembimbing')->where('nip_pembimbing', '=', $nip_pembimbing)->get();
         $nip_pembimbing = count(collect($nip_pembimbing));
@@ -135,14 +137,13 @@ class RegisterController extends Controller
         $nama_bidang = DB::table('data_bidang')->where('nama_bidang', '=', $nama_bidang)->get();
         $nama_bidang = count(collect($nama_bidang));
 
-        // dd($request);
-
         $foto_siswa = $request->foto_siswa;
         $file_foto_siswa = $foto_siswa->getClientOriginalName();
-        // dd($file_foto_siswa);
 
         $surat_pengajuan = $request->surat_pengajuan;
         $file_surat_pengajuan = $surat_pengajuan->getClientOriginalName();
+
+        // return $nip_pembimbing;
 
         $role = 'siswa';
         if ($nip_pembimbing <= 0) {
@@ -202,6 +203,7 @@ class RegisterController extends Controller
 
         $surat_pengajuan->move(public_path().'/surat_pengajuan', $file_surat_pengajuan);
 
+        return redirect()->route('login')->with('success','Data created successfully.');
 
         // Kamis 24 Mei 2023 pesan email ambil data dari settingmagang
 
@@ -289,8 +291,7 @@ class RegisterController extends Controller
         // }
         // Register::create($validated_data);
 
-            return redirect()->route('login')
-                            ->with('success','Data created successfully.');
+
     }
 
     public function jurusan(Request $request)

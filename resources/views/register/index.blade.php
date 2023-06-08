@@ -202,7 +202,6 @@
                                                 <option value="L" @if (old('ukuran_baju') == "L") {{ 'selected' }} @endif>L</option>
                                                 <option value="XL" @if (old('ukuran_baju') == "XL") {{ 'selected' }} @endif>XL</option>
                                                 <option value="XXL" @if (old('ukuran_baju') == "XXL") {{ 'selected' }} @endif>XXL</option>
-                                                v
                                             </select>
                                             @error('ukuran_baju')
                                                 <div class="alert alert-danger" style="width: 530px">{{ $message }}</div>
@@ -237,9 +236,9 @@
                                             @error('surat_pengajuan')
                                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
                                             @enderror
-                                            @if (!empty($errors->all()))
+                                            {{-- @if (!empty($errors->all()))
                                           <div class="alert alert-warning mt-2" style="width: 530px">Silahkan pilih file kembali</div>
-                                          @endif
+                                          @endif --}}
                                         </div>
                                     </td>
                                 </tr>
@@ -276,9 +275,9 @@
                                             @error('foto_siswa')
                                                 <div class="alert alert-danger mt-2" style="width: 530px">{{ $message }}</div>
                                             @enderror
-                                          @if (!empty($errors->all()))
+                                          {{-- @if (!empty($errors->all()))
                                           <div class="alert alert-warning mt-2" style="width: 530px">Silahkan pilih foto kembali</div>
-                                          @endif
+                                          @endif --}}
                                         </div>
 
                                     </td>
@@ -355,34 +354,6 @@
                 </div>
             </div>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                        <form action="/postjurusan" method="POST">
-                        @csrf
-                        <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Tambah Jurusan</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group row">
-                                <label for="jurusan" class="form-label">Nama Jurusan</label>
-                                <input type="text" name="jurusan" class="form-control">
-                                <label for="jurusan" class="form-label">Jenis Jurusan</label>
-                                <input type="text" name="jurusan" class="form-control">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Simpan</button>
-                        </form>
-                        </div>
-                    </div>
-                    </div>
-                </div>
 <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script>
 
 <script src="{{ ('template/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
