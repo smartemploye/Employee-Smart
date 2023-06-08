@@ -41,7 +41,10 @@ class RegisterController extends Controller
         $bidang = DB::table('data_bidang')
             ->get(['id', 'jenis_jurusan', 'nama_bidang']);
 
-        return view('register.index', compact('sekolah', 'bidang', 'kuota'));
+        $dt_magang = DB::table('data_magang')
+        ->get(['id','nisn', 'ukuran_baju']);
+
+        return view('register.index', compact('sekolah', 'bidang', 'kuota', 'dt_magang'));
     }
 
     public function store(Request $request)
@@ -77,6 +80,8 @@ class RegisterController extends Controller
         'surat_pengajuan.required' => 'Form harus diisi!',
         'username.required' => 'Form harus diisi!',
         'username.email' => 'Format email salah!',
+        'nama_sekolah.required' => 'Form harus diisi!',
+        'nama_bidang.required' => 'Form harus diisi!',
     ];
          $request->validate([
                 'nama_siswa' => 'required',
@@ -96,6 +101,8 @@ class RegisterController extends Controller
                 'ukuran_baju' => 'required',
                 'surat_pengajuan' => 'required',
                 'username' => 'required|email',
+                'nama_sekolah' => 'required',
+                'nama_bidang' => 'required',
                 ], $message);
 
         //         var_dump($v->fails());

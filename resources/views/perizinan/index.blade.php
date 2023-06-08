@@ -72,7 +72,7 @@
                         <td>{{$izin->izin_dari}}</td>
                         <td>{{$izin->izin_sampai }}</td>
                         <td>
-                            <img src="{{ asset('image/dokumentasi/'.$izin->dokumentasi) }}">
+                            <img width="300px" src="{{ asset('image/dokumentasi/'.$izin->dokumentasi) }}">
                         </td>
 
                         <td>{{$izin->keterangan }}</td>
