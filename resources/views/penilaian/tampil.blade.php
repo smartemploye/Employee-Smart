@@ -51,7 +51,8 @@
                             @method('DELETE')
 
                             {{-- <a href="/penilaian/{{ $value->id }}}/edit" class="btn btn-warning btn-sm">Edit</a> --}}
-                            <a href="#" onclick="showEditConfirmation({{ $value->id }})" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="#" onclick="showEditConfirmation({{ $value->id }})"
+                                class="btn btn-warning btn-sm">Edit</a>
 
                         </form>
                     </td>
@@ -83,6 +84,5 @@
                 }
             });
         }
-    </script>    
-    
+    </script>
 @endsection
