@@ -12,7 +12,7 @@ class DataAbsensiController extends Controller
     {
         $siswaData = DB::table('absen')
             ->join('siswa', 'absen.nisn', '=', 'siswa.nisn')
-            ->select('siswa.nama_siswa', 'siswa.nisn', 'absen.absen_masuk', 'absen.absen_pulang', 'absen.status_absen', 'absen.keterangan')
+            ->select('siswa.nama_siswa', 'siswa.nisn', 'absen.absen_masuk', 'absen.absen_pulang', 'absen.status_absen', 'absen.keterangan', 'absen.izin_dari', 'absen.izin_sampai')
             ->get();
     
         return View::make('dataabsensi.absensi', ['siswaData' => $siswaData]);

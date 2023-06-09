@@ -36,6 +36,7 @@
                             }
                         })
                     }
+                    
                 </script>
             </div>
             <div class="col-9">

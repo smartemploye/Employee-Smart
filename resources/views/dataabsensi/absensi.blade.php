@@ -30,6 +30,8 @@ Halaman Data Table Absensi
             <th>Absen Pulang</th>
             <th>Status Absen</th>
             <th>Keterangan</th>
+            <th>Dari Tanggal</th>
+            <th>Sampai Tanggal</th>
         </tr>
     </thead>
     <tbody>
@@ -41,6 +43,8 @@ Halaman Data Table Absensi
             <td>{{ $siswa->absen_pulang }}</td>
             <td>{{ $siswa->status_absen }}</td>
             <td>{{ $siswa->keterangan }}</td>
+            <td>{{ $siswa->izin_dari }}</td>
+            <td>{{ $siswa->izin_sampai }}</td>
         </tr>
         @endforeach
     </tbody>

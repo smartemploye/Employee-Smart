@@ -9,10 +9,12 @@ Halaman Report dan Sertifikat
   
   <div class="form-group">
     <label>Download Format Laporan Akhir</label>
-    <a href="{{url('format_laporan_akhir/'.$pembimbing->format_laporan_akhir)}}"  lass="btn btn-primary btn-sm mb-3">Download</a>
+    <a href="{{url('format_laporan_akhir/'.$pembimbing->format_laporan_akhir)}}"  lass="btn btn-primary btn-sm mb-3">Unduh</a>
   </div>
 
  {{-- upload file --}}
+
+@if (Auth::user()->role == 'siswa')
 <form action="/store/{{$siswa->nisn}}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('POST')
@@ -27,6 +29,7 @@ Halaman Report dan Sertifikat
     @enderror
     <button type="submit" class="btn btn-primary" style="margin-left: 40%;margin-top:-10%">Submit</button>
   </form>
+@endif
 
   @if($siswa->data_magang && $siswa->data_magang->laporan_akhir)
     <div class="form-group">
@@ -37,7 +40,7 @@ Halaman Report dan Sertifikat
   @endif
   <div class="form-group">
     <label>Download Sertifikat</label>
-    <a href="/ReportdanSertifikat/{{$siswa->nisn}}"  lass="btn btn-primary btn-sm mb-3">Download</a>
+    <a href="/ReportdanSertifikat/{{$siswa->nisn}}"  lass="btn btn-primary btn-sm mb-3">Unduh</a>
   </div>
 
 @endsection

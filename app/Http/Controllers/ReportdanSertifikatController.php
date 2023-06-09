@@ -14,11 +14,12 @@ use App\Models\Siswa;
 
 class ReportdanSertifikatController extends Controller
 {
+    
     public function tampilan()
     {
     $siswa = Auth::user()->siswa;
     $pembimbing = Auth::user()->siswa->pembimbing;
-// dd($pembimbing->format_laporan_akhir);
+    // dd($pembimbing->format_laporan_akhir);
     return view('ReportdanSertifikat.reports', compact('siswa', 'pembimbing'));
     }
 
