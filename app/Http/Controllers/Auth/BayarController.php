@@ -36,7 +36,7 @@ class BayarController extends Controller
         ]);
 // var_dump($bayar);
 
-        return redirect('/');
+        return redirect('/logout');
         // dd($bayar);
     }
 
