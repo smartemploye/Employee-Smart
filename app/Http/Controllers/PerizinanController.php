@@ -16,7 +16,7 @@ class PerizinanController extends Controller
     {
         $perizinan = DB::table('absen')
         ->where('nisn','=',auth()->user()->siswa->nisn)
-        ->get(['id','izin_dari','izin_sampai', 'keterangan', 'approve', 'dokumentasi']);
+        ->get(['id','izin_dari','izin_sampai', 'keterangan', 'approve', 'dokumentasi', 'nama_siswa']);
         // dd($perizinan);
         return view('perizinan.index', compact('perizinan'));
     }
@@ -36,6 +36,7 @@ class PerizinanController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $login = auth()->user()->siswa->nama_siswa;
         $message = [
             'izin_dari.required' => 'Form harus diisi.',
             'izin_sampai.after_or_equal' => 'Tanggal izin tidak boleh diisi dengan tanggal sebelum hari ini.',
@@ -65,6 +66,7 @@ class PerizinanController extends Controller
             'izin_sampai' => $request->izin_sampai,
             'keterangan' => $request->keterangan,
             'dokumentasi' =>  $file_dokumentasi,
+            'nama_siswa' => $login,
             'approve' => $status,
             // dd($request->all())
         ];

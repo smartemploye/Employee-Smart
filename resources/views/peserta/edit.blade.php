@@ -54,7 +54,7 @@
                                         <option value="Aktif">Aktif</option>
                                         <option value="Lulus">Lulus</option>
                                         <option value="Drop Out">Drop Out</option>
-                                        <option value="tidak aktif">tidak aktif</option>
+                                        <option value="tidak aktif">Tidak Aktif</option>
                                     </select>
                                 </div>
                                 <div class="form-group row">

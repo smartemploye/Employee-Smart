@@ -15,15 +15,19 @@ class CreateSiswaTable extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
-            $table->string('nisn',10);
+            $table->string('nisn',10)->nullable()->unique();
             $table->string('nama_siswa');
-            $table->string('no_wa');
+            $table->string('no_wa')->nullable()->unique();
             $table->unsignedBigInteger('sekolah_id');
           //  $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade')->onUpdate('cascade');
             $table->string('jurusan');
-            $table->unsignedBigInteger('nip_pembimbing');
+            $table->unsignedBigInteger('nip_pembimbing')->unique();
           //  $table->foreign('nip_pembimbing')->references('id')->on('pembimbing')->onDelete('cascade')->onUpdate('cascade');
             $table->string('foto_siswa');
+            $table->date('tanggal_mulai')->nullable();
+            $table->date('tanggal_selesai')->nullable();
+            $table->text('keterangan')->nullable();
+            $table->date('tanggal_lahir');
             $table->timestamps();
         });
     }

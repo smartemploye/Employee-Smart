@@ -17,18 +17,16 @@ class CreateSettingMagangTable extends Migration
     {
         Schema::create('setting_magang', function (Blueprint $table) {
             $table->id();
-            $table->time('jam_Masuk_kerja');
-            $table->time('jam_Pulang_kerja');
-            $table->bigInteger('no_va');
-            $table->bigInteger('Kuota_Magang');
+            $table->time('jam_Masuk_kerja')->nullable();
+            $table->time('jam_Pulang_kerja')->nullable();
+            $table->bigInteger('no_va')->nullable();
+            $table->bigInteger('Kuota_Magang')->nullable();
             $table->text('Format_WA_Diterima')->nullable();
             $table->text('Format_WA_Ditolak')->nullable();
             $table->text('Format_Pembimbing')->nullable();
             $table->text('Format_Email')->nullable();
-            $table->bigInteger('WA_Kantor');
+            $table->bigInteger('WA_Kantor')->nullable();
             $table->string('Sertifikat')->nullable();
-            // $table->string('periode_magang');
-            // $table->integer('kuota_magang');
             $table->timestamps();
         });
         Artisan::call('db:seed', ['--class' => 'DatabaseSeeder']);

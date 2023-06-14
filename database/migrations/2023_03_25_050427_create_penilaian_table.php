@@ -20,8 +20,8 @@ class CreatePenilaianTable extends Migration
     public function up()
     {
         Schema::create('penilaian', function (Blueprint $table) {
-            $table->id('id_penilaian');
-            $table->bigInteger('id_siswa');
+            $table->id('id_penilaian')->nullable();
+            $table->bigInteger('id_siswa')->nullable();
             $table->timestamps();
             if ($this->data->count() > 0) {
                 foreach ($this->data as $komponen) {

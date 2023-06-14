@@ -150,28 +150,45 @@
         @endif
 
         <div class="form-group row">
-            <label for="inputLogbook" class="col-sm-2 col-form-label">Logbook</label>
+            @if (Auth::user()->role != 'siswa')
+                <label for="inputLogbook" class="col-sm-2 col-form-label">Logbook</label>
+            @endif
             <div class="col-sm-10">
-                <a href="/logbook"><button>Lihat</button></a>
+                @if (Auth::user()->role != 'siswa')
+                    <a href="/logbook"><button>Lihat</button></a>
+                @endif
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputPerizinan" class="col-sm-2 col-form-label">Perizinan</label>
+            @if (Auth::user()->role != 'siswa')
+                <label for="inputPerizinan" class="col-sm-2 col-form-label">Perizinan</label>
+            @endif
             <div class="col-sm-10">
-                <a href="{{ route('peserta.izin', $siswa->id) }}"><button>Lihat</button></a>
+                @if (Auth::user()->role != 'siswa')
+                    <a href="{{ route('peserta.izin', $siswa->id) }}"><button>Lihat</button></a>
+                @endif
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputAbsensi" class="col-sm-2 col-form-label">Absensi</label>
+            @if (Auth::user()->role != 'siswa')
+                <label for="inputAbsensi" class="col-sm-2 col-form-label">Absensi</label>
+            @endif
             <div class="col-sm-10">
-                <a href="/absensi"><button>Lihat</button></a>
+                @if (Auth::user()->role != 'siswa')
+                    <a href="/absensi"><button>Lihat</button></a>
+                @endif
             </div>
         </div>
         <div class="form-group row">
-            <label for="inputReportSertifikat" class="col-sm-2 col-form-label">Report dan Sertifikat</label>
+            @if (Auth::user()->role != 'siswa')
+                <label for="inputReportSertifikat" class="col-sm-2 col-form-label">Report dan Sertifikat</label>
+            @endif
             <div class="col-sm-10">
-                <a href="/report"><button>Lihat</button></a>
+                @if (Auth::user()->role != 'siswa')
+                    <a href="/report"><button>Lihat</button></a>
+                @endif
             </div>
         </div>
+        
 
 @endsection

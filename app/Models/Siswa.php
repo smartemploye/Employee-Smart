@@ -45,5 +45,9 @@ class Siswa extends Model
     {
         return $this->hasOne(DataMagang::class, 'nisn', 'nisn');
     }
+    public function akuns()
+    {
+        return $this->hasOne(akun::class, 'nisn', 'nisn');
+    }
 
 }

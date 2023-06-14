@@ -49,25 +49,30 @@ class SettingmagangController extends Controller
 
         ]);
 
-        $fileName = time().'.'.$request->Sertifikat->extension();  
-        $request->Sertifikat->move(public_path('image'), $fileName);
+        if ($request->hasFile('Sertifikat')) {
+            $fileName = time().'.'.$request->Sertifikat->extension();
+            $request->Sertifikat->move(public_path('image'), $fileName);
+            // Lanjutkan pemrosesan jika file Sertifikat telah diunggah
+        } else {
+            $fileName = null; // Atau nilai default yang sesuai jika file tidak diunggah
+        }
+        
         $SettingMagang = new SettingMagang;
+        
         DB::table('setting_magang')
-              ->where('id', $id)
-              ->update(
-                [
-                    'jam_Masuk_kerja' => $request['jam_Masuk_kerja'],
-                    'jam_Pulang_kerja' => $request['jam_Pulang_kerja'],
-                    'no_va' => $request['no_va'],
-                    'Kuota_Magang' => $request['Kuota_Magang'],
-                    'Format_WA_Diterima' => $request['Format_WA_Diterima'],
-                    'Format_WA_Ditolak' => $request['Format_WA_Ditolak'],
-                    'Format_Pembimbing' => $request['Format_Pembimbing'],
-                    'Format_Email' => $request['Format_Email'],
-                    'WA_Kantor' => $request['WA_Kantor'],
-                    'Sertifikat' => $fileName,
-                ],
-            );
+            ->where('id', $id)
+            ->update([
+                'jam_Masuk_kerja' => $request['jam_Masuk_kerja'],
+                'jam_Pulang_kerja' => $request['jam_Pulang_kerja'],
+                'no_va' => $request['no_va'],
+                'Kuota_Magang' => $request['Kuota_Magang'],
+                'Format_WA_Diterima' => $request['Format_WA_Diterima'],
+                'Format_WA_Ditolak' => $request['Format_WA_Ditolak'],
+                'Format_Pembimbing' => $request['Format_Pembimbing'],
+                'Format_Email' => $request['Format_Email'],
+                'WA_Kantor' => $request['WA_Kantor'],
+                'Sertifikat' => $fileName, // Gunakan nilai file yang sudah diunggah atau null jika tidak ada
+            ]);
         return redirect('/settingmagang');
     }
 

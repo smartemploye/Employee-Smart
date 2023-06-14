@@ -52,6 +52,7 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">Nama</th>
                         <th scope="col">Dari</th>
                         <th scope="col">Sampai</th>
                         <th scope="col">Keterangan</th>
@@ -65,6 +66,7 @@
                     @foreach ($perizinan as $izin)
                     <tr>
                         <td>{{$no++ }}</td>
+                        <td>{{$izin->nama_siswa}}</td>
                         <td>{{$izin->izin_dari}}</td>
                         <td>{{$izin->izin_sampai }}</td>
                         <td>{{$izin->keterangan }}</td>

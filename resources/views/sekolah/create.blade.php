@@ -12,7 +12,10 @@
                         @method('PUT')
                         <div class="form-group">
                           <label for="inputnis" style="">NPSN</label>
-                          <input type="text" class="form-control" name="nis" placeholder="Masukkan NPSN" style="margin-left: 200px;margin-top: -35px;width: 900px">
+                          <input type="text" class="form-control  @error('nis') is-invalid @enderror" id="inputNis" value="{{ old('nis') }}" name="nis" placeholder="Masukkan NPSN" style="margin-left: 200px;margin-top: -35px;width: 900px">
+                          @error('nis')
+                          <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                         </div>
                         <div class="form-group">
                           <label for="inputNamaSekolah" style="">Nama Sekolah</label>
