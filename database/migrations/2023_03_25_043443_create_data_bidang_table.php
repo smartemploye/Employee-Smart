@@ -15,7 +15,9 @@ class CreateDataBidangTable extends Migration
     {
         Schema::create('data_bidang', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_bidang');
+            $table->string('nama_bidang')->nullable();
+            $table->enum('jenis_jurusan', ['IT','Umum'])->nullable();
+            $table->string('nisn')->nullable()->unique();
             $table->timestamps();
         });
     }

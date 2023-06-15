@@ -81,12 +81,19 @@ class LoginController extends Controller
             if (Auth::user()->role=='siswa'){
                 // dd(Auth::user()->siswa->data_magang->status_magang);
                 $status_magang = Auth::user()->siswa->data_magang->status_magang;
-                if ($status_magang == "Belum Bayar" || $status_magang == "Seleksi" || $status_magang == NULL) {
+                if ($status_magang == "Belum Bayar" || $status_magang == NULL) {
                     return redirect('/bayar');
-                } elseif ($status_magang == "tidak aktif" || $status_magang == "Drop Out"){
+                } elseif ($status_magang == "tidak aktif" || $status_magang == "Drop Out" || $status_magang == "Seleksi" ){
                     return redirect('/logout');
+                } elseif ($status_magang == 'Aktif' || $status_magang == "Lulus") {
+                    return redirect('/scan');
+                // } elseif ($status_magang == 'Lulus') {
+                    // return redirect('/lihat');
                 }
+            } elseif (Auth::user()->role == 'pembimbing') {
+                return redirect('/profile_pembimbing');
             }
+            
             //cek dulu yg login sebagai siswa atau bukan, kalo dia siswa cek dulu statusnya.
 
             //status seleksi, belu bayar, kosong hasib register/ null dia redirect ke halaman bayar

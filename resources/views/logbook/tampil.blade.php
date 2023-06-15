@@ -9,6 +9,7 @@ Halaman Logbook
 @if (Auth::user()->role == 'siswa')
 <a href="/logbook/create"  class="btn btn-primary btn-sm mb-3">Tambah Logbook</a>
 
+
 @endif
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
                 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

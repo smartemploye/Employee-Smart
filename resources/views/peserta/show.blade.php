@@ -94,7 +94,10 @@
                 </div>
             </div>
             @if (Auth::guard('akun')->user()->role == 'admin')
+<<<<<<< HEAD
             {{-- PASSWORD --}}
+=======
+>>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
@@ -141,9 +144,13 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
             {{-- END PASSWORD --}}
             @endif
 
+=======
+            @endif
+>>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
             @if($gambar)
             <div class="form-group row">
                 <label for="" class="col-sm-2 col-form-label">Bukti Pembayaran</label>

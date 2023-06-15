@@ -88,6 +88,7 @@
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 @endsection
 @section('script')
 <script src="{{ asset('/template/plugins/jquery/jquery.min.js')}}"></script>
@@ -129,3 +130,6 @@
   });
 </script>
 @endsection
+=======
+@endsection
+>>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667

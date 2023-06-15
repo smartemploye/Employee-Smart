@@ -149,4 +149,49 @@
         <h2>Tidak Ada Postingan</h2>
         @endif
 
+<<<<<<< HEAD
+=======
+        <div class="form-group row">
+            @if (Auth::user()->role != 'siswa')
+                <label for="inputLogbook" class="col-sm-2 col-form-label">Logbook</label>
+            @endif
+            <div class="col-sm-10">
+                @if (Auth::user()->role != 'siswa')
+                    <a href="/logbook"><button>Lihat</button></a>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            @if (Auth::user()->role != 'siswa')
+                <label for="inputPerizinan" class="col-sm-2 col-form-label">Perizinan</label>
+            @endif
+            <div class="col-sm-10">
+                @if (Auth::user()->role != 'siswa')
+                    <a href="{{ route('peserta.izin', $siswa->id) }}"><button>Lihat</button></a>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            @if (Auth::user()->role != 'siswa')
+                <label for="inputAbsensi" class="col-sm-2 col-form-label">Absensi</label>
+            @endif
+            <div class="col-sm-10">
+                @if (Auth::user()->role != 'siswa')
+                    <a href="/absensi"><button>Lihat</button></a>
+                @endif
+            </div>
+        </div>
+        <div class="form-group row">
+            @if (Auth::user()->role != 'siswa')
+                <label for="inputReportSertifikat" class="col-sm-2 col-form-label">Report dan Sertifikat</label>
+            @endif
+            <div class="col-sm-10">
+                @if (Auth::user()->role != 'siswa')
+                    <a href="/report"><button>Lihat</button></a>
+                @endif
+            </div>
+        </div>
+        
+
+>>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
 @endsection

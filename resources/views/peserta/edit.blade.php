@@ -49,12 +49,22 @@
                                     <label for="inputKeteranganIzin">Status</label>
                                 </div>
                                 <div class="col-9">
+<<<<<<< HEAD
                                     <select name="status_magang" id="" class="form-control @error('status_magang') is-invalid @enderror" name="status_magang">
                                         <option value="Seleksi" @if (old('status_magang') == "Seleksi") {{ 'selected' }} @endif>Seleksi</option>
                                         <option value="Belum Bayar" @if (old('status_magang') == "Belum Bayar") {{ 'selected' }} @endif>Belum Bayar</option>
                                         <option value="Aktif" @if (old('status_magang') == "Aktif") {{ 'selected' }} @endif>Aktif</option>
                                         <option value="Lulus" @if (old('status_magang') == "Lulus") {{ 'selected' }} @endif>Lulus</option>
                                         <option value="Drop Out" @if (old('status_magang') == "Drop Out") {{ 'selected' }} @endif>Drop Out</option>
+=======
+                                    <select name="status_magang" id="" class="form-control">
+                                        <option value="seleksi" selected>Seleksi</option>
+                                        <option value="Belum Bayar">Belum Bayar</option>
+                                        <option value="Aktif">Aktif</option>
+                                        <option value="Lulus">Lulus</option>
+                                        <option value="Drop Out">Drop Out</option>
+                                        <option value="tidak aktif">Tidak Aktif</option>
+>>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
                                     </select>
                                 </div>
                                 <div class="form-group row">

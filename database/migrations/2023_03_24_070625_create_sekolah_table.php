@@ -15,8 +15,9 @@ class CreateSekolahTable extends Migration
     {
         Schema::create('sekolah', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_sekolah');
-            $table->text('alamat_sekolah');
+            $table->string('nama_sekolah')->nullable();
+            $table->text('alamat_sekolah')->nullable();
+            $table->string('nis')->unique();
             $table->timestamps();
         });
     }

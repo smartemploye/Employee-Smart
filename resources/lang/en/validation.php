@@ -48,6 +48,7 @@ return [
     'enum' => 'The selected :attribute is invalid.',
     'exists' => 'The selected :attribute is invalid.',
     'file' => 'The :attribute must be a file.',
+    'file' => 'File :attribute tidak valid.',
     'filled' => 'The :attribute field must have a value.',
     'gt' => [
         'numeric' => 'The :attribute must be greater than :value.',

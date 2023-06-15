@@ -15,6 +15,7 @@ class CreateKomponenPenilaianTable extends Migration
     {
         Schema::create('komponen_penilaian', function (Blueprint $table) {
             $table->id();
+<<<<<<< HEAD
             $table->string('nama_komponen');
             $table->bigInteger('presentase');
 
@@ -29,6 +30,10 @@ class CreateKomponenPenilaianTable extends Migration
             // $table->bigInteger('operating_system');
             // $table->bigInteger('ms_office');
             // $table->bigInteger('instalasi_sistem');
+=======
+            $table->string('nama_komponen')->nullable();
+            $table->bigInteger('presentase')->nullable();
+>>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
 
             $table->timestamps();
         });

@@ -35,4 +35,12 @@ class Pembimbing extends Model
 
         return $this->belongsTo(Akun::class, 'username', 'username');
     }
+    public function siswa()
+    {
+        return $this->hasOne(Siswa::class, 'nisn', 'nisn');
+    }
+    public function akuns()
+    {
+        return $this->hasOne(akun::class, 'nisn', 'nisn');
+    }
 }

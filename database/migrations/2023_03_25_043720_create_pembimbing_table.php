@@ -15,12 +15,12 @@ class CreatePembimbingTable extends Migration
     {
         Schema::create('pembimbing', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('nip_pembimbing');
-            $table->string('nama_pembimbing');
-            $table->string('no_wa_pembimbing');
+            $table->bigInteger('nip_pembimbing')->nullable()->unique();
+            $table->string('nama_pembimbing')->nullable();
+            $table->string('no_wa_pembimbing')->nullable()->unique();
             $table->string('format_laporan_akhir')->nullable();
-            $table->unsignedBigInteger('sekolah_id');
-           // $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedBigInteger('sekolah_id')->nullable();
+            $table->string('password')->nullable();
             $table->timestamps();
         });
     }
