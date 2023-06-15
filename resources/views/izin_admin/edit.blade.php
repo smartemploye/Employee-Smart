@@ -31,8 +31,8 @@
                         <label for="inputKeteranganIzin" style="">Approve</label>
                         <select name="approve" id="">
                             <option value="" selected selected>-Pilih-</option>
-                            <option value="diapprove">Diterima</option>
-                            <option value="tolak">Ditolak</option>
+                            <option value="Diterima">Diterima</option>
+                            <option value="Ditolak">Ditolak</option>
                         </select>
                     </div>
                     <input type="text" hidden name="">

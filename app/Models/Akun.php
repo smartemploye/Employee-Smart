@@ -47,5 +47,13 @@ class Akun extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Pembimbing::class, 'nip_pembimbing', 'username');
     }
 
+    public static function rules()
+    {
+        return [
+            'nisn' => 'required|numeric|unique:akuns',
+            // aturan validasi lainnya
+        ];
+    }
+
 
 }

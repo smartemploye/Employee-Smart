@@ -23,7 +23,7 @@
             @if (Auth::guard('akun')->user()->role == 'siswa')
             <a href="/profile" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->siswa->nama_siswa }}</a>
             @elseif(Auth::guard('akun')->user()->role == 'pembimbing')
-            <a href="/profile_pembimbing" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->pembimbing->nama_pembimbing }}</a>
+            <a href="#" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->pembimbing->nama_pembimbing }}</a>
             @else
             <a href="/profile_admin" class="d-block" style="margin-top: 10px;margin-right: 10px">{{ auth()->user()->username }}</a>
             @endif

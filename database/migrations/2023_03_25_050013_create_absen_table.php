@@ -18,10 +18,15 @@ class CreateAbsenTable extends Migration
             $table->string('absen_masuk')->nullable();
             $table->string('absen_pulang')->nullable();
             $table->enum('status_absen', ['hadir','alpa','sakit','izin'])->nullable();
-            $table->text('keterangan')->nullable();;
+            $table->text('keterangan')->nullable();
             $table->unsignedBigInteger('admin_id')->nullable();
            // $table->foreign('admin_id')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('siswa_id')->nullable();
+            // $table->enum('di','proses','tolak')->default(false);
+            $table->enum('approve', ['Diterima','Ditolak'])->nullable();
+            $table->date('izin_dari')->nullable();
+            $table->date('izin_sampai')->nullable();
+
            // $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
@@ -34,6 +39,9 @@ class CreateAbsenTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('absen');
+        // Schema::dropIfExists('absen');
+        Schema::table('absen', function (Blueprint $table) {
+            $table->dropColumn('approve');
+        });
     }
 }

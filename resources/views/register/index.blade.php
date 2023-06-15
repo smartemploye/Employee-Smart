@@ -95,7 +95,7 @@
                                 <tr>
                                     <td>
                                         <div class="form-group" style="margin-left: 10px;">
-                                            <label for="inputName">Name</label>
+                                            <label for="inputName">Nama</label>
                                             <input type="text" name="nama_siswa"
                                                 class="form-control @error('nama_siswa') is-invalid @enderror"
                                                 id="inputName" placeholder="Masukkan Nama"
@@ -236,9 +236,9 @@
                                             @error('surat_pengajuan')
                                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
                                             @enderror
-                                            {{-- @if (!empty($errors->all()))
+                                            @if (!empty($errors->all()))
                                           <div class="alert alert-warning mt-2" style="width: 530px">Silahkan pilih file kembali</div>
-                                          @endif --}}
+                                          @endif
                                         </div>
                                     </td>
                                 </tr>
@@ -275,9 +275,9 @@
                                             @error('foto_siswa')
                                                 <div class="alert alert-danger mt-2" style="width: 530px">{{ $message }}</div>
                                             @enderror
-                                          {{-- @if (!empty($errors->all()))
+                                          @if (!empty($errors->all()))
                                           <div class="alert alert-warning mt-2" style="width: 530px">Silahkan pilih foto kembali</div>
-                                          @endif --}}
+                                          @endif
                                         </div>
 
                                     </td>
@@ -329,7 +329,7 @@
                                                     <input class="form-check-input" type="radio" name="paket_magang" id="Basic" value="Basic" {{ old('paket_magang') == 'Basic' ? 'checked' : '' }}>
                                                     <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic (Seragam+Nametag)</label>
                                                     <input class="form-check-input" type="radio" name="paket_magang" id="Exclusive" value="Exclusive" {{ old('paket_magang') == 'Exclusive' ? 'checked' : '' }}>
-                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive (Seragam+Nametag+GCIInstitute)</label>
+                                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive (Seragam+Nametag+Bootcamp)</label>
                                                 </div>
                                                 @error('paket_magang')
                                                     <div class="alert alert-danger" style="width: 530px">{{ $message }}</div>
@@ -476,4 +476,15 @@
     });
 
 </script>
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
+
+@if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 @endsection

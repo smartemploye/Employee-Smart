@@ -36,7 +36,7 @@
                             }
                         })
                     }
-                    
+
                 </script>
             </div>
             <div class="col-9">
@@ -59,6 +59,7 @@
                         <th scope="col">No</th>
                         <th scope="col">Dari</th>
                         <th scope="col">Sampai</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Dokumentasi</th>
                         <th scope="col">Keterangan</th>
                         <th scope="col">Approve</th>
@@ -72,6 +73,7 @@
                         <td>{{$no++ }}</td>
                         <td>{{$izin->izin_dari}}</td>
                         <td>{{$izin->izin_sampai }}</td>
+                        <td>{{$izin->status_absen }}</td>
                         <td>
                             <img width="300px" src="{{ asset('image/dokumentasi/'.$izin->dokumentasi) }}">
                         </td>

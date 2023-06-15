@@ -19,19 +19,18 @@ Halaman Logbook
 
     <div class="form-group">
       <label>Deskripsi Logbook</label>
-      <textarea name="logbook" class="form-control" cols="30" rows="10"></textarea>
+      <textarea name="logbook" class="form-control @error('logbook') is-invalid @enderror" id="logbook" value="{{ old('logbook') }}" cols="30" rows="10"></textarea>
+        @error('logbook')
+            <div class="alert alert-danger mt-2" style="width: 450px">{{ $message }}</div>
+        @enderror
     </div>
-    @error('logbook')
-        <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
     <div class="form-group">
         <label>Foto Kegiatan</label>
-        <input type="file" name="dokumentasi" class="form-control">
-      </div>
-      @error('dokumentasi')
-          <div class="alert alert-danger">{{ $message }}</div>
-      @enderror
-
+        <input type="file" name="dokumentasi" class="form-control @error('dokumentasi') is-invalid @enderror" id="dokumentasi" accept="image/*" value="{{ old('dokumentasi') }}">
+        @error('dokumentasi')
+            <div class="alert alert-danger mt-2" style="width: 450px">{{ $message }}</div>
+        @enderror
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 

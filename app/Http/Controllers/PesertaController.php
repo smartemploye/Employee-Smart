@@ -22,11 +22,11 @@ class PesertaController extends Controller
     public function index(Request $request)
     {
         // dd($request->input());
-        // if ($request->has('search')) {
-        //     $data = Siswa::where('tanggal_masuk', 'LIKE', '%' . $request->search . '%')->paginate(5);
-        // } else {
-        //     $data = Siswa::paginate(5);
-        // }
+        if ($request->has('search')) {
+            $data = Siswa::where('tanggal_masuk', 'LIKE', '%' . $request->search . '%')->paginate(5);
+        } else {
+            $data = Siswa::paginate(5);
+        }
 
         $data = DB::table('siswa')
             ->join('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
@@ -115,7 +115,6 @@ class PesertaController extends Controller
     public function show($id)
     {
         //ambil gambar dari tabel data_magang kolom Bukti pembayaran
-
         $data = DB::table('siswa')
         ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
         ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
@@ -190,13 +189,17 @@ class PesertaController extends Controller
     public function update(Request $request/*, $id*/)
     {
         $message = [
+            'tanggal_mulai.reuired' => 'Form harus diisi!',
             'tanggal_mulai.after_or_equal' => 'Tanggal tidak boleh diisi dengan tanggal sebelum hari ini.',
+            'tanggal_selesai.reuired' => 'Form harus diisi!',
             'tanggal_selesai.after_or_equal' => 'Tanggal tidak boleh diisi dengan tanggal sebelum hari ini.',
+            'status_magang.required' => 'Form harus diisi!',
         ];
 
         $request->validate([
-            'tanggal_mulai' => 'required|date|after_or_equal:today',
-            'tanggal_selesai' => 'required|date|after_or_equal:today',
+            'tanggal_mulai' => 'required|after_or_equal:today',
+            'tanggal_selesai' => 'required|after_or_equal:today',
+            'status_magang' => 'required',
         ], $message);
 
         $updated = Siswa::find($request->id);
@@ -326,6 +329,46 @@ class PesertaController extends Controller
                             // ]]));
 
         return redirect('/peserta');
+    }
+
+    public function showpembimbing($id)
+    {
+        $data = DB::table('siswa')
+        ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
+        ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
+        ->leftJoin('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
+        ->leftJoin('data_bidang', 'data_bidang.id', '=', 'data_magang.bidang_id')
+        ->leftJoin('akuns', 'akuns.nisn', '=', 'siswa.nisn')
+        ->where('siswa.id','=',$id)
+        ->first([
+            'siswa.id',
+            'siswa.nisn',
+            'nama_sekolah',
+            'nama_siswa',
+            'siswa.foto_siswa AS foto_siswa',
+            'no_wa',
+            'nama_bidang',
+            'tanggal_mulai',
+            'tanggal_selesai',
+            'nama_pembimbing',
+            'status_magang',
+            'judul_project',
+            'sekolah.id as id_sekolah',
+            'siswa.nip_pembimbing as nip',
+            'jurusan',
+            'tanggal_lahir', 'no_wa_pembimbing', 'username',
+            'data_magang.bukti_pembayaran','surat_pengajuan'
+        ]);
+
+        // dd($data);
+        // ambil url gambar
+        $gambar = $data->bukti_pembayaran;
+        // dd($siswa->all());
+
+        // return view('peserta.show', compact('siswa', 'gambar'));
+
+        // dd($data);
+        return view('pembimbing.show', compact('data', 'gambar'));
     }
 
 

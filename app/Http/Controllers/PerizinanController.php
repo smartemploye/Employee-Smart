@@ -16,7 +16,7 @@ class PerizinanController extends Controller
     {
         $perizinan = DB::table('absen')
         ->where('nisn','=',auth()->user()->siswa->nisn)
-        ->get(['id','izin_dari','izin_sampai', 'keterangan', 'approve', 'dokumentasi']);
+        ->get(['id','izin_dari','izin_sampai', 'keterangan', 'approve', 'dokumentasi', 'nama_siswa', 'status_absen']);
         // dd($perizinan);
         return view('perizinan.index', compact('perizinan'));
     }
@@ -36,11 +36,15 @@ class PerizinanController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
+        $login = auth()->user()->siswa->nama_siswa;
         $message = [
             'izin_dari.required' => 'Form harus diisi.',
             'izin_sampai.after_or_equal' => 'Tanggal izin tidak boleh diisi dengan tanggal sebelum hari ini.',
             'keterangan.required' => 'Keterangan harus diisi.',
             'dokumentasi.required' => 'Form harus diisi!',
+            'dokumentasi.mimes' => 'File dalam bentuk jpg,jpeg,png!',
+
+
 
         ];
 
@@ -48,7 +52,7 @@ class PerizinanController extends Controller
             'izin_dari' => 'required',
             'izin_sampai' => 'required|date|after_or_equal:today',
             'keterangan' => 'required',
-            'dokumentasi' => 'required',
+            'dokumentasi' => 'required|mimes:jpg,jpeg.png',
         ], $message);
 
         $dokumentasi = $request->dokumentasi;
@@ -63,8 +67,10 @@ class PerizinanController extends Controller
             'nisn' => Auth::user()->siswa->nisn,
             'izin_dari' => $request->izin_dari,
             'izin_sampai' => $request->izin_sampai,
+            'status_absen' => $request->status_absen,
             'keterangan' => $request->keterangan,
             'dokumentasi' =>  $file_dokumentasi,
+            'nama_siswa' => $login,
             'approve' => $status,
             // dd($request->all())
         ];
@@ -86,7 +92,7 @@ class PerizinanController extends Controller
         ->whereNotIn('absen.keterangan',[''])
         ->get([
             'izin_dari','izin_sampai','absen.keterangan AS keterangan','approve','absen.siswa_id AS id',
-            'siswa.nama_siswa','absen.id AS absen_id','dokumentasi','siswa.nisn'
+            'siswa.nama_siswa','absen.id AS absen_id','dokumentasi','siswa.nisn', 'status_absen'
         ]);
 
         return view('izin_admin.edit', compact('perizinan'));

@@ -15,7 +15,7 @@ class AbsenController extends Controller
     {
         return view('apsen.scan');
     }
-    
+
     public function store(Request $request)
     {
         // dd('simpan');
@@ -23,13 +23,13 @@ class AbsenController extends Controller
     $nisn = Auth::user()->nisn;
         // Query untuk mendapatkan data siswa berdasarkan NISN
         $siswa = Siswa::where('nisn', $nisn)->first();
-     
+
         if ($siswa) {
             $existingAbsenMasuk = Absen::where('nisn', $nisn)
                 ->whereDate('absen_masuk', Carbon::today()->setTimezone('Asia/Jakarta'))
                 ->whereNull('absen_pulang')
                 ->first();
- 
+
             if (empty($existingAbsenMasuk)) {
                 $absen = new Absen();
                 $absen->nisn = $nisn;
@@ -42,7 +42,7 @@ class AbsenController extends Controller
                     'success' => true,
                     'message' => 'Absen masuk berhasil disimpan'
                 ]);
-    
+
                 // return redirect()->route('absen.create')->with('success', 'Absen masuk berhasil disimpan.');
             } else {
                 $existingAbsenMasuk->absen_pulang = Carbon::now('Asia/Jakarta');
@@ -52,7 +52,7 @@ class AbsenController extends Controller
                     'success' => true,
                     'message' => 'Absen pulang berhasil disimpan'
                 ]);
-    
+
                 // return redirect()->back()->with('success', 'Absen pulang berhasil disimpan.');
             }
         } else {
@@ -63,7 +63,7 @@ class AbsenController extends Controller
             // return redirect()->back()->with('error', 'NISN tidak valid.');
         }
     }
-    
+
     public function Absen(Request $request)
     {
         $jenis = $request->jenis;
@@ -105,5 +105,5 @@ class AbsenController extends Controller
         }
 
         return response()->json($result);
-    }    
+    }
 }

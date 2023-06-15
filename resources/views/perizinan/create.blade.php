@@ -13,8 +13,8 @@
                     @method('PUT')
                     <td>
                     <div class="form-group row">
-                      <label class="col-md-4 text-md-right" style="margin-left: -40px;margin-top: 5px">Dari</label>
-                      <div class="col-md-8">
+                      <label style="margin-left: 10px" >Dari</label>
+                      <div style="margin-left: 180px;width: 150px;margin-top: -35px">
                         <input type="date" name="izin_dari" class="form-control @error('izin_dari') is-invalid @enderror" id="inputBirthdate" value="{{ old('izin_dari') }}">
                         @error('izin_dari')
                           <div class="invalid-feedback">{{ $message }}</div>
@@ -24,9 +24,9 @@
                     </td>
                     <td>
                     <div class="form-group row">
-                        <label class="col-md-4 text-md-right" style="margin-left: 560px;margin-top: -50px">Sampai</label>
-                        <div class="col-md-8">
-                          <input type="date" style="margin-left: 650px;margin-top: -55px" name="izin_sampai" class="form-control  @error('izin_sampai') is-invalid @enderror" id="inputBirthdate" value="{{ old('izin_sampai') }}">
+                        <label  style="margin-left: 10px">Sampai</label>
+                        <div style="margin-left: 180px;margin-top: -35px">
+                          <input type="date" style="" name="izin_sampai" class="form-control  @error('izin_sampai') is-invalid @enderror" id="inputBirthdate" value="{{ old('izin_sampai') }}">
                           @error('izin_sampai')
                             <div class="invalid-feedback">{{ $message }}</div>
                           @enderror
@@ -34,9 +34,19 @@
                       </div>
                     </td>
                     <td>
+                        <div class="form-group">
+                            <label for="inputStatusAbsen" style="">Status</label>
+                            <select name="status_absen" id="" style="margin-left: 125px">
+                                <option value="" selected selected style="">-Pilih-</option>
+                                <option value="izin">Izin</option>
+                                <option value="sakit">Sakit</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
                         <div class="form-group" style="">
-                            <label for="inputPhoto">Upload Dokumentasi</label>
-                            <input style="width: 300px;margin-left: 200px;margin-top: -30px" type="file" name="dokumentasi" class="form-control-file @error('dokumentasi') is-invalid @enderror" id="InputDokumentasi" accept="image/*" value="{{ old('dokumentasi') }}">
+                            <label for="inputPhoto" style="">Upload Dokumentasi</label>
+                            <input style="width: 300px;margin-left: 175px;margin-top: -30px" type="file" name="dokumentasi" class="form-control-file @error('dokumentasi') is-invalid @enderror" id="InputDokumentasi" accept="image/*" value="{{ old('dokumentasi') }}">
                             @error('dokumentasi')
                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
                             @enderror

@@ -11,8 +11,8 @@
             {{ session('success') }}
         </div>
     @endif
-    {{-- <div class="foto">
-        <img style="width: 200px;height: 250px;margin-left: 500px;margin-bottom: 50px" src="{{ asset('image/fotosiswa/'.$siswa->foto_siswa) }}"> --}}
+    <div class="foto">
+        <img style="width: 300px;height: 250px;margin-left: 500px;margin-bottom: 50px" src="{{ asset('image/fotosiswa/'.$siswa->foto_siswa) }}">
         <div class="form-group row">
             <label for="inputNamaPeserta" class="col-sm-2 col-form-label">Nama Peserta</label>
             <div class="col-sm-10">
@@ -148,30 +148,5 @@
         @else
         <h2>Tidak Ada Postingan</h2>
         @endif
-
-        <div class="form-group row">
-            <label for="inputLogbook" class="col-sm-2 col-form-label">Logbook</label>
-            <div class="col-sm-10">
-                <a href="/logbook"><button>Lihat</button></a>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputPerizinan" class="col-sm-2 col-form-label">Perizinan</label>
-            <div class="col-sm-10">
-                <a href="{{ route('peserta.izin', $siswa->id) }}"><button>Lihat</button></a>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputAbsensi" class="col-sm-2 col-form-label">Absensi</label>
-            <div class="col-sm-10">
-                <a href="/absensi"><button>Lihat</button></a>
-            </div>
-        </div>
-        <div class="form-group row">
-            <label for="inputReportSertifikat" class="col-sm-2 col-form-label">Report dan Sertifikat</label>
-            <div class="col-sm-10">
-                <a href="/report"><button>Lihat</button></a>
-            </div>
-        </div>
 
 @endsection

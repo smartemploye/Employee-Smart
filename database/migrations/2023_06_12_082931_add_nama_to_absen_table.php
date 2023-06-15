@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddStatusMagangToDataMagangTable extends Migration
+class AddNamaToAbsenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddStatusMagangToDataMagangTable extends Migration
      */
     public function up()
     {
-        // Schema::table('data_magang', function (Blueprint $table) {
-        //     $table->enum('status_magang', ['seleksi','Belum Bayar','Aktif','Lulus','Drop Out']);
-        // });
+        Schema::table('absen', function (Blueprint $table) {
+            $table->string('nama_siswa');
+        });
     }
 
     /**
@@ -25,7 +25,7 @@ class AddStatusMagangToDataMagangTable extends Migration
      */
     public function down()
     {
-        Schema::table('data_magang', function (Blueprint $table) {
+        Schema::table('absen', function (Blueprint $table) {
             //
         });
     }

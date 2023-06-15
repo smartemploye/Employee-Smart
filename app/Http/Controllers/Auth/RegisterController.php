@@ -51,60 +51,61 @@ class RegisterController extends Controller
     {
         // dd($request->all());
         $message = [ 'nama_siswa.required' => 'Form harus diisi!',
-        'nisn.required' => 'Form harus diisi!',
-        'nisn.numeric' => 'NISN harus diinput dalam format angka!',
-        'nisn.unique' => 'NISN sudah terdaftar!',
-        'nisn.unique' => 'NISN harus 10 karakter!',
-        'password.required' => 'Form harus diisi!',
-        'password_confirmation.required' => 'Konfirmasi password tidak cocok!',
-        'password_confirmation.same' => 'Konfirmasi password tidak cocok!',
-        'sekolah_id.required' => 'Form harus diisi!',
-        'jenis_jurusan.required' => 'Form harus diisi!',
-        'no_wa.required' => 'Form harus diisi!',
-        'no_wa.numeric' => 'Format harus dalam bentuk angka!',
-        'no_wa.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
-        'foto_siswa.required' => 'Form harus diisi!',
-        'foto_siswa.image' => 'Format harus dalam bentuk gambar!',
-        'tanggal_lahir.required' => 'Form harus diisi!',
-        'tanggal_lahir.date_format' => 'Format tanggal harus dalam bentuk d-m-Y!',
-        'tanggal_lahir.before' => 'Tanggal harus sebelum hari ini!',
-        'jurusan.required' => 'Form harus diisi!',
-        'paket_magang.required' => 'Form harus diisi!',
-        'nama_pembimbing.required' => 'Form harus diisi!',
-        'nip_pembimbing.required' => 'Form harus diisi!',
-        'nip_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
-        'nip_pembimbing.unique' => 'NIP sudah terdaftar!',
-        'no_wa_pembimbing.required' => 'Form harus diisi!',
-        'no_wa_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
-        'no_wa_pembimbing.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
-        'ukuran_baju.required' => 'Form harus diisi!',
-        'surat_pengajuan.required' => 'Form harus diisi!',
-        'username.required' => 'Form harus diisi!',
-        'username.email' => 'Format email salah!',
-        'jurusan.required' => 'Form harus diisi!',
-        ];
+            'nisn.required' => 'Form harus diisi!',
+            'nisn.numeric' => 'NISN harus diinput dalam format angka!',
+            'nisn.unique' => 'NISN sudah terdaftar!',
+            'nisn.digits' => 'NISN harus 10 karakter!',
+            'password.required' => 'Form harus diisi!',
+            'password_confirmation.required' => 'Konfirmasi password tidak cocok!',
+            'password_confirmation.same' => 'Konfirmasi password tidak cocok!',
+            'sekolah_id.required' => 'Form harus diisi!',
+            'jenis_jurusan.required' => 'Form harus diisi!',
+            'no_wa.required' => 'Form harus diisi!',
+            'no_wa.numeric' => 'Format harus dalam bentuk angka!',
+            'no_wa.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
+            'foto_siswa.required' => 'Form harus diisi!',
+            'foto_siswa.image' => 'Format harus dalam bentuk gambar!',
+            'foto_siswa.mimes' => 'Foto dalam bentuk jpg,png,jpeg atau pdf!',
+            'tanggal_lahir.required' => 'Form harus diisi!',
+            'tanggal_lahir.date_format' => 'Format tanggal harus dalam bentuk d-m-Y!',
+            'tanggal_lahir.before' => 'Tanggal harus sebelum hari ini!',
+            'jurusan.required' => 'Form harus diisi!',
+            'paket_magang.required' => 'Form harus diisi!',
+            'nama_pembimbing.required' => 'Form harus diisi!',
+            'nip_pembimbing.required' => 'Form harus diisi!',
+            'nip_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
+            'nip_pembimbing.unique' => 'NIP sudah terdaftar!',
+            'no_wa_pembimbing.required' => 'Form harus diisi!',
+            'no_wa_pembimbing.numeric' => 'Format harus dalam bentuk angka!',
+            'no_wa_pembimbing.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
+            'ukuran_baju.required' => 'Form harus diisi!',
+            'surat_pengajuan.required' => 'Form harus diisi!',
+            'surat_pengajuan.mimes' => 'File dalam bentuk pdf!',
+            'username.required' => 'Form harus diisi!',
+            'username.email' => 'Format email salah!',
+            ];
 
-        $request->validate([
+            $request->validate([
                 'nama_siswa' => 'required',
-                'nisn' => 'required|numeric|digits:10|unique:users',
+                'nisn' => 'required|numeric|digits:10|unique:akuns',
                 'password' => 'required',
                 'password_confirmation' => 'required|same:password',
                 'sekolah_id' => 'required',
                 'jenis_jurusan' => 'required',
                 'no_wa' => 'required|numeric|digits_between:10,13',
-                'foto_siswa' => 'required|image',
+                'foto_siswa' => 'required|image|mimes:jpg,png,jpeg,pdf',
                 'tanggal_lahir' => 'required|before:today',
                 'jurusan' => 'required',
                 'paket_magang' => 'required',
                 'nama_pembimbing' => 'required',
-                'nip_pembimbing' => 'required|numeric|unique:users',
+                'nip_pembimbing' => 'required|numeric|unique:akuns',
                 'no_wa_pembimbing' => 'required|numeric|digits_between:10,13',
                 'ukuran_baju' => 'required',
-                'surat_pengajuan' => 'required',
+                'surat_pengajuan' => 'required|mimes:pdf',
                 'username' => 'required|email',
                 'jurusan' => 'required',
-                ], $message);
-
+            ], $message);
+            
         //         var_dump($v->fails());
         //         var_dump($v->errors());
 
@@ -203,94 +204,11 @@ class RegisterController extends Controller
 
         $surat_pengajuan->move(public_path().'/surat_pengajuan', $file_surat_pengajuan);
 
+        // $request->session()->flash('success', 'Data berhasil disimpan.');
+
         return redirect()->route('login')->with('success','Data created successfully.');
 
         // Kamis 24 Mei 2023 pesan email ambil data dari settingmagang
-
-        // $data = [
-        //     'name' => 'Syahrizal As',
-        //     'body' => 'Testing Kirim Email di Santri Koding'
-        // ];
-
-        // Mail::to('azulfiantiko@gmail.com')->send(new SendEmail($data));
-
-        //codingan wa yg dikirim bg syams masukkan disini
-        // untuk siswa
-        // $nisn = $request->nisn;
-        // $siswa = Siswa::where('nisn', $nisn)->first();
-
-        // if ($siswa) {
-        //     $no_wa = $siswa->no_wa;
-        // } else {
-        //     $no_wa = '085713482807'; // No HP default jika siswa tidak ditemukan
-        // }
-        //         // Ambil format WA dari SettingmagangController
-        //         $settingmagangController = new SettingmagangController();
-        //         $formatWA = $settingmagangController->getFormatWA();
-
-        // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
-        //     'method'  => 'POST',
-        //     'header'  => 'Content-Type: application/x-www-form-urlencoded',
-        //     'content' => http_build_query([
-        //         'no_hp' => $no_wa, # no hp penerima
-        //         // 'message' => 'test kirim wa' # pesan
-        //         'message' => $formatWA // Menggunakan format WA dari SettingmagangController
-        //     ])
-        // ]]));
-
-
-                // // buat untuk pmbimbing
-
-                // $nip_pembimbing = $request->nip_pembimbing;
-                // $pembimbing = pembimbing::where('nip_pembimbing', $nip_pembimbing)->first();
-
-                // if ($pembimbing) {
-                //     $no_wa_pembimbing = $pembimbing->no_wa_pembimbing;
-                // } else {
-                //     $no_wa_pembimbing = '085713482807'; // No HP default jika siswa tidak ditemukan
-                // }
-                //         // Ambil format WA dari SettingmagangController
-                //         $settingmagangController = new SettingmagangController();
-                //         $formatWA = $settingmagangController->getFormatWA();
-
-                // $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
-                //     'method'  => 'POST',
-                //     'header'  => 'Content-Type: application/x-www-form-urlencoded',
-                //     'content' => http_build_query([
-                //         'no_hp' => $no_wa_pembimbing, # no hp penerima
-                //         // 'message' => 'test kirim wa' # pesan
-                //         'message' => $formatWA // Menggunakan format WA dari SettingmagangController
-                //     ])
-                // ]]));
-
-                // $kuota_magang = (int)DB::table('setting_magang')->first()->Kuota_Magang;
-                // $siswaaktif = (int)DB::table('data_magang')
-                // ->whereIn('data_magang.status_magang', ['Aktif'])
-                // ->count();
-                // $kuota = $kuota_magang-$siswaaktif;
-                // $kuota = $kuota >= 0 ? $kuota : 0;
-                //     if ($kuota == 0) {
-                //     return redirect()->route('register');
-        // dd("Email Berhasil dikirim.");
-        // dd($request->all());
-
-
-
-        // Alert::success('Berhasil', 'Success Message');
-        // return redirect('login');
-        // $image_path = storage_path('app/'.config('path.identity.photo').'/'.$request->identity_photo);
-
-        // if($request->hasFile('foto'))
-        // {
-        //     $destination_path = 'foto/register';
-        //     $foto = $request->foto;
-        //     $foto = $foto->getClientOriginalName();
-        //     $path = $request->foto->storeAs($destination_path, $foto);
-
-        //     $validated_data['foto'] = $foto;
-        // }
-        // Register::create($validated_data);
-
 
     }
 

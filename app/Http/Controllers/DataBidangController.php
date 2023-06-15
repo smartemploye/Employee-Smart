@@ -27,7 +27,7 @@ class DataBidangController extends Controller
         // dd($request->all());
         DataBidang::create([
             'nama_bidang' => $request->nama_bidang,
-            'jenis_bidang' => $request->jenis_jurusan,
+            'jenis_jurusan' => $request->jenis_jurusan,
         ]);
         return redirect('/bidang');
     }

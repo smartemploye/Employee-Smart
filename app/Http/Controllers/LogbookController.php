@@ -22,9 +22,11 @@ class LogbookController extends Controller
 
     {
         $message = [
-            'logbook.required' => 'Logbook harus diisi.',
-            'tanggal_logbook.before_or_equal' => 'Tanggal logbook tidak boleh diisi dengan tanggal besoknya.',
-            'dokumentasi.required' => 'Dokumentasi harus diisi.',
+            'logbook.required' => 'Logbook harus diisi!',
+            'tanggal_logbook.before_or_equal' => 'Tanggal logbook tidak boleh diisi dengan tanggal besoknya!!',
+            'dokumentasi.required' => 'Dokumentasi harus diisi!',
+            'dokumentasi.mimes' => 'Foto dalam bentuk jpg,png,jpeg!',
+
         ];
 
         $request->validate([
@@ -63,19 +65,19 @@ public function index()
     } else {
         // dd($nisn);
     }
-    
+
     // Auth::user()->role = 'siswa';
     // $nisn = Auth::user()->siswa->nisn;
     $logbook = DB::table('kegiatan_harian')->where('nisn', $nisn)->get();
 
     return view('logbook.tampil', compact('logbook'));
 }
-    
+
 public function detail($nisn)
 {
     // Mendapatkan logbook berdasarkan nisn pengguna yang terautentikasi
 
-    
+
     // Auth::user()->role = 'siswa';
     // $nisn = Auth::user()->siswa->nisn;
     $logbook = DB::table('kegiatan_harian')->where('nisn', $nisn)->get();
@@ -85,7 +87,7 @@ public function detail($nisn)
     // public function index()
     // {
     //     //berdasarkan nisn
-        
+
     //     $logbook = DB::table('kegiatan_harian')->get();
     //     // dd($logbook);
 

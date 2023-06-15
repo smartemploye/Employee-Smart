@@ -14,7 +14,7 @@ use App\Models\Siswa;
 
 class ReportdanSertifikatController extends Controller
 {
-    
+
     public function tampilan()
     {
     $siswa = Auth::user()->siswa;
@@ -31,7 +31,7 @@ class ReportdanSertifikatController extends Controller
     return view('ReportdanSertifikat.reports', compact('siswa', 'pembimbing'));
 }
 
-    
+
 
     public function showImage($nisn)
     {
@@ -40,10 +40,10 @@ class ReportdanSertifikatController extends Controller
         // dd($siswa);
         $settingMagang = SettingMagang::select('Sertifikat')->first();
         // dd($settingMagang->Sertifikat);
-    
+
         // // Mengambil URL gambar sertifikat
         // $sertifikatUrl = $settingMagang[0]->Sertifikat;
-    
+
         // // Mengatur header untuk respon unduhan
         // $headers = [
         //     'Content-Type' => 'application/pdf',
@@ -55,13 +55,17 @@ class ReportdanSertifikatController extends Controller
         $pdf->setPaper('A4', 'landscape');
     	return $pdf->download('laporan-pegawai.pdf');
     }
-    
+
     public function store(Request $request, $nisn)
 {
     // Validasi file yang diunggah adalah PDF
+    $message = [ 'laporan_akhir.required' => 'Form harus diisi!',
+    'laporan_akhir.mimes' => 'File dalam bentuk pdf!'];
+
     $request->validate([
         'laporan_akhir' => 'required|mimes:pdf'
-    ]);
+    ], $message);
+
 
     // Simpan file PDF
     $file = $request->file('laporan_akhir');

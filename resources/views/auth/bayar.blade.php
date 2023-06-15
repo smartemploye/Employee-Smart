@@ -16,7 +16,7 @@
 			background-color: #F1F6F9;
 			padding: 20px;
 			margin: 50px auto;
-			max-width: 500px;
+			max-width: 550px;
 			border-radius: 10px;
 			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 		}
@@ -68,15 +68,16 @@
     <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="margin-left: 650px">
 	<form action="/bayar" method="POST" style="margin-top: 10px ;" enctype="multipart/form-data">
         @csrf
-		<h1 style="color: rgb(6, 5, 5);">Proses Pengajuan Magang</h1>
-        <p style="color: #62f983; margin-left: 170px;font-size: 30px">Diterima</p>
-        <h2 style="color: rgb(8, 7, 7); margin-left: 30px;">Selamat!!! Kamu Telah Diterima</h2>
+		<h1 style="color: rgb(6, 5, 5);font-size: 20px">Proses Pengajuan Magang</h1>
+        <p style="background-color: #2E8B57; text-align: center;font-size: 20px;color: whitesmoke;border-radius: 20px;width: 200px;margin-left: 30%">Diterima</p>
 		<label for="virtual-akun" style="color: rgb(20, 18, 18);">Nomor Rekening: Bank BNI Atas Nama "Garuda Cyber Indonesia" </label>
 		<input type="text" id="virtual-akun" name="virtual_akun" style="color: #0d0b0b" placeholder="{{ $data }}" value="{{ $data }}" disabled>
 
 		<label for="bukti-pembayaran" style="color: rgb(11, 9, 9);">Bukti Pembayaran:</label>
-		<input type="file" id="bukti-pembayaran" name="bukti" >
-
+		<input type="file" id="bukti-pembayaran" name="bukti_pembayaran" class="form-control-file @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran" accept="image/*" value="{{ old('bukti_pembayaran') }}">
+    @error('bukti_pembayaran')
+        <div class="alert alert-danger mt-2" style="width: 450px">{{ $message }}</div>
+    @enderror
         <button type="submit" class="btn btn-primary">Submit</button>
 		{{-- <input type="submit" value="Submit"> --}}
 	</form>

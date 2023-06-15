@@ -124,7 +124,7 @@
                         </p>
                     </a>
                 </li>
-            @elseif(Auth::guard('akun')->user())
+            @elseif(Auth::guard('akun')->user()->role == 'siswa')
                 <li class="nav-item">
                     <a href="/scan" class="nav-link">
                         <i class='bx bxs-dashboard text-white' style="vertical-align: -3px;font-size: 25px"></i>
@@ -158,7 +158,22 @@
                     </a>
                 </li>
             @elseif(Auth::guard('akun')->user()->role == 'pembimbing')
-                <p>jnj</p>
+            <li class="nav-item">
+                <a href="/dashboard" class="nav-link" style="color: white">
+                    <i class='bx bxs-dashboard' style="vertical-align: -3px;font-size: 25px"></i>
+                    <p>
+                        Dashboard
+                    </p>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/profile_pembimbing" class="nav-link" style="color: white">
+                    <i class='bx bx-user' style="vertical-align: -3px;font-size: 25px"></i>
+                    <p>
+                        Profile
+                    </p>
+                </a>
+            </li>
             @endif
             {{-- <li class="nav-item bg-danger">
                 <a class="nav-link" href="{{ route('logout') }}"> Logout </a>

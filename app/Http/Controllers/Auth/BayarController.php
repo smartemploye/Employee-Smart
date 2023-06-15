@@ -16,37 +16,34 @@ class BayarController extends Controller
     }
 
     public function store(Request $request)
-    {
-    
-        //Perbaiki validasinya
-        
-        // $request->validate([
-        //     'bukti_pembayaran' => 'required|image|mimes:jpg,png,jpeg',
-        // ]);
+{
+    $message = [
+        'bukti_pembayaran.required' => 'Form harus diisi!',
+        'bukti_pembayaran.image' => 'Format harus dalam bentuk gambar!',
+        'bukti_pembayaran.mimes' => 'Foto dalam bentuk jpg, png, jpeg, atau pdf!',
+    ];
 
-        $fileName = time().'.'.$request->bukti->extension();  
-        $request->bukti->move(public_path('image'), $fileName);
-        $bayar = new Bayar;
-        // dd(Auth::user()->nisn);
-        $nisn = Auth::user()->nisn;
-        DB::table('data_magang')
+    $request->validate([
+        'bukti_pembayaran' => 'required|image|mimes:jpg,png,jpeg,pdf',
+    ], $message);
+
+    $fileName = time().'.'.$request->bukti_pembayaran->extension();
+    $request->bukti_pembayaran->move(public_path('image'), $fileName);
+
+    $nisn = Auth::user()->nisn;
+    DB::table('data_magang')
         ->where('nisn', $nisn)
         ->update([
             'bukti_pembayaran' => $fileName,
         ]);
-// var_dump($bayar);
 
-        return redirect('/');
-        // dd($bayar);
-    }
+    return redirect('/login');
+}
 
-    public function bayar()
-    {
-        $settingmagang = DB::table('setting_magang')->get()->first();
-        // buat kaya dibawah ini buat ambil data berdasarkan nisn buat nampilkan status di tabel data_magang
-        // $settingmagang = DB::table('setting_magang')->get()->first();
+public function bayar()
+{
+    $settingmagang = DB::table('setting_magang')->get()->first();
+    return view('auth.bayar', ["data" => $settingmagang->no_va]);
+}
 
-        // echo $settingmagang->no_va;
-        return view('auth.bayar', ["data"=>$settingmagang->no_va]);  
-    }
 }

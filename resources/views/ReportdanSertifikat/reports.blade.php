@@ -6,7 +6,6 @@ Halaman Report dan Sertifikat
 
 @section('content')
 
-  
   <div class="form-group">
     <label>Download Format Laporan Akhir</label>
     <a href="{{url('format_laporan_akhir/'.$pembimbing->format_laporan_akhir)}}"  lass="btn btn-primary btn-sm mb-3">Unduh</a>
@@ -21,12 +20,12 @@ Halaman Report dan Sertifikat
     <div class="form-group row">
       <label for="laporan_akhir" class="col-sm-2 col-form-label">Upload Laporan Akhir</label>
       <div class="col-sm-10">
-        <input type="file" id="laporan_akhir" name="laporan_akhir">
+        <input type="file" id="laporan_akhir" name="laporan_akhir" class="form-control-file @error('laporan_akhir') is-invalid @enderror" id="laporan_akhir" value="{{ old('laporan_akhir') }}">
+        @error('laporan_akhir')
+            <div class="alert alert-danger mt-2" style="width: 530px">{{ $message }}</div>
+        @enderror
       </div>
     </div>
-    @error('laporan_akhir')
-    <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
     <button type="submit" class="btn btn-primary" style="margin-left: 40%;margin-top:-10%">Submit</button>
   </form>
 @endif

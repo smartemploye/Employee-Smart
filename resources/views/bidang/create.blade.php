@@ -9,7 +9,6 @@
                 <h6 class="m-0 font-weight-bold text-primary">Tambah Data Jurusan</h6>
                 <form method="POST" action="{{ route('bidang.store') }}">
                     @csrf
-                    @method('PUT')
                     <table class="table w-100" >
                         <thead>
                             <tr>
@@ -21,7 +20,7 @@
                             <tr>
                                 <th scope="col" style="width:30%">Jenis Jurusan</th>
                                 <th scope="col" style="width:30%;">
-                                    <select name="jenis_jurusan" id="">
+                                <select name="jenis_jurusan" id="">
                                     <option value="IT">IT</option>
                                     <option value="Umum">Umum</option>
                                 </select>

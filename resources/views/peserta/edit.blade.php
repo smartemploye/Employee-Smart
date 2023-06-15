@@ -22,22 +22,23 @@
                             <input type="text" value="{{ $data->nisn }}" hidden>
                             <div class="form-group row">
                                 <div class="col-3">
-                                    <label class="form-label">Tanggal Mulai Magang</label>
+                                    <label for="inputKeteranganIzin" style="">Tanggal Selesai Magang</label>
                                 </div>
-                                <div class="col-9">
-                                    <input type="date" name="tanggal_mulai" class="form-control  @error('tanggal_mulai') is-invalid @enderror" id="inputBirthdate" value="{{ old('tanggal_mulai') }}">
-                                    @error('tanggal_mulai')
-                                      <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                            <div class="col-9">
+                                <input type="date" name="tanggal_mulai"
+                                placeholder="Masukkan Keterangan" class="form-control  @error('tanggal_mulai') is-invalid @enderror" id="inputBirthdate" value="{{ $data->tanggal_mulai}}">
+                                @error('tanggal_mulai')
+                                  <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
+                        </div>
                             <div class="form-group row">
                                 <div class="col-3">
                                     <label for="inputKeteranganIzin" style="">Tanggal Selesai Magang</label>
                                 </div>
                                 <div class="col-9">
                                     <input type="date" name="tanggal_selesai"
-                                    placeholder="Masukkan Keterangan" class="form-control  @error('tanggal_selesai') is-invalid @enderror" id="inputBirthdate" value="{{ old('tanggal_selesai') }}">
+                                    placeholder="Masukkan Keterangan" class="form-control  @error('tanggal_selesai') is-invalid @enderror" id="inputBirthdate" value="{{ $data->tanggal_selesai}}">
                                     @error('tanggal_selesai')
                                       <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -48,13 +49,12 @@
                                     <label for="inputKeteranganIzin">Status</label>
                                 </div>
                                 <div class="col-9">
-                                    <select name="status_magang" id="" class="form-control">
-                                        <option value="seleksi" selected>Seleksi</option>
-                                        <option value="Belum Bayar">Belum Bayar</option>
-                                        <option value="Aktif">Aktif</option>
-                                        <option value="Lulus">Lulus</option>
-                                        <option value="Drop Out">Drop Out</option>
-                                        <option value="tidak aktif">tidak aktif</option>
+                                    <select name="status_magang" id="" class="form-control @error('status_magang') is-invalid @enderror" name="status_magang">
+                                        <option value="Seleksi" @if (old('status_magang') == "Seleksi") {{ 'selected' }} @endif>Seleksi</option>
+                                        <option value="Belum Bayar" @if (old('status_magang') == "Belum Bayar") {{ 'selected' }} @endif>Belum Bayar</option>
+                                        <option value="Aktif" @if (old('status_magang') == "Aktif") {{ 'selected' }} @endif>Aktif</option>
+                                        <option value="Lulus" @if (old('status_magang') == "Lulus") {{ 'selected' }} @endif>Lulus</option>
+                                        <option value="Drop Out" @if (old('status_magang') == "Drop Out") {{ 'selected' }} @endif>Drop Out</option>
                                     </select>
                                 </div>
                                 <div class="form-group row">

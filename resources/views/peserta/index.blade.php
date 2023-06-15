@@ -79,6 +79,44 @@
 @endsection --}}
 
 @extends('layout.master')
+{{-- @push('styles')
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    #myInput {
+      background-image: url('/css/searchicon.png');
+      background-position: 10px 10px;
+      background-repeat: no-repeat;
+      width: 100%;
+      font-size: 16px;
+      padding: 12px 20px 12px 40px;
+      border: 1px solid #ddd;
+      margin-bottom: 12px;
+    }
+
+    #myTable {
+      border-collapse: collapse;
+      width: 100%;
+      border: 1px solid #ddd;
+      font-size: 18px;
+    }
+
+    #myTable th, #myTable td {
+      text-align: left;
+      padding: 12px;
+    }
+
+    #myTable tr {
+      border-bottom: 1px solid #ddd;
+    }
+
+    #myTable tr.header, #myTable tr:hover {
+      background-color: #f1f1f1;
+    }
+    </style>
+@endpush --}}
 
 @section('content')
 
@@ -144,6 +182,21 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered" id="siswa-table">
+
+                        <div class="form-group mx-sm-3 mb-2">
+                            <label for="input" class="sr-only">Search</label>
+                            <form action="/peserta" method="GET">
+                            <input type="text" class="form-control" value=""  placeholder="nis/nama" name="nama_siswa" style="width: 20%;margin-left: -15px">
+                            <p style="margin-left: -15px">Nama</p>
+                            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_mulai" style="width: 20%; margin-left: 270px; margin-top: -78px">
+                            <p style="margin-left: 270px">Tanggal Mulai</p>
+                            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_selesai" style="width: 20%;margin-left: 550px;margin-top: -78px">
+                            <p style="margin-left: 550px">Tanggal Selesai</p>
+                            <input type="text" class="form-control" value=""  placeholder="status" name="status_magang" style="width: 20%;margin-left: 820px;margin-top: -78px">
+                            <p style="margin-left: 820px">Status</p>
+                            <button style="margin-left: -15px">Tampilkan</button>
+                        </form>
+                        </div>
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -183,7 +236,7 @@
                                     <i class='bx bx-detail'></i> Detail
                                 </a>
                             </div>
-                            
+
                         </td>
                     </tr>
                     @endforeach
@@ -193,4 +246,6 @@
     </div>
 </div>
 @endsection
+@push('scripts')
+@endpush
 

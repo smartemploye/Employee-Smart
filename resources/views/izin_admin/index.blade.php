@@ -52,8 +52,10 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">Nama</th>
                         <th scope="col">Dari</th>
                         <th scope="col">Sampai</th>
+                        <th scope="col">Status</th>
                         <th scope="col">Keterangan</th>
                         <th scope="col">Dokumentasi</th>
                         <th scope="col">Approve</th>
@@ -65,8 +67,10 @@
                     @foreach ($perizinan as $izin)
                     <tr>
                         <td>{{$no++ }}</td>
+                        <td>{{$izin->nama_siswa}}</td>
                         <td>{{$izin->izin_dari}}</td>
                         <td>{{$izin->izin_sampai }}</td>
+                        <td>{{$izin->status_absen }}</td>
                         <td>{{$izin->keterangan }}</td>
                         <td>
                             <img width="300px" src="{{ asset('image/dokumentasi/'.$izin->dokumentasi) }}">
@@ -84,4 +88,44 @@
         </div>
     </div>
 </div>
+@endsection
+@section('script')
+<script src="{{ asset('/template/plugins/jquery/jquery.min.js')}}"></script>
+
+<script src="{{ asset('/template/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+<script src="{{ asset('/template/plugins/datatables/jquery.dataTables.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/datatables-responsive/js/dataTables.responsive.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/datatables-responsive/js/responsive.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/datatables-buttons/js/dataTables.buttons.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/datatables-buttons/js/buttons.bootstrap4.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/jszip/jszip.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/pdfmake/pdfmake.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/pdfmake/vfs_fonts.js')}}"></script>
+<script src="{{ asset('/template/plugins/datatables-buttons/js/buttons.html5.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/datatables-buttons/js/buttons.print.min.js')}}"></script>
+<script src="{{ asset('/template/plugins/datatables-buttons/js/buttons.colVis.min.js')}}"></script>
+
+<script src="{{ asset('/template/dist/js/adminlte.min.js?v=3.2.0')}}"></script>
+
+<script src="{{ asset('/template/dist/js/demo.js')}}"></script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable({
+      "responsive": true, "lengthChange": false, "autoWidth": false,
+      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+      "responsive": true,
+    });
+  });
+</script>
 @endsection

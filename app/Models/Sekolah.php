@@ -16,4 +16,11 @@ class Sekolah extends Model
         'nama_sekolah',
         'alamat_sekolah',
     ];
+    public static function rules()
+    {
+        return [
+            'nis' => 'required|numeric|unique:sekolah',
+            // aturan validasi lainnya
+        ];
+    }
 }

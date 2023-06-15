@@ -16,7 +16,7 @@
 
     {{-- return view('peserta.show', compact('siswa', 'gambar'));) --}}
     <div class="foto">
-        <img style="width: 200px;height: 250px;margin-left: 500px;margin-bottom: 50px" src="{{ asset('image/fotosiswa/'.$data->foto_siswa) }}">
+        <img style="width: 300px;height: 250px;margin-left: 500px;margin-bottom: 50px" src="{{ asset('image/fotosiswa/'.$data->foto_siswa) }}">
             <div class="form-group row">
                 <label for="inputNamaPeserta" class="col-sm-2 col-form-label">Nama Peserta</label>
                 <div class="col-sm-10">
@@ -93,6 +93,8 @@
                         value="{{ $data->username }}">
                 </div>
             </div>
+            @if (Auth::guard('akun')->user()->role == 'admin')
+            {{-- PASSWORD --}}
             <div class="form-group row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
                 <div class="col-sm-10">
@@ -139,10 +141,12 @@
                     </div>
                 </div>
             </div>
+            {{-- END PASSWORD --}}
+            @endif
 
             @if($gambar)
             <div class="form-group row">
-                <label for="" class="col-sm-2 col-form-label">Bukti VA</label>
+                <label for="" class="col-sm-2 col-form-label">Bukti Pembayaran</label>
                 <div class="col-4">
                     <div class="card">
                         <img src="{{asset('image/' . $gambar)}}" class="card-img-top" alt="Bukti VA">
@@ -163,6 +167,12 @@
                 <label for="inputAbsensi" class="col-sm-2 col-form-label">Absensi</label>
                 <div class="col-sm-10">
                     <a href="/absensi"><button>Lihat</button></a>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPerizinan" class="col-sm-2 col-form-label">Perizinan</label>
+                <div class="col-sm-10">
+                    <a href="{{ route('peserta.izin', $data->id) }}"><button>Lihat</button></a>
                 </div>
             </div>
             <div class="form-group row">

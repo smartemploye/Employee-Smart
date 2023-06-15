@@ -33,6 +33,7 @@ class CreateDataMagangTable extends Migration
             $table->string('no_sertifikat')->nullable();
             // $table->enum('status_magang', ['aktif','tidak aktif'])->nullable();
             // $table->enum('status_seleksi', ['diproses','diterima','ditolak'])->nullable();
+            $table->enum('status_magang', ['seleksi','Belum Bayar','Aktif','Lulus','Drop Out']);
             $table->enum('ukuran_baju', ['S','M','L','XL','XXL'])->nullable();
             $table->integer('nilai_akhir')->nullable();
             $table->string('bukti_pembayaran')->nullable();

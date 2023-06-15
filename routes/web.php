@@ -131,7 +131,7 @@ Route::get('/sekolah/hapus/{id}', [SekolahController::class, 'destroy'])->name('
 //bidang
 Route::get('/bidang', [DataBidangController::class, 'index'])->name('bidang.index');
 Route::get('/bidang/create', [DataBidangController::class, 'create'])->name('bidang.create');
-Route::PUT('/bidang/store', [DataBidangController::class, 'store'])->name('bidang.store');
+Route::post('/bidang/store', [DataBidangController::class, 'store'])->name('bidang.store');
 Route::get('/bidang/edit/{id}', [DataBidangController::class, 'edit'])->name('bidang.edit');
 Route::PUT('/bidang/update/{id}', [DataBidangController::class, 'update'])->name('bidang.update');
 Route::get('/bidang/hapus/{id}', [DataBidangController::class, 'destroy'])->name('bidang.hapus');
@@ -310,6 +310,7 @@ Route::get('/jumlah-peserta', [JumlahPesertaController::class, 'jumlahPeserta'])
 
 //pembimbing
 Route::get('/profile_pembimbing', [ProfilePembimbingController::class, 'index'])->name('profile_pembimbing');
+Route::get('/pembimbing/show', [PesertaController::class, 'showpembimbing'])->name('pembimbing.show');
 Route::post('/postpembimbing/{id}', [PembimbingController::class, 'store'])->name('postpembimbing');
 Route::post('/postdatamagang/{id}', [DataMagangController::class, 'store'])->name('postdatamagang');
 
