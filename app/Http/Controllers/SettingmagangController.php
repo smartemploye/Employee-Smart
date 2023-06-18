@@ -46,12 +46,13 @@ class SettingmagangController extends Controller
             'Format_Pembimbing' => 'required',
             'Format_Email' => 'required',
             'WA_Kantor' => 'required',
-
+            'Sertifikat' => 'image|mimes:jpeg,png,jpg|max:2048', // Menambahkan validasi file gambar dengan format yang diizinkan dan ukuran maksimum 2MB
         ]);
-
+    
         if ($request->hasFile('Sertifikat')) {
-            $fileName = time().'.'.$request->Sertifikat->extension();
-            $request->Sertifikat->move(public_path('image'), $fileName);
+            $file = $request->file('Sertifikat');
+            $fileName = time().'.'.$file->getClientOriginalExtension();
+            $file->move(public_path('image'), $fileName);
             // Lanjutkan pemrosesan jika file Sertifikat telah diunggah
         } else {
             $fileName = null; // Atau nilai default yang sesuai jika file tidak diunggah
@@ -75,6 +76,7 @@ class SettingmagangController extends Controller
             ]);
         return redirect('/settingmagang');
     }
+    
 
     // Kamis 25 Mei 2023
     public function getFormatWA()

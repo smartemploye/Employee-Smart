@@ -5,6 +5,17 @@
 @endsection
 
 @section('content')
+
+@push('scripts')
+
+<script src="{{ asset('/template/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+<script>
+    $(function() {
+        $("#example1").DataTable();
+    });
+</script>
+@endpush
     <a href="/komponenpenilaian/create" class="btn btn-primary btn-sm mb-3">Tambah Komponen Penilaian</a>
     @if (Session::has('success'))
         <div class="alert alert-success">
@@ -16,13 +27,19 @@
             {{ Session::get('fail') }}
         </div>
     @endif
-    <table class="table">
+    @push('styles')
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css" />
+    @endpush
+    <div class="row">
+        <div class="col-12">
+            <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nama Komponen</th>
-                <th scope="col">Presentase</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center">Nama Komponen</th>
+                <th scope="col" class="text-center">Presentase</th>
+                <th scope="col" class="text-center">Action</th>
             </tr>
         </thead>
         <tbody>
@@ -31,7 +48,7 @@
                     <td>{{ $key + 1 }}</td>
                     <td>{{ $value->nama_komponen }}</td>
                     <td>{{ $value->presentase }}</td>
-                    <td>
+                    <td class="text-center">
 
                         {{-- <form action="/komponenpenilaian/{{ $value->id }}" method="POST"> --}}
                         <form id="deleteForm{{ $value->id }}" action="/komponenpenilaian/{{ $value->id }}" method="POST">
@@ -53,6 +70,8 @@
             @endforelse
         </tbody>
     </table>
+    </div>
+    </div>
 
     <script src="{{ asset('js/sweetalert2.js') }}" type="text/javascript"></script>
 

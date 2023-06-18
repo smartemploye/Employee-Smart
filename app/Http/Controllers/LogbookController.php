@@ -19,25 +19,19 @@ class LogbookController extends Controller
     }
 
     public function store(Request $request)
+{
+    $message = [
+        'logbook.required' => 'Logbook harus diisi.',
+        'tanggal_logbook.before_or_equal' => 'Tanggal logbook tidak boleh diisi dengan tanggal besoknya.',
+        'dokumentasi.required' => 'Dokumentasi harus diisi.',
+        'dokumentasi.mimes' => 'Dokumentasi harus berupa file dengan format JPG, PNG, atau JPEG.',
+    ];
 
-    {
-        $message = [
-            'logbook.required' => 'Logbook harus diisi!',
-            'tanggal_logbook.before_or_equal' => 'Tanggal logbook tidak boleh diisi dengan tanggal besoknya!!',
-            'dokumentasi.required' => 'Dokumentasi harus diisi!',
-            'dokumentasi.mimes' => 'Foto dalam bentuk jpg,png,jpeg!',
-
-        ];
-
-        $request->validate([
-            'logbook' => 'required',
-            'tanggal_logbook' => 'required|date|before_or_equal:today',
-            'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
-        ], $message);
-
-
-
-
+    $request->validate([
+        'logbook' => 'required',
+        'tanggal_logbook' => 'required|date|before_or_equal:today',
+        'dokumentasi' => 'required|image|mimes:jpg,png,jpeg',
+    ], $message);
 
     $fileName = time().'.'.$request->dokumentasi->extension();
     $request->dokumentasi->move(public_path('image'), $fileName);
@@ -56,6 +50,8 @@ class LogbookController extends Controller
 
     return redirect('/logbook');
 }
+
+    
 
 public function index()
 {
@@ -110,31 +106,32 @@ public function detail($nisn)
     }
 
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'logbook' => 'required',
-        'tanggal_logbook' => 'required',
-        'dokumentasi' => 'nullable|image|mimes:jpg,png,jpeg',
-    ]);
-
-    $logbook = Logbook::findOrFail($id);
-    $logbook->logbook = $request->logbook;
-    $logbook->tanggal_logbook = $request->tanggal_logbook;
-
-    if ($request->hasFile('dokumentasi')) {
+    {
         $request->validate([
-            'dokumentasi' => 'image|mimes:jpg,png,jpeg',
+            'logbook' => 'required',
+            'tanggal_logbook' => 'required',
+            'dokumentasi' => 'nullable|image|mimes:jpg,png,jpeg',
         ]);
-
-        $fileName = time().'.'.$request->dokumentasi->extension();
-        $request->dokumentasi->move(public_path('image'), $fileName);
-        $logbook->dokumentasi = $fileName;
+    
+        $logbook = Logbook::findOrFail($id);
+        $logbook->logbook = $request->logbook;
+        $logbook->tanggal_logbook = $request->tanggal_logbook;
+    
+        if ($request->hasFile('dokumentasi')) {
+            $request->validate([
+                'dokumentasi' => 'image|mimes:jpg,png,jpeg',
+            ]);
+    
+            $fileName = time().'.'.$request->file('dokumentasi')->getClientOriginalExtension();
+            $request->file('dokumentasi')->move(public_path('image'), $fileName);
+            $logbook->dokumentasi = $fileName;
+        }
+    
+        $logbook->save();
+    
+        return redirect('/logbook');
     }
-
-    $logbook->save();
-
-    return redirect('/logbook');
-}
+    
 
     public function destroy($id)
     {

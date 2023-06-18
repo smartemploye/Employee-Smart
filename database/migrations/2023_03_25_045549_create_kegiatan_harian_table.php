@@ -20,7 +20,7 @@ class CreateKegiatanHarianTable extends Migration
             $table->string('dokumentasi')->nullable();
             $table->string('admin_id')->nullable();
             $table->string('siswa_id')->nullable();
-            $table->string('nisn')->nullable()->unique();
+            $table->string('nisn')->nullable();
             $table->timestamps();
         });
     }

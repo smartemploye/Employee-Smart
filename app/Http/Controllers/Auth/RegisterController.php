@@ -65,10 +65,7 @@ class RegisterController extends Controller
             'no_wa.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
             'foto_siswa.required' => 'Form harus diisi!',
             'foto_siswa.image' => 'Format harus dalam bentuk gambar!',
-<<<<<<< HEAD
             'foto_siswa.mimes' => 'Foto dalam bentuk jpg,png,jpeg atau pdf!',
-=======
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
             'tanggal_lahir.required' => 'Form harus diisi!',
             'tanggal_lahir.date_format' => 'Format tanggal harus dalam bentuk d-m-Y!',
             'tanggal_lahir.before' => 'Tanggal harus sebelum hari ini!',
@@ -83,15 +80,9 @@ class RegisterController extends Controller
             'no_wa_pembimbing.digits_between' => 'Panjang nomor harus antara 10-13 karakter!',
             'ukuran_baju.required' => 'Form harus diisi!',
             'surat_pengajuan.required' => 'Form harus diisi!',
-<<<<<<< HEAD
             'surat_pengajuan.mimes' => 'File dalam bentuk pdf!',
             'username.required' => 'Form harus diisi!',
             'username.email' => 'Format email salah!',
-=======
-            'username.required' => 'Form harus diisi!',
-            'username.email' => 'Format email salah!',
-            'jurusan.required' => 'Form harus diisi!',
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
             ];
 
             $request->validate([
@@ -114,20 +105,7 @@ class RegisterController extends Controller
                 'username' => 'required|email',
                 'jurusan' => 'required',
             ], $message);
-<<<<<<< HEAD
             
-=======
-
-
-        // if (Akun::where('nisn', $request->nis)->exists()) {
-        //     // Set pesan alert jika data sudah ada
-        //     $request->session()->flash('error', 'Data sudah ada dalam database.');
-        //     return redirect()->back();
-        // }
-
-
-
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
         //         var_dump($v->fails());
         //         var_dump($v->errors());
 

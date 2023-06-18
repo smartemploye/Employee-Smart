@@ -37,8 +37,7 @@ class BayarController extends Controller
             'bukti_pembayaran' => $fileName,
         ]);
 
-<<<<<<< HEAD
-    return redirect('/login');
+    return redirect('/logout');
 }
 
 public function bayar()
@@ -47,19 +46,4 @@ public function bayar()
     return view('auth.bayar', ["data" => $settingmagang->no_va]);
 }
 
-=======
-        return redirect('/logout');
-        // dd($bayar);
-    }
-
-    public function bayar()
-    {
-        $settingmagang = DB::table('setting_magang')->get()->first();
-        // buat kaya dibawah ini buat ambil data berdasarkan nisn buat nampilkan status di tabel data_magang
-        // $settingmagang = DB::table('setting_magang')->get()->first();
-
-        // echo $settingmagang->no_va;
-        return view('auth.bayar', ["data"=>$settingmagang->no_va]);  
-    }
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
 }

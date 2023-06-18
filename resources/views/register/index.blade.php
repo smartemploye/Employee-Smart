@@ -232,15 +232,16 @@
                                     <td>
                                         <div class="form-group" style="margin-left: -100px;padding-right: 10px;">
                                             <label for="inputSuratPengajuan">Upload Surat Pengajuan (Dalam bentuk file pdf)</label>
-                                            <input type="file" name="surat_pengajuan" class="form-control-file @error('surat_pengajuan') is-invalid @enderror" id="surat_pengajuan" accept="pdf/*" value="{{ old('surat_pengajuan') }}">
+                                            <input type="file" name="surat_pengajuan" class="form-control-file @error('surat_pengajuan') is-invalid @enderror" id="surat_pengajuan" accept="application/pdf" value="{{ old('surat_pengajuan') }}">
                                             @error('surat_pengajuan')
                                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
                                             @enderror
                                             @if (!empty($errors->all()))
-                                          <div class="alert alert-warning mt-2" style="width: 530px">Silahkan pilih file kembali</div>
-                                          @endif
+                                                <div class="alert alert-warning mt-2" style="width: 530px">Silahkan pilih file kembali</div>
+                                            @endif
                                         </div>
                                     </td>
+                                    
                                 </tr>
                                 <tr>
                                     <td>

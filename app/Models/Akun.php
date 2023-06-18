@@ -54,13 +54,6 @@ class Akun extends Authenticatable implements MustVerifyEmail
         ];
     }
 
-    public static function rules()
-    {
-        return [
-            'nisn' => 'required|numeric|unique:akuns',
-            // aturan validasi lainnya
-        ];
-    }
 
 
 }
