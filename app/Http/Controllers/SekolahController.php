@@ -12,7 +12,7 @@ class SekolahController extends Controller
     public function index()
     {
         $sekolah = DB::table('sekolah')
-        ->get(['id','nis','nama_sekolah', 'alamat_sekolah']);
+            ->get(['id', 'nis', 'nama_sekolah', 'alamat_sekolah']);
 
         return view('sekolah.index', compact('sekolah'));
     }
@@ -21,7 +21,7 @@ class SekolahController extends Controller
     {
         return view('sekolah.create');
 
-        return back()->with('success','Item created successfully!');
+        return back()->with('success', 'Item created successfully!');
     }
 
     public function store(Request $request)
@@ -52,8 +52,8 @@ class SekolahController extends Controller
     public function edit($id)
     {
         $sekolah = DB::table('sekolah')
-        ->where('id','=',$id)
-        ->get();
+            ->where('id', '=', $id)
+            ->get();
 
         return view('sekolah.edit', compact('sekolah'));
     }
@@ -61,22 +61,41 @@ class SekolahController extends Controller
     public function update(Request $request, $id)
     {
         $sekolah = DB::table('sekolah')
-        ->where('id','=',$id)
-        ->update([
-            'nis' => $request['nis'],
-            'nama_sekolah' => $request['nama_sekolah'],
-            'alamat_sekolah' => $request['alamat_sekolah'],
-        ]);
+            ->where('id', '=', $id)
+            ->update([
+                'nis' => $request['nis'],
+                'nama_sekolah' => $request['nama_sekolah'],
+                'alamat_sekolah' => $request['alamat_sekolah'],
+            ]);
         return redirect('/sekolah');
     }
 
     public function destroy($id)
     {
         $sekolah = DB::table('sekolah')
-        ->where('id','=',$id)
-        ->delete();
+            ->where('id', '=', $id)
+            ->delete();
 
         return back();
     }
+    public function StoreNew(Request $request)
+    {
+        try {
 
+            $sekolah = DB::table('sekolah')
+                ->where('nis', '=', $request->nis)->get();
+
+            if (count($sekolah) > 0)
+                return response()->json(['status' => 400, 'pesan' => 'Datanya udah ada woy']);
+
+            Sekolah::create([
+                'nis' => $request->nis,
+                'nama_sekolah' => $request->nama_sekolah,
+            ]);
+            $sekolah = DB::table('sekolah')->get();
+            return response()->json(['status' => 200, 'sekolah' => $sekolah, 'pesan' => 'Data berhasil disimpan']);
+        } catch (\Illuminate\Database\QueryException $ex) {
+            return response()->json(['status' => 400, 'pesan' => $ex->getMessage()]);
+        }
+    }
 }

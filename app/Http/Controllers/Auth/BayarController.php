@@ -37,17 +37,6 @@ class BayarController extends Controller
             'bukti_pembayaran' => $fileName,
         ]);
 
-<<<<<<< HEAD
-    return redirect('/login');
-}
-
-public function bayar()
-{
-    $settingmagang = DB::table('setting_magang')->get()->first();
-    return view('auth.bayar', ["data" => $settingmagang->no_va]);
-}
-
-=======
         return redirect('/logout');
         // dd($bayar);
     }
@@ -59,7 +48,6 @@ public function bayar()
         // $settingmagang = DB::table('setting_magang')->get()->first();
 
         // echo $settingmagang->no_va;
-        return view('auth.bayar', ["data"=>$settingmagang->no_va]);  
+        return view('auth.bayar', ["data"=>$settingmagang->no_va]);
     }
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
 }

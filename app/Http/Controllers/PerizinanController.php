@@ -16,11 +16,8 @@ class PerizinanController extends Controller
     {
         $perizinan = DB::table('absen')
         ->where('nisn','=',auth()->user()->siswa->nisn)
-<<<<<<< HEAD
+        ->where('status_absen','!=','hadir')
         ->get(['id','izin_dari','izin_sampai', 'keterangan', 'approve', 'dokumentasi', 'nama_siswa', 'status_absen']);
-=======
-        ->get(['id','izin_dari','izin_sampai', 'keterangan', 'approve', 'dokumentasi', 'nama_siswa']);
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
         // dd($perizinan);
         return view('perizinan.index', compact('perizinan'));
     }

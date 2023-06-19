@@ -10,7 +10,7 @@ class CreatePenilaianTable extends Migration
     /**
      * Run the migrations.
      *
-     * @return void 
+     * @return void
      */
     protected $data;
     public function __construct()
@@ -20,7 +20,7 @@ class CreatePenilaianTable extends Migration
     public function up()
     {
         Schema::create('penilaian', function (Blueprint $table) {
-            $table->id('id_penilaian')->nullable();
+            $table->id('id_penilaian');
             $table->bigInteger('id_siswa')->nullable();
             $table->timestamps();
             if ($this->data->count() > 0) {

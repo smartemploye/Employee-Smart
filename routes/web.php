@@ -95,98 +95,101 @@ Route::post('/postjurusan', [RegisterController::class, 'jurusan'])->name('postj
 Route::post('/postlogin', [LoginController::class, 'postlogin'])->name('postlogin');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+Route::get('/pembimbing/{id}', [PembimbingController::class, 'getNama'])->name('getNama')->middleware('only.ajax');;
+Route::post('/sekolah/storenew', [SekolahController::class, 'storenew'])->middleware('only.ajax');
+
 //admin
-Route::group(['middleware'=>['auth:admin,akun']], function(){
+Route::group(['middleware' => ['auth:admin,akun']], function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     });
 
-Route::get('/profile_admin', [ProfileAdminController::class, 'index'])->name('profile_admin');
-//peserta
-Route::get('/peserta', [PesertaController::class, 'index'])->name('peserta.index');
-Route::get('/peserta/create', [PesertaController::class, 'create'])->name('peserta.create');
-Route::PUT('/peserta/store', [PesertaController::class, 'store'])->name('peserta.store');
-Route::get('/peserta/edit/{id}', [PesertaController::class, 'edit'])->name('peserta.edit');
-Route::put('/peserta/update/{id}', [PesertaController::class, 'update'])->name('peserta.update');
-Route::get('/peserta/hapus/{id}', [PesertaController::class, 'destroy'])->name('peserta.hapus');
-Route::get('/peserta/show/{id}', [PesertaController::class, 'show'])->name('peserta.show');
-Route::get('/peserta/izin/{id}', [PesertaController::class, 'izin'])->name('peserta.izin');
+    Route::get('/profile_admin', [ProfileAdminController::class, 'index'])->name('profile_admin');
+    //peserta
+    Route::get('/peserta', [PesertaController::class, 'index'])->name('peserta.index');
+    Route::get('/peserta/create', [PesertaController::class, 'create'])->name('peserta.create');
+    Route::PUT('/peserta/store', [PesertaController::class, 'store'])->name('peserta.store');
+    Route::get('/peserta/edit/{id}', [PesertaController::class, 'edit'])->name('peserta.edit');
+    Route::put('/peserta/update/{id}', [PesertaController::class, 'update'])->name('peserta.update');
+    Route::get('/peserta/hapus/{id}', [PesertaController::class, 'destroy'])->name('peserta.hapus');
+    Route::get('/peserta/show/{id}', [PesertaController::class, 'show'])->name('peserta.show');
+    Route::get('/peserta/izin/{id}', [PesertaController::class, 'izin'])->name('peserta.izin');
 
-//pembimbing
-Route::get('/pembimbing', [PembimbingController::class, 'index'])->name('pembimbing.index');
-Route::get('/pembimbing/create', [PembimbingController::class, 'create'])->name('pembimbing.create');
-Route::PUT('/pembimbing/store', [PembimbingController::class, 'store'])->name('pembimbing.store');
-Route::get('/pembimbing/edit/{id}', [PembimbingController::class, 'edit'])->name('pembimbing.edit');
-Route::PUT('/pembimbing/update/{id}', [PembimbingController::class, 'update'])->name('pembimbing.update');
-Route::get('/pembimbing/hapus/{id}', [PembimbingController::class, 'destroy'])->name('pembimbing.hapus');
+    //pembimbing
+    Route::get('/pembimbing', [PembimbingController::class, 'index'])->name('pembimbing.index');
+    Route::get('/pembimbing/create', [PembimbingController::class, 'create'])->name('pembimbing.create');
+    Route::PUT('/pembimbing/store', [PembimbingController::class, 'store'])->name('pembimbing.store');
+    Route::get('/pembimbing/edit/{id}', [PembimbingController::class, 'edit'])->name('pembimbing.edit');
+    Route::PUT('/pembimbing/update/{id}', [PembimbingController::class, 'update'])->name('pembimbing.update');
+    Route::get('/pembimbing/hapus/{id}', [PembimbingController::class, 'destroy'])->name('pembimbing.hapus');
+    Route::get('/test', [PembimbingController::class, 'test'])->name('test');
 
-//sekolah
-Route::get('/sekolah', [SekolahController::class, 'index'])->name('sekolah.index');
-Route::get('/sekolah/create', [SekolahController::class, 'create'])->name('sekolah.create');
-Route::PUT('/sekolah/store', [SekolahController::class, 'store'])->name('sekolah.store');
-Route::get('/sekolah/edit/{id}', [SekolahController::class, 'edit'])->name('sekolah.edit');
-Route::PUT('/sekolah/update/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
-Route::get('/sekolah/hapus/{id}', [SekolahController::class, 'destroy'])->name('sekolah.hapus');
 
-//bidang
-Route::get('/bidang', [DataBidangController::class, 'index'])->name('bidang.index');
-Route::get('/bidang/create', [DataBidangController::class, 'create'])->name('bidang.create');
-Route::post('/bidang/store', [DataBidangController::class, 'store'])->name('bidang.store');
-Route::get('/bidang/edit/{id}', [DataBidangController::class, 'edit'])->name('bidang.edit');
-Route::PUT('/bidang/update/{id}', [DataBidangController::class, 'update'])->name('bidang.update');
-Route::get('/bidang/hapus/{id}', [DataBidangController::class, 'destroy'])->name('bidang.hapus');
+    //sekolah
+    Route::get('/sekolah', [SekolahController::class, 'index'])->name('sekolah.index');
+    Route::get('/sekolah/create', [SekolahController::class, 'create'])->name('sekolah.create');
+    Route::PUT('/sekolah/store', [SekolahController::class, 'store'])->name('sekolah.store');
+    Route::get('/sekolah/edit/{id}', [SekolahController::class, 'edit'])->name('sekolah.edit');
+    Route::PUT('/sekolah/update/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
+    Route::get('/sekolah/hapus/{id}', [SekolahController::class, 'destroy'])->name('sekolah.hapus');
+    //bidang
+    Route::get('/bidang', [DataBidangController::class, 'index'])->name('bidang.index');
+    Route::get('/bidang/create', [DataBidangController::class, 'create'])->name('bidang.create');
+    Route::post('/bidang/store', [DataBidangController::class, 'store'])->name('bidang.store');
+    Route::get('/bidang/edit/{id}', [DataBidangController::class, 'edit'])->name('bidang.edit');
+    Route::PUT('/bidang/update/{id}', [DataBidangController::class, 'update'])->name('bidang.update');
+    Route::get('/bidang/hapus/{id}', [DataBidangController::class, 'destroy'])->name('bidang.hapus');
 
-//CRUD Halaman Setting Magang
-//Create
-//Form Tambah Setting Magang;
+    //CRUD Halaman Setting Magang
+    //Create
+    //Form Tambah Setting Magang;
 
-//Read
-//Tampil Semua Data
-Route::get('/settingmagang', [SettingmagangController::class, 'index']);
-//Detail Setting Magang berdasarkan id
-Route::get('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'show']);
+    //Read
+    //Tampil Semua Data
+    Route::get('/settingmagang', [SettingmagangController::class, 'index']);
+    //Detail Setting Magang berdasarkan id
+    Route::get('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'show']);
 
-//Update
-//Form Update Setting Magang
-Route::get('/settingmagang/{settingmagang_id}/edit', [SettingmagangController::class, 'edit']);
-//Update data ke database berdasarkan id
-Route::put('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'update']);
+    //Update
+    //Form Update Setting Magang
+    Route::get('/settingmagang/{settingmagang_id}/edit', [SettingmagangController::class, 'edit']);
+    //Update data ke database berdasarkan id
+    Route::put('/settingmagang/{settingmagang_id}', [SettingmagangController::class, 'update']);
 
-//CRUD Halaman Komponen Penilaian
-//Create
-//Form Komponen Penilaian;
-Route::get('/komponenpenilaian/create', [komponenpenilaianController::class, 'create']);
-//Untuk kirim data ke database atau tambah data ke database
-Route::post('/komponenpenilaian', [komponenpenilaianController::class, 'store']);
+    //CRUD Halaman Komponen Penilaian
+    //Create
+    //Form Komponen Penilaian;
+    Route::get('/komponenpenilaian/create', [komponenpenilaianController::class, 'create']);
+    //Untuk kirim data ke database atau tambah data ke database
+    Route::post('/komponenpenilaian', [komponenpenilaianController::class, 'store']);
 
-//Read
-//Tampil Semua Data
-Route::get('/komponenpenilaian', [komponenpenilaianController::class, 'index']);
-//Detail Komponen Penilaian berdasarkan id
-Route::get('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'show']);
+    //Read
+    //Tampil Semua Data
+    Route::get('/komponenpenilaian', [komponenpenilaianController::class, 'index']);
+    //Detail Komponen Penilaian berdasarkan id
+    Route::get('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'show']);
 
-//Update
-//Form Update Komponen Penilaian
-Route::get('/komponenpenilaian/{komponenpenilaian_id}/edit', [komponenpenilaianController::class, 'edit']);
-//Update data ke database berdasarkan id
-Route::put('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'update']);
+    //Update
+    //Form Update Komponen Penilaian
+    Route::get('/komponenpenilaian/{komponenpenilaian_id}/edit', [komponenpenilaianController::class, 'edit']);
+    //Update data ke database berdasarkan id
+    Route::put('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'update']);
 
-//Delete
-//Delete berdasarkan id
-Route::delete('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'destroy']);
+    //Delete
+    //Delete berdasarkan id
+    Route::delete('/komponenpenilaian/{komponenpenilaian_id}', [komponenpenilaianController::class, 'destroy']);
 
-//CRUD Halaman Penilaian
+    //CRUD Halaman Penilaian
 
-//Read
-//Tampil Semua Data
-Route::get('/penilaian', [PenilaianController::class, 'index']);
+    //Read
+    //Tampil Semua Data
+    Route::get('/penilaian', [PenilaianController::class, 'index']);
 
-//Update
-//Form Update Penilaian
-Route::get('/penilaian/{penilaian_id}/edit', [PenilaianController::class, 'edit']);
-//Update data ke database berdasarkan id
-Route::put('/penilaian/update/{penilaian_id}', [PenilaianController::class, 'update']);
-
+    //Update
+    //Form Update Penilaian
+    Route::get('/penilaian/{penilaian_id}/edit', [PenilaianController::class, 'edit']);
+    //Update data ke database berdasarkan id
+    Route::put('/penilaian/update/{penilaian_id}', [PenilaianController::class, 'update']);
 });
 
 //siswa
@@ -324,4 +327,3 @@ Route::post('/store/{nisn}', [ReportdanSertifikatController::class, 'store']);
 
 // Route::get('/tampilan/lihat/{nisn}', [ReportdanSertifikatController::class, 'lihat']);
 Route::get('/tampilan/lihat/{nisn}', [ReportdanSertifikatController::class, 'lihat'])->name('reports');
-

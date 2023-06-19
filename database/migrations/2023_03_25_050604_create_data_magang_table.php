@@ -20,14 +20,7 @@ class CreateDataMagangTable extends Migration
             $table->enum('paket_magang', ['basic','exclusive'])->nullable();
             $table->date('tanggal_pembayaran')->nullable();
             $table->string('judul_project')->nullable();
-<<<<<<< HEAD
-            $table->string('no_sertifikat')->nullable();
-            // $table->enum('status_magang', ['aktif','tidak aktif'])->nullable();
-            // $table->enum('status_seleksi', ['diproses','diterima','ditolak'])->nullable();
-            $table->enum('status_magang', ['seleksi','Belum Bayar','Aktif','Lulus','Drop Out']);
-=======
             $table->enum('status_magang', ['Seleksi','Belum Bayar', 'Aktif', 'Lulus', 'Drop Out'])->nullable();
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
             $table->enum('ukuran_baju', ['S','M','L','XL','XXL'])->nullable();
             $table->string('bukti_pembayaran')->nullable();
             $table->string('nisn')->nullable()->unique();
