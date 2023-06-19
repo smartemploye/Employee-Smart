@@ -25,12 +25,14 @@ Halaman Logbook
         @enderror
     </div>
     <div class="form-group">
-        <label>Foto Kegiatan</label>
-        <input type="file" name="dokumentasi" class="form-control @error('dokumentasi') is-invalid @enderror" id="dokumentasi" accept="image/*" value="{{ old('dokumentasi') }}">
-        @error('dokumentasi')
-            <div class="alert alert-danger mt-2" style="width: 450px">{{ $message }}</div>
-        @enderror
+      <label>Foto Kegiatan</label>
+      <input type="file" name="dokumentasi" accept=".jpg, .png, .jpeg" class="form-control">
     </div>
+    @error('dokumentasi')
+      <div class="alert alert-danger">{{ $message }}</div>
+    @enderror
+  
+
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 

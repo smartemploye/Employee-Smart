@@ -62,6 +62,15 @@
 			color: white;
 		}
 	</style>
+    <style>
+            #file-preview img {
+            max-width: 300px;
+            max-height: 100%;
+            object-fit: contain;
+            display: block; /* Untuk menghilangkan ruang kosong di bawah gambar */
+            margin: 0 auto; /* Untuk memposisikan gambar di tengah secara horizontal */
+        }
+    </style>
 </head>
 {{-- Berhasil ya --}}
 <body>
@@ -72,85 +81,37 @@
         <p style="background-color: #2E8B57; text-align: center;font-size: 20px;color: whitesmoke;border-radius: 20px;width: 200px;margin-left: 30%">Diterima</p>
 		<label for="virtual-akun" style="color: rgb(20, 18, 18);">Nomor Rekening: Bank BNI Atas Nama "Garuda Cyber Indonesia" </label>
 		<input type="text" id="virtual-akun" name="virtual_akun" style="color: #0d0b0b" placeholder="{{ $data }}" value="{{ $data }}" disabled>
-
-		<label for="bukti-pembayaran" style="color: rgb(11, 9, 9);">Bukti Pembayaran:</label>
-		<input type="file" id="bukti-pembayaran" name="bukti_pembayaran" class="form-control-file @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran" accept="image/*" value="{{ old('bukti_pembayaran') }}">
-    @error('bukti_pembayaran')
-        <div class="alert alert-danger mt-2" style="width: 450px">{{ $message }}</div>
-    @enderror
+        <label for="bukti-pembayaran" style="color: rgb(11, 9, 9);">Bukti Pembayaran:</label>
+        <input type="file" id="bukti-pembayaran" name="bukti_pembayaran" class="form-control-file @error('bukti_pembayaran') is-invalid @enderror" id="bukti_pembayaran" accept="image/*" value="{{ old('bukti_pembayaran') }}">
+        <div id="file-preview"></div>
+        @error('bukti_pembayaran')
+            <div class="alert alert-danger mt-2" style="width: 450px">{{ $message }}</div>
+        @enderror
         <button type="submit" class="btn btn-primary">Submit</button>
-		{{-- <input type="submit" value="Submit"> --}}
 	</form>
 </body>
 </html>
+<script>
+    const inputElement = document.getElementById("bukti-pembayaran");
+    const filePreviewElement = document.getElementById("file-preview");
 
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+    inputElement.addEventListener("change", (event) => {
+        filePreviewElement.innerHTML = "";
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+        const files = event.target.files;
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const fileReader = new FileReader();
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+            fileReader.onload = (e) => {
+                const filePreview = document.createElement("img");
+                filePreview.src = e.target.result;
+                filePreviewElement.appendChild(filePreview);
+            };
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+            fileReader.readAsDataURL(file);
+        }
+    });
+</script>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 @endsection

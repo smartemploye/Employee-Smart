@@ -115,22 +115,23 @@ Edit Setting Magang
 
         <div class="form-group row">
           <label for="Sertifikat" class="col-sm-2 col-form-label">Upload Sertifikat</label>
-        </div> 
-          @if ($settingmagang->Sertifikat)
-              <p>Sertifikat saat ini: <a href="{{ asset('image/' . $settingmagang->Sertifikat) }}">{{ $settingmagang->Sertifikat }}</a></p>
-          @else
-              <p>Tidak ada Sertifikat saat ini</p>
-          @endif 
-          <div class="form-group row">
+      </div> 
+      @if ($settingmagang->Sertifikat)
+          <p>Sertifikat saat ini: <a href="{{ asset('image/' . $settingmagang->Sertifikat) }}">{{ $settingmagang->Sertifikat }}</a></p>
+      @else
+          <p>Belum unggah sertifikat saat ini</p>
+      @endif 
+      <div class="form-group row">
           <div class="col-sm-10">
-            <input type="file" id="Sertifikat" name="Sertifikat">
+              <input type="file" id="Sertifikat" name="Sertifikat" accept="image/jpeg, image/png">
           </div>
-        </div>
-        <div class="form-group row">
+      </div>
+      <div class="form-group row">
           <div class="col-sm-10">
-            <button type="button" class="btn btn-primary" onclick="showEditConfirmation()">Submit</button>
+              <button type="button" class="btn btn-primary" onclick="showEditConfirmation()">Submit</button>
           </div>
-        </div>
+      </div>
+      
  
         {{-- <button type="submit" class="btn btn-primary">Submit</button> --}}
       

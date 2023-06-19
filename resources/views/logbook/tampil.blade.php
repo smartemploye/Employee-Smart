@@ -7,67 +7,19 @@ Halaman Logbook
 @section('content')
 
 @if (Auth::user()->role == 'siswa')
-<a href="/logbook/create"  class="btn btn-primary btn-sm mb-3">Tambah Logbook</a>
-
-
+<a href="/logbook/create" class="btn btn-primary btn-sm mb-3">Tambah Logbook</a>
 @endif
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
-                <script>
-                    $(document).ready(function () {
-                        $('#kegiatan_harian-table').DataTable();
-                    });
 
-                    function confirmDelete(url) {
-                        if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
-                            window.location.href = url;
-                        }
-                    }
-                </script>
+@push('scripts')
 
-<div class="row">
-    @forelse ($logbook as $item)
-        <div class="col-4 mb-4">
-            <div class="card h-100">
-                <img src="{{asset('image/' . $item->dokumentasi)}}" class="card-img-top" style="height: 200px; object-fit: cover;" alt="...">
-                <div class="card-body d-flex flex-column">
-                    <h3>{{$item->tanggal_logbook}}</h3>
-                    {{-- <span class="badge badge-info">{{$item->kategori->nama}}</span> --}}
-                    <p class="card-text">{{ Str::limit($item->logbook, 50) }}</p>
-
-                    <a href="/logbook/{{$item->id}}" class="btn btn-secondary mt-auto">Lihat Selengkapnya</a>
-                    {{-- @auth --}}
-                        @if (Auth::user()->role == 'siswa')
-                        <div class="row my-2">
-                            <div class="col">
-                                <a href="/logbook/{{$item->id}}/edit" class="btn btn-info btn-block btn-sm">Edit</a>
-                            </div>
-
-                            <div class="col">
-                                <form action="/logbook/{{$item->id}}" method="POST">
-                                    @csrf
-                                    @method('delete')
-                                    <input type="submit" class="btn btn-danger btn-block btn-sm" value="Delete">
-
-                                </form>
-                            </div>
-                        </div>
-                        @endif
-
-
-                {{-- @endauth --}}
-                </div>
-            </div>
-        </div>
-    @empty
-        <h2>Belum Ada Postingan Logbook</h2>
-    @endforelse
-</div>
-
+<script src="{{ asset('/template/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
 <script src="{{ asset('js/sweetalert2.js') }}" type="text/javascript"></script>
-
 <script>
+    $(function() {
+        $("#example1").DataTable();
+    });
+
     function showEditConfirmation(id) {
         Swal.fire({
             title: 'Apakah Anda yakin?',
@@ -103,7 +55,49 @@ Halaman Logbook
             }
         });
     }
-
 </script>
+@endpush
 
+@push('styles')
+
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css" />
+@endpush
+<div class="row">
+    <div class="col-12">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Tanggal Logbook</th>
+                    <th class="text-center">Logbook</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($logbook as $item)
+                <tr>
+                    <td>{{$item->tanggal_logbook}}</td>
+                    <td>{{ Str::limit($item->logbook, 110) }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <a href="/logbook/{{$item->id}}" class="btn btn-secondary btn-sm">Lihat Selengkapnya</a>
+                            @if (Auth::user()->role == 'siswa')
+                            <button type="button" class="btn btn-info btn-sm" onclick="showEditConfirmation('{{ $item->id }}')">Edit</button>
+                            <form id="deleteForm{{ $item->id }}" action="/logbook/{{ $item->id }}" method="POST" style="display: inline-block;">
+                                @csrf
+                                @method('delete')
+                                <button type="button" class="btn btn-danger btn-sm" onclick="showDeleteConfirmation('{{ $item->id }}')">Delete</button>
+                            </form>
+                            @endif
+                        </div>
+                    </td>
+                </tr>
+                @empty
+                <tr>
+                    <td colspan="3">Belum Ada Postingan Logbook</td>
+                </tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
+</div>
 @endsection

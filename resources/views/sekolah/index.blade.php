@@ -7,13 +7,14 @@
         <div class="row">
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Data Sekolah</h6>
-                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+                @push('scripts')
+
+                <script src="{{ asset('/template/plugins/datatables/jquery.dataTables.js') }}"></script>
+                <script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
-                    $(document).ready(function () {
-                        $('#sekolah-table').DataTable();
+                    $(function() {
+                        $("#example1").DataTable();
                     });
 
                     function confirmDelete(url) {
@@ -50,6 +51,7 @@
                         });
                     }
                 </script>
+                 @endpush
             </div>
             <div class="col-9">
                 <a class="btn btn-success fa-pull-right" href="{{ route('sekolah.create') }}">
@@ -60,7 +62,7 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                       <th scope="col">No</th>

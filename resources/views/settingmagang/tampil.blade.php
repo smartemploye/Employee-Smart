@@ -56,8 +56,17 @@ Halaman Seting Magang
 @endsection
 
 @section('content')
+@push('scripts')
 
-<table class="table">
+<script src="{{ asset('/template/plugins/datatables/jquery.dataTables.js') }}"></script>
+<script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+<script>
+    $(function() {
+        $("#example1").DataTable();
+    });
+</script>
+@endpush
+<table id="example1" class="table table-bordered table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>

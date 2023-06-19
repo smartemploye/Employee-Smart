@@ -15,8 +15,9 @@ class CreateAbsenTable extends Migration
     {
         Schema::create('absen', function (Blueprint $table) {
             $table->id();
-            $table->string('nisn')->nullable()->unique();
+            $table->string('nisn')->nullable();
             $table->string('siswa_id')->nullable();
+            $table->string('admin_id')->nullable();
             $table->string('absen_masuk')->nullable();
             $table->string('absen_pulang')->nullable();
             $table->enum('status_absen', ['hadir','sakit','izin'])->nullable();
@@ -40,7 +41,7 @@ class CreateAbsenTable extends Migration
     {
         // Schema::dropIfExists('absen');
         Schema::table('absen', function (Blueprint $table) {
-            $table->dropColumn('approve');
+            // $table->dropColumn('approve');
         });
     }
 }

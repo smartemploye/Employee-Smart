@@ -31,12 +31,11 @@ Halaman Edit Logbook
         @else
             <p>Tidak ada dokumentasi saat ini</p>
         @endif
-        <input type="file" name="dokumentasi" class="form-control">
+        <input type="file" name="dokumentasi" accept=".jpg, .png, .jpeg" class="form-control">
     </div>
-
     @error('dokumentasi')
         <div class="alert alert-danger">{{ $message }}</div>
-    @enderror
+    @enderror    
 
     <button type="button" class="btn btn-primary" onclick="showSubmitConfirmation()">Submit</button>
 </form>

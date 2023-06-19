@@ -87,26 +87,40 @@ class RegisterController extends Controller
             'jurusan.required' => 'Form harus diisi!',
         ];
 
-        $request->validate([
-            'nama_siswa' => 'required',
-            'nisn' => 'required|numeric|digits:10|unique:akuns',
-            'password' => 'required',
-            'password_confirmation' => 'required|same:password',
-            'sekolah_id' => 'required',
-            'jenis_jurusan' => 'required',
-            'no_wa' => 'required|numeric|digits_between:10,13',
-            'foto_siswa' => 'required|image|mimes:jpg,png,jpeg,pdf',
-            'tanggal_lahir' => 'required|before:today',
-            'jurusan' => 'required',
-            'paket_magang' => 'required',
-            'nama_pembimbing' => 'required',
-            'nip_pembimbing' => 'required|numeric|unique:akuns',
-            'no_wa_pembimbing' => 'required|numeric|digits_between:10,13',
-            'ukuran_baju' => 'required',
-            'surat_pengajuan' => 'required|mimes:pdf',
-            'username' => 'required|email',
-            'jurusan' => 'required',
-        ], $message);
+            $request->validate([
+                'nama_siswa' => 'required',
+                'nisn' => 'required|numeric|digits:10|unique:akuns',
+                'password' => 'required',
+                'password_confirmation' => 'required|same:password',
+                'sekolah_id' => 'required',
+                'jenis_jurusan' => 'required',
+                'no_wa' => 'required|numeric|digits_between:10,13',
+                'foto_siswa' => 'required|image|mimes:jpg,png,jpeg,pdf',
+                'tanggal_lahir' => 'required|before:today',
+                'jurusan' => 'required',
+                'paket_magang' => 'required',
+                'nama_pembimbing' => 'required',
+                'nip_pembimbing' => 'required|numeric|unique:akuns',
+                'no_wa_pembimbing' => 'required|numeric|digits_between:10,13',
+                'ukuran_baju' => 'required',
+                'surat_pengajuan' => 'required|mimes:pdf',
+                'username' => 'required|email',
+                'jurusan' => 'required',
+            ], $message);
+<<<<<<< HEAD
+
+=======
+
+
+        // if (Akun::where('nisn', $request->nis)->exists()) {
+        //     // Set pesan alert jika data sudah ada
+        //     $request->session()->flash('error', 'Data sudah ada dalam database.');
+        //     return redirect()->back();
+        // }
+
+
+
+>>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
         //         var_dump($v->fails());
         //         var_dump($v->errors());
 

@@ -50,4 +50,13 @@ class BayarController extends Controller
         // echo $settingmagang->no_va;
         return view('auth.bayar', ["data"=>$settingmagang->no_va]);
     }
+    return redirect('/logout');
+}
+
+public function bayar()
+{
+    $settingmagang = DB::table('setting_magang')->get()->first();
+    return view('auth.bayar', ["data" => $settingmagang->no_va]);
+}
+
 }

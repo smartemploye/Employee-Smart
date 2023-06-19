@@ -125,14 +125,22 @@
         <div class="row">
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Peserta</h6>
-                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+                {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css"> --}}
+                @push('scripts')
+
+                <script src="{{ asset('/template/plugins/datatables/jquery.dataTables.js') }}"></script>
+                <script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
-                    $(document).ready(function () {
-                        $('#siswa-table').DataTable();
+                    $(function() {
+                        $("#example1").DataTable();
                     });
+                </script>
+                @endpush
+                <script>
+                    // $(document).ready(function () {
+                    //     $('#siswa-table').DataTable();
+                    // });
 
                     function confirmDelete(url) {
                         Swal.fire({
@@ -179,24 +187,13 @@
             </div>
         </div>
     </div>
+    @push('styles')
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css" />
+    @endpush
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="siswa-table">
-
-                        <div class="form-group mx-sm-3 mb-2">
-                            <label for="input" class="sr-only">Search</label>
-                            <form action="/peserta" method="GET">
-                            <input type="text" class="form-control" value=""  placeholder="nis/nama" name="nama_siswa" style="width: 20%;margin-left: -15px">
-                            <p style="margin-left: -15px">Nama</p>
-                            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_mulai" style="width: 20%; margin-left: 270px; margin-top: -78px">
-                            <p style="margin-left: 270px">Tanggal Mulai</p>
-                            <input type="date" class="form-control" value=""  placeholder="Search" name="tanggal_selesai" style="width: 20%;margin-left: 550px;margin-top: -78px">
-                            <p style="margin-left: 550px">Tanggal Selesai</p>
-                            <input type="text" class="form-control" value=""  placeholder="status" name="status_magang" style="width: 20%;margin-left: 820px;margin-top: -78px">
-                            <p style="margin-left: 820px">Status</p>
-                            <button style="margin-left: -15px">Tampilkan</button>
-                        </form>
-                        </div>
+            <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th scope="col">No</th>

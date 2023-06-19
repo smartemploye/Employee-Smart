@@ -9,14 +9,16 @@
         <div class="row">
             <div class="col-3">
                 <h6 class="m-0 font-weight-bold text-primary">Perizinan</h6>
-                <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-                <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+                @push('scripts')
+
+                <script src="{{ asset('/template/plugins/datatables/jquery.dataTables.js') }}"></script>
+                <script src="{{ asset('template/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
                 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
                 <script>
-                    $(document).ready(function () {
-                        $('#absen-table').DataTable();
+                    $(function() {
+                        $("#example1").DataTable();
                     });
+                
 
                     function confirmDelete(url) {
                         if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
@@ -41,14 +43,19 @@
                         });
                     }
                 </script>
+                @endpush
             </div>
             <div class="col-9">
             </div>
         </div>
     </div>
+    @push('styles')
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.12.1/datatables.min.css" />
+    @endpush
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table id="example1" class="table table-bordered table-striped">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
