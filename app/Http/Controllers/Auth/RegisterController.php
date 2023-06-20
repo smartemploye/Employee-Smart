@@ -107,20 +107,6 @@ class RegisterController extends Controller
                 'username' => 'required|email',
                 'jurusan' => 'required',
             ], $message);
-<<<<<<< HEAD
-
-=======
-
-
-        // if (Akun::where('nisn', $request->nis)->exists()) {
-        //     // Set pesan alert jika data sudah ada
-        //     $request->session()->flash('error', 'Data sudah ada dalam database.');
-        //     return redirect()->back();
-        // }
-
-
-
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
         //         var_dump($v->fails());
         //         var_dump($v->errors());
 

@@ -214,11 +214,11 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="paket_magang" id="Basic"
                                         value="Basic" {{ old('paket_magang') == 'Basic' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic
+                                    <label class="form-check-label" for="Basic" style="margin-right: 10px">Basic Rp. 200.000
                                         (Seragam+Nametag)</label>
                                     <input class="form-check-input" type="radio" name="paket_magang" id="Exclusive"
                                         value="Exclusive" {{ old('paket_magang') == 'Exclusive' ? 'checked' : '' }}>
-                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive
+                                    <label class="form-check-label" for="Exclusive" style="margin-right: 10px">Exclusive Rp. 300.000
                                         (Seragam+Nametag+Bootcamp)</label>
                                 </div>
                                 @error('paket_magang')
