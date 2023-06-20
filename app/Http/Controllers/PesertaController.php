@@ -276,14 +276,14 @@ class PesertaController extends Controller
                 'content' => http_build_query([
                     'no_hp' => $updated->no_wa, # no hp penerima
                     // 'message' => 'test kirim wa' # pesan
-                    'message' => 'Halo ' . $request->nama_siswa . "\n" . '' . "\n" . $settingmagang->Format_WA_Diterima . "\n" .''
-            . "\n" .'Silahkan melakukan pembayaran dengan nomor rekening berikut:'."\n" .
+                    'message' => 'Halo ' . $request->nama_siswa . "\n" . '' . "\n" . $settingmagang->Format_WA_Diterima . "\n" . ''
+                        . "\n" . 'Silahkan melakukan pembayaran dengan nomor rekening berikut:' . "\n" .
                         'Nomor Rekening : ' . $settingMagang->no_va . "\n" .
-                        'Nominal        : ' . 'Rp. 300.000'. "\n" . ''// Menggunakan format WA dari SettingmagangController
-            . "\n" .'Silahkan lakukan login untuk mengupload bukti pembayaran dengan akun:'."\n" .
+                        'Nominal        : ' . ($data_magang_up->paket_magang == 'exclusive' ? 'Rp. 300.000' : 'Rp. 200.000') . "\n" . '' // Menggunakan format WA dari SettingmagangController
+                        . "\n" . 'Silahkan lakukan login untuk mengupload bukti pembayaran dengan akun:' . "\n" .
                         'Username : ' . $akuns->username . "\n" .
-                        'Password : ' . '(Gunakan password yang sudah didaftarkan saat register)'."\n" .''
-            . "\n" .'Selamat bergabung!!!',
+                        'Password : ' . '(Gunakan password yang sudah didaftarkan saat register)' . "\n" . ''
+                        . "\n" . 'Selamat bergabung!!!',
                 ])
             ]]));
         } elseif ($status_magang == 'tidak aktif') {
@@ -372,31 +372,31 @@ class PesertaController extends Controller
     public function showpembimbing($id)
     {
         $data = DB::table('siswa')
-        ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
-        ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
-        ->leftJoin('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
-        ->leftJoin('data_bidang', 'data_bidang.id', '=', 'data_magang.bidang_id')
-        ->leftJoin('akuns', 'akuns.nisn', '=', 'siswa.nisn')
-        ->where('siswa.id','=',$id)
-        ->first([
-            'siswa.id',
-            'siswa.nisn',
-            'nama_sekolah',
-            'nama_siswa',
-            'siswa.foto_siswa AS foto_siswa',
-            'no_wa',
-            'nama_bidang',
-            'tanggal_mulai',
-            'tanggal_selesai',
-            'nama_pembimbing',
-            'status_magang',
-            'judul_project',
-            'sekolah.id as id_sekolah',
-            'siswa.nip_pembimbing as nip',
-            'jurusan',
-            'tanggal_lahir', 'no_wa_pembimbing', 'username',
-            'data_magang.bukti_pembayaran','surat_pengajuan'
-        ]);
+            ->leftJoin('sekolah', 'sekolah.id', '=', 'siswa.sekolah_id')
+            ->leftJoin('data_magang', 'data_magang.nisn', '=', 'siswa.nisn')
+            ->leftJoin('pembimbing', 'pembimbing.nip_pembimbing', '=', 'siswa.nip_pembimbing')
+            ->leftJoin('data_bidang', 'data_bidang.id', '=', 'data_magang.bidang_id')
+            ->leftJoin('akuns', 'akuns.nisn', '=', 'siswa.nisn')
+            ->where('siswa.id', '=', $id)
+            ->first([
+                'siswa.id',
+                'siswa.nisn',
+                'nama_sekolah',
+                'nama_siswa',
+                'siswa.foto_siswa AS foto_siswa',
+                'no_wa',
+                'nama_bidang',
+                'tanggal_mulai',
+                'tanggal_selesai',
+                'nama_pembimbing',
+                'status_magang',
+                'judul_project',
+                'sekolah.id as id_sekolah',
+                'siswa.nip_pembimbing as nip',
+                'jurusan',
+                'tanggal_lahir', 'no_wa_pembimbing', 'username',
+                'data_magang.bukti_pembayaran', 'surat_pengajuan'
+            ]);
 
         // dd($data);
         // ambil url gambar

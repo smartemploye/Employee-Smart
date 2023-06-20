@@ -47,25 +47,25 @@
             }
 
             /* button {
-                                                                                                                                                                                                                                                                                                                                                                                                                background-color: darkgrey;
-                                                                                                                                                                                                                                                                                                                                                                                                                color: white;
-                                                                                                                                                                                                                                                                                                                                                                                                                padding: 14px 20px;
-                                                                                                                                                                                                                                                                                                                                                                                                                margin: 8px 0;
-                                                                                                                                                                                                                                                                                                                                                                                                                align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                                                margin-bottom: 10px;
-                                                                                                                                                                                                                                                                                                                                                                                                                border: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                border-radius: 4px;
-                                                                                                                                                                                                                                                                                                                                                                                                                cursor: pointer;
-                                                                                                                                                                                                                                                                                                                                                                                                                width: 350px;
-                                                                                                                                                                                                                                                                                                                                                                                                                height: 50px;
-                                                                                                                                                                                                                                                                                                                                                                                                                margin-left: 400px;
-                                                                                                                                                                                                                                                                                                                                                                                                            }
+                background-color: darkgrey;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                align-items: center;
+                margin-bottom: 10px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 350px;
+                height: 50px;
+                margin-left: 400px;
+            }
 
-                                                                                                                                                                                                                                                                                                                                                                                                            button:hover {
-                                                                                                                                                                                                                                                                                                                                                                                                                background-color: #45a049;
+            button:hover {
+                background-color: #45a049;
 
-                                                                                                                                                                                                                                                                                                                                                                                                } */
-        </style>
+} */
+</style>
         <script src="{{ asset('/js/sweetalert2.js') }}" type="text/javascript"></script>
         @if ($kuota == 0)
             <script>

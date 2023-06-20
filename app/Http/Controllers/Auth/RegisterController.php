@@ -87,7 +87,6 @@ class RegisterController extends Controller
             'jurusan.required' => 'Form harus diisi!',
         ];
 
-<<<<<<< HEAD
         $request->validate([
             'nama_siswa' => 'required',
             'nisn' => 'required|numeric|digits:10|unique:akuns',
@@ -108,28 +107,6 @@ class RegisterController extends Controller
             'username' => 'required|email|unique:akuns',
             'jurusan' => 'required',
         ], $message);
-=======
-            $request->validate([
-                'nama_siswa' => 'required',
-                'nisn' => 'required|numeric|digits:10|unique:akuns',
-                'password' => 'required',
-                'password_confirmation' => 'required|same:password',
-                'sekolah_id' => 'required',
-                'jenis_jurusan' => 'required',
-                'no_wa' => 'required|numeric|digits_between:10,13',
-                'foto_siswa' => 'required|image|mimes:jpg,png,jpeg,pdf',
-                'tanggal_lahir' => 'required|before:today',
-                'jurusan' => 'required',
-                'paket_magang' => 'required',
-                'nama_pembimbing' => 'required',
-                'nip_pembimbing' => 'required|numeric|unique:akuns',
-                'no_wa_pembimbing' => 'required|numeric|digits_between:10,13',
-                'ukuran_baju' => 'required',
-                'surat_pengajuan' => 'required|mimes:pdf',
-                'username' => 'required|email',
-                'jurusan' => 'required',
-            ], $message);
->>>>>>> 079a4962e372eda80f709446d8801d303a8aadea
         //         var_dump($v->fails());
         //         var_dump($v->errors());
 

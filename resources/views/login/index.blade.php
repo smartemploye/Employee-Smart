@@ -54,13 +54,16 @@
             text-align: center;
             color: #333;
         }
+
+        .center-block {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
 </head>
 
 <body>
-    <div class="d-flex justify-content-center">
-        <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="">
-    </div>
     @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
@@ -72,26 +75,34 @@
             {{ session('success') }}
         </div>
     @endif
-    <form action="/postlogin" style="margin-top: -20px;" method="POST">
-        @csrf
-        <h1 style="text-align: center; color: #0c0d0d;">Login</h1>
-        <h2 style="color: #161819;">Garuda Cyber Indonesia</h2>
+    <div class="container">
+        <div class="row">
+            <div class="span4">
+                <img src="{{ asset('/template/dist/img/GCI.png') }}" alt="Logo" style="" class="center-block">
+            </div>
 
-        <label for="email" style="color: rgb(15, 13, 13);">Email/NIP</label>
-        <input type="text" id="email" name="email" placeholder="Masukkan Username" required>
+            <form action="/postlogin" style="margin-top: -20px;" method="POST">
+                @csrf
+                <h1 style="text-align: center; color: #0c0d0d;">Login</h1>
+                <h2 style="color: #161819;">Garuda Cyber Indonesia</h2>
 
-        <label for="password" style="color: rgb(14, 11, 11);">Password</label>
-        <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+                <label for="email" style="color: rgb(15, 13, 13);">Email/NIP</label>
+                <input type="text" id="email" name="email" placeholder="Masukkan Username" required>
 
-        {{-- <input type="submit" name="submit" value="Login"> --}}
-        <button type="submit" name="submit">Login</button>
-        <h4 style="color: rgb(0, 0, 0); text-align: center;">Don't have account?</h4>
-        <a href="/register">
-            <h2
-                style="color: whitesmoke;background-color: #45a049; border-radius: 20px;padding-top: 5px; padding-bottom: 5px; font-size: 20px">
-                Register</h2>
-        </a>
-    </form>
+                <label for="password" style="color: rgb(14, 11, 11);">Password</label>
+                <input type="password" id="password" name="password" placeholder="Masukkan password" required>
+
+                {{-- <input type="submit" name="submit" value="Login"> --}}
+                <button type="submit" name="submit">Login</button>
+                <h4 style="color: rgb(0, 0, 0); text-align: center;">Don't have account?</h4>
+                <a href="/register">
+                    <h2
+                        style="color: whitesmoke;background-color: #45a049; border-radius: 20px;padding-top: 5px; padding-bottom: 5px; font-size: 20px">
+                        Register</h2>
+                </a>
+            </form>
+        </div>
+    </div>
 </body>
 
 </html>
