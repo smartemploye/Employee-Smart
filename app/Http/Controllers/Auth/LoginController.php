@@ -93,7 +93,7 @@ class LoginController extends Controller
             } elseif (Auth::user()->role == 'pembimbing') {
                 return redirect('/profile_pembimbing');
             }
-            
+
             //cek dulu yg login sebagai siswa atau bukan, kalo dia siswa cek dulu statusnya.
 
             //status seleksi, belu bayar, kosong hasib register/ null dia redirect ke halaman bayar

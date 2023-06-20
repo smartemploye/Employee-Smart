@@ -63,35 +63,4 @@ class ReportdanSertifikatController extends Controller
 
         return redirect('/tampilan')->with('success', 'File laporan akhir berhasil diunggah.');
     }
-<<<<<<< HEAD
-
-    public function store(Request $request, $nisn)
-{
-    // Validasi file yang diunggah adalah PDF
-    $message = [ 'laporan_akhir.required' => 'Form harus diisi!',
-    'laporan_akhir.mimes' => 'File dalam bentuk pdf!'];
-
-    $request->validate([
-        'laporan_akhir' => 'required|mimes:pdf'
-    ], $message);
-
-
-    // Simpan file PDF
-    $file = $request->file('laporan_akhir');
-    $filename = $file->getClientOriginalName();
-    $file->move(public_path('laporan_akhir'), $filename);
-
-    // Update kolom laporan_akhir di tabel data_magang
-    $data_magang = DataMagang::where('nisn', $nisn)->firstOrFail();
-    $data_magang->laporan_akhir = $filename;
-    $data_magang->save();
-
-    return redirect('/tampilan')->with('success', 'File laporan akhir berhasil diunggah.');
-}
-
-
-
-=======
-
->>>>>>> 8c4c72b094c42ee4bab38b6c00aa4d9cc6746667
 }

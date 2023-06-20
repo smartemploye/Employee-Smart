@@ -47,24 +47,24 @@
             }
 
             /* button {
-                                                                                                                                                                                                                                                                                                                                                                                    background-color: darkgrey;
-                                                                                                                                                                                                                                                                                                                                                                                    color: white;
-                                                                                                                                                                                                                                                                                                                                                                                    padding: 14px 20px;
-                                                                                                                                                                                                                                                                                                                                                                                    margin: 8px 0;
-                                                                                                                                                                                                                                                                                                                                                                                    align-items: center;
-                                                                                                                                                                                                                                                                                                                                                                                    margin-bottom: 10px;
-                                                                                                                                                                                                                                                                                                                                                                                    border: none;
-                                                                                                                                                                                                                                                                                                                                                                                    border-radius: 4px;
-                                                                                                                                                                                                                                                                                                                                                                                    cursor: pointer;
-                                                                                                                                                                                                                                                                                                                                                                                    width: 350px;
-                                                                                                                                                                                                                                                                                                                                                                                    height: 50px;
-                                                                                                                                                                                                                                                                                                                                                                                    margin-left: 400px;
-                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                background-color: darkgrey;
+                                                                                                                                                                                                                                                                                                                                                                                                                color: white;
+                                                                                                                                                                                                                                                                                                                                                                                                                padding: 14px 20px;
+                                                                                                                                                                                                                                                                                                                                                                                                                margin: 8px 0;
+                                                                                                                                                                                                                                                                                                                                                                                                                align-items: center;
+                                                                                                                                                                                                                                                                                                                                                                                                                margin-bottom: 10px;
+                                                                                                                                                                                                                                                                                                                                                                                                                border: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                border-radius: 4px;
+                                                                                                                                                                                                                                                                                                                                                                                                                cursor: pointer;
+                                                                                                                                                                                                                                                                                                                                                                                                                width: 350px;
+                                                                                                                                                                                                                                                                                                                                                                                                                height: 50px;
+                                                                                                                                                                                                                                                                                                                                                                                                                margin-left: 400px;
+                                                                                                                                                                                                                                                                                                                                                                                                            }
 
-                                                                                                                                                                                                                                                                                                                                                                                button:hover {
-                                                                                                                                                                                                                                                                                                                                                                                    background-color: #45a049;
+                                                                                                                                                                                                                                                                                                                                                                                                            button:hover {
+                                                                                                                                                                                                                                                                                                                                                                                                                background-color: #45a049;
 
-                                                                                                                                                                                                                                                                                                                                                                    } */
+                                                                                                                                                                                                                                                                                                                                                                                                } */
         </style>
         <script src="{{ asset('/js/sweetalert2.js') }}" type="text/javascript"></script>
         @if ($kuota == 0)
@@ -90,6 +90,17 @@
             </div>
         </div>
         <div class="container mt-5 bg-light p-3">
+            @if (session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             {{-- <div class="form-container p-3"> --}}
             <!-- Add the image element here -->
 
@@ -105,7 +116,7 @@
                                 class="form-control @error('nama_siswa') is-invalid @enderror" id="inputName"
                                 placeholder="Masukkan Nama" value="{{ old('nama_siswa') }}">
                             @error('nama_siswa')
-                                <div class="alert alert-danger" style="width: 530px">{{ $message }}</div>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
@@ -113,12 +124,12 @@
                             <input type="text" name="nisn" class="form-control @error('nisn') is-invalid @enderror"
                                 id="inputNisn" placeholder="Masukkan NISN" value="{{ old('nisn') }}">
                             @error('nisn')
-                                <div class="alert alert-danger" style="width: 530px">{{ $message }}</div>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
                             <label>Asal Sekolah</label>
-                            <select id="nama_sekolah" class="form-control">
+                            <select id="nama_sekolah" class="form-control" name="sekolah_id">
                                 <option value="">Pilih Sekolah</option>
                                 @foreach ($sekolah as $product)
                                     <option value="{{ $product->id }}">{{ $product->nama_sekolah }}
@@ -135,7 +146,7 @@
                                             @endforeach
                                         </select>
                                         @error('sekolah_id')
-                                            <div class="alert alert-danger" style="width: 530px">{{ $message }}</div>
+                                            <div class="alert alert-danger" >{{ $message }}</div>
                                         @enderror --}}
                         </div>
                         <div class="mb-3">
@@ -150,16 +161,15 @@
                                     <label class="form-check-label" for="Umum" style="margin-right: 10px">Umum</label>
                                 </div>
                                 @error('jenis_jurusan')
-                                    <div class="alert alert-danger" style="width: 530px">{{ $message }}
+                                    <div class="alert alert-danger">{{ $message }}
                                     </div>
                                 @enderror
                             </div>
                         </div>
                         <div class="mb-3">
                             <label>Nama Jurusan</label>
-                            <select id="tambah"
-                                class="form-control select2 @error('jurusan') is-invalid @enderror "name="jurusan"
-                                id="InputJurusan" data-placeholder="Nama Jurusan">
+                            <select id="tambah" class="form-control select2 @error('jurusan') is-invalid @enderror "
+                                name="jurusan" id="InputJurusan" data-placeholder="Nama Jurusan">
                                 <option style="color: black" value="" disabled selected>-- Pilih
                                     Jurusan --</option>
                                 @foreach ($bidang as $jurusan)
@@ -171,7 +181,7 @@
                             </select>
                             <div id="tambah1"></div>
                             @error('jurusan')
-                                <div class="alert alert-danger" style="width: 530px">{{ $message }}
+                                <div class="alert alert-danger">{{ $message }}
                                 </div>
                             @enderror
                         </div>
@@ -231,13 +241,14 @@
                     <div class="col order-last">
                         <div class="mb-3">
                             <label for="nama_pembimbing">Nama Pembimbing</label>
-                            <input type="text" id="nama_pembimbing" class="form-control">
+                            <input type="text" id="nama_pembimbing" placeholder="Masukkan Nama Pembimbing"
+                                name="nama_pembimbing" class="form-control">
                             {{-- <input type="text" name="nama_pembimbing"
                                         class="form-control @error('nama_pembimbing') is-invalid @enderror"
                                         id="nama_pembimbing" placeholder="Masukkan Nama Pembimbing"
                                         value="{{ old('nama_pembimbing') }}">
                                         @error('nama_pembimbing')
-                                        <div class="alert alert-danger" style="width: 530px">{{ $message }}</div>
+                                        <div class="alert alert-danger" >{{ $message }}</div>
                                         @enderror --}}
                         </div>
                         <div class="mb-3">
@@ -246,7 +257,7 @@
                                 class="form-control @error('nip_pembimbing') is-invalid @enderror" id="inputNippembimbing"
                                 placeholder="Masukkan NIP Pembimbing" value="{{ old('nip_pembimbing') }}">
                             @error('nip_pembimbing')
-                                <div class="alert alert-danger" style="width: 530px">{{ $message }}</div>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="mb-3">
@@ -256,7 +267,7 @@
                                 class="form-control @error('no_wa_pembimbing') is-invalid @enderror" id="inputSupervisor"
                                 placeholder="Masukkan Nomor Pembimbing" value="{{ old('no_wa_pembimbing') }}">
                             @error('no_wa_pembimbing')
-                                <div class="alert alert-danger" style="width: 530px">{{ $message }}</div>
+                                <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
 
                         </div>
@@ -280,7 +291,7 @@
                                 </option>
                             </select>
                             @error('ukuran_baju')
-                                <div class="alert alert-danger" style="width: 530px">{{ $message }}
+                                <div class="alert alert-danger">{{ $message }}
                                 </div>
                             @enderror
                         </div>
@@ -294,7 +305,8 @@
                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
                             @enderror
                             @if (!empty($errors->all()))
-                                <div class="alert alert-warning mt-2" style="width: 530px">Silahkan pilih
+                                <?php var_dump($errors->all()); ?>
+                                <div class="alert alert-warning mt-2">Silahkan pilih
                                     file kembali</div>
                             @endif
                         </div>
@@ -638,16 +650,4 @@
 @endpush
 
 @section('script')
-    @if (session('error'))
-        `
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
 @endsection

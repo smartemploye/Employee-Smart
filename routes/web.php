@@ -256,7 +256,7 @@ Route::get('/show-map', [GraphController::class, 'showMap']);
 Route::post('/show-chart', [GraphController::class, 'Chart']);
 
 //Route untuk Scan QR Code
-Route::get('/', [DashController::class, 'utama']);
+Route::get('/', [DashController::class, 'utama'])->middleware('auth:admin,akun');
 Route::get('/scan', [DashController::class, 'scan']);
 // });
 
