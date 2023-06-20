@@ -17,7 +17,7 @@ class CreateDataMagangTable extends Migration
             $table->id();
           //  $table->foreign('siswa_id')->references('id')->on('siswa')->onDelete('cascade')->onUpdate('cascade');
             $table->string('surat_pengajuan')->nullable();
-            $table->enum('paket_magang', ['basic','exclusive'])->nullable();
+            $table->enum('paket_magang', ['basic Rp. 200.000','exclusive Rp. 300.000'])->nullable();
             $table->date('tanggal_pembayaran')->nullable();
             $table->string('judul_project')->nullable();
             $table->enum('status_magang', ['Seleksi','Belum Bayar', 'Aktif', 'Lulus', 'Drop Out'])->nullable();

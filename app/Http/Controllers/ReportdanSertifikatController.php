@@ -38,29 +38,65 @@ class ReportdanSertifikatController extends Controller
 
         $siswa = DB::table('siswa')->where('nisn', $nisn)->first();
         $settingMagang = SettingMagang::select('Sertifikat')->first();
-        $pdf = PDF::loadview('ReportdanSertifikat.sertifikat', ['settingMagang' => $settingMagang, 'siswa' => $siswa]);
+        $komponen_penilaian = DB::table('komponen_penilaian')->get();
+        $nilai = DB::table('penilaian')->where('id_siswa', $siswa->id)->first();
+    // var_dump($komponen_penilaian, $siswa);
+    // dd($nilai);
+        $pdf = PDF::loadview('ReportdanSertifikat.sertifikat', ['settingMagang' => $settingMagang, 'siswa' => $siswa, 'komponen_penilaian' => $komponen_penilaian, 'nilai' => $nilai ]);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->download('sertifikat.pdf');
         // return view('ReportdanSertifikat.sertifikat', ['settingMagang' => $settingMagang, 'siswa' => $siswa]);
     }
 
-    public function store(Request $request, $nisn)
-    {
-        // Validasi file yang diunggah adalah PDF
-        $request->validate([
-            'laporan_akhir' => 'required|mimes:pdf'
-        ]);
+    // public function store(Request $request, $nisn)
+    // {
+    //     // Validasi file yang diunggah adalah PDF
+    //     $request->validate([
+    //         'laporan_akhir' => 'required|mimes:pdf'
+    //     ]);
 
-        // Simpan file PDF
-        $file = $request->file('laporan_akhir');
-        $filename = $file->getClientOriginalName();
-        $file->move(public_path('laporan_akhir'), $filename);
+    //     // Simpan file PDF
+    //     $file = $request->file('laporan_akhir');
+    //     $filename = $file->getClientOriginalName();
+    //     $file->move(public_path('laporan_akhir'), $filename);
 
-        // Update kolom laporan_akhir di tabel data_magang
-        $data_magang = DataMagang::where('nisn', $nisn)->firstOrFail();
-        $data_magang->laporan_akhir = $filename;
-        $data_magang->save();
+    //     // Update kolom laporan_akhir di tabel data_magang
+    //     $data_magang = DataMagang::where('nisn', $nisn)->firstOrFail();
+    //     $data_magang->laporan_akhir = $filename;
+    //     $data_magang->save();
 
+<<<<<<< HEAD
         return redirect('/tampilan')->with('success', 'File laporan akhir berhasil diunggah.');
     }
+=======
+    //     return redirect('/tampilan')->with('success', 'File laporan akhir berhasil diunggah.');
+    // }
+
+    public function store(Request $request, $nisn)
+{
+    // Validasi file yang diunggah adalah PDF
+    $message = [ 'laporan_akhir.required' => 'Form harus diisi!',
+    'laporan_akhir.mimes' => 'File dalam bentuk pdf!'];
+
+    $request->validate([
+        'laporan_akhir' => 'required|mimes:pdf'
+    ], $message);
+
+
+    // Simpan file PDF
+    $file = $request->file('laporan_akhir');
+    $filename = $file->getClientOriginalName();
+    $file->move(public_path('laporan_akhir'), $filename);
+
+    // Update kolom laporan_akhir di tabel data_magang
+    $data_magang = DataMagang::where('nisn', $nisn)->firstOrFail();
+    $data_magang->laporan_akhir = $filename;
+    $data_magang->save();
+
+    return redirect('/tampilan')->with('success', 'File laporan akhir berhasil diunggah.');
+}
+
+
+
+>>>>>>> 079a4962e372eda80f709446d8801d303a8aadea
 }

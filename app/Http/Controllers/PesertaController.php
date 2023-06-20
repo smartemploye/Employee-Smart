@@ -242,6 +242,8 @@ class PesertaController extends Controller
         //     'no_wa_pembimbing' => $request['no_wa_pembimbing'],
         //     'sekolah_id' => $request['sekolah_id'],
         // ]);
+        $settingMagang = SettingMagang::select('no_va')->first();
+        $rekening = $settingMagang->no_va;
 
         $akuns = Akuns::where('nisn', $updated->nisn)->first();
 
@@ -274,9 +276,14 @@ class PesertaController extends Controller
                 'content' => http_build_query([
                     'no_hp' => $updated->no_wa, # no hp penerima
                     // 'message' => 'test kirim wa' # pesan
-                    'message' => 'Halo ' . $request->nama_siswa . ', ' . $settingmagang->Format_WA_Diterima . "\n" .
+                    'message' => 'Halo ' . $request->nama_siswa . "\n" . '' . "\n" . $settingmagang->Format_WA_Diterima . "\n" .''
+            . "\n" .'Silahkan melakukan pembayaran dengan nomor rekening berikut:'."\n" .
+                        'Nomor Rekening : ' . $settingMagang->no_va . "\n" .
+                        'Nominal        : ' . 'Rp. 300.000'. "\n" . ''// Menggunakan format WA dari SettingmagangController
+            . "\n" .'Silahkan lakukan login untuk mengupload bukti pembayaran dengan akun:'."\n" .
                         'Username : ' . $akuns->username . "\n" .
-                        'Password : ' . '123', // Menggunakan format WA dari SettingmagangController
+                        'Password : ' . '(Gunakan password yang sudah didaftarkan saat register)'."\n" .''
+            . "\n" .'Selamat bergabung!!!',
                 ])
             ]]));
         } elseif ($status_magang == 'tidak aktif') {
@@ -301,7 +308,7 @@ class PesertaController extends Controller
                     // 'message' => 'test kirim wa' # pesan
                     'message' => 'Halo ' . $pembimbing->nama_pembimbing . ', ' . $settingmagang->Format_Pembimbing . "\n" .
                         'Username : ' . $pembimbing->nip_pembimbing . "\n" .
-                        'Password : ' . '123', // Menggunakan format WA dari SettingmagangController
+                        'Password : ' . '123 (Silahkan lakukan penggantian password saat sudah melakukan login)', // Menggunakan format WA dari SettingmagangController
                 ])
             ]]));
         }
