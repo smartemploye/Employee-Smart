@@ -36,7 +36,6 @@
     }
 </style>
 <div class="container">
-    {{-- <img class="image" src="{{  '/image/' . $settingMagang->Sertifikat }}"> --}}
     <img class="image" src="{{ public_path() . '/image/' . $settingMagang->Sertifikat }}">
     <div class="overlay">
         <div style="font-weight: bold; font-size:34px">
@@ -44,66 +43,56 @@
         </div>
     </div>
 </div>
-<!-- Tambahkan library DOMPDF -->
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dompdf/0.8.1/dompdf.min.js"></script> --}}
 
 <div class="container">
     <img class="image" src="{{ public_path() . '/sertifikat/Sertif_belakang.jpg' }}">
-    <div class="overlay" style="top: 30%; left: 11%">
+    <div class="overlay" style="top: 30%; left: 12%">
         <div class="row">
             <div class="col-12">
-                <table  border="1" cellspacing="0" id="example1" class="table table-bordered table-striped">
+                <table width="780px" border="1" cellspacing="0" id="example1" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                             <th width="50px">No</th>
-                            
-                            <th class="text-center" width="650px">Komponen Penilaian</th> <th class="text-center" width="80px" >Nilai</th>
+                            <th class="text-center">Komponen Penilaian</th>
+                            <th class="text-center">Persentase</th>
+                            <th class="text-center">Nilai</th>
                         </tr>
                     </thead>
+                
                     <tbody>
+                        @php
+                        $totalPresentase = 0; // Inisialisasi variabel total presentase
+                        $totalNilai = 0; // Inisialisasi variabel total nilai
+                        @endphp
                         @foreach ($komponen_penilaian as $key => $value)
-                        {{$k = $value-> nama_komponen}}
+                        @php
+                        $k = $value->nama_komponen;
+                        $presentase = $value->presentase;
+                        $nl = @$nilai->$k;
+                        $totalPresentase += $presentase; // Menambahkan presentase ke total presentase
+                        $totalNilai += $nl; // Menambahkan nilai ke total nilai
+                        @endphp
                         <tr>
-                            <td style="padding: 1px 3px;" align="center">{{$key + 1}}</td>
-                            <td >{{$value -> nama_komponen}}</td>
-                            <td align="center">{{@$nilai -> $k}}</td>
+                            <td style="padding: 1px 3px;" align="center">{{ $key + 1 }}</td>
+                            <td>{{ $value->nama_komponen }}</td>
+                            <td align="center">{{ $presentase }}</td>
+                            <td align="center">{{ $nilai->$k }}</td>
                         </tr>
                         @endforeach
+                        <tr>
+                            <td colspan="2" style="text-align: center; font-weight: bold;">Total</td>
+                            <td align="center">{{ $totalPresentase }}</td>
+                            <td align="center">{{ $totalNilai }}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align: center; font-weight: bold;">Rata-Rata</td>
+                            <td align="center">{{ $totalNilai / count($komponen_penilaian) }}</td>
+                        </tr>
                     </tbody>
                 </table>
+                
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    // // Mengonversi tabel menjadi file PDF
-    // function convertToPDF() {
-    //     const table = document.getElementById("example1").outerHTML;
-    //     const html = `
-    //         <html>
-    //         <head>
-    //             <style>
-    //                 table {
-    //                     width: 100%;
-    //                     border-collapse: collapse;
-    //                 }
-    //                 th, td {
-    //                     border: 1px solid black;
-    //                     padding: 8px;
-    //                 }
-    //             </style>
-    //         </head>
-    //         <body>
-    //             ${table}
-    //         </body>
-    //         </html>
-    //     `;
-
-    //     const pdf = new window.jsPDF();
-    //     pdf.fromHTML(html, 15, 15, {
-    //         width: 180
-    //     });
-    //     pdf.save("table.pdf");
-    // }
-</script>

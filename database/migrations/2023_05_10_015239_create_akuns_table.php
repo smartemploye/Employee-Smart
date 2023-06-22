@@ -19,7 +19,7 @@ class CreateAkunsTable extends Migration
             $table->string('password', 256)->nullable();
             $table->string('nisn', 10)->nullable()->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->bigInteger('nip_pembimbing')->nullable()->unique();
+            $table->bigInteger('nip_pembimbing')->nullable();
             $table->enum('role', ['admin', 'siswa', 'pembimbing'])->nullable();
             $table->timestamps();
         });

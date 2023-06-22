@@ -54,6 +54,7 @@
                                         <option value="Belum Bayar" @if (old('status_magang') == "Belum Bayar") {{ 'selected' }} @endif>Belum Bayar</option>
                                         <option value="Aktif" @if (old('status_magang') == "Aktif") {{ 'selected' }} @endif>Aktif</option>
                                         <option value="Lulus" @if (old('status_magang') == "Lulus") {{ 'selected' }} @endif>Lulus</option>
+                                        <option value="Ditolak" @if (old('status_magang') == "Ditolak") {{ 'selected' }} @endif>Ditolak</option>
                                         <option value="Drop Out" @if (old('status_magang') == "Drop Out") {{ 'selected' }} @endif>Drop Out</option>
                                     </select>
                                 </div>

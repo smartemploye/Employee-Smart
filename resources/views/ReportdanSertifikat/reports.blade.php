@@ -7,7 +7,7 @@ Halaman Report dan Sertifikat
 @section('content')
 
   <div class="form-group">
-    <label>Download Format Laporan Akhir</label>
+    <label>Unduh Format Laporan Akhir</label>
     @if($pembimbing && $pembimbing->format_laporan_akhir)
         <a href="{{ url('format_laporan_akhir/'.$pembimbing->format_laporan_akhir) }}" class="btn btn-link">Unduh</a>
     @else
@@ -22,7 +22,7 @@ Halaman Report dan Sertifikat
     @csrf
     @method('POST')
     <div class="form-group row">
-        <label for="laporan_akhir" class="col-sm-2 col-form-label">Upload Laporan Akhir (PDF)</label>
+        <label for="laporan_akhir" class="col-sm-2 col-form-label">Unggah Laporan Akhir (PDF)</label>
     </div>
     @error('laporan_akhir')
     <div class="alert alert-danger">{{ $message }}</div>
@@ -44,12 +44,12 @@ Halaman Report dan Sertifikat
 
 @if($siswa && $siswa->data_magang && $siswa->data_magang->laporan_akhir)
 <div class="form-group">
-    <label>Lihat Laporan Akhir yang Telah di Upload</label>
+    <label>Lihat Laporan Akhir yang Telah di Unggah</label>
     <a href="{{ asset('laporan_akhir/'.$siswa->data_magang->laporan_akhir) }}" class="btn btn-link">Lihat</a>
 </div>
 @endif
 <div class="form-group">
-  <label>Download Sertifikat</label>
+  <label>Unduh Sertifikat</label>
   @if($settingMagang->Sertifikat)
     <a href="/ReportdanSertifikat/{{$siswa->nisn}}" class="btn btn-link">Unduh</a>
   @else

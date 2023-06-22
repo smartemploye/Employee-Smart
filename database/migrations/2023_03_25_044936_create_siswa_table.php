@@ -21,7 +21,7 @@ class CreateSiswaTable extends Migration
             $table->unsignedBigInteger('sekolah_id');
           //  $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('cascade')->onUpdate('cascade');
             $table->string('jurusan');
-            $table->unsignedBigInteger('nip_pembimbing')->unique();
+            $table->unsignedBigInteger('nip_pembimbing');
           //  $table->foreign('nip_pembimbing')->references('id')->on('pembimbing')->onDelete('cascade')->onUpdate('cascade');
             $table->string('foto_siswa');
             $table->date('tanggal_mulai')->nullable();

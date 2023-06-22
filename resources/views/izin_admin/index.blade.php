@@ -72,24 +72,26 @@
                 <tbody>
                     <?php $no=1; ?>
                     @foreach ($perizinan as $izin)
-                    <tr>
-                        <td>{{$no++ }}</td>
-                        <td>{{$izin->nama_siswa}}</td>
-                        <td>{{$izin->izin_dari}}</td>
-                        <td>{{$izin->izin_sampai }}</td>
-                        <td>{{$izin->status_absen }}</td>
-                        <td>{{$izin->keterangan }}</td>
-                        <td>
-                            <img width="300px" src="{{ asset('image/dokumentasi/'.$izin->dokumentasi) }}">
-                        </td>
-                        <td>{{$izin->approve }}</td>
-                        <td>
-                            <a href="javascript:void(0);" onclick="confirmEdit('{{ route('izin_admin.edit', $izin->id) }}')" class="btn btn-success">
-                                <i class='bx bxs-pencil' ></i> Edit
-                            </a>
-                        </td>
-                    </tr>
-                    @endforeach
+                    @if ($izin->status_absen == 'izin')
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $izin->nama_siswa }}</td>
+                            <td>{{ $izin->izin_dari }}</td>
+                            <td>{{ $izin->izin_sampai }}</td>
+                            <td>{{ $izin->status_absen }}</td>
+                            <td>{{ $izin->keterangan }}</td>
+                            <td>
+                                <img width="300px" src="{{ asset('image/dokumentasi/'.$izin->dokumentasi) }}">
+                            </td>
+                            <td>{{ $izin->approve }}</td>
+                            <td>
+                                <a href="javascript:void(0);" onclick="confirmEdit('{{ route('izin_admin.edit', $izin->id) }}')" class="btn btn-success">
+                                    <i class='bx bxs-pencil'></i> Edit
+                                </a>
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
                 </tbody>
             </table>
         </div>

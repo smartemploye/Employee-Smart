@@ -53,10 +53,13 @@
         @method('PUT')
         <?php foreach ($penilaian as $key => $item) {
             if ($key !== 'id' && $key !== 'nama_siswa' && $key !== 'id_penilaian' && $key !== 'id_siswa' && $key !== 'created_at' && $key !== 'updated_at' && $key !== '_token' && $key !== 'nisn' && $key !== 'nama_sekolah' && $key !== 'judul_project') {
+                $query = "SELECT presentase FROM komponen_penliaian WHERE nama_komponen = '$key'";
+                $hasil = DB::select("SELECT presentase FROM komponen_penilaian WHERE nama_komponen = '$key'");
+                $presentase = $hasil[0]->presentase;
                 echo '<div class="form-group">
                                                                                                                                                                                             <label>' .
-                    $key .
-                    '</label>
+                    $key.' ('. $presentase .
+                    '%)</label>
                                                                                                                                                                                             <input type="text" name="' .
                     $key .
                     '" class="form-control" value="' .

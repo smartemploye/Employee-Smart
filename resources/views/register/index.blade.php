@@ -105,7 +105,7 @@
             <!-- Add the image element here -->
 
             {{-- <h1 style="font-family: Plus Jakarta Sans; margin-top: -170px;" class="text-center">Garuda Cyber Indonesia</h1> --}}
-            <h2 class="text-center" style="margin-top: 10px;">Register</h2>
+            <h2 class="text-center" style="margin-top: 10px;">Daftar</h2>
             <form action="/postregister" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row mt-5">
@@ -138,16 +138,6 @@
                             </select>
                             <small><a class="reg" href="" data-toggle="modal"
                                     data-target="#tambahsekolah">Daftarkan sekolah?</a></small>
-                            {{-- <select class="select2" class="form-control @error('sekolah_id') is-invalid @enderror" name="sekolah_id" id="sekolah_id"
-                                        data-placeholder="Nama Sekolah" style="width: 530px;margin-left: 20px;color: black">
-                                            <option style="color: black"  value="" disabled selected >-- Pilih Sekolah --</option>
-                                            @foreach ($sekolah as $sklh)
-                                                <option style="background-color: black" {{ (old("sekolah_id") == $sklh->id ? "selected":"")}} value="{{ $sklh->id }}">{{ $sklh->nama_sekolah }}</option>
-                                            @endforeach
-                                        </select>
-                                        @error('sekolah_id')
-                                            <div class="alert alert-danger" >{{ $message }}</div>
-                                        @enderror --}}
                         </div>
                         <div class="mb-3">
                             <label for="inputJenisJurusan">Jenis Jurusan</label>
@@ -243,13 +233,6 @@
                             <label for="nama_pembimbing">Nama Pembimbing</label>
                             <input type="text" id="nama_pembimbing" placeholder="Masukkan Nama Pembimbing"
                                 name="nama_pembimbing" class="form-control">
-                            {{-- <input type="text" name="nama_pembimbing"
-                                        class="form-control @error('nama_pembimbing') is-invalid @enderror"
-                                        id="nama_pembimbing" placeholder="Masukkan Nama Pembimbing"
-                                        value="{{ old('nama_pembimbing') }}">
-                                        @error('nama_pembimbing')
-                                        <div class="alert alert-danger" >{{ $message }}</div>
-                                        @enderror --}}
                         </div>
                         <div class="mb-3">
                             <label for="inputSupervisor">NIP Pembimbing</label>
@@ -305,7 +288,7 @@
                                 <div class="alert alert-danger mt-2">{{ $message }}</div>
                             @enderror
                             @if (!empty($errors->all()))
-                                <?php var_dump($errors->all()); ?>
+                               
                                 <div class="alert alert-warning mt-2">Silahkan pilih
                                     file kembali</div>
                             @endif
@@ -321,20 +304,20 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="inputPassword">Password</label>
+                            <label for="inputPassword">Kata Sandi</label>
                             <input type="password" name="password"
                                 class="form-control @error('password') is-invalid @enderror" id="inputPassword"
-                                placeholder="Masukkan Password" value="{{ old('password') }}">
+                                placeholder="Masukkan Kata Sandi" value="{{ old('password') }}">
                             @error('password')
                                 <div class="alert alert-danger">{{ $message }}
                                 </div>
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="inputConfirmPassword">Ulangi Password</label>
+                            <label for="inputConfirmPassword">Ulangi Kata Sandi</label>
                             <input type="password"
                                 class="form-control @error('password_confirmation') is-invalid @enderror"
-                                id="inputConfirmPassword" placeholder="Ulangi Password" name="password_confirmation"
+                                id="inputConfirmPassword" placeholder="Ulangi Kata Sandi" name="password_confirmation"
                                 value="{{ old('password_confirmation') }}">
                             @error('password_confirmation')
                                 <div class="alert alert-danger">{{ $message }}
@@ -345,11 +328,10 @@
 
                 </div>
                 <div class="text-center">
-                    <p>Already have account? <a href="/login" style="color: rgb(191, 11, 8)">Login</a>
+                    <p>Sudah Punya Akun? <a href="/login" style="color: rgb(191, 11, 8)">Masuk</a>
                     </p>
                     <div class="button">
-                        {{-- <a href="/register"><button type="button">Register</button></a> --}}
-                        <input type="submit" name="submit" value="Register" />
+                        <input type="submit" name="submit" value="Daftar" />
                     </div>
                 </div>
             </form>
@@ -379,6 +361,11 @@
                                     <input type="text" name="nama_sekolah" placeholder="Nama Sekolah"
                                         class="form-control">
                                 </div>
+                                <div class="mb-3">
+                                    <label for="alamat_sekolah" class="form-label">Alamat Sekolah</label>
+                                    <input type="text" name="alamat_sekolah" placeholder="Alamat Sekolah"
+                                        class="form-control">
+                                </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -397,79 +384,6 @@
     </body>
 
     </html>
-    {{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 @endsection
 
 @push('scripts')
@@ -608,44 +522,6 @@
             }
         });
 
-
-        // $('.addMore').click(function(){
-        //     var input = document.getElementById('tambah');
-        //     input.setAttribute('disabled', true);
-        //     document.getElementById('tambah1').style.display = 'block';
-        // });
-
-
-        // document.getElementById('sekolah').addEventListener('change', function() {
-        //         var sekolahId = this.value;
-
-        //         var xhr = new XMLHttpRequest();
-        //         xhr.open('GET', '/pembimbing/' + sekolahId, true);
-        //         xhr.onreadystatechange = function() {
-        //             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        //                 var response = JSON.parse(xhr.responseText);
-        //                 document.getElementById('nama_pembimbing').value = response.npembimbing;
-        //             }
-        //         };
-        //         xhr.send();
-        //     });
-
-
-        // $(document).ready(function(){
-        //     // document.getElementById('sekolah').addEventListener('change', function() {
-        //     // var productId = this.value;
-
-        //     // // Lakukan request AJAX untuk mendapatkan harga barang
-        //     // fetch('/pembimbing/' + productId)
-        //     //     .then(response => response.json())
-        //     //     .then(data => {
-        //     //         document.getElementById('nama_pembimbing').value = data.npembimbing;
-        //     //     })
-        //     //     .catch(error => console.error(error));
-        //     // });
-
-
-        // });
     </script>
 @endpush
 

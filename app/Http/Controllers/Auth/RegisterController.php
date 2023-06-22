@@ -224,7 +224,7 @@ class RegisterController extends Controller
 
         // $request->session()->flash('success', 'Data berhasil disimpan.');
 
-        return redirect()->route('login')->with('success', 'Data created successfully.');
+        return redirect()->route('login');
 
         // Kamis 24 Mei 2023 pesan email ambil data dari settingmagang
         // }

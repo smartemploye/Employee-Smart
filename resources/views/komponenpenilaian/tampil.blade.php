@@ -36,9 +36,9 @@
             <table id="example1" class="table table-bordered table-striped">
         <thead>
             <tr>
-                <th scope="col">#</th>
+                <th scope="col">No</th>
                 <th scope="col" class="text-center">Nama Komponen</th>
-                <th scope="col" class="text-center">Presentase</th>
+                <th scope="col" class="text-center">Persentase</th>
                 <th scope="col" class="text-center">Action</th>
             </tr>
         </thead>
@@ -46,8 +46,8 @@
             @forelse ($komponenpenilaian as $key => $value)
                 <tr>
                     <td>{{ $key + 1 }}</td>
-                    <td>{{ $value->nama_komponen }}</td>
-                    <td>{{ $value->presentase }}</td>
+                    <td class="text-center">{{ $value->nama_komponen }}</td>
+                    <td class="text-center">{{ $value->presentase }}</td>
                     <td class="text-center">
 
                         {{-- <form action="/komponenpenilaian/{{ $value->id }}" method="POST"> --}}

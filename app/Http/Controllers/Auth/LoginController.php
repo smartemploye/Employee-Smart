@@ -81,9 +81,9 @@ class LoginController extends Controller
             if (Auth::user()->role=='siswa'){
                 // dd(Auth::user()->siswa->data_magang->status_magang);
                 $status_magang = Auth::user()->siswa->data_magang->status_magang;
-                if ($status_magang == "Belum Bayar" || $status_magang == NULL) {
+                if ($status_magang == "Belum Bayar" ) {
                     return redirect('/bayar');
-                } elseif ($status_magang == "tidak aktif" || $status_magang == "Drop Out" || $status_magang == "Seleksi" ){
+                } elseif ($status_magang == "Ditolak" || $status_magang == "Drop Out" || $status_magang == "Seleksi" || $status_magang == NULL){
                     return redirect('/logout');
                 } elseif ($status_magang == 'Aktif' || $status_magang == "Lulus") {
                     return redirect('/scan');

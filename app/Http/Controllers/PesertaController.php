@@ -279,14 +279,14 @@ class PesertaController extends Controller
                     'message' => 'Halo ' . $request->nama_siswa . "\n" . '' . "\n" . $settingmagang->Format_WA_Diterima . "\n" . ''
                         . "\n" . 'Silahkan melakukan pembayaran dengan nomor rekening berikut:' . "\n" .
                         'Nomor Rekening : ' . $settingMagang->no_va . "\n" .
-                        'Nominal        : ' . ($data_magang_up->paket_magang == 'exclusive' ? 'Rp. 300.000' : 'Rp. 200.000') . "\n" . '' // Menggunakan format WA dari SettingmagangController
+                        'Nominal        : ' . ($data_magang_up->paket_magang == 'exclusive' ? 'Rp. 300.000 (exclusive)' : 'Rp. 200.000 (basic)') . "\n" . '' // Menggunakan format WA dari SettingmagangController
                         . "\n" . 'Silahkan lakukan login untuk mengupload bukti pembayaran dengan akun:' . "\n" .
                         'Username : ' . $akuns->username . "\n" .
                         'Password : ' . '(Gunakan password yang sudah didaftarkan saat register)' . "\n" . ''
                         . "\n" . 'Selamat bergabung!!!',
                 ])
             ]]));
-        } elseif ($status_magang == 'tidak aktif') {
+        } elseif ($status_magang == 'Ditolak') {
             // var_dump($updated->no_wa);
             // var_dump($settingmagang->Format_WA_Ditolak);
             $result = file_get_contents('https://testinguntuksendmessage.000webhostapp.com', false, stream_context_create(['http' => [
@@ -295,7 +295,7 @@ class PesertaController extends Controller
                 'content' => http_build_query([
                     'no_hp' => $updated->no_wa, # no hp penerima
                     // 'message' => 'test kirim wa' # pesan
-                    'message' => 'Halo ' . $request->nama_siswa . ', ' . $settingmagang->Format_WA_Ditolak, // Menggunakan format WA dari SettingmagangController
+                    'message' => 'Halo ' . $request->nama_siswa . "\n" . '' . "\n" . $settingmagang->Format_WA_Ditolak. "\n" . ''// Menggunakan format WA dari SettingmagangController
                 ])
             ]]));
             // dd( $result);
@@ -306,9 +306,10 @@ class PesertaController extends Controller
                 'content' => http_build_query([
                     'no_hp' => $updated->pembimbing->no_wa_pembimbing, # no hp penerima
                     // 'message' => 'test kirim wa' # pesan
-                    'message' => 'Halo ' . $pembimbing->nama_pembimbing . ', ' . $settingmagang->Format_Pembimbing . "\n" .
-                        'Username : ' . $pembimbing->nip_pembimbing . "\n" .
-                        'Password : ' . '123 (Silahkan lakukan penggantian password saat sudah melakukan login)', // Menggunakan format WA dari SettingmagangController
+                    'message' => 'Halo ' . $pembimbing->nama_pembimbing . "\n" . '' . "\n" . $settingmagang->Format_Pembimbing . "\n" . ''
+            . "\n" .'Username : ' . $pembimbing->nip_pembimbing . "\n".
+                        'Password : ' . '123'. "\n" .''// Menggunakan format WA dari SettingmagangController
+                        . "\n" . '(Silahkan lakukan penggantian password saat sudah melakukan login)',  
                 ])
             ]]));
         }

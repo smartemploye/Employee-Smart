@@ -15,7 +15,6 @@ use Dompdf\Options;
 
 class ReportdanSertifikatController extends Controller
 {
-
     public function tampilan()
     {
         $siswa = Auth::user()->siswa;
@@ -45,32 +44,7 @@ class ReportdanSertifikatController extends Controller
         $pdf = PDF::loadview('ReportdanSertifikat.sertifikat', ['settingMagang' => $settingMagang, 'siswa' => $siswa, 'komponen_penilaian' => $komponen_penilaian, 'nilai' => $nilai ]);
         $pdf->setPaper('A4', 'landscape');
         return $pdf->download('sertifikat.pdf');
-        // return view('ReportdanSertifikat.sertifikat', ['settingMagang' => $settingMagang, 'siswa' => $siswa]);
     }
-
-    // public function store(Request $request, $nisn)
-    // {
-    //     // Validasi file yang diunggah adalah PDF
-    //     $request->validate([
-    //         'laporan_akhir' => 'required|mimes:pdf'
-    //     ]);
-
-    //     // Simpan file PDF
-    //     $file = $request->file('laporan_akhir');
-    //     $filename = $file->getClientOriginalName();
-    //     $file->move(public_path('laporan_akhir'), $filename);
-
-    //     // Update kolom laporan_akhir di tabel data_magang
-    //     $data_magang = DataMagang::where('nisn', $nisn)->firstOrFail();
-    //     $data_magang->laporan_akhir = $filename;
-    //     $data_magang->save();
-
-<<<<<<< HEAD
-        return redirect('/tampilan')->with('success', 'File laporan akhir berhasil diunggah.');
-    }
-=======
-    //     return redirect('/tampilan')->with('success', 'File laporan akhir berhasil diunggah.');
-    // }
 
     public function store(Request $request, $nisn)
 {
@@ -98,5 +72,5 @@ class ReportdanSertifikatController extends Controller
 
 
 
->>>>>>> 079a4962e372eda80f709446d8801d303a8aadea
+
 }
