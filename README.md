@@ -21,7 +21,7 @@ System Smart Internship memiliki 3 user atau entitas, yaitu:
     •	Download sertifikat
 #### Pembimbing, yang membimbing peserta magang selama kegiatan magang berlangsung dapat melakukan:
     •	Melakukan login
-    •	 Memonitoring kegiatan siswa
+    •	Memonitoring kegiatan siswa
     •	Mengupload format laporan akhir
 #### Admin, yang merupakan admin dari system dapat melakukan:
     •	Memberi akun pada siswa dan pembimbing
