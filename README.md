@@ -1,5 +1,3 @@
-<p align="center"><img src="public/template/dist/img/GCI.png" width="400"></p>
-
 <p align="center">
     <strong style="color: red;">Smart Internship</strong>
 </p>
