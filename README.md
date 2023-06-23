@@ -1,5 +1,5 @@
 <p align="center">
-    <strong style="color: red;">Smart Internship</strong>
+   ## Smart Internship
 </p>
 
 ## About Smart Internship
