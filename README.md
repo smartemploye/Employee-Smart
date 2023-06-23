@@ -8,7 +8,7 @@
 Smart Internship adalah system yang mampu melakukan pendaftaran magang secara online, membantu peserta magang dalam mengisi laporan harian dan laporan akhir, serta mempermudah peserta magang dalam melakukan perizinan terhadap perusahaan :
 
 System Smart Internship memiliki 3 user atau entitas, yaitu:
-###	Siswa, yang merupakan peserta magang, dapat melakukan :
+#### Siswa, yang merupakan peserta magang, dapat melakukan :
     •	Melakukan pendaftaran
     •	Mengisi data diri dan submit surat pengajuan
     •	Melakukan login
@@ -19,11 +19,11 @@ System Smart Internship memiliki 3 user atau entitas, yaitu:
     •	Download format laporan akhir
     •	Upload laporan akhir
     •	Download sertifikat
-###	Pembimbing, yang membimbing peserta magang selama kegiatan magang berlangsung dapat melakukan:
+#### Pembimbing, yang membimbing peserta magang selama kegiatan magang berlangsung dapat melakukan:
     •	Melakukan login
     •	 Memonitoring kegiatan siswa
     •	Mengupload format laporan akhir
-###	Admin, yang merupakan admin dari system dapat melakukan:
+#### Admin, yang merupakan admin dari system dapat melakukan:
     •	Memberi akun pada siswa dan pembimbing
     •	Memberi informasi terkait seleksi berkas dan wawancara
     •	Melakukan login
