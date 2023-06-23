@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="{{ asset('/template/dist/img/GCI.png') }}" width="400"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="public/template/dist/img/GCI.png" width="400"></a></p>
 
 <p align="center">
     <strong style="color: red;">Smart Internship</strong>
