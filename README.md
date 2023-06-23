@@ -1,6 +1,7 @@
-<p align="center">
-   ## Smart Internship
-</p>
+<h2 align="center" style="font-family: Arial, sans-serif; color: #007BFF; font-weight: bold;">
+   Smart Internship
+</h2>
+
 
 ## About Smart Internship
 
