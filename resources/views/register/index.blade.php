@@ -136,8 +136,8 @@
                                     </option>
                                 @endforeach
                             </select>
-                            <small><a class="reg" href="" data-toggle="modal"
-                                    data-target="#tambahsekolah">Daftarkan sekolah?</a></small>
+                            {{-- <small><a class="reg" href="" data-toggle="modal"
+                                    data-target="#tambahsekolah">Daftarkan sekolah?</a></small> --}}
                         </div>
                         <div class="mb-3">
                             <label for="inputJenisJurusan">Jenis Jurusan</label>
@@ -336,8 +336,8 @@
                 </div>
             </form>
 
-            <!-- Modal -->
-            <div class="modal fade" id="tambahsekolah" tabindex="-1" role="dialog"
+<!-- Modal -->
+            {{-- <div class="modal fade" id="tambahsekolah" tabindex="-1" role="dialog"
                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-backdrop="false"
                 data-keyboard="false">
                 <div class="modal-dialog modal-dialog-centered" role="document">
@@ -374,7 +374,7 @@
                         </form>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <script src="{{ asset('template/plugins/jquery/jquery.min.js') }}"></script>
@@ -453,8 +453,13 @@
 
                 })
             }
-            $('.select2, #nama_sekolah').select2({
+            $('.select2').select2({
                 tags: true,
+                width: '100%',
+
+            });
+            $('#nama_sekolah').select2({
+                
                 width: '100%',
 
             });
@@ -476,7 +481,7 @@
                         if (data.status == 200) {
                             let option;
                             $.each(data.sekolah, function(index, value) {
-                                option += '<option value=' + value.nis + '>' + value
+                                option += '<option value=' + value.id + '>' + value
                                     .nama_sekolah +
                                     '</option>';
                             })
