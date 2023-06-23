@@ -5,17 +5,33 @@
 
 ## About Smart Internship
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Smart Internship adalah system yang mampu melakukan pendaftaran magang secara online, membantu peserta magang dalam mengisi laporan harian dan laporan akhir, serta mempermudah peserta magang dalam melakukan perizinan terhadap perusahaan :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+System Smart Internship memiliki 3 user atau entitas, yaitu:
+#	Siswa, yang merupakan peserta magang, dapat melakukan :
+    •	Melakukan pendaftaran
+    •	Mengisi data diri dan submit surat pengajuan
+    •	Melakukan login
+    •	Upload bukti pembayaran
+    •	Menginput laporan harian
+    •	Melakukan absen
+    •	Mengajukan perizinan
+    •	Download format laporan akhir
+    •	Upload laporan akhir
+    •	Download sertifikat
+#	Pembimbing, yang membimbing peserta magang selama kegiatan magang berlangsung dapat melakukan:
+    •	Melakukan login
+    •	 Memonitoring kegiatan siswa
+    •	Mengupload format laporan akhir
+#	Admin, yang merupakan admin dari system dapat melakukan:
+    •	Memberi akun pada siswa dan pembimbing
+    •	Memberi informasi terkait seleksi berkas dan wawancara
+    •	Melakukan login
+    •	Memonitoring Kegiatan siswa
+    •	Memberi penilaian terhadap laporan akhir 
+    •	Upload sertifikat
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+
 
 ## Learning Laravel
 
