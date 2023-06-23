@@ -75,18 +75,13 @@
                         <tr>
                             <td style="padding: 1px 3px;" align="center">{{ $key + 1 }}</td>
                             <td>{{ $value->nama_komponen }}</td>
-                            <td align="center">{{ $presentase }}</td>
+                            <td align="center">{{ $presentase }}%</td>
                             <td align="center">{{ $nilai->$k }}</td>
                         </tr>
                         @endforeach
                         <tr>
-                            <td colspan="2" style="text-align: center; font-weight: bold;">Total</td>
-                            <td align="center">{{ $totalPresentase }}</td>
-                            <td align="center">{{ $totalNilai }}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="3" style="text-align: center; font-weight: bold;">Rata-Rata</td>
-                            <td align="center">{{ $totalNilai / count($komponen_penilaian) }}</td>
+                            <td colspan="3" style="text-align: center; font-weight: bold;">Nilai Akhir</td>
+                            <td align="center" style="font-weight: bold;">{{ $totalNilai / count($komponen_penilaian) }}</td>
                         </tr>
                     </tbody>
                 </table>
