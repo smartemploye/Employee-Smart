@@ -6,6 +6,13 @@
 ## About Smart Internship
 
 Smart Internship adalah system yang mampu melakukan pendaftaran magang secara online, membantu peserta magang dalam mengisi laporan harian dan laporan akhir, serta mempermudah peserta magang dalam melakukan perizinan terhadap perusahaan :
+#### Teknologi yang digunakan :
+    •	Laravel Framework 8.83.27
+    •	PHP 8.2.0
+
+    NB : Untuk mengecek versi Laravel dan versi Php, lakukan perintah berikut :
+         •	php artisan --version
+         •	php -v
 
 System Smart Internship memiliki 3 user atau entitas, yaitu:
 #### Siswa, yang merupakan peserta magang, dapat melakukan :
